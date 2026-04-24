@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sidebar2 p {
+margin: 10px ;
+text-align: left;
+color: #000000;
+}
+
+.inputs {
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    gap: 10px;
+}
+
+.inputs input {
+    width: 70px;
+    height:35px;
+    margin: 5px;
+  text-align: left;
+  outline: none;
+}
+.inputs input:focus {
+    border: 1px solid #00ccff;
+}
+.img_Checkbox {
+    width: 200px;
+    margin-top: 1rem;
+}

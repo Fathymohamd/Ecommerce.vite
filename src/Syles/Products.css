@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Raincoats , .Raincoats_and  {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(4 , auto);
+    grid-template-rows: repeat(6, auto);
+    width: 90%;
+    margin: auto;
+    margin-top: 1rem;
+}
+@media(max-width: 768px) {
+.Raincoats , .Raincoats_and  {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(1 , auto);
+    grid-template-rows: repeat(6, auto);
+    margin-top: 1rem;
+}
+.array , .card {
+    width: 90%;
+    margin: 10px auto;
+}
+}
+.title_item {
+  font-size: 20px;
+  font-weight: 800;
+  padding: 4px 0;
+  width: 60%;
+  margin: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+#image {
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+

@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.FooterEnd {
+    width: 80%;
+    justify-content: space-between;
+    margin: 3rem auto;
+    border-bottom: 1px solid #000;
+}
+
+.nmber , .FooterEnd {
+display: flex;
+ align-items: center;
+}
+
+.nmber  {
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+.nmber p:first-child  , .incon  p{
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    width: 50px;
+    height: 50px;
+   display: flex;
+ align-items: center;
+  justify-content: center;
+}
+.nmber {
+    margin-left: 10px;
+}
+.incon {
+    margin-right: 10px;
+}
+#data span {
+    width: 142px;
+    border: none;
+}
+#data span , .mobil span {
+  font-size: 18px;
+  font-weight: 600;
+}
+#daata , #mobil {
+text-align: center;
+ word-break: break-all;
+}
+#mobil {
+ width: 225px;
+
+}
+.imgs_In img{
+   padding: 0 4px;
+}
+.mobil , .incon , .All-Rigth  , .theme{
+display: flex;
+ align-items: center;
+}
+.All-Rigth {
+justify-content: space-between; 
+}
+.theme {
+    justify-content: center;
+    gap: 0 10px;
+}
+.mobil , .incon  {
+ gap: 10px;
+  justify-content: center;
+}
+
+.All-Rigth {
+    width: 80%;
+    margin: auto;
+}
+
+@media(max-width: 768px) {
+    .FooterEnd {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin: 3rem auto;
+    text-align: center;
+}
+.incon {
+    margin-bottom: 10px;
+}
+ .FooterEnd  , nmber , .mobil  , .All-Rigth , .theme{
+  flex-direction: column;
+ }
+ .All-Rigth , .theme {
+    width: 95%;
+    margin: auto;
+ }
+ .All-Rigth  p {
+    font-size: 15px;
+    font-weight: 500;
+ }
+ .theme p{
+margin-top: 10px;
+ }
+  .theme img {
+    margin: 5px 0;
+  }
+}

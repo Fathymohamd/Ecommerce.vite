@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.continus  {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    width: 95%;
+    margin: auto;
+}
+ .product_Fathy , .fakestoreap {
+        text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3 , auto);
+    grid-template-rows: repeat(6, auto);
+    width: 90%;
+    margin: auto;
+    margin-top: 1rem;
+ }
+.fakestoreap_Data {
+    margin-top: 1rem;
+}
+
+@media(max-width: 768px){
+    .continus  {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-direction: column;
+    width: 95%;
+    margin: auto;
+}
+ .product_Fathy , .fakestoreap {
+        text-align: center;
+    display: grid;
+    grid-template-columns: repeat(1 , auto);
+    grid-template-rows: repeat(6, auto);
+    width: 90%;
+    margin: auto;
+    margin-top: 1rem;
+ }
+}

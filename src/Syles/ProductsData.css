@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.similar_products {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+#similar_products  {
+    width: 130px;
+}
+.productsData {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+    height: 60vh;
+}
+
+.productTitle , .product_price  span , .stock span{
+color: rgba(6, 6, 246, 0.989);
+}
+
+.product_price {
+    margin: 5px 0;
+}
+.product_price  span {
+    font-size: 18px;
+    font-weight: 800;
+}
+.statr {
+ margin: 3px 0;
+ font-size: 25px;
+}
+#Availavility {
+    margin-top: 1rem;
+     font-size: 18px;
+     font-weight: 800;
+}
+.derr{
+      font-size: 18px;
+     font-weight: 500;
+}
+.stock  {
+    margin-top: 10px;
+    font-size: 18px;
+     font-weight: 700;
+}
+.description {
+    color: #5f5d5d;
+}
+#Add_To_Cart {
+    border: none;
+    margin-top: 2rem;
+    background-color: blue;
+    padding: 10px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+     color: #fff;
+     font-size: 15px;
+     cursor: pointer;
+     font-weight: 600;
+     width: 150px;
+     transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+
+#Add_To_Cart:hover {
+    opacity: 0.7;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+
+.Sin_img img {
+    width: 200px;
+    cursor: pointer;
+}
+
+.slider_counter_Ahamed{
+    width: 90%;
+    margin: auto;
+    margin: 2rem auto;
+    text-align: center;
+    border: 1px solid #00ccff;
+}
+
+.Slider_center_and h1 {
+ font-size: 20px;
+  font-weight: 800;
+  padding: 4px 0;
+  width: 80%;
+  margin: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+display: none;
+}
+
+@media(max-width:768px) {
+    #slider_counter {
+    display: none;
+    }
+    .productsData  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 4rem;
+    height: 80vh;
+}
+.similar_products {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+}
+#similar_products  {
+    width: 90px;
+    margin-bottom: 2rem;
+}
+.product_imgs  img  {
+    width: 120px;
+}
+.product_imgs {
+    text-align: center;
+}
+
+
+}

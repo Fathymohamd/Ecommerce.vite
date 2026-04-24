@@ -1,0 +1,115 @@
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+#imgas {
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr);
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 2rem auto;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.imgas img {
+    margin: 10px;
+    width: 400px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+
+}
+
+.show {
+    background: url("../assets/imgs_MySlider/4.png") center center / cover  no-repeat;
+}
+.show1 {
+ background: url("../assets/imgs_MySlider/5.png") center center / cover  no-repeat;
+}
+
+.show2 {
+ background: url("../assets/imgs_MySlider/6.png") center center / cover  no-repeat;
+}
+
+.show , .show1 , .show2 {
+height: 35vh;
+width: 400px;
+margin: 1rem auto;
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-ms-border-radius: 5px;
+-o-border-radius: 5px;
+}
+
+#show {
+ height: 70%;
+ transform: translate(5% , 50%);
+ -webkit-transform: translate(5% , 50%);
+ -moz-transform: translate(5% , 50%);
+ -ms-transform: translate(5% , 50%);
+ -o-transform: translate(5% , 50%);
+}
+#show p:first-child{
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(0, 145, 255);
+}
+#show  h2 {
+    font-size: 25px;
+    font-weight: 600;
+    margin: 4px 0;
+}
+#show  h1 {
+    font-size: 14px;
+    font-weight: 800; 
+    margin: 4px 0;
+    margin-bottom: 13px;
+}
+#link_show {
+    background-color: #ddd;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    font-size: 19px;
+    font-weight: 400;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
+    width: 230px;
+}
+#link_show:hover {
+    opacity: 0.7;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
+}
+
+@media(max-width: 768px) {
+    #imgas {
+    display: grid;
+    grid-template-columns: repeat(1 , 1fr);
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 2rem auto;
+    object-fit: cover;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+}

@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Animation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Animation span {
+    margin: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    background-color: rgb(7, 197, 250);
+    animation: name 1s  linear infinite alternate ;
+    -webkit-animation: name 1s  linear infinite alternate ;
+}
+
+@keyframes name {
+    0%{
+    opacity: 0.3;
+    }50% {
+        opacity: 0.6;
+    }100% {
+        opacity: 0.9;
+    }
+}

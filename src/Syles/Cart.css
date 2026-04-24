@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.ToCart {
+justify-content: space-around;
+}
+
+.cart_addtocart {
+gap: 0 20px;
+}
+
+.cart_addtocart  , .nmber span  , .nmber , .ToCart  , .checkout_button{
+    display: flex;
+    align-items: center; 
+}
+.lottie {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+}
+.nmber span {
+    width:30px;
+    height: 30px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    border: 1px solid #eee;
+   justify-content: center;
+   font-size: 18px;
+   font-weight: 600;
+   cursor: pointer;
+}
+#item_peice {
+    font-size: 17px;
+    font-weight: 800;
+}
+.Remove {
+    color: red;
+    cursor: pointer;
+}
+
+.hr {
+    width: 80%;
+    height: 2px;
+    background-color: #eee;
+    margin: 1rem auto;
+
+}
+.cart_is {
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 2rem ;
+    height: 20vh;
+}
+#item_ToCart {
+width: 100px;
+object-fit: cover;
+margin-top: 4px;
+cursor: pointer;
+}
+.checkout {
+width: 80%;
+margin: auto; 
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 2rem;
+}
+.checkout_button p {
+margin: 0 10px;
+}
+.checkout_button  p{
+    background-color: #00ccff;
+    padding: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    cursor: pointer;
+}
+
+@media(max-width:786px){
+.checkout {
+width: 90%;
+margin: auto; 
+display: flex;
+justify-content: space-between;
+flex-direction: column;
+align-items: center;
+margin-bottom: 2rem;
+}
+.PriceTootle {
+    margin-top: 1rem;
+    font-size: 20px;
+    font-weight: 600;
+}
+body {
+  overflow-x: hidden;
+}
+}

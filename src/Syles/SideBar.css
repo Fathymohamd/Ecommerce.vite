@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@media (max-width: 768px)  {
+    /* .SideBar  { */
+       /*  */
+    /* } */
+}
+.spanadd {
+    margin: 10px;
+}
+.SideBar {
+  border: 1px solid #00ccff;
+  text-align: center;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  margin: 2.5rem 1rem;
+}
+
+.checkboks  , .sidebar2{
+    text-align: left;
+    margin-left: 10px;
+}
+.checkboks #win , .checkboks #win1 , .checkboks #win2 , .checkboks #win3 , .checkboks #win4 , .checkboks #win5 , .checkboks #win6 , .checkboks #win7 , .checkboks #win8  ,  .checkbok #win9 , .checkbok #win10 , .checkbok #win11 , .checkbok #win12, .checkbok #win13 , .checkbok #win14 , .checkbok #win15{
+   margin: 5px 10px;
+   width: 15px;
+   height: 15px;
+   
+}
+
+input[type='checkbox']:checked {
+cursor: pointer;
+}
+.checkboks #win10  {
+   margin: 5px 10px;
+   width: 15px;
+   height: 15px;
+}
+.checkboks .win  , .checkbok .win{
+font-size: 14px;
+font-weight: 600;
+}
