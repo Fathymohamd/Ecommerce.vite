@@ -3,9 +3,17 @@
     padding: 0;
     box-sizing: border-box;
 }
-.add {
-    background-color: red;
+html, body {
+  overflow-x: hidden;
 }
+body::-webkit-scrollbar {
+  width: 8px;
+
+}
+body{
+    scrollbar-width: none; 
+}
+
 .img_Header h1 {
 background-color: #00ccff;
 text-align: center;
@@ -101,11 +109,13 @@ margin: auto;
 }
 .fastar{
     display: none;
+
 }
 .sellon {
 justify-content: space-between;
 align-items: center;
 width: 90%;
 margin: auto;
+overflow: hidden;
 }
 }
