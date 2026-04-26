@@ -51,4 +51,7 @@ margin: auto;
     gap: 2rem;
     margin-bottom: 4rem;
 }
+.description {
+   display: none;
+}
 }

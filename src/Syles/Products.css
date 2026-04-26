@@ -15,10 +15,8 @@
 }
 @media(max-width: 768px) {
 .Raincoats , .Raincoats_and  {
-    text-align: center;
     display: grid;
     grid-template-columns: repeat(1 , auto);
-    grid-template-rows: repeat(6, auto);
     margin-top: 1rem;
 }
 .array , .card {
@@ -37,7 +35,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-#image {
+#image , #img_products {
     width: 150px;
     height: 150px;
     cursor: pointer;

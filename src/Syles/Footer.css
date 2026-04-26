@@ -117,7 +117,21 @@ z-index: 11;
 .Vegetables p {
     margin-top: 10px;
 }
+@media(max-width: 400px) {
+.assets {
+    background-color: #89cfd345;
+    height: 215vh !important;
+    opacity: 0.8;
+}
+}
 
+@media(max-width: 380px){
+  .assets {
+    background-color: #89cfd345;
+    height: 270vh !important;
+    opacity: 0.8;
+}  
+} 
 @media(max-width: 768px) {
     #footer {
     display: flex;
