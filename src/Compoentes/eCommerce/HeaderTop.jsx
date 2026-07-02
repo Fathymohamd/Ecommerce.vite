@@ -5,7 +5,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { FaQuestionCircle } from "react-icons/fa";
 import { FaUser  } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState  , useRef } from "react";
 import { useSelector } from "react-redux";
 import totalPrice from "../../Routes/Cart"
 <FaQuestionCircle className="icon" />
@@ -15,8 +15,48 @@ function HeaderTop() {
   const totalPrice = cartData.reduce((acc , item) =>{
     return acc + item.price * item.quantity
   } , 0)
-  console.log(cartData);
-   const [sinup , setsinup] = useState(false)
+ 
+const [sinup , setsinup] = useState(false)
+
+const [search, setSearch] = useState("");
+const [products, setProducts] = useState([]);
+
+const searchRef = useRef(null);
+
+useEffect(()=>{
+const  handleClickOutside  = (e)=>{
+if (searchRef.current && !searchRef.current.contains(e.target) ) { 
+  setProducts([])
+  setSearch("")
+}}
+document.addEventListener("pointerdown", handleClickOutside); 
+return () => { 
+  document.removeEventListener( "pointerdown", handleClickOutside )
+  };
+} , [])
+ 
+useEffect(() => {
+  const delayDebounce = setTimeout(() => {
+    if (search.trim() === "") {
+      setProducts([]);
+      return;
+    }else {
+ handleSearch();
+    }
+  }, 400);
+
+return () => clearTimeout(delayDebounce);
+}, [search]);
+
+
+const handleSearch = async () => {
+  const res = await fetch(
+    `http://localhost:5000/api/products/search?q=${search}`
+  );
+  const data = await res.json();
+  setProducts(data);
+};
+
   return (
     <div id="header_Top">
     <div className="header_Top">
@@ -27,14 +67,15 @@ function HeaderTop() {
          </div>
    </Link>
 
-         <form>
+         
     <div className="search-box">
      <FaSearch className="icon" />
-     <input type="text" placeholder="Seareh products, brands and categorise" />
-      <button className='buttonacton'>Search</button>
+     <input type="text" placeholder="Seareh products, brands and categorise"   value={search}
+  onChange={(e) => setSearch(e.target.value)} />
+     {/*  <button className='buttonacton'>Search</button> */}
      </div>
-   
-         </form>
+
+
          <div className="img_center">
            
             <div className="account" onClick={()=>setsinup(!sinup)}>
@@ -60,6 +101,26 @@ function HeaderTop() {
       </Link>
       </div>
     </div>
+   
+{products.length > 0 && (
+  <div className="searchResults" ref={searchRef}>
+    {products.map((item) => (
+      <div className="searchProducts" key={item.id}>
+        <img
+          id="imgProduct"
+          src={item.image || item.images?.[0]}
+          alt={item.title}
+        />
+
+        <div className="searchInfo">
+          <h3>{item.title}</h3>
+          <h4>$ {item.price}</h4>
+        </div>
+      </div>
+    ))}
+  </div>
+)}
+
     </div>
   )
 }

@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.checkout{
+    width:90%;
+    margin:auto;
+    display:flex;
+    gap:40px;
+    padding:40px 0;
+}
+
+.checkout-left{
+    flex:2;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.checkout-right{
+    flex:1;
+    border:1px solid #ddd;
+    padding:20px;
+    border-radius:10px;
+    height:fit-content;
+}
+
+.checkout input,
+.checkout textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    outline:none;
+}
+
+.checkout textarea{
+    height:120px;
+    resize:none;
+}
+
+.checkout label{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:10px;
+}
+
+.item{
+    display:flex;
+    justify-content:space-between;
+    margin:15px 0;
+}
+
+.total{
+    display:flex;
+    justify-content:space-between;
+    font-size:22px;
+    font-weight:bold;
+}
+
+button{
+    margin-top:20px;
+    padding:14px;
+    border:none;
+    background:#0d6efd;
+    color:white;
+    font-size:18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0b5ed7;
+}
+
+.heelpprice{
+    font-size: 20px;
+    font-weight: bold;
+}

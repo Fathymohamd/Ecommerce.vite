@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { fetchAllProducts, fetchById  , fetchFakeStoreid , addToCart   } from "../../Redux/createSlice";
+import { fetchAllProducts, fetchById   , addToCart   } from "../../Redux/createSlice";
 import { useEffect  , useState} from "react";
 import { useParams } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
@@ -17,39 +17,32 @@ function ProductsData() {
   const product = useSelector((state) => state.counter.productsTolist);
   const products = useSelector((state) => state.counter.data); 
   const loading = useSelector((state) => state.counter.Loading);
-  const similarProducts = products.filter((item) =>  
-    item.category === product?.category && item.id !== product?.id).slice(0 , 4);
   const { id } = useParams();
+const similarProducts = products.filter(
+  (item) =>
+    item.category === product.category &&
+    item.id !== product.id
+);
+const productimages = products.find(item => item.id === Number(id));
 
   useEffect(() => {
-      dispatch(fetchById(id));
-  dispatch(fetchFakeStoreid(id)); 
-    dispatch(fetchAllProducts());
-  }, [dispatch, id]);
+  dispatch(fetchById(id));
+  dispatch(fetchAllProducts());
+  } , [dispatch, id]);
 
-  useEffect(() => {
-  if (product) {
-    setMainImage(product.thumbnail);
-  }
-}, [product]);
-
-
-if (loading) {return <Animation/>}
 
   return (
     <div>
    {product && (
         <div className="productsData">
-        <div className="product_imgs"><img  src={mainImage} alt={product.title} />
+        <div className="product_imgs"><img id="product_imgs" src={product.images?.[0]} alt={product.title} />
          <div className="Sin_img">
     <div className="similar_products">
-  {similarProducts.map((item) => (
-    <img   onClick={() => setMainImage(item.thumbnail)} id="similar_products" 
-    key={item.id}
-      src={item.thumbnail}
-      alt={item.title}
-    />
-  ))}
+{productimages?.images?.map((img, index) => (
+  <img key={index} src={img}  id="similar_products" 
+  onClick={()=> document.querySelector("#product_imgs").src = img} />
+))}
+
 </div>
          </div>
         </div>
@@ -76,7 +69,7 @@ if (loading) {return <Animation/>}
       loop={true}
       slidesPerView={5}
     >
-  {products.map((item) => (
+  {Array.isArray(similarProducts) && similarProducts.map((item) => (
   <>
     <SwiperSlide key={item.id}>
        <div className="slider_counter_Ahamed">

@@ -26,7 +26,7 @@
     text-align: left;
     margin-left: 10px;
 }
-.checkboks #win , .checkboks #win1 , .checkboks #win2 , .checkboks #win3 , .checkboks #win4 , .checkboks #win5 , .checkboks #win6 , .checkboks #win7 , .checkboks #win8  ,  .checkbok #win9 , .checkbok #win10 , .checkbok #win11 , .checkbok #win12, .checkbok #win13 , .checkbok #win14 , .checkbok #win15{
+.checkboks .win {
    margin: 5px 10px;
    width: 15px;
    height: 15px;

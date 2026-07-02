@@ -32,13 +32,7 @@
   -ms-transition: 0.3s;
   -o-transition: 0.3s;
 }
-/* #img_products  { */
-  /* width: 200px; */
-  /* height: 60%; */
-  /* object-fit: cover; */
-  /* cursor: pointer; */
-  /* margin-top: 5px; */
-/* } */
+
 
 Link {
   text-decoration: none;

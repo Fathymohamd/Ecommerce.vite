@@ -3,11 +3,13 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 .similar_products {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 80%;
+    margin: auto;
 }
 #similar_products  {
     width: 130px;
@@ -20,7 +22,9 @@
     margin: auto;
     height: 60vh;
 }
-
+.product_imgs img {
+    width: 60%;
+}
 .productTitle , .product_price  span , .stock span{
 color: rgba(6, 6, 246, 0.989);
 }
@@ -88,13 +92,17 @@ color: rgba(6, 6, 246, 0.989);
     width: 200px;
     cursor: pointer;
 }
-
-.slider_counter_Ahamed{
-    width: 90%;
+#slider_counter {
+      width: 90%;
+    margin: auto;
+}
+#slider_counter  .slider_counter_Ahamed{
+    width: 96%;
     margin: auto;
     margin: 2rem auto;
     text-align: center;
     border: 1px solid #00ccff;
+
 }
 
 .Slider_center_and h1 {

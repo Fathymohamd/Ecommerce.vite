@@ -11,11 +11,14 @@
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^3.3.0",
+    "@paypal/react-paypal-js": "^10.1.1",
     "@reduxjs/toolkit": "^2.11.2",
     "@supabase/supabase-js": "^2.104.0",
     "axios": "^1.14.0",
-    "express": "^5.2.1",
+    "cookie-parser": "^1.4.7",
+    "jsonwebtoken": "^9.0.3",
     "lottie-react": "^2.4.1",
+    "mongodb": "^7.2.0",
     "react": "^19.2.4",
     "react-country-flag": "^3.1.0",
     "react-dom": "^19.2.4",
@@ -37,8 +40,22 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
+    "nodemon": "^3.1.14",
     "postcss": "^8.5.10",
     "tailwindcss": "^3.4.4",
     "vite": "^8.0.1"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fathymohamd/Ecommerce.vite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fathymohamd/Ecommerce.vite/issues"
+  },
+  "homepage": "https://github.com/Fathymohamd/Ecommerce.vite#readme"
 }

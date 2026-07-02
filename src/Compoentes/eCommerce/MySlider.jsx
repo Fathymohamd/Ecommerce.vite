@@ -11,17 +11,22 @@ import { useEffect } from "react";
 import SideBar from "../eCommerce/SideBar"
 import Animation from '../eCommerce/Animation';
 const MySlider = () => {
+
   const dispatch = useDispatch()
   const products = useSelector((state) => state.counter.data)
-  const Loading = useSelector((state) => state.counter.Loading )
+  const Loading = useSelector((state) => state.counter.Loading)
+  console.log(products.id)
  useEffect(()=>{
  dispatch(fetchAllProducts())
- } , [dispatch ])
+ } , [dispatch])
+ 
  if(Loading) {return  <Animation/>}
+
   return (
   <div className="Raincoats_and">
-  {products.map((item) => (
+  {Array.isArray(products) && products?.map((item) => (
    <div key={item.id}  className="card">
+   
           <Link to={`/products/${item.id}`} className="link">
         <img id="img_products" src={item.images[0]} />
         <div className="Slider_center">

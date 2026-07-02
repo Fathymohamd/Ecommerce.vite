@@ -7,6 +7,8 @@ import Login from './Compoentes/Froms/Login';
 import ProductsData from "./Compoentes/eCommerce/ProductsData";
 import ContinueShopping from './Compoentes/eCommerce/ContinueShopping'
 import Fakestoreapi from "./Compoentes/eCommerce/Fakestoreapi";
+import Checkout from "./Routes/Checkout";
+
 import "./Syles/Header.css"
 import "./Syles/HeaderTop.css"
 import "./Syles/MySlider.css"
@@ -24,6 +26,7 @@ import "./Syles/Cart.css"
 import "./Syles/ContinueShopping.css"
 import "./Syles/Fakestoreapi.css"
 import "./Syles/Animation.css"
+import "./Syles/checkout.css"
 function App() {
   return (
     <>
@@ -34,6 +37,7 @@ function App() {
           <Route path="login" element={<Login/>}/>
           <Route path="sinup" element={<Sinup/>}/>
           <Route path="/ContinueShopping" element={<ContinueShopping/>}/>
+          <Route path="checkout" element={<Checkout/>}/>
           <Route path="products/:id" element={<ProductsData />}/>
           <Route path="Fakestoreapi/:id" element={<Fakestoreapi/>}/>
           <Route path="*" element={<h1>الصفحة مش موجودة</h1>} />

@@ -12,7 +12,7 @@ const [state , setstate] = useState(".add")
         <div className="sellon">
     <div className="fastar">
      <div className="faster_react"> <FaStar style={{ fontSize: "10px" }} /></div>
-          <h1>  Sell On Jumia</h1>
+        <Link to="ContinueShopping" className="link">  <h1>  Sell On Jumia</h1></Link>
       </div>
 
 <Link to="/" className="link">

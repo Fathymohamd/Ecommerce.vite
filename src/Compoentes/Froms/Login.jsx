@@ -1,5 +1,4 @@
 import React from 'react'
-import { supabase } from './supabaseClient';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,32 +7,43 @@ function Login() {
    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const signIn = async () => {
-  if (!email) return setError("من فضلك ادخل الاميل");
-    if (!password) return setError("كلمة المرور غير صحيحة");
-    setError("");
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
+const handleLogin = async (e) => {
+  e.preventDefault();
+
+  const res = await fetch("http://localhost:5000/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+     credentials: "include",
+    body: JSON.stringify({
+      email,
+      password,
+    }),
   });
 
-  if (error) {
-      setError(error.message); 
-  }else {
-   setError("تم تسجيل الدخول بنجاح");
-   setTimeout(()=>{ navigate("/")} , 4000) 
-  } 
+  const data = await res.json();
+
+  if (!res.ok) {
+    setError(data.message);
+    return;
+  }
+setTimeout(()=>{
+    navigate("/");
+} , 3000)
 };
   return (
     <div>
-  <form className='form'>
-
+  <form className='form' onSubmit={handleLogin}>
+  {error && <p className='error'>{error}</p>}
     <label className='email'>email: </label>
-  <input type='email'   value={email} onChange={(e) => setEmail(e.target.value)} required/>
+  <input type='email' value={email}   onChange={(e) => setEmail(e.target.value)} name='email'/>
   <label className='password'>password: </label>
-  <input type="password"  value={password} onChange={(e)=> setPassword(e.target.value)} required/>
-       {error && <h1 className="supabase_And">{error}</h1>}
-<div className="form_Sumbut" onClick={signIn}>Login</div>
+  <input type="password" value={password}   onChange={(e) => setPassword(e.target.value)} name='password' />
+
+<button type="submit" className="form_Sumbut">
+  Login
+</button>
   </form>
     </div>
   )
@@ -42,13 +52,3 @@ function Login() {
 export default Login
 
 
-
-// const logout = async () => {
-//   await supabase.auth.signOut();
-// };
-
-
-// const getUser = async () => {
-//   const { data: { user } } = await supabase.auth.getUser();
-//   console.log(user);
-// };

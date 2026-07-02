@@ -3,7 +3,6 @@ import { useSelector  , useDispatch } from "react-redux";
 import { fetchAllProducts, addToCart , Remove  , increaseQuantity , decreaseQuantity } from "../Redux/createSlice";
 import { Link } from 'react-router-dom';
 
-
 function Cart() {
   const loading = useSelector((state) => state.counter.Loading);
   const dispatch = useDispatch();
@@ -39,7 +38,7 @@ return (
   <div className="hr"></div>
   <div className="checkout">
     <div className="checkout_button">
-      <p>checkout</p>
+      <Link to="/checkout" className='link'><p>checkout</p></Link>
       <Link to="/ContinueShopping" className='link'><p>Continue Shopping</p></Link>
     </div>
 

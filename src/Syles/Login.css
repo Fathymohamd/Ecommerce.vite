@@ -3,7 +3,21 @@
  margin: 0;
  box-sizing: border-box;
 }
-
+.error {
+     width: 30%;
+   margin: 4px auto;
+   text-align: center;
+   background-color: rgb(204, 43, 43);
+   padding: 4px;
+   border-radius: 3px;
+   -webkit-border-radius: 3px;
+   -moz-border-radius: 3px;
+   -ms-border-radius: 3px;
+   -o-border-radius: 3px;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   color: #fff;
+ 
+}
 .form {
    display: flex;
    justify-content: center;
@@ -92,7 +106,7 @@ background-color: #111;
  -o-transition: 0.3s;
 }
 
-.email  , .password , .password_Forget {
+.email  , .password , .password_Forget , .Fris_Name {
    font-size: 18px;
    font-weight: 700;
    margin: 7px 0;
@@ -102,6 +116,9 @@ background-color: #111;
 }
 .email  {
  margin-right: 37rem;   
+}
+.Fris_Name {
+ margin-right: 34.3rem; 
 }
 .password_Forget {
 margin-right: 31rem;

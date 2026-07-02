@@ -10,21 +10,44 @@ const initialState = {
    category: [],
   Loading: false,
   error: false,
-};
+  selectedCategories: [],
 
+};
 
 export const fetchAllProducts = createAsyncThunk(
   "products/fetchAll",
   async () => {
-    const res = await fetch("https://dummyjson.com/products");
-    return (await res.json()).products;
+    const res = await fetch("http://localhost:5000/api/products");
+    const data = await res.json();
+    return data.products;
+  }
+);
+
+export const fetchProductsByCategory = createAsyncThunk(
+  "products/fetchByCategory",
+  async (category) => {
+    const res = await fetch(
+      `http://localhost:5000/api/products/category/${category}`
+    );
+    return await res.json();
+  }
+);
+
+export const fetchAllProductS = createAsyncThunk(
+  "products/fetchByPrice",
+  async ({ min, max }) => {
+    const res = await fetch(
+      `http://localhost:5000/api/products?min=${min}&max=${max}`
+    );
+    const data = await res.json();
+    return data;
   }
 );
 
 export const fetchById = createAsyncThunk(
   "products/fetchById",
   async (id) => {
-    const res = await fetch(`https://dummyjson.com/products/${id}`);
+    const res = await fetch(`http://localhost:5000/api/products/${id}`);
     return await res.json();
   }
 );
@@ -33,30 +56,22 @@ export const fetchById = createAsyncThunk(
 export const fetchFakeStore = createAsyncThunk(
   "fakestore/fetchAll",
   async () => {
-    const res = await fetch("https://fakestoreapi.com/products");
-   
-    return await res.json();
+    const res = await fetch("http://localhost:5000/api/users");
+    const data = await res.json();
+
+  return data;
   }
 );
 
 export const fetchFakeStoreid = createAsyncThunk(
- "feature/action",
-  async (id)=>{
-    const res = await fetch(`https://fakestoreapi.com/products/${id}`)
-    return await res.json()
-  }
-)
-
-export const fetchSimilarProducts = createAsyncThunk(
-  "products/fetchSimilar",
-  async (category) => {
-    const res = await fetch(
-     `https://dummyjson.com/products/category/${category}`
-    );
-    const data = await res.json();
-    return data.products;
+  "feature/action",
+  async (id) => {
+    const res = await fetch(`http://localhost:5000/api/users/${id}`);
+    return await res.json();
   }
 );
+
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -97,8 +112,19 @@ decreaseQuantity: (state, action) => {
   if (item && item.quantity > 1) {
     item.quantity -= 1;
   }
-}
+},
+  toggleCategory: (state, action) => {
+    const category = action.payload;
 
+    if (state.selectedCategories.includes(category)) {
+      state.selectedCategories = state.selectedCategories.filter(
+        (item) => item !== category
+      );
+    } else {
+      state.selectedCategories.push(category);
+    }
+  },
+  
   },
 
   extraReducers: (builder) => {
@@ -111,13 +137,21 @@ decreaseQuantity: (state, action) => {
         state.Loading = false;
         state.data = action.payload;
       })
+       
+      .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
+       state.Loading = false;
+       state.data = action.payload;
+       })
 
-    
       .addCase(fetchById.fulfilled, (state, action) => {
         state.Loading = false;
         state.productsTolist = action.payload;
       })
-
+      
+      .addCase(fetchAllProductS.fulfilled , (state , action) => {
+        state.Loading = false;
+        state.data = action.payload;
+      }) 
 
       .addCase(fetchFakeStore.fulfilled, (state, action) => {
         state.Loading = false;
@@ -128,10 +162,7 @@ decreaseQuantity: (state, action) => {
       state.product = action.payload;
       })
 
-   .addCase(fetchSimilarProducts.fulfilled, (state, action) => {
-  state.Loading = false;
-  state.category = action.payload;
-})
+
 
       .addCase(fetchAllProducts.rejected, (state) => {
         state.Loading = false;
@@ -140,5 +171,5 @@ decreaseQuantity: (state, action) => {
   },
 });
 
-export const { addToCart, Remove , increaseQuantity , decreaseQuantity } = cartSlice.actions;
+export const { addToCart, Remove , increaseQuantity , decreaseQuantity   , toggleCategory} = cartSlice.actions;
 export default cartSlice.reducer;

@@ -14,14 +14,21 @@ function Fakestoreapi() {
 const { id } = useParams();
   const action = useSelector((state) => state.counter.product)
   const counter = useSelector((state) => state.counter.fakestoreap)
-  const Loading = useSelector((state) => state.counter.Loading )
- const similarProducts = counter.filter(
-    (item) =>
-      item.category === action.category &&
-      item.id !== action.id
-  )
-  .slice(0, 3);
+  const Loading = useSelector((state) => state.counter.Loading)
+
+  const product = counter?.data?.find(
+  (item) => item.id === Number(id)
+);
+
+const similarProducts =  counter?.data?.filter(
+  (item) =>
+    item.category === action.category &&
+    item.id !== action.id
+);
+
+console.log(similarProducts)
 if(Loading) {return <Animation/>}
+
    const dispatch = useDispatch()
     useEffect(() => {
     dispatch(fetchFakeStoreid(id)); 
@@ -29,19 +36,21 @@ if(Loading) {return <Animation/>}
     }, [dispatch, id]);
   return (
     <div>
+
     {action && (
          <div className="productsData1">
-         <div className="product_image"><img id="product_images" src={action.image} alt={action.title} />
+         <div className="product_image"><img id="product_images" src={action?.image} alt={action.title} />
           <div className="Sin_img">
      <div className="similar_products">
-   {similarProducts.map((item) => (
-     <img  id="similar_products1" 
-     key={item.id}
-       src={action.image}
-       alt={item.title}
-     />
-   ))}
+<img id="product_image"
+  src={product?.image}
+  alt={product?.title}
+  onClick={() =>
+    document.getElementById("product_images").src = product.image
+  }
+/>
  </div>
+ 
           </div>
          </div>
           <div className="product_title">
@@ -58,16 +67,14 @@ if(Loading) {return <Animation/>}
          </div>
        )} 
 
-
-      
-            <Swiper id="slider_counter"
+      <Swiper id="slider_counter"
       modules={[Autoplay, Navigation]}
       navigation
       autoplay={{ delay: 2000 }}
       loop={true}
       slidesPerView={5}
     >
-  {counter.map((item) => (
+  {Array.isArray(similarProducts) && similarProducts?.map((item) => (
   <>
     <SwiperSlide key={item.id}>
        <div className="slider_counter_Ahamed">
@@ -81,7 +88,7 @@ if(Loading) {return <Animation/>}
         </Link>
         <div className="price">
           <span>$ {item.price}</span>
-          <button className="buttonAdd" onClick={() => {dispatch(addToCart(counter))}}>Add To Cart</button>
+          <button className="buttonAdd" onClick={() => {dispatch(addToCart(item))}}>Add To Cart</button>
         </div>
       </div>
   
