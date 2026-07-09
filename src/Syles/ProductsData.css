@@ -8,22 +8,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 100%;
+  /*   flex-wrap: wrap; */
     margin: auto;
 }
 #similar_products  {
-    width: 130px;
+    width: 140px;
 }
 .productsData {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60%;
+    width: 80%;
     margin: auto;
     height: 60vh;
 }
+
 .product_imgs img {
-    width: 60%;
+    width: 40%;
 }
 .productTitle , .product_price  span , .stock span{
 color: rgba(6, 6, 246, 0.989);
@@ -95,6 +97,7 @@ color: rgba(6, 6, 246, 0.989);
 #slider_counter {
       width: 90%;
     margin: auto;
+    margin-top: 3rem;
 }
 #slider_counter  .slider_counter_Ahamed{
     width: 96%;

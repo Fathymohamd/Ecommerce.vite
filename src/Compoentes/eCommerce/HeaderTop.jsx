@@ -109,9 +109,10 @@ const handleSearch = async () => {
         <img
           id="imgProduct"
           src={item.image || item.images?.[0]}
-          alt={item.title}
+         
         />
 
+  
         <div className="searchInfo">
           <h3>{item.title}</h3>
           <h4>$ {item.price}</h4>

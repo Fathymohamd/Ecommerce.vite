@@ -19,10 +19,15 @@ const cookieParser = require("cookie-parser");
 
 const app = express();
 
-app.use(cors({
-  origin: "http://localhost:5173",
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://ecommerce-vite-cspo.vercel.app",
+    ],
+    credentials: true,
+  })
+);;
 
 app.use(cookieParser());
 app.use(express.json());
@@ -38,6 +43,7 @@ app.use("/save" , productsmongodb)
 app.use("/api/users", usersRoutes);
 app.use("/api/users", useRoutesId);
 app.use("/api", orderRoutes);
+
 
 app.use("/", SinUpRoutes);
 app.use("/", LoginRoutes);
