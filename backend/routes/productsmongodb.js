@@ -4,7 +4,7 @@ const axios = require("axios");
 const Product = require("../Schemas/Product");
 
 router.get("/", async (req, res) => {
-    console.log("Route Started");
+
   try {
     const response = await axios.get(
       "https://dummyjson.com/products?limit=200"

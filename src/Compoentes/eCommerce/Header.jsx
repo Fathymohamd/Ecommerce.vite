@@ -15,15 +15,17 @@ const [state , setstate] = useState(".add")
         <Link to="ContinueShopping" className="link">  <h1>  Sell On Jumia</h1></Link>
       </div>
 
-<Link to="/" className="link">
+
     <div className="sellon_center">
      <div className="faster_twe">
+      <Link to="/" className="link">
       <p>Jumia</p>
+      </Link>
     <div className="faster_react_1"> <FaStar style={{ fontSize: "8px" }} /></div>
      </div>
-      <p>pay</p>
+      <p><Link to="/order" className="link">My Orders</Link></p>
     </div> 
-</Link>
+
   
 
    <div className="sellon_lrigt">

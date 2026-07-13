@@ -77,7 +77,7 @@ const handleSearch = async () => {
 
 
          <div className="img_center">
-           
+      <Link to="/logout" className="logout-link">Logout</Link>
             <div className="account" onClick={()=>setsinup(!sinup)}>
             <FaUser />
             <p>Account</p>

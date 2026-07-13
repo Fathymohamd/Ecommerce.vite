@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const connectDB = require("./config/db");
-const profileRoutes = require("./routes/profileRoutes");
 const productsRoutes = require("./routes/productsRoutes");
  const DataRoutesId = require("./routes/DataRoutesId");
 const usersRoutes = require("./routes/usersRoutes");
@@ -13,6 +12,10 @@ const category = require("./routes/category");
 const searchPrice = require("./routes/fetchByPrice")
 const productsmongodb = require("./routes/productsmongodb")
 const orderRoutes = require("./routes/OrderRouter");
+const orderProducts = require("./routes/orderProducts");
+const Logout = require("./routes/Logout");
+const forgotPassword = require("./routes/ForgotPassword");
+const resetPassword = require("./routes/ResetPassword");
 
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -27,7 +30,7 @@ app.use(
     ],
     credentials: true,
   })
-);;
+);
 
 app.use(cookieParser());
 app.use(express.json());
@@ -43,8 +46,10 @@ app.use("/save" , productsmongodb)
 app.use("/api/users", usersRoutes);
 app.use("/api/users", useRoutesId);
 app.use("/api", orderRoutes);
-
-
+app.use("/api/orders", orderProducts);
+app.use("/api/Logout", Logout);
+app.use("/api/users/ForgotPassword", forgotPassword);
+app.use("/api/reset-password", resetPassword);
 app.use("/", SinUpRoutes);
 app.use("/", LoginRoutes);
 

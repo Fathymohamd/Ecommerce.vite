@@ -56,10 +56,13 @@ function Sinup() {
   value={password}
   onChange={(e) => setPassword(e.target.value)}
 />
-
-        <button className="form_Sumbut" type="submit">
+<div className="login-actions">
+ <button className="form_Sumbut" type="submit">
           Sign Up
         </button>
+  
+</div>
+       
       </form>
     </div>
   );

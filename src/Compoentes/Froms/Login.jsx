@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import {Link } from "react-router-dom"
 function Login() {
   const navigate = useNavigate()
    const [email, setEmail] = useState("");
@@ -41,9 +41,15 @@ setTimeout(()=>{
   <label className='password'>password: </label>
   <input type="password" value={password}   onChange={(e) => setPassword(e.target.value)} name='password' />
 
-<button type="submit" className="form_Sumbut">
-  Login
-</button>
+<div className="login-actions">
+  <button type="submit" className="form_Sumbut">
+    Login
+  </button>
+<Link to="/forgotPassword" className='link'><p className="forgot-password">
+    Forgot Password?
+  </p></Link>
+ 
+</div>
   </form>
     </div>
   )

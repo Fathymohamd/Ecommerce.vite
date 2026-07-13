@@ -124,7 +124,10 @@ decreaseQuantity: (state, action) => {
       state.selectedCategories.push(category);
     }
   },
-  
+  clearCart: (state) => {
+  state.cartData = [];
+  localStorage.removeItem("cart");
+}
   },
 
   extraReducers: (builder) => {
@@ -171,5 +174,6 @@ decreaseQuantity: (state, action) => {
   },
 });
 
-export const { addToCart, Remove , increaseQuantity , decreaseQuantity   , toggleCategory} = cartSlice.actions;
+export const { addToCart, Remove , increaseQuantity , decreaseQuantity   
+, toggleCategory  , clearCart} = cartSlice.actions;
 export default cartSlice.reducer;
