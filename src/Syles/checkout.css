@@ -129,3 +129,103 @@ button:hover{
   padding-bottom: 12px;
   border-bottom: 1px solid #ddd;
 }
+
+
+/* Laptop */
+@media (max-width: 1200px) {
+  .checkout {
+    width: 95%;
+    gap: 25px;
+  }
+
+  .checkout-left {
+    flex: 1.5;
+  }
+
+  .checkout-right {
+    flex: 1;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .checkout {
+    flex-direction: column;
+    width: 90%;
+    gap: 20px;
+    padding: 30px 0;
+  }
+
+  .checkout-left,
+  .checkout-right {
+    width: 100%;
+  }
+
+  .checkout-right {
+    padding: 15px;
+  }
+
+  .checkout input,
+  .checkout textarea,
+  .checkout-left select {
+    font-size: 15px;
+  }
+
+  .heelpprice h3 {
+    font-size: 20px;
+  }
+
+  .heelpprice p {
+    font-size: 16px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .checkout {
+    width: 95%;
+    padding: 20px 0;
+  }
+
+  .checkout-right {
+    padding: 15px;
+  }
+
+  .checkout input,
+  .checkout textarea,
+  .checkout-left select {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .item,
+  .total {
+    font-size: 15px;
+  }
+
+  .total {
+    font-size: 18px;
+  }
+
+  .heelpprice {
+    padding: 15px;
+  }
+
+  .heelpprice p {
+    font-size: 15px;
+  }
+
+  .heelpprice h3 {
+    font-size: 18px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+  }
+}

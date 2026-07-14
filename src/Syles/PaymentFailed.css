@@ -113,3 +113,87 @@
     background:#c0392b;
 
 }
+
+
+/* ================= Laptop ================= */
+@media (max-width: 1200px) {
+  .failed-card {
+    width: 400px;
+    padding: 35px;
+  }
+}
+
+/* ================= Tablet ================= */
+@media (max-width: 768px) {
+  .failed-container {
+    padding: 20px;
+  }
+
+  .failed-card {
+    width: 90%;
+    max-width: 450px;
+    padding: 30px;
+  }
+
+  .failed-icon {
+    width: 80px;
+    height: 80px;
+    font-size: 40px;
+  }
+
+  .failed-card h1 {
+    font-size: 28px;
+  }
+
+  .failed-card p {
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  .failed-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .failed-buttons button {
+    width: 100%;
+  }
+}
+
+/* ================= Mobile ================= */
+@media (max-width: 576px) {
+  .failed-container {
+    padding: 15px;
+  }
+
+  .failed-card {
+    width: 100%;
+    padding: 25px 20px;
+  }
+
+  .failed-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 35px;
+  }
+
+  .failed-card h1 {
+    font-size: 24px;
+  }
+
+  .failed-card p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .failed-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .failed-buttons button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+}

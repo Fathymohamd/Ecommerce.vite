@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams  , useNavigate} from "react-router-dom";
 
 
 function ResetPassword() {
   const { token } = useParams();
+  const navigate = useNavigate()
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -41,6 +42,10 @@ function ResetPassword() {
         setMessage(data.message);
         setPassword("")
         setConfirmPassword("")
+      
+        setTimeout(()=>{
+          navigate("/Login")
+        } , 3000)
       }
     } catch (error) {
       setMessage("Something went wrong");

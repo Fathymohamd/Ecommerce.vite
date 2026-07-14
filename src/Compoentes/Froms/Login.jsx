@@ -27,10 +27,14 @@ const handleLogin = async (e) => {
   if (!res.ok) {
     setError(data.message);
     return;
-  }
+  }else {
+    setEmail("")
+    setPassword("")
 setTimeout(()=>{
     navigate("/");
 } , 3000)
+  }
+
 };
   return (
     <div>

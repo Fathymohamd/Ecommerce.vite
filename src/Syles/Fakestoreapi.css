@@ -57,3 +57,82 @@ margin: auto;
    display: none;
 }
 }
+
+/* Laptop */
+@media (max-width: 1200px) {
+  .productsData1 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2rem;
+    width: 90%;
+    margin: auto;
+  }
+
+  .product_image {
+    width: 70%;
+    margin: auto;
+  }
+
+  #product_images {
+    width: 180px;
+    object-fit: cover;
+    margin-top: 2rem;
+  }
+
+  #similar_products1 {
+    width: 120px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .productsData1 {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+    margin-bottom: 3rem;
+  }
+
+  .product_image {
+    width: 80%;
+    margin: auto;
+  }
+
+  #product_images {
+    width: 140px;
+    object-fit: cover;
+  }
+
+  #similar_products1 {
+    width: 100px;
+  }
+
+  .description {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .productsData1 {
+    width: 95%;
+    gap: 1.5rem;
+  }
+
+  .product_image {
+    width: 90%;
+  }
+
+  #product_images {
+    width: 100px;
+  }
+
+  #similar_products1 {
+    width: 80px;
+  }
+
+  .description {
+    display: none;
+  }
+}

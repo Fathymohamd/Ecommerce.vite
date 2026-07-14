@@ -24,10 +24,16 @@ function Sinup() {
       if (!res.ok) {
     setError(data.message);
     return;
-  }
-  setTimeout(()=>{
+  } else{
+  
+     setfirstName(""),
+    setEmail(""),
+    setPassword(""),
+   
+      setTimeout(()=>{
   navigate("/login");
 } , 3000)
+  }
 
   };
 

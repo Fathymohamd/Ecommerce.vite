@@ -3,10 +3,93 @@
     padding: 0;
     box-sizing: border-box;
 }
-@media (max-width: 768px)  {
-    /* .SideBar  { */
-       /*  */
-    /* } */
+/* ================= Laptop ================= */
+@media (max-width: 1200px) {
+  .SideBar {
+    width: 260px;
+    padding: 15px;
+  }
+
+  .spanadd p {
+    font-size: 18px;
+  }
+
+  .checkbok label {
+    font-size: 16px;
+  }
+}
+
+/* ================= Tablet ================= */
+@media (max-width: 768px) {
+  .SideBar {
+    width: 100%;
+    margin: 1rem auto;
+    padding: 20px;
+  }
+
+  .spanadd {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .spanadd p {
+    font-size: 18px;
+  }
+
+  .checkboks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .checkbok {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .checkbok label {
+    font-size: 15px;
+  }
+
+  .win {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* ================= Mobile ================= */
+@media (max-width: 576px) {
+  .SideBar {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .spanadd p {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .checkboks {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .checkbok {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .checkbok label {
+    font-size: 14px;
+  }
+
+  .win {
+    width: 16px;
+    height: 16px;
+  }
 }
 .spanadd {
     margin: 10px;
