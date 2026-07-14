@@ -158,8 +158,13 @@ margin-right: 31rem;
     color:#0056b3;
     text-decoration:underline;
 }
-@media(max-width: 768px) {
 
+
+
+@media(max-width: 768px) {
+.forgot-password {
+margin-left: 10px;
+}
 .error {
      width: 95%;
    margin: 10px auto;

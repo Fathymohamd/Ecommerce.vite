@@ -320,9 +320,10 @@ cursor: pointer;
   }
 
   .SinUp {
-    display: none;
+  
     position: absolute;
     top: 1rem;
+    left: -9rem;
     justify-content: space-around;
     align-items: center;
     background-color: #6ec1d5;
@@ -355,10 +356,9 @@ cursor: pointer;
   }
 
   .SinUp {
-    display: none;
     width: 180px;
     right: 10px;
-    top: 55px;
+    top: 19px;
     padding: 12px;
   }
 }
