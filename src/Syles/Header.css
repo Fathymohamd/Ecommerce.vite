@@ -94,28 +94,76 @@ margin: auto;
 .sellon_center p:last-child {
 color: #eee;
 }
+/* ================= Laptop ================= */
+@media (max-width: 1200px) {
+  .fathy {
+    background-color: #ddd;
+    width: 100%;
+    margin: auto;
+  }
 
-@media(max-width: 768px) {
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  .sellon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    margin: auto;
+    overflow: hidden;
+  }
 }
 
-.fathy {
-background-color: #ddd;
-max-width: 100%;
-margin: auto;
-}
-.fastar{
+/* ================= Tablet ================= */
+@media (max-width: 768px) {
+  .fathy {
+    background-color: #ddd;
+    width: 100%;
+    margin: auto;
+  }
+
+  .fastar {
     display: none;
+  }
 
+  .sellon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    margin: auto;
+    overflow: hidden;
+  }
 }
-.sellon {
-justify-content: space-between;
-align-items: center;
-width: 90%;
-margin: auto;
-overflow: hidden;
+
+/* ================= Mobile ================= */
+@media (max-width: 576px) {
+  .fathy {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .fastar {
+    display: none;
+  }
+
+  .sellon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    text-align: center;
+  }
 }
+
+/* ================= Small Mobile ================= */
+@media (max-width: 400px) {
+  .fathy {
+    padding: 8px;
+  }
+
+  .sellon {
+    width: 100%;
+    gap: 8px;
+  }
 }
