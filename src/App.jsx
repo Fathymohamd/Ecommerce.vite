@@ -15,6 +15,7 @@ import  Logout from "./Compoentes/Froms/Logout"
 import  ForgotPassword from "./Compoentes/Froms/ForgotPassword"
 import ResetPassword from "./Compoentes/eCommerce/ResetPassword";
 
+
 import "./Syles/Header.css"
 import "./Syles/HeaderTop.css"
 import "./Syles/MySlider.css"
@@ -39,6 +40,7 @@ import "./Syles/Order.css"
 import "./Syles/ForgotPassword.css"
 import "./Syles/ResetPassword.css"
 function App() {
+
   return (
     <>
       <Routes>
@@ -51,7 +53,7 @@ function App() {
           <Route path="checkout" element={<Checkout/>}/>
           <Route path="products/:id" element={<ProductsData />}/>
           <Route path="Fakestoreapi/:id" element={<Fakestoreapi/>}/>
-          <Route path="*" element={<h1>الصفحة مش موجودة</h1>} />
+          <Route path="*" element={<h1>Page Not Found</h1>} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/payment-failed" element={<PaymentFailed />} />
           <Route path="/order" element={<Order />} />
