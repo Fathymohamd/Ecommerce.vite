@@ -58,8 +58,12 @@ app.get("/", async (req, res) => {
   res.send("Backend is running");
 });
 
-const PORT =  process.env.PORT  || 5000;
+module.exports = app;
 
-app.listen(PORT, () => {
-  console.log(`Server running on ${PORT}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 8080;
+
+  app.listen(PORT, () => {
+    console.log(`Server running on ${PORT}`);
+  });
+}
