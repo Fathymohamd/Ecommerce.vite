@@ -11,9 +11,12 @@ const ProductFind = async (req, res) => {
     });
 
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Server Error" });
-  }
+  console.error("PRODUCT ERROR:", error);
+
+  res.status(500).json({
+    message: error.message
+  });
+}
 };
 
 module.exports = ProductFind;

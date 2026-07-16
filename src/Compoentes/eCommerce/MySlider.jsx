@@ -15,7 +15,7 @@ const MySlider = () => {
   const dispatch = useDispatch()
   const products = useSelector((state) => state.counter.data)
   const Loading = useSelector((state) => state.counter.Loading)
-  console.log(products.id)
+
  useEffect(()=>{
  dispatch(fetchAllProducts())
  } , [dispatch])
@@ -33,7 +33,7 @@ const MySlider = () => {
   
         <img id="image" src={item.images[0]}/>
         <div className="title_item" title={item.title}>{item.title}</div>
-    {/*     <div className="stock">IN STOCK</div> */}
+  
         <div className="statr">
           <FaStar color="rgb(255, 255, 0)"/>
           <FaStar color="rgb(255, 255, 0)"/>

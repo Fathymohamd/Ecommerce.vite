@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
     const [orders, setOrders] = useState([]);
   
 useEffect(() => {
-  fetch("http://localhost:5000/api/orders")
+  fetch("https://ecommerce-vite-fgou.vercel.app/api/orders")
     .then((res) => res.json())
     .then((data) => setOrders(data));
 }, []);
@@ -16,7 +16,7 @@ useEffect(() => {
   <div className="orders-container">
       <h1>My Orders</h1>
 
-      {orders.map((order) => (
+      {Array.isArray(orders) &&  orders?.map((order) => (
         <div className="order-card" key={order._id}>
           <div className="order-header">
             <div>
