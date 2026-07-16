@@ -90,64 +90,87 @@ margin: 0 10px;
     cursor: pointer;
 }
 
-@media(max-width:786px){
-.checkout {
-width: 90%;
-margin: auto; 
-display: flex;
-justify-content: space-between;
-flex-direction: column;
-align-items: center;
-margin-bottom: 2rem;
-}
-.PriceTootle {
-    margin-top: 1rem;
-    font-size: 20px;
-    font-weight: 600;
-}
-body {
-  overflow-x: hidden;
-}
-}
+/* Tablet & Mobile */
+@media (max-width: 768px) {
+  .header_Top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
 
+  .search-box {
+    width: 100%;
+    min-width: 100%;
+  }
 
+  .search-box input {
+    width: 100%;
+  }
 
-/* Laptop */
-@media (max-width: 1200px) {
-  .checkout {
-    width: 90%;
-    margin: auto;
+  .img_center {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
-  body {
-    overflow-x: hidden;
-  }
-}
-
-/* Tablet */
-@media (max-width: 992px) {
-  .checkout {
-    width: 90%;
-    margin: auto;
+  .account,
+  .cart,
+  .heelp {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .PriceTootle {
-    margin-top: 1rem;
-    font-size: 20px;
-    font-weight: 600;
-  }
-
-  body {
-    overflow-x: hidden;
+    gap: 5px;
   }
 }
+/* Small Phones */
+@media (max-width: 480px) {
+  .header_Top {
+    padding: 10px;
+  }
+
+  .img_center {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .search-box {
+    order: 2;
+  }
+
+  .account,
+  .cart,
+  .heelp {
+    font-size: 14px;
+  }
+
+  .Price_one {
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 433px) {
+  .header_Top {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .img_center {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+}
+
 

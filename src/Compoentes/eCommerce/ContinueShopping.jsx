@@ -27,28 +27,31 @@ useEffect(()=>{
 <div>
 <div className="continus">
 <SideBar/>
-<div className="fakestoreap_Data">
-<div className="product_Fathy">
-    {productsToShow?.map((item) => (
-   <div key={item.id}  className="card">
-          <Link to={`/products/${item.id}`} className="link">
-        <img id="img_products" src={item.images?.[0]} />
-        <div className="Slider_center">
-          <h1 title={item.title}>{item.title}</h1>
+  <div className='Raincoats'>
+  {Array.isArray(data) && data?.map((item)=>(
 
-            <div className="FaStar"><FaStar color="rgb(255, 255, 0)"/>
-          <FaStar color="rgb(255, 255, 0)"/><FaStar color="rgb(255, 255, 0)"/><FaStar color="rgb(255, 255, 0)"/></div>
+  <div className="array">
+   <div className="products" key={item.id}>
+     <Link className="link"  to={`/products/${item.id}`}>
+  
+        <img id="image" src={item.images[0]}/>
+        <div className="title_item" title={item.title}>{item.title}</div>
+  
+        <div className="statr">
+          <FaStar color="rgb(255, 255, 0)"/>
+          <FaStar color="rgb(255, 255, 0)"/>
+          <FaStar color="rgb(255, 255, 0)"/>
+          <FaStar color="rgb(255, 255, 0)"/>
         </div>
-        </Link>
-        <div className="price">
+            </Link>
+          <div className="price">
           <span>$ {item.price}</span>
           <button className="buttonAdd" onClick={()=>{dispatch(addToCart(item))}}>Add To Cart</button>
         </div>
       </div>
-
-  ))}
-</div>
-</div>
+     </div>
+    ))}
+  </div>
 </div> 
 </div>
   )
