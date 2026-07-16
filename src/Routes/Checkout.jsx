@@ -43,7 +43,7 @@ const handlePayment = async () => {
 }
     setLoading(true);
 
-    const res = await fetch("http://localhost:5000/api/order", {
+    const res = await fetch("https://ecommerce-vite-fgou.vercel.app/api/order", {
       method: "POST",
        credentials: "include",
       headers: {

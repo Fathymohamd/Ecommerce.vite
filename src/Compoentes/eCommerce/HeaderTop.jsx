@@ -51,7 +51,7 @@ return () => clearTimeout(delayDebounce);
 
 const handleSearch = async () => {
   const res = await fetch(
-    `http://localhost:5000/api/products/search?q=${search}`
+    `https://ecommerce-vite-fgou.vercel.app/api/products/search?q=${search}`
   );
   const data = await res.json();
   setProducts(data);

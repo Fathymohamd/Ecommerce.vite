@@ -9,7 +9,7 @@ function Sinup() {
   const [error, setError] = useState("");
   const handleSignup = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:5000/Sinup" , {
+    const res = await fetch("https://ecommerce-vite-fgou.vercel.app/Sinup" , {
     method: "POST",
      headers : {
        "Content-Type": "application/json",

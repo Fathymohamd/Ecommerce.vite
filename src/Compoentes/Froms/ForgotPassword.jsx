@@ -5,7 +5,7 @@ function ForgotPassword() {
   const [error , setError] = useState("")
   const handLeSubmit = async(e)=>{
    try {
-     const res = await fetch("http://localhost:5000/api/users/ForgotPassword" , {
+     const res = await fetch("https://ecommerce-vite-fgou.vercel.app/api/users/ForgotPassword" , {
        method: "POST",
       credentials: "include",
        headers : { "Content-Type": "application/json"},
