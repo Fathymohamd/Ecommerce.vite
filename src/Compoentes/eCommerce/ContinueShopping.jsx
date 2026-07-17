@@ -8,7 +8,7 @@ function ContinueShopping() {
 const data = useSelector((state)=> state.counter.data)
 const categoryData = useSelector((state) => state.counter.categoryData)
 const selectedCategories = useSelector((state) => state.counter.selectedCategories);
-console.log(categoryData)
+
 const Login = useSelector((state) => state.counter.Loading)
 let dispatch = useDispatch()
 const productsToShow =
@@ -27,8 +27,10 @@ useEffect(()=>{
 <div>
 <div className="continus">
 <SideBar/>
-  <div className='Raincoats'>
-  {Array.isArray(data) && data?.map((item)=>(
+
+
+  <div className='Raincoats1'>
+  {productsToShow?.map((item)=>(
 
   <div className="array">
    <div className="products" key={item.id}>
