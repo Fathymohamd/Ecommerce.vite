@@ -39,6 +39,7 @@ import "./Syles/PaymentFailed.css"
 import "./Syles/Order.css"
 import "./Syles/ForgotPassword.css"
 import "./Syles/ResetPassword.css"
+import "./Syles/pagination.css"
 function App() {
 
   return (

@@ -16,7 +16,7 @@ const orderProducts = require("./routes/orderProducts");
 const Logout = require("./routes/Logout");
 const forgotPassword = require("./routes/ForgotPassword");
 const resetPassword = require("./routes/ResetPassword");
-
+const pagination = require("./routes/pagination")
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
@@ -50,6 +50,7 @@ app.use("/api/orders", orderProducts);
 app.use("/api/Logout", Logout);
 app.use("/api/users/ForgotPassword", forgotPassword);
 app.use("/api/reset-password", resetPassword);
+app.use("/api/product", pagination);
 app.use("/", SinUpRoutes);
 app.use("/", LoginRoutes);
 

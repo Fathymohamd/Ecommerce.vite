@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaStar } from "react-icons/fa";
 import SideBar from './SideBar'
 import { Link } from 'react-router-dom'
 import { useSelector , useDispatch } from 'react-redux'
 import {fetchAllProducts    , addToCart} from  "../../Redux/createSlice"
+import Pagination from "./Pagination"
 function ContinueShopping() {
 const data = useSelector((state)=> state.counter.data)
 const categoryData = useSelector((state) => state.counter.categoryData)
@@ -22,7 +23,6 @@ useEffect(()=>{
   dispatch(fetchAllProducts())
 } , [dispatch])
 
-
   return (
 <div>
 <div className="continus">
@@ -30,7 +30,7 @@ useEffect(()=>{
 
 
   <div className='Raincoats1'>
-  {productsToShow?.map((item)=>(
+  {productsToShow?.slice(0 , 2).map((item)=>(
 
   <div className="array">
    <div className="products" key={item.id}>
@@ -55,6 +55,7 @@ useEffect(()=>{
     ))}
   </div>
 </div> 
+<Pagination />
 </div>
   )
 }
