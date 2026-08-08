@@ -1,6 +1,8 @@
 import React from 'react'
 import {useState} from 'react'
+import { useTranslation } from "react-i18next";
 function ForgotPassword() {
+  const {t , i18n} = useTranslation()
   const [email, setEmail] = useState("");
   const [error , setError] = useState("")
   const handLeSubmit = async(e)=>{
@@ -30,20 +32,20 @@ function ForgotPassword() {
     <div className="forgot-container">
        {error && <p className='error' id='error'>{error}</p>}
       <div className="forgot-card">
-        <h2>Forgot Password</h2>
+        <h2>{t("Forgot Password")}</h2>
        
         <p>
-          Enter your email address and we'll send you a password reset link.
+    {t("Enter your email address and we'll send you a password reset link.")}
         </p>
 
        <input
   type="email"
   value={email}
   onChange={(e) => setEmail(e.target.value)}
-  placeholder="Enter your email"
+  placeholder={t("Enter your email")}
 />
 
-        <button onClick={handLeSubmit}>Send Reset Link</button>
+        <button onClick={handLeSubmit}>{t("Send Reset Link")}</button>
       </div>
     </div>
       </>

@@ -10,8 +10,9 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-
+import { useTranslation } from "react-i18next";
 function ProductsData() {
+  const {t , i18n} = useTranslation()
   const [mainImage, setMainImage] = useState("");
   const dispatch = useDispatch();
   const product = useSelector((state) => state.counter.productsTolist);
@@ -47,16 +48,21 @@ const productimages = products.find(item => item.id === Number(id));
          </div>
         </div>
          <div className="product_title">
-          <h1 className="productTitle">{product.title}</h1>
+          <h1 className="productTitle">{i18n.language === "ar" ? t(`products.${product.id}.title`) : product.title}</h1>
           <div className="statr"><FaStar color="rgb(255, 255, 0)"/>
           <FaStar color="rgb(255, 255, 0)"/><FaStar color="rgb(255, 255, 0)"/><FaStar color="rgb(255, 255, 0)"/></div>
              <div className="product_price">
              <div className="derr">$ <span>{product.price}</span></div>
-             <div id="Availavility">Availavility: <span>{product.availabilityStatus}</span></div>
+             <div id="Availavility"> 
+              {t(`products.${product.id}.availability`)} :
+         </div>
           </div>
-         <div className="description">{product.description}</div>
-         <div className="stock"><span>Hurry Up! Only {product.stock} Left In stock</span></div>
-         <button id="Add_To_Cart" onClick={()=> dispatch(addToCart(product))}>Add To Cart <FaCartShopping /> </button>
+         <div className="description">  {i18n.language === "ar" ? t(`products.${product.id}.description`) 
+         : product.description}</div>
+     <div className="stock">
+  <span>{t(`products.${product.id}.hurry`)}</span>
+</div>
+         <button id="Add_To_Cart" onClick={()=> dispatch(addToCart(product))}>{t("Add To Cart")} <FaCartShopping /> </button>
          </div>
         </div>
       )} 
@@ -76,14 +82,14 @@ const productimages = products.find(item => item.id === Number(id));
            <Link to={`/products/${item.id}`} className="link">
         <img id="img_products" src={item.images?.[0]} />
         <div className="Slider_center_and">
-          <h1 title={item.title}>{item.title}</h1>
+          <h1 title={item.title}>{t(`products.${product.id}.title`)}</h1>
             <div className="FaStar"><FaStar color="rgb(255, 255, 0)"/>
           <FaStar color="rgb(255, 255, 0)"/><FaStar color="rgb(255, 255, 0)"/><FaStar color="rgb(255, 255, 0)"/></div>
         </div>
         </Link>
         <div className="price">
           <span>$ {item.price}</span>
-          <button className="buttonAdd" onClick={() => {dispatch(addToCart(product))}}>Add To Cart</button>
+          <button className="buttonAdd" onClick={() => {dispatch(addToCart(product))}}>{t("Add To Cart")}</button>
         </div>
       </div>
   

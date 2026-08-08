@@ -23,7 +23,10 @@
 .fakestoreap_Data {
     margin-top: 1rem;
 }
-
+/* .pagination { */
+  /* display: flex; */
+  /* flex-direction: column; */
+/* } */
 @media(max-width: 768px){
     .continus  {
     display: flex;

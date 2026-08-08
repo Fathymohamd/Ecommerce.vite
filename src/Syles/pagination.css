@@ -1,7 +1,7 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .pagination {
@@ -10,6 +10,7 @@
   align-items: center;
   gap: 10px;
   margin: 30px 0;
+  flex-wrap: wrap;
 }
 
 .pagination p {
@@ -40,4 +41,48 @@
   background-color: #111;
   color: white;
   border-color: #111;
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .pagination {
+    gap: 7px;
+    margin: 25px 0;
+  }
+
+  .pagination p {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .pagination {
+    gap: 5px;
+    margin: 20px 10px;
+  }
+
+  .pagination p {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+    border-radius: 5px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 360px) {
+  .pagination {
+    gap: 4px;
+    margin: 15px 5px;
+  }
+
+  .pagination p {
+    width: 29px;
+    height: 29px;
+    font-size: 12px;
+  }
 }

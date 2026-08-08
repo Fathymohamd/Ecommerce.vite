@@ -16,7 +16,16 @@
    -o-border-radius: 3px;
    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
    color: #fff;
- 
+}
+
+html[dir="rtl"] .Fris_Name{
+ margin-right: -35rem;
+}
+html[dir="rtl"] .email {
+ margin-right: -34rem;
+}
+html[dir="rtl"] .password {
+ margin-right: -35rem;
 }
 .form {
    display: flex;
@@ -164,6 +173,10 @@ margin-right: 31rem;
 @media(max-width: 768px) {
 .forgot-password {
 margin-left: 10px;
+width: 100%;
+}
+.login-actions{
+    display:grid;
 }
 .error {
      width: 95%;

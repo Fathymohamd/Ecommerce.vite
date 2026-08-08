@@ -3,8 +3,9 @@ import SideBar2 from './SideBar2'
 import { useSelector , useDispatch } from 'react-redux'
 import {useState  , useEffect} from "react"
 import {fetchAllProductS , fetchAllProducts  , fetchProductsByCategory , toggleCategory} from "../../Redux/createSlice"
+import { useTranslation } from "react-i18next"
 function SideBar() {
-
+const {t , i18n} = useTranslation()
 let dispatch = useDispatch();
 
 const categories = [
@@ -38,7 +39,7 @@ const categories = [
   return (
     <div>
     <div className="SideBar">
-      <div className="spanadd"><p>PRODUCT CATEGORIES</p></div>
+      <div className="spanadd">  <p>{t("PRODUCT CATEGORIES")}</p></div>
 <div className="checkboks">
 
      {categories.map((category) => (
@@ -49,7 +50,7 @@ const categories = [
          onChange={() => dispatch(toggleCategory(category))}
     />
     <label htmlFor={category}>
-      {category}
+      {t(category)}
     </label>
   </div>
 

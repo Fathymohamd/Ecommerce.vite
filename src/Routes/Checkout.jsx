@@ -3,8 +3,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector , useDispatch } from "react-redux";
 import { clearCart } from "./../Redux/createSlice";
+import { useTranslation } from "react-i18next"
 function Checkout() {
- 
+const {t , i18n} = useTranslation()
 const dispatch = useDispatch();
 
 const navigate = useNavigate();
@@ -89,14 +90,14 @@ if (res.status === 401) {
   return (
     <div className="checkout">
       <div className="checkout-left">
-        <h2>Billing Details</h2>
+        <h2>{t("Billing Details")}</h2>
       {error && <p className='error'>{error}</p>}
       <input
   type="text"
   name="firstName"
   value={formData.firstName}
   onChange={handleChange}
-    placeholder="FirstName"
+    placeholder={t("FirstName")}
 />
 
 <input
@@ -104,7 +105,7 @@ if (res.status === 401) {
   name="lastName"
   value={formData.lastName}
   onChange={handleChange}
-    placeholder="LastName"
+    placeholder={t("LastName")}
 />
 
 <input
@@ -112,7 +113,7 @@ if (res.status === 401) {
   name="email"
   value={formData.email}
   onChange={handleChange}
-  placeholder="Eamil"
+  placeholder={t("Eamil")}
 />
 
 <input
@@ -120,7 +121,7 @@ if (res.status === 401) {
   name="phone"
   value={formData.phone}
   onChange={handleChange}
-    placeholder="Phone"
+    placeholder={t("Phone")}
 />
 
 <input
@@ -128,7 +129,7 @@ if (res.status === 401) {
   name="country"
   value={formData.country}
   onChange={handleChange}
-    placeholder="Country"
+    placeholder={t("Country")}
 />
 
 <input
@@ -136,31 +137,34 @@ if (res.status === 401) {
   name="city"
   value={formData.city}
   onChange={handleChange}
-    placeholder="City"
+    placeholder= {t("City")}
 />
     <input
   type="text"
   name="address"
   value={formData.address}
   onChange={handleChange}
-  placeholder="Address"
+  placeholder={t("Address")}
 />
 <select
     name="paymentMethod"
     value={formData.paymentMethod}
     onChange={handleChange}
 >
-    <option value="">Choose Payment</option>
-    <option value="card">Card</option>
-    <option value="wallet">Wallet</option>
+    <option value=""> {t("Choose Payment")}</option>
+    <option value="card"> {t("Card")}</option>
+    <option value="wallet"> {t("Wallet")}</option>
 </select>
 <div className="heelpprice">
-  <p>Subtotal: {totalPrice.toFixed(2)} EGP</p>
-  <p>Shipping: {shipping} EGP</p>
- <h3>Total: {finalPrice.toFixed(2)} EGP</h3>
+  <p>{t("Subtotal")}: {totalPrice.toFixed(2)} EGP</p>
+
+  <p>{t("Shipping")}: {shipping} EGP</p>
+
+  <h3>{t("Total")}: {finalPrice.toFixed(2)} EGP</h3>
 </div>
-   <button onClick={handlePayment} disabled={loading}>
-  {loading ? "Loading..." : "Place Order"}
+
+<button onClick={handlePayment} disabled={loading}>
+  {loading ? t("Loading...") : t("Place Order")}
 </button>
             
       </div>

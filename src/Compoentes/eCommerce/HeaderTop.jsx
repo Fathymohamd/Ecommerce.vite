@@ -9,7 +9,7 @@ import { useEffect, useState  , useRef } from "react";
 import { useSelector } from "react-redux";
 import totalPrice from "../../Routes/Cart"
 <FaQuestionCircle className="icon" />
-
+import { useTranslation } from "react-i18next";
 function HeaderTop() {
   const cartData = useSelector((state) => state.counter.cartData); 
   const totalPrice = cartData.reduce((acc , item) =>{
@@ -22,7 +22,7 @@ const [search, setSearch] = useState("");
 const [products, setProducts] = useState([]);
 
 const searchRef = useRef(null);
-
+const {t , i18n} = useTranslation()
 useEffect(()=>{
 const  handleClickOutside  = (e)=>{
 if (searchRef.current && !searchRef.current.contains(e.target) ) { 
@@ -62,31 +62,32 @@ const handleSearch = async () => {
     <div className="header_Top">
    <Link to="/" className="link">
        <div className="faster_twe-Top">
-          <p>Jumia</p>
-        <div className="faster_react_2"> <FaStar style={{ fontSize: "15px" }} /></div>
+          <p>{t("Jumia")}</p>
+         
+        <div className="faster_react_2"><FaStar style={{ fontSize: "15px" }} /></div>
          </div>
    </Link>
 
          
     <div className="search-box">
      <FaSearch className="icon" />
-     <input type="text" placeholder="Seareh products, brands and categorise"   value={search}
+     <input type="text" placeholder={t("Seareh products, brands and categorise")}   value={search}
   onChange={(e) => setSearch(e.target.value)} />
      {/*  <button className='buttonacton'>Search</button> */}
      </div>
 
 
          <div className="img_center">
-      <Link to="/logout" className="logout-link">Logout</Link>
+      <Link to="/logout" className="logout-link">{t("Logout")}</Link>
             <div className="account" onClick={()=>setsinup(!sinup)}>
             <FaUser />
-            <p>Account</p>
+            <p>{t("Account")}</p>
              <MdKeyboardArrowDown style={{fontSize: "20px"}}/>
             </div>
           {sinup && (   <div className="Login">
              <div className="SinUp">
-            <Link to="login" className="link"><p>Login</p></Link>
-            <Link to="sinup" className="link"><p>SinUp</p></Link>
+            <Link to="login" className="link"><p>{t("Login")}</p></Link>
+            <Link to="sinup" className="link"><p>{t("SinUp")}</p></Link>
              </div>
              </div>)}
             <div className="heelp">
@@ -96,7 +97,7 @@ const handleSearch = async () => {
       <div className="cart">
       <FaCartShopping />
       <div className="Price_one">{cartData.length}</div>
-      <p>Cart</p>
+      <p>{t("Cart")}</p>
       </div>
       </Link>
       </div>
@@ -109,12 +110,10 @@ const handleSearch = async () => {
         <img
           id="imgProduct"
           src={item.image || item.images?.[0]}
-         
-        />
-
   
+        />
         <div className="searchInfo">
-          <h3>{item.title}</h3>
+          <h3>{i18n.language === "ar" ? t(`products.${item.id}.title`): item.title}</h3>
           <h4>$ {item.price}</h4>
         </div>
       </div>

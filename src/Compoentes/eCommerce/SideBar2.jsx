@@ -1,16 +1,17 @@
 import img_Checkbox from "../../assets/imgs_MySlider/1.png"
 import { useSelector , useDispatch } from 'react-redux'
 import {useState  , useEffect} from "react"
+import { useTranslation } from "react-i18next"
 function SideBar2() {
 const [minPrice, setMinPrice] = useState("");
 const [maxPrice, setMaxPrice] = useState("");
-
+const {t , i18n} = useTranslation()
   return (
     <div>
     <div className="sidebar2">
        
        <div className="PRICE">
-        <p>PRICE</p>
+        <p>{t("PRICE")}</p>
         <div className="inputs">
         <input value={minPrice}   onChange={(e) => setMinPrice(e.target.value)}  type="number" />
         _

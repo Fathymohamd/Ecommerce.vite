@@ -5,7 +5,9 @@ import {fetchFakeStore  , addToCart } from  "../../Redux/createSlice"
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Animation from "./Animation";
+import { useTranslation } from "react-i18next";
 function Products() {
+const { t, i18n } = useTranslation();
 const dispatch = useDispatch()
 const counter = useSelector((state) => state.counter.fakestoreap)
 const category = useSelector((state) => state.counter.category)
@@ -23,8 +25,9 @@ return (
      <Link className="link" to={`/Fakestoreapi/${item.id}`}>
   
         <img id="image" src={item.image}/>
-        <div className="title_item" title={item.title}>{item.title}</div>
-        <div className="stock">IN STOCK</div>
+        <div className="title_item" title={i18n.language === "ar" ? t(`fakestoreapi.${item.id}.title`) : item.title}>
+          {i18n.language === "ar" ? t(`fakestoreapi.${item.id}.title`) : item.title}</div>
+        <div className="stock">{t("IN STOCK")}</div>
         <div className="statr">
           <FaStar color="rgb(255, 255, 0)"/>
           <FaStar color="rgb(255, 255, 0)"/>
@@ -34,7 +37,7 @@ return (
             </Link>
           <div className="price">
           <span>$ {item.price}</span>
-          <button className="buttonAdd" onClick={()=>{dispatch(addToCart(item))}}>Add To Cart</button>
+          <button className="buttonAdd" onClick={()=>{dispatch(addToCart(item))}}>{t("Add To Cart")}</button>
         </div>
       </div>
      </div>

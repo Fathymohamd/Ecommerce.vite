@@ -5,33 +5,48 @@ import cookie  from  "../../assets/imgs/6.svg"
 import { FaPhone } from 'react-icons/fa';
 import { FaFacebook, FaTwitter, FaFacebookMessenger } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+import { useTranslation } from "react-i18next";
  function FooterEnd() {
+  const {t , i18n} = useTranslation()
   return (
     <div>
-    <div className="FooterEnd">
-    <div className="nmber"><p><FaPhone/></p><p id="data"><span>8 800 555-55 </span>Working 8:00 - 22:00</p></div>
-    <div className="mobil"><p id="mobil"><span>Download App on Mobile :</span>
-    15% discount on your first purchase</p>
+<div className="FooterEnd">
+  <div className="nmber">
+    <p><FaPhone /></p>
+    <p id="data">
+      <span>{t("8 800 555-55")}</span> {t("Working 8:00 - 22:00")}
+    </p>
+  </div>
+
+  <div className="mobil">
+    <p id="mobil">
+      <span>{t("Download App on Mobile :")}</span>
+      {t("15% discount on your first purchase")}
+    </p>
+
     <div className="imgs_In">
-    <img src={imgs_In}/> 
-      <img src={imgs_On}/>
+      <img src={imgs_In} />
+      <img src={imgs_On} />
     </div>
-      <div className="incon">
-        <p><FaFacebook  color="#1877F2" /></p>
-        <p><FaTwitter color="#1877F2"  /></p>
-        <p><FaFacebookMessenger color="#1877F2" /></p>
-     </div>
+
+    <div className="incon">
+      <p><FaFacebook color="#1877F2" /></p>
+      <p><FaTwitter color="#1877F2" /></p>
+      <p><FaFacebookMessenger color="#1877F2" /></p>
     </div>
-    </div>
-    <div className="All-Rigth">
-    <p>Copyright 2025 © All rights reserved by Blackrise Theme</p>
-    <div className="theme">
-    <p>Privacy Policy</p>
-    <p>Terms and Conditions</p>
-    <p>Cookie</p>
-    <img src={cookie}/>
-    </div>
-    </div>
+  </div>
+</div>
+
+<div className="All-Rigth">
+  <p>{t("Copyright 2025 © All rights reserved by Blackrise Theme")}</p>
+
+  <div className="theme">
+    <p>{t("Privacy Policy")}</p>
+    <p>{t("Terms and Conditions")}</p>
+    <p>{t("Cookie")}</p>
+    <img src={cookie} />
+  </div>
+</div>
     </div>
   )
 }

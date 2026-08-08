@@ -27,7 +27,7 @@ export const fetchProductsByCategory = createAsyncThunk(
   "products/fetchByCategory",
   async (category) => {
     const res = await fetch(
-      `http://localhost:8080/api/products/category/${category}`
+      `https://ecommerce-vite-fgou.vercel.app/api/products/category/${category}`
     );
     return await res.json();
   }

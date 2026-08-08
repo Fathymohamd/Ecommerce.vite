@@ -11,6 +11,17 @@
 .footer {
     position: relative;
 }
+html[dir="rtl"] #Address::placeholder {
+  text-align: center;
+  direction: rtl;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+html[dir="ltr"] #Address::placeholder {
+  text-align: left;
+  direction: ltr;
+}
 .footer p {
    font-size: 25px;
  font-weight: 600;

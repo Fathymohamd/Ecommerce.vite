@@ -10,7 +10,9 @@ import { FaStar } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { useSelector , useDispatch } from 'react-redux';
 import {  fetchFakeStoreid , addToCart  , fetchFakeStore  } from "../../Redux/createSlice";
+import { useTranslation } from "react-i18next";
 function Fakestoreapi() {
+  const [t , i18n] = useTranslation()
 const { id } = useParams();
   const action = useSelector((state) => state.counter.product)
   const counter = useSelector((state) => state.counter.fakestoreap)
@@ -54,15 +56,15 @@ if(Loading) {return <Animation/>}
           </div>
          </div>
           <div className="product_title">
-           <h1 className="productTitle1">{action.title}</h1>
+           <h1 className="productTitle1">{t(`fakestoreapi.${action.id}.title`)}</h1>
            <div className="statr"><FaStar color="rgb(255, 255, 0)"/>
            <FaStar color="rgb(255, 255, 0)"/><FaStar color="rgb(255, 255, 0)"/><FaStar color="rgb(255, 255, 0)"/></div>
               <div className="product_price">
               <div className="derr">$ <span>{action.price}</span></div>
            </div>
-          <div className="description">{action.description}</div>
-          <div className="stock"><span>Hurry Up! Only {action.stock} Left In stock</span></div>
-          <button id="Add_To_Cart" onClick={()=> dispatch(addToCart(action))}>Add To Cart <FaCartShopping /> </button>
+          <div className="description">{t(`fakestoreapi.${action.id}.description`)}</div>
+          <div className="stock"><span> {t(`fakestoreapi.${action.id}.hurry`)}</span></div>
+          <button id="Add_To_Cart" onClick={()=> dispatch(addToCart(action))}>{t("Add To Cart")} <FaCartShopping /> </button>
           </div>
          </div>
        )} 
@@ -81,14 +83,14 @@ if(Loading) {return <Animation/>}
            <Link to={`/Fakestoreapi/${item.id}`} className="link">
         <img id="image"src={item.image} />
         <div className="Slider_center_and">
-          <h1 title={item.title}>{item.title}</h1>
+          <h1 title={t(`fakestoreapi.${action.id}.title`)}>{t(`fakestoreapi.${action.id}.title`)}</h1>
             <div className="FaStar"><FaStar color="rgb(255, 255, 0)"/>
           <FaStar color="rgb(255, 255, 0)"/><FaStar color="rgb(255, 255, 0)"/><FaStar color="rgb(255, 255, 0)"/></div>
         </div>
         </Link>
         <div className="price">
           <span>$ {item.price}</span>
-          <button className="buttonAdd" onClick={() => {dispatch(addToCart(item))}}>Add To Cart</button>
+          <button className="buttonAdd" onClick={() => {dispatch(addToCart(item))}}>{t("Add To Cart")} </button>
         </div>
       </div>
   

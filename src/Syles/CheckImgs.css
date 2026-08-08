@@ -9,9 +9,17 @@
     justify-content: space-around;
     align-items: center;
     height: 40vh;
-    margin-bottom: 2rem;
-    
+      margin-inline-start: 1rem;
 }
+html[dir="rtl"] #show {
+ text-align: start;
+ margin-right: 3rem;
+}
+
+html[dir="ltr"] #show {
+  flex-direction: row;
+}
+
 @media(max-width: 400px) {
         #CheckImgs {
     display: flex;
