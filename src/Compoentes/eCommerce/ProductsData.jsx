@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { useTranslation } from "react-i18next";
+import toast from "react-hot-toast"
 function ProductsData() {
   const {t , i18n} = useTranslation()
   const [mainImage, setMainImage] = useState("");
@@ -30,6 +31,26 @@ const productimages = products.find(item => item.id === Number(id));
   dispatch(fetchById(id));
   dispatch(fetchAllProducts());
   } , [dispatch, id]);
+
+
+const handleAddToCart = (product) => {
+  
+  dispatch(addToCart(product));
+toast.success("Product added to cart!", {
+  duration: 3000,
+  position: "top-right",
+  style: {
+    background: "#ffffff",
+    color: "#222",
+    border: "1px solid #e5e5e5",
+    borderRadius: "12px",
+    padding: "14px 18px",
+    fontSize: "15px",
+    fontWeight: "500",
+    boxShadow: "0 8px 25px rgba(0, 0, 0, 0.12)",
+  },
+});
+};
 
 
   return (
@@ -62,7 +83,7 @@ const productimages = products.find(item => item.id === Number(id));
      <div className="stock">
   <span>{t(`products.${product.id}.hurry`)}</span>
 </div>
-         <button id="Add_To_Cart" onClick={()=> dispatch(addToCart(product))}>{t("Add To Cart")} <FaCartShopping /> </button>
+         <button id="Add_To_Cart" onClick={()=> handleAddToCart(product)}>{t("Add To Cart")} <FaCartShopping /> </button>
          </div>
         </div>
       )} 
@@ -89,7 +110,7 @@ const productimages = products.find(item => item.id === Number(id));
         </Link>
         <div className="price">
           <span>$ {item.price}</span>
-          <button className="buttonAdd" onClick={() => {dispatch(addToCart(product))}}>{t("Add To Cart")}</button>
+          <button className="buttonAdd" onClick={() => {handleAddToCart(product)}}>{t("Add To Cart")}</button>
         </div>
       </div>
   

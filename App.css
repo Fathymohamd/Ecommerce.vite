@@ -4,11 +4,3 @@
   box-sizing: border-box;
 }
 
-
-html[dir="rtl"] body {
-  font-family: "Cairo", sans-serif;
-}
-
-html[dir="ltr"] body {
-  font-family: Arial, sans-serif;
-}

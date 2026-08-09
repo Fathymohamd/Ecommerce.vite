@@ -139,6 +139,7 @@
   "Delivered": "تم التوصيل",
   "Processing": "قيد المعالجة",
   "Cancelled": "ملغي",
+    "Product added to cart": "تمت إضافة المنتج إلى السلة",
   "products": { 
 "1": {
   "title": "ماسكارا إيسنس لاش برنسس",

@@ -11,12 +11,33 @@ import { useState, useEffect } from "react";
 import { useSelector , useDispatch } from 'react-redux';
 import {  fetchFakeStoreid , addToCart  , fetchFakeStore  } from "../../Redux/createSlice";
 import { useTranslation } from "react-i18next";
+import toast from "react-hot-toast";
 function Fakestoreapi() {
   const [t , i18n] = useTranslation()
 const { id } = useParams();
   const action = useSelector((state) => state.counter.product)
   const counter = useSelector((state) => state.counter.fakestoreap)
   const Loading = useSelector((state) => state.counter.Loading)
+const handleAddToCart = (product) => {
+  
+  dispatch(addToCart(product));
+toast.success("Product added to cart!", {
+  duration: 3000,
+  position: "top-right",
+  style: {
+    background: "#ffffff",
+    color: "#222",
+    border: "1px solid #e5e5e5",
+    borderRadius: "12px",
+    padding: "14px 18px",
+    fontSize: "15px",
+    fontWeight: "500",
+    boxShadow: "0 8px 25px rgba(0, 0, 0, 0.12)",
+  },
+});
+};
+
+
 
   const product = counter?.data?.find(
   (item) => item.id === Number(id)
@@ -64,7 +85,7 @@ if(Loading) {return <Animation/>}
            </div>
           <div className="description">{t(`fakestoreapi.${action.id}.description`)}</div>
           <div className="stock"><span> {t(`fakestoreapi.${action.id}.hurry`)}</span></div>
-          <button id="Add_To_Cart" onClick={()=> dispatch(addToCart(action))}>{t("Add To Cart")} <FaCartShopping /> </button>
+          <button id="Add_To_Cart" onClick={()=> handleAddToCart(action)}>{t("Add To Cart")} <FaCartShopping /> </button>
           </div>
          </div>
        )} 
@@ -90,7 +111,7 @@ if(Loading) {return <Animation/>}
         </Link>
         <div className="price">
           <span>$ {item.price}</span>
-          <button className="buttonAdd" onClick={() => {dispatch(addToCart(item))}}>{t("Add To Cart")} </button>
+          <button className="buttonAdd" onClick={()=> handleAddToCart(action)}>{t("Add To Cart")} </button>
         </div>
       </div>
   

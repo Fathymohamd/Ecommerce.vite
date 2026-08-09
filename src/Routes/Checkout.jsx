@@ -113,7 +113,7 @@ if (res.status === 401) {
   name="email"
   value={formData.email}
   onChange={handleChange}
-  placeholder={t("Eamil")}
+  placeholder={t("Email")}
 />
 
 <input
