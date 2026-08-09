@@ -4,6 +4,14 @@
     box-sizing: border-box;
 }
 
+
+html[dir="ltr"] .inputs{
+  text-align: left;
+}
+
+html[dir="rtl"] .inputs {
+  text-align: right;
+}
 .sidebar2 p {
 margin: 10px ;
 text-align: left;

@@ -4,9 +4,30 @@ import { FaStar } from "react-icons/fa";
 import { useSelector , useDispatch } from 'react-redux'
 import {fetchAllProducts    , addToCart} from  "../../Redux/createSlice"
 import {useTranslation} from "react-i18next"
+import toast from "react-hot-toast"
 function Pagination() {
 const [currentPage, setCurrentPage] = useState(1);
 const [products, setProducts] = useState([]);
+
+const handleAddToCart = (product) => {
+  
+  dispatch(addToCart(product));
+toast.success(t("Product added to cart!"), {
+  duration: 3000,
+  position: "top-right",
+  style: {
+    background: "#ffffff",
+    color: "#222",
+    border: "1px solid #e5e5e5",
+    borderRadius: "12px",
+    padding: "14px 18px",
+    fontSize: "15px",
+    fontWeight: "500",
+    boxShadow: "0 8px 25px rgba(0, 0, 0, 0.12)",
+  },
+});
+};
+
 
 const dispatch = useDispatch()
   const data = useSelector((state)=> state.counter.data)
@@ -68,7 +89,7 @@ useEffect(()=>{
             </Link>
           <div className="price">
           <span>$ {item.price}</span>
-          <button className="buttonAdd" onClick={()=>{dispatch(addToCart(item))}}>{t("Add To Cart")}</button>
+          <button className="buttonAdd" onClick={()=>{handleAddToCart(item,)}}>{t("Add To Cart")}</button>
         </div>
       </div>
      </div>

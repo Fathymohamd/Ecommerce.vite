@@ -49,7 +49,7 @@ const categories = [
       id={category}
          onChange={() => dispatch(toggleCategory(category))}
     />
-    <label htmlFor={category}>
+    <label htmlFor={category} className='category'>
       {t(category)}
     </label>
   </div>

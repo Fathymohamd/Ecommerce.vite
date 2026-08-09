@@ -21,7 +21,7 @@ const { id } = useParams();
 const handleAddToCart = (product) => {
   
   dispatch(addToCart(product));
-toast.success("Product added to cart!", {
+toast.success(t("Product added to cart!"), {
   duration: 3000,
   position: "top-right",
   style: {

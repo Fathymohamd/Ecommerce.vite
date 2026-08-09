@@ -11,7 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { useTranslation } from "react-i18next";
-import toast from "react-hot-toast"
+import toast from "react-hot-toast";
 function ProductsData() {
   const {t , i18n} = useTranslation()
   const [mainImage, setMainImage] = useState("");
@@ -36,7 +36,7 @@ const productimages = products.find(item => item.id === Number(id));
 const handleAddToCart = (product) => {
   
   dispatch(addToCart(product));
-toast.success("Product added to cart!", {
+toast.success(t("Product added to cart!"), {
   duration: 3000,
   position: "top-right",
   style: {
@@ -110,7 +110,7 @@ toast.success("Product added to cart!", {
         </Link>
         <div className="price">
           <span>$ {item.price}</span>
-          <button className="buttonAdd" onClick={() => {handleAddToCart(product)}}>{t("Add To Cart")}</button>
+          <button className="buttonAdd" onClick={() => handleAddToCart(item)}>{t("Add To Cart")}</button>
         </div>
       </div>
   

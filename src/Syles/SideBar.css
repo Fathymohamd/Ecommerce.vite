@@ -3,7 +3,15 @@
     padding: 0;
     box-sizing: border-box;
 }
-/* ================= Laptop ================= */
+
+html[dir="ltr"] .checkbok {
+  text-align: left;
+}
+
+html[dir="rtl"] .checkbok {
+  text-align: right;
+}
+
 @media (max-width: 1200px) {
   .SideBar {
     width: 260px;
