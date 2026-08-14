@@ -36,11 +36,11 @@ app.use(
       "http://localhost:5173",
       "https://ecommerce-vite-cspo.vercel.app",
       "https://ecommerce-vite-v4p9.vercel.app",
+      "https://ecommerce-vite-2hdg.vercel.app",
     ],
     credentials: true,
   })
 );
-
 
 // ===============================
 // Middleware
