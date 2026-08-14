@@ -52,7 +52,7 @@ useEffect(()=>{
 
   const paginationRouter = async (page) => {
     const res = await fetch(
-     `https://ecommerce-vite-fgou.vercel.app/api/product?page=${page}&limit=10`
+     `https://ecommerce-vite-9iwf.vercel.app/api/product?page=${page}&limit=10`
     );
 
     const data = await res.json();

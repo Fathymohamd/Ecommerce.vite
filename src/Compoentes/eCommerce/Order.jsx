@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next"
     const [orders, setOrders] = useState([]);
  const {t , i18n} = useTranslation()
 useEffect(() => {
-  fetch("https://ecommerce-vite-fgou.vercel.app/api/orders")
+  fetch("https://ecommerce-vite-9iwf.vercel.app/api/orders")
     .then((res) => res.json())
     .then((data) => setOrders(data));
 }, []);

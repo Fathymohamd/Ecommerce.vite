@@ -5,7 +5,7 @@ function Logout() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("https://ecommerce-vite-fgou.vercel.app/logout", {
+    fetch("https://ecommerce-vite-9iwf.vercel.app/logout", {
       method: "POST",
       credentials: "include",
     }).then(() => {

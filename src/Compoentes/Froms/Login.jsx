@@ -12,7 +12,7 @@ function Login() {
 const handleLogin = async (e) => {
   e.preventDefault();
 
-  const res = await fetch("https://ecommerce-vite-fgou.vercel.app/login", {
+  const res = await fetch("https://ecommerce-vite-9iwf.vercel.app/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

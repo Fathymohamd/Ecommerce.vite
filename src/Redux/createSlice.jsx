@@ -17,7 +17,7 @@ const initialState = {
 export const fetchAllProducts = createAsyncThunk(
   "products/fetchAll",
   async () => {
-    const res = await fetch("https://ecommerce-vite-fgou.vercel.app/api/products");
+    const res = await fetch("https://ecommerce-vite-9iwf.vercel.app/api/products");
     const data = await res.json();
     return data.products;
   }
@@ -47,7 +47,7 @@ export const fetchAllProductS = createAsyncThunk(
 export const fetchById = createAsyncThunk(
   "products/fetchById",
   async (id) => {
-    const res = await fetch(`https://ecommerce-vite-fgou.vercel.app/api/products/${id}`);
+    const res = await fetch(`https://ecommerce-vite-9iwf.vercel.app/api/products/${id}`);
     return await res.json();
   }
 );
@@ -56,7 +56,7 @@ export const fetchById = createAsyncThunk(
 export const fetchFakeStore = createAsyncThunk(
   "fakestore/fetchAll",
   async () => {
-    const res = await fetch("https://ecommerce-vite-fgou.vercel.app/api/users");
+    const res = await fetch("https://ecommerce-vite-9iwf.vercel.app/api/users");
     const data = await res.json();
 
   return data;
@@ -66,7 +66,7 @@ export const fetchFakeStore = createAsyncThunk(
 export const fetchFakeStoreid = createAsyncThunk(
   "feature/action",
   async (id) => {
-    const res = await fetch(`https://ecommerce-vite-fgou.vercel.app/api/users/${id}`);
+    const res = await fetch(`https://ecommerce-vite-9iwf.vercel.app/api/users/${id}`);
     return await res.json();
   }
 );
