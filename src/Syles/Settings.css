@@ -1,0 +1,557 @@
+.settings-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 40px 20px;
+}
+
+.settings-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.settings-header {
+  margin-bottom: 30px;
+}
+
+.settings-header h1 {
+  margin: 0;
+  font-size: 32px;
+  color: #222;
+}
+
+.settings-header p {
+  margin-top: 8px;
+  color: #777;
+}
+
+
+/* Section */
+
+.settings-section {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+
+/* Title */
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 22px;
+  border-bottom: 1px solid #eee;
+}
+
+.section-title svg {
+  font-size: 22px;
+  color: #ff9900;
+}
+
+.section-title h2 {
+  margin: 0;
+  font-size: 19px;
+  color: #222;
+}
+
+.section-title p {
+  margin: 5px 0 0;
+  color: #777;
+  font-size: 14px;
+}
+
+
+/* Content */
+
+.settings-content {
+  padding: 22px;
+}
+
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.input-group input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.input-group input:focus {
+  border-color: #ff9900;
+}
+
+
+/* Save */
+
+.save-btn {
+  border: none;
+  background: #ff9900;
+  color: #111;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background: #f08800;
+}
+
+
+.password-input {
+  position: relative;
+  width: 100%;
+}
+
+.password-input input {
+  width: 100%;
+  padding-right: 45px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: none;
+  border: none;
+  padding: 0;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #777;
+}
+
+.password-toggle:hover {
+  color: #333;
+}
+
+.password-toggle svg {
+  width: 19px;
+  height: 19px;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px;
+}
+
+.settings-row strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.settings-row p {
+  margin: 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.settings-row select {
+  padding: 10px 30px 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+}
+
+
+/* Switch */
+
+.switch {
+  position: relative;
+  width: 48px;
+  height: 26px;
+}
+
+.switch input {
+  display: none;
+}
+
+.switch span {
+  position: absolute;
+  inset: 0;
+  background: #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.switch span::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 3px;
+  top: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.switch input:checked + span {
+  background: #ff9900;
+}
+
+.switch input:checked + span::before {
+  transform: translateX(22px);
+}
+/* Delete Account Modal */
+
+.delete-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+  padding: 20px;
+}
+
+.delete-modal {
+  width: 100%;
+  max-width: 420px;
+
+  background: #fff;
+  border-radius: 12px;
+
+  padding: 30px;
+  text-align: center;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.delete-modal-icon {
+  width: 65px;
+  height: 65px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fef2f2;
+  color: #dc2626;
+
+  font-size: 30px;
+}
+
+.delete-modal h2 {
+  margin: 0 0 10px;
+  color: #111827;
+  font-size: 23px;
+}
+
+.delete-modal p {
+  margin: 0 0 25px;
+
+  color: #6b7280;
+
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.delete-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.delete-cancel-btn,
+.delete-confirm-btn {
+  padding: 11px 20px;
+
+  border-radius: 7px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.delete-cancel-btn {
+  background: #fff;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.delete-cancel-btn:hover {
+  background: #f3f4f6;
+}
+
+.delete-confirm-btn {
+  background: #dc2626;
+  color: #fff;
+  border: 1px solid #dc2626;
+}
+
+.delete-confirm-btn:hover {
+  background: #b91c1c;
+}
+
+.danger-section {
+  border-color: #ffd6d6;
+}
+
+.danger-section .section-title svg {
+  color: #dc3545;
+}
+
+.delete-btn {
+  margin: 0 22px 22px;
+  padding: 11px 20px;
+  border: 1px solid #dc3545;
+  background: white;
+  color: #dc3545;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.delete-btn:hover {
+  background: #dc3545;
+  color: white;
+}
+
+
+/* Responsive */
+
+@media (max-width: 600px) {
+
+  .settings-page {
+    padding: 25px 12px;
+  }
+
+  .settings-header h1 {
+    font-size: 27px;
+  }
+
+  .settings-row {
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .section-title {
+    padding: 18px;
+  }
+
+  .settings-content {
+    padding: 18px;
+  }
+
+}
+
+
+/* ================= SETTINGS PAGE DARK MODE ================= */
+
+.app.dark-mode .settings-page {
+  background: #121212;
+}
+
+.app.dark-mode .settings-header h1 {
+  color: #fff;
+}
+
+.app.dark-mode .settings-header p {
+  color: #999;
+}
+
+/* Sections */
+
+.app.dark-mode .settings-section {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+/* Section Title */
+
+.app.dark-mode .section-title {
+  border-bottom-color: #333;
+}
+
+.app.dark-mode .section-title svg {
+  color: #ff9900;
+}
+
+.app.dark-mode .section-title h2 {
+  color: #fff;
+}
+
+.app.dark-mode .section-title p {
+  color: #999;
+}
+
+/* Content */
+
+.app.dark-mode .settings-content {
+  background: #1e1e1e;
+}
+
+.app.dark-mode .input-group label {
+  color: #ddd;
+}
+
+.app.dark-mode .input-group input {
+  background: #242424;
+  color: #fff;
+  border-color: #444;
+}
+
+.app.dark-mode .input-group input::placeholder {
+  color: #777;
+}
+
+.app.dark-mode .input-group input:focus {
+  border-color: #ff9900;
+  box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.12);
+}
+
+/* Save Button */
+
+.app.dark-mode .save-btn {
+  background: #ff9900;
+  color: #111;
+}
+
+.app.dark-mode .save-btn:hover {
+  background: #d88e03;
+}
+
+/* Password */
+
+.app.dark-mode .password-input input {
+  background: #242424;
+  color: #fff;
+  border-color: #444;
+}
+
+.app.dark-mode .password-toggle {
+  color: #999;
+}
+
+.app.dark-mode .password-toggle:hover {
+  color: #ff9900;
+}
+
+/* Settings Row */
+
+.app.dark-mode .settings-row {
+  background: #1e1e1e;
+}
+
+.app.dark-mode .settings-row strong {
+  color: #fff;
+}
+
+.app.dark-mode .settings-row p {
+  color: #999;
+}
+
+.app.dark-mode .settings-row select {
+  background: #242424;
+  color: #fff;
+  border-color: #444;
+}
+
+.app.dark-mode .settings-row select:focus {
+  border-color: #ff9900;
+  outline: none;
+}
+
+/* Switch */
+
+.app.dark-mode .switch span {
+  background: #444;
+}
+
+.app.dark-mode .switch span::before {
+  background: #ddd;
+}
+
+.app.dark-mode .switch input:checked + span {
+  background: #ff9900;
+}
+
+.app.dark-mode .switch input:checked + span::before {
+  background: #fff;
+}
+
+/* Danger Section */
+
+.app.dark-mode .danger-section {
+  border-color: #6b2626;
+  background: #1e1e1e;
+}
+
+.app.dark-mode .danger-section .section-title svg {
+  color: #ff4d4d;
+}
+
+.app.dark-mode .delete-btn {
+  background: #1e1e1e;
+  border-color: #dc3545;
+  color: #ff6b6b;
+}
+
+.app.dark-mode .delete-btn:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+  .app.dark-mode .settings-page {
+    background: #121212;
+  }
+
+  .app.dark-mode .settings-section {
+    background: #1e1e1e;
+  }
+
+  .app.dark-mode .section-title {
+    background: #1e1e1e;
+    border-bottom-color: #333;
+  }
+
+  .app.dark-mode .settings-content {
+    background: #1e1e1e;
+  }
+
+  .app.dark-mode .settings-row {
+    background: #1e1e1e;
+  }
+
+  .app.dark-mode .settings-row select {
+    background: #242424;
+    color: #fff;
+  }
+}

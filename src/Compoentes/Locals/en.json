@@ -1,10 +1,650 @@
 {
+      "login": {
+    "welcomeBack": "Welcome Back",
+    "loginToAccount": "Login to your account",
+    "email": "Email",
+    "enterYourEmail": "Enter your email",
+    "password": "Password",
+    "enterYourPassword": "Enter your password",
+    "forgotPassword": "Forgot Password?",
+    "loggingIn": "Logging in...",
+    "login": "Login",
+    "dontHaveAccount": "Don't have an account?",
+    "createAccount": "Create Account"
+  },
+  
 
-  "cart": "Cart",
+  "register": {
+    "createAccount": "Create Account",
+    "createAccountAndStartShopping": "Create your account and start shopping",
+    "fullName": "Full Name",
+    "enterYourName": "Enter your name",
+    "email": "Email",
+    "enterYourEmail": "Enter your email",
+    "password": "Password",
+    "enterYourPassword": "Enter your password",
+    "confirmPassword": "Confirm Password",
+    "confirmYourPassword": "Confirm your password",
+    "creatingAccount": "Creating Account...",
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Login"
+  },
+
+
+  "bestSellers": {
+    "customerFavorites": "Customer Favorites",
+    "best": "Best",
+    "sellers": "Sellers",
+    "description": "Discover the products our customers love the most.",
+    "viewAll": "View All",
+    "bestSeller": "BEST SELLER",
+    "addToWishlist": "Add to wishlist",
+    "sold": "sold",
+    "addToCart": "Add to Cart"
+  },
+
+
+"bigDeals": {
+  "limitedTimeOffer": "Limited Time Offer",
+  "bigDeals": "Big Deals.",
+  "bigSavings": "Big Savings.",
+  "description": "Save more on your favorite products. Don't miss these exclusive offers.",
+  "upTo": "UP TO",
+  "off": "OFF",
+  "shopDeals": "Shop Deals"
+},
+
+"categorie": {
+  "exploreOurStore": "Explore Our Store",
+  "shopBy": "Shop by",
+  "category": "Category",
+  "description": "Find everything you need from our wide range of product categories.",
+  "viewAll": "View All"
+},
+
+"categories": {
+    "exploreOurStore": "Explore Our Store",
+  "shopBy": "Shop by",
+  "category": "Category",
+  "description": "Find everything you need from our wide range of product categories.",
+  "viewAll": "View All",
+  "beauty": "Beauty",
+  "fragrances": "Fragrances",
+  "furniture": "Furniture",
+  "groceries": "Groceries",
+  "homeDecoration": "Home Decoration",
+  "kitchenAccessories": "Kitchen Accessories",
+  "laptops": "Laptops",
+  "mensShirts": "Men's Shirts",
+  "mensShoes": "Men's Shoes",
+  "mensWatches": "Men's Watches",
+  "mobileAccessories": "Mobile Accessories",
+  "motorcycle": "Motorcycle",
+  "skinCare": "Skin Care",
+  "smartphones": "Smartphones",
+  "sportsAccessories": "Sports Accessories",
+  "sunglasses": "Sunglasses",
+  "tablets": "Tablets",
+  "tops": "Tops",
+  "vehicle": "Vehicle",
+  "womensBags": "Women's Bags",
+  "womensDresses": "Women's Dresses",
+  "womensJewellery": "Women's Jewellery",
+  "womensShoes": "Women's Shoes",
+  "womensWatches": "Women's Watches"
+},
+"categoryProducts": {
+  "addToWishlist": "Add to wishlist",
+  "addToCart": "Add to Cart"
+},
+
+"contact": {
+  "contactUs": "Contact Us",
+  "haveQuestion": "Have a question or need help? We're here to help you.",
+  "getInTouch": "Get In Touch",
+  "contactDescription": "If you have any questions about our products, orders, or services, feel free to contact us.",
+  "email": "Email",
+  "phone": "Phone",
+  "location": "Location",
+  "egypt": "Egypt",
+  "sendUsMessage": "Send Us a Message",
+  "fullName": "Full Name",
+  "enterYourName": "Enter your name",
+  "enterYourEmail": "Enter your email",
+  "message": "Message",
+  "writeYourMessage": "Write your message...",
+  "sending": "Sending...",
+  "sendMessage": "Send Message"
+},
+
+"deals": {
+  "todaysDeals": "Today's Deals",
+  "saveMore": "Save more on your favorite products",
+  "deals": "Deals",
+  "noDealsAvailable": "No deals available",
+  "checkBackLater": "Check back later for new offers.",
+  "off": "OFF",
+  "addToWishlist": "Add to wishlist",
+  "limitedTimeDeal": "Limited time deal",
+  "addToCart": "Add to Cart"
+},
+"electronics": {
+  "electronics": "Electronics",
+  "description": "Discover the latest electronics and technology",
+  "products": "Products",
+  "allElectronics": "All Electronics",
+  "smartphones": "Smartphones",
+  "laptops": "Laptops",
+  "tablets": "Tablets",
+  "noElectronicsFound": "No Electronics Found",
+  "noElectronicsAvailable": "There are no electronics products available.",
+  "addToWishlist": "Add to wishlist",
+  "addToCart": "Add to Cart"
+},
+
+"productDetails": {
+  "home": "Home",
+  "products": "Products",
+  "ratings": "ratings",
+  "price": "Price",
+  "taxIncluded": "All prices include applicable taxes.",
+  "aboutThisItem": "About this item",
+  "inStock": "In Stock",
+  "addToCart": "Add to Cart",
+  "buyNow": "Buy Now",
+  "subtotal": "Subtotal",
+  "youMayAlsoLike": "You may also like"
+},
+
+"faq": {
+  "frequentlyAskedQuestions": "Frequently Asked Questions",
+  "description": "Find answers to the most common questions.",
+  "howCanWeHelp": "How Can We Help?",
+
+  "howPlaceOrder": {
+    "question": "How can I place an order?",
+    "answer": "Choose the product you want, add it to your cart, then go to checkout and complete your order."
+  },
+
+  "deliveryTime": {
+    "question": "How long does delivery take?",
+    "answer": "Standard delivery usually takes 3–5 business days."
+  },
+
+  "freeShipping": {
+    "question": "Do you offer free shipping?",
+    "answer": "Yes. Orders over 200 EGP qualify for free shipping."
+  },
+
+  "returnOrder": {
+    "question": "Can I return my order?",
+    "answer": "Yes. You can request a return within 30 days as long as the product meets our return conditions."
+  },
+
+  "refund": {
+    "question": "How can I get a refund?",
+    "answer": "After your return is approved and the product is received, your refund will be processed."
+  },
+
+  "securePayment": {
+    "question": "Is online payment secure?",
+    "answer": "Yes. We use secure payment processing to protect your payment information."
+  },
+
+  "contactSupport": {
+    "question": "How can I contact customer support?",
+    "answer": "You can contact our support team through the Contact Us page."
+  }
+},
+
+"footer": {
+  "description": "Your one-stop online store for quality products, great prices, and an amazing shopping experience.",
+  "shop": "Shop",
+  "allProducts": "All Products",
+  "categories": "Categories",
+  "bestSellers": "Best Sellers",
+  "newArrivals": "New Arrivals",
+  "dealsOffers": "Deals & Offers",
+
+  "customerService": "Customer Service",
+  "contactUs": "Contact Us",
+  "shippingDelivery": "Shipping & Delivery",
+  "returnsRefunds": "Returns & Refunds",
+  "faq": "FAQ",
+  "privacyPolicy": "Privacy Policy",
+
+  "myAccount": "My Account",
   "login": "Login",
+  "createAccount": "Create Account",
+  "myOrders": "My Orders",
+  "shoppingCart": "Shopping Cart",
+  "wishlist": "Wishlist",
+
+  "securePayments": "Secure Payments",
+  "paymentProtected": "Your payment information is protected.",
+  "allRightsReserved": "All rights reserved.",
+  "privacy": "Privacy",
+  "terms": "Terms",
+  "cookies": "Cookies"
+},
+
+"fashion": {
+  "allFashion": "All Fashion",
+  "mensShirts": "Men's Shirts",
+  "mensShoes": "Men's Shoes",
+  "mensWatches": "Men's Watches",
+  "womensDresses": "Women's Dresses",
+  "womensShoes": "Women's Shoes",
+  "womensWatches": "Women's Watches",
+  "womensBags": "Women's Bags",
+  "tops": "Tops",
+  "sunglasses": "Sunglasses",
+  "noFashionProductsFound": "No Fashion Products Found",
+  "noFashionProductsAvailable": "There are no fashion products available in this category.",
+  "addToCart": "Add to Cart"
+},
+
+"featured": {
+  "topPicks": "Top Picks For You",
+  "featured": "Featured",
+  "products": "Products",
+  "description": "Discover our handpicked selection of popular products at great prices.",
+  "viewAll": "View All",
+  "new": "New",
+  "addToWishlist": "Add to wishlist",
+  "addToCart": "Add to Cart"
+},
+
+"features": {
+  "fastFreeShipping": {
+    "title": "Fast & Free Shipping",
+    "description": "Free shipping on orders over 200 EGP"
+  },
+  "securePayment": {
+    "title": "Secure Payment",
+    "description": "100% secure and safe checkout"
+  },
+  "customerSupport": {
+    "title": "24/7 Customer Support",
+    "description": "We're always here to help you"
+  },
+  "easyReturns": {
+    "title": "Easy Returns",
+    "description": "30-day hassle-free returns"
+  }
+},
+"header": {
+  "deliverTo": "Deliver to",
+  "egypt": "Egypt",
+  "all": "All",
+  "electronics": "Electronics",
+  "fashion": "Fashion",
+  "beauty": "Beauty",
+  "sports": "Sports",
+  "searchPlaceholder": "Search for products, brands and more...",
+  "hello": "Hello",
+  "signIn": "Sign in",
+  "account": "Account",
+  "welcome": "Welcome!",
+  "wishlist": "Wishlist",
+  "myAccount": "My Account",
+  "myOrders": "My Orders",
+  "settings": "Settings",
+  "logout": "Logout",
+  "welcomeBack": "Welcome Back!",
+  "signInAccess": "Sign in to access your account",
+  "newCustomer": "New customer?",
+  "createAccount": "Create an account",
+  "language": "Language",
+  "cart": "Cart",
+  "home": "Home",
+  "todaysDeals": "Today's Deals",
+  "bestSellers": "Best Sellers",
+  "homeKitchen": "Home & Kitchen",
+  "newArrivals": "New Arrivals"
+},
+
+"homeKitchen": {
+  "title": "Home & Kitchen",
+  "description": "Everything you need for your home",
+  "products": "Products",
+  "allHomeKitchen": "All Home & Kitchen",
+  "homeDecoration": "Home Decoration",
+  "kitchenAccessories": "Kitchen Accessories",
+  "groceries": "Groceries",
+  "noProductsFound": "No Home & Kitchen Products Found",
+  "noProductsAvailable": "There are no products available.",
+  "off": "OFF",
+  "limitedTimeDeal": "Limited time deal",
+  "addToCart": "Add to Cart",
+  "pleaseLoginFirst": "Please login first",
+  "productAddedToCart": "Product added to cart!",
+  "productAddedToWishlist": "Product added to wishlist!",
+  "somethingWentWrong": "Something went wrong"
+},
+
+"newArrivals": {
+  "justAdded": "Just Added",
+  "new": "New",
+  "arrivals": "Arrivals",
+  "description": "Check out the latest products just added to our store.",
+  "viewAll": "View All",
+  "addToWishlist": "Add to wishlist",
+  "addToCart": "Add to Cart",
+  "pleaseLoginFirst": "Please login first",
+  "productAddedToCart": "Product added to cart!",
+  "productAddedToWishlist": "Product added to wishlist!",
+  "somethingWentWrong": "Something went wrong"
+},
+"newsletter": {
+  "stayUpdated": "Stay Updated",
+  "latestDeals": "Get the latest deals & offers",
+  "description": "Subscribe to our newsletter and be the first to know about new products and exclusive deals.",
+  "emailPlaceholder": "Enter your email address",
+  "subscribe": "Subscribe"
+},
+"orders": {
+  "loadingOrders": "Loading orders...",
+  "somethingWentWrong": "Something went wrong",
+  "myOrders": "My Orders",
+  "trackAndManage": "Track and manage your orders",
+  "continueShopping": "Continue Shopping",
+  "noOrdersYet": "No orders yet",
+  "noOrdersDescription": "You haven't placed any orders yet.",
+  "startShopping": "Start Shopping",
+  "orderId": "Order ID",
+  "orderDate": "Order Date",
+  "total": "Total",
+  "pending": "Pending",
+  "quantity": "Quantity",
+  "deliveredSuccessfully": "Delivered successfully",
+  "orderOnTheWay": "Your order is on the way",
+  "viewOrderDetails": "View Order Details"
+},
+"pagination": {
+  "productAddedToCart": "Product added to cart!",
+  "addToCart": "Add To Cart",
+  "prev": "Prev",
+  "next": "Next"
+},
+"productDetail": {
+  "home": "Home",
+  "products": "Products",
+  "ratings": "ratings",
+  "price": "Price",
+  "taxIncluded": "All prices include applicable taxes.",
+  "aboutThisItem": "About this item",
+  "inStock": "In Stock",
+  "addToCart": "Add to Cart",
+  "buyNow": "Buy Now",
+  "subtotal": "Subtotal",
+  "youMayAlsoLike": "You may also like",
+  "productNotFound": "Product not found",
+  "backToProducts": "Back to Products",
+  "pleaseLoginFirst": "Please login first",
+  "productAddedToCart": "Product added to cart!",
+  "somethingWentWrong": "Something went wrong",
+  "defaultDescription": "High quality product with excellent performance and great value."
+},
+
+"product": {
+  "inStock": "IN STOCK",
+  "addToCart": "Add to Cart",
+  "productAddedToCart": "Product added to cart!"
+},
+"productsShopNow": {
+  "shopOurProducts": "Shop Our Products",
+  "description": "Find the products you love at amazing prices.",
+  "addToCart": "Add to Cart",
+  "pleaseLoginFirst": "Please login first",
+  "productAddedToCart": "Product added to cart!",
+  "productAddedToWishlist": "Product added to wishlist!",
+  "somethingWentWrong": "Something went wrong"
+},
+"profile": {
+  "myProfile": "My Profile",
+  "managePersonalInformation": "Manage your personal information",
+  "profile": "Profile",
+  "cancel": "Cancel",
+  "editProfile": "Edit Profile",
+  "personalInformation": "Personal Information",
+  "basicAccountInformation": "Your basic account information",
+  "fullName": "Full Name",
+  "emailAddress": "Email Address",
+  "phoneNumber": "Phone Number",
+  "notAdded": "Not added",
+  "address": "Address",
+  "memberSince": "Member Since",
+  "september2026": "September 2026",
+  "saveChanges": "Save Changes"
+},
+"resetPassword": {
+  "title": "Reset Password",
+  "description": "Create a new password for your account.",
+  "passwordRequired": "Passwords and confirmPassword is required",
+  "passwordsDoNotMatch": "Passwords do not match",
+  "newPassword": "New Password",
+  "confirmPassword": "Confirm Password",
+  "changePassword": "Change Password",
+  "somethingWentWrong": "Something went wrong"
+},
+"returnsRefunds": {
+  "title": "Returns & Refunds",
+  "description": "Easy returns and a simple refund process.",
+  "ourReturnPolicy": "Our Return Policy",
+  "policyDescription": "We want you to be completely satisfied with your purchase. If you are not happy with your product, you can request a return within 30 days.",
+  "requestReturn": "Request a Return",
+  "requestReturnText": "Contact us and tell us why you want to return your product.",
+  "productInspection": "Product Inspection",
+  "productInspectionText": "We will check the product to make sure it meets our return conditions.",
+  "getRefund": "Get Your Refund",
+  "getRefundText": "Once your return is approved, your refund will be processed.",
+  "returnConditions": "Return Conditions",
+  "condition1": "Product must be returned within 30 days.",
+  "condition2": "Product must be unused and in good condition.",
+  "condition3": "Original packaging should be available.",
+  "condition4": "Proof of purchase may be required.",
+  "condition5": "Refund processing may take several business days."
+},
+
+"settings": {
+  "account": "Account",
+  "managePersonalInformation": "Manage your personal information",
+  "fullName": "Full Name",
+  "enterYourName": "Enter your name",
+  "emailAddress": "Email Address",
+  "enterYourEmail": "Enter your email",
+  "saving": "Saving...",
+  "saveChanges": "Save Changes",
+  "profileUpdatedSuccessfully": "Profile updated successfully",
+
+  "security": "Security",
+  "keepAccountSecure": "Keep your account secure",
+  "currentPassword": "Current Password",
+  "newPassword": "New Password",
+  "confirmPassword": "Confirm Password",
+  "changePassword": "Change Password",
+  "passwordChangedSuccessfully": "Password changed successfully",
+
+  "language": "Language",
+  "choosePreferredLanguage": "Choose your preferred language",
+  "selectYourLanguage": "Select your language",
+
+  "notifications": "Notifications",
+  "controlNotificationPreferences": "Control your notification preferences",
+  "pushNotifications": "Push Notifications",
+  "receiveOrderNotifications": "Receive notifications about your orders",
+
+  "appearance": "Appearance",
+  "customizeAppearance": "Customize the appearance of the website",
+  "darkMode": "Dark Mode",
+  "useDarkTheme": "Use dark theme",
+
+  "deleteAccount": "Delete Account",
+  "permanentlyDeleteAccount": "Permanently delete your account",
+  "deleteAccountQuestion": "Delete Account?",
+  "deleteAccountWarning": "Are you sure you want to delete your account? This action cannot be undone.",
+  "cancel": "Cancel"
+},
+
+"shippingDelivery": {
+  "title": "Shipping & Delivery",
+  "description": "Fast, safe and reliable delivery to your doorstep.",
+  "shippingOptions": "Shipping Options",
+
+  "standardShipping": "Standard Shipping",
+  "standardShippingText": "Delivery within 3–5 business days.",
+
+  "freeShipping": "Free Shipping",
+  "freeShippingText": "Free shipping on orders over 200 EGP.",
+
+  "expressShipping": "Express Shipping",
+  "expressShippingText": "Get your order within 1–2 business days.",
+
+  "orderProcessing": "Order Processing",
+  "orderProcessingText": "Orders are usually processed within 24 hours after payment confirmation.",
+
+  "deliveryAreas": "Delivery Areas",
+  "deliveryAreasText": "We deliver orders across Egypt to your provided shipping address.",
+
+  "trackYourOrder": "Track Your Order",
+  "trackYourOrderText": "You can track your order using the tracking information sent to your email."
+},
+
+"hero": {
+  "newCollection": "New Collection 2026",
+  "discoverProducts": "Discover Products",
+  "youll": "You'll",
+  "love": "Love",
+  "description": "Shop the latest products from your favorite brands with amazing prices and fast delivery.",
+  "shopNow": "Shop Now",
+  "viewWishlist": "View Wishlist",
+  "products": "Products",
+  "customers": "Customers",
+  "rating": "Rating",
+  "specialOffers": "Special Offers",
+  "freeShipping": "Free Shipping",
+  "onOrdersOver50": "On orders over $50",
+  "everythingYouNeed": "Everything you need,",
+  "allInOnePlace": "all in one place.",
+  "fastDelivery": "Fast Delivery",
+  "quickReliableDelivery": "Quick and reliable delivery",
+  "securePayment": "Secure Payment",
+  "secureCheckout": "100% secure checkout",
+  "support247": "24/7 Support",
+  "alwaysHereToHelp": "We're always here to help",
+  "bestPrices": "Best Prices",
+  "greatDealsEveryDay": "Great deals every day"
+},
+
+"wishlist": {
+  "myWishlist": "My Wishlist",
+  "description": "Save your favorite products and shop them anytime.",
+  "items": "Items",
+  "emptyTitle": "Your Wishlist is Empty",
+  "emptyDescription": "You haven't added any products to your wishlist yet.",
+  "startShopping": "Start Shopping",
+  "summary": "Wishlist Summary",
+  "continueShopping": "Continue Shopping",
+  "addToCart": "Add to Cart",
+  "removeFromWishlist": "Remove from wishlist",
+  "productNotFound": "Product not found",
+  "productRemovedFromWishlist": "Product removed from wishlist!",
+  "failedToRemoveProduct": "Failed to remove product",
+  "productAddedToCart": "Product added to cart!",
+  "failedToAddProduct": "Failed to add product to cart"
+},
+"forgotPassword": {
+  "title": "Forgot Password",
+  "description": "Enter your email address and we'll send you a password reset link.",
+  "emailPlaceholder": "Enter your email",
+  "sendResetLink": "Send Reset Link"
+},
+
+"cart": {
+  "shoppingBag": "Shopping Bag",
+  "your": "Your",
+  "cart": "Cart",
+  "reviewItems": "Review your items before completing your order.",
+  "shoppingCart": "Shopping Cart",
+  "items": "Items",
+  "emptyTitle": "Your Cart is Empty",
+  "emptyDescription": "You haven't added any products to your cart yet.",
+  "startShopping": "Start Shopping",
+  "remove": "Remove",
+  "continueShopping": "Continue Shopping",
+  "orderSummary": "Order Summary",
+  "subtotal": "Subtotal",
+  "shipping": "Shipping",
+  "free": "FREE",
+  "total": "Total",
+  "proceedToCheckout": "Proceed to Checkout",
+  "secureCheckout": "Secure and encrypted checkout",
+  "qualifyFreeShipping": "You qualify for FREE shipping!",
+  "addMoreForFreeShipping": "Add ${{amount}} more for FREE shipping.",
+  "productRemovedFromCart": "Product removed from cart!",
+  "failedToRemoveProduct": "Failed to remove product",
+  "somethingWentWrong": "Something went wrong"
+},
+ 
+"checkout": {
+  "secureCheckout": "Secure Checkout",
+  "deliveryAddress": "Delivery Address",
+  "deliveryDescription": "Where should we deliver your order?",
+  "firstName": "First Name",
+  "firstNamePlaceholder": "First name",
+  "lastName": "Last Name",
+  "lastNamePlaceholder": "Last name",
+  "emailAddress": "Email Address",
+  "phoneNumber": "Phone Number",
+  "country": "Country",
+  "governorate": "Governorate",
+  "selectGovernorate": "Select Governorate",
+  "city": "City",
+  "cityPlaceholder": "City",
+  "fullAddress": "Full Address",
+  "addressPlaceholder": "Street name, building number, apartment...",
+  "paymentMethod": "Payment Method",
+  "paymentDescription": "Choose how you want to pay.",
+  "cashOnDelivery": "Cash on Delivery",
+  "payWhenArrives": "Pay when your order arrives",
+  "creditDebitCard": "Credit / Debit Card",
+  "visaMastercard": "Visa, Mastercard and more",
+  "mobileWallet": "Mobile Wallet",
+  "payUsingWallet": "Pay using your mobile wallet",
+  "reviewYourItems": "Review Your Items",
+  "reviewDescription": "Check your products before placing your order.",
+  "inStock": "In Stock",
+  "orderSummary": "Order Summary",
+  "items": "Items",
+  "shipping": "Shipping",
+  "free": "FREE",
+  "orderTotal": "Order Total",
+  "processing": "Processing...",
+  "placeYourOrder": "Place Your Order",
+  "protection": "Your payment and personal information are protected.",
+  "backToCart": "Back to Cart",
+  "pleaseLoginFirst": "Please login first",
+  "choosePaymentMethod": "Please choose a payment method.",
+  "cartEmpty": "Your cart is empty.",
+  "loginBeforeOrder": "Please login before placing your order.",
+  "somethingWentWrong": "Something went wrong",
+  "egp": "EGP",
+  "countries": {
+    "egypt": "Egypt",
+    "saudiArabia": "Saudi Arabia",
+    "unitedArabEmirates": "United Arab Emirates"
+  },
+  "governorates": {
+    "cairo": "Cairo",
+    "giza": "Giza",
+    "alexandria": "Alexandria",
+    "sharqia": "Sharqia",
+    "dakahlia": "Dakahlia"
+  }
+},
+
   "Due to current circumstances, there may be slight delays in order processing": "Due to current circumstances, there may be slight delays in order processing",
-  "Sell On Jumia": "Sell On Jumia",
-    "Jumia": "Jumia",
   "My Orders": "My Orders",
     "Login": "Login",
   "SinUp": "Sign Up",
@@ -73,7 +713,6 @@
   "Terms and Conditions": "Terms and Conditions",
   "Cookie": "Cookie",
 
-  "checkout": "Checkout",
   "Continue Shopping": "Continue Shopping",
   "Total Price": "Total Price",
   "Remove" : "Remove",

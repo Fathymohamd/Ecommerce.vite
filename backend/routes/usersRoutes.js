@@ -10,9 +10,9 @@ router.get("/", async (req, res) => {
      data
     });
 
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: err.message });
+  } catch (error) {
+   
+    res.status(500).json({ message: error.message });
   }
 });
 

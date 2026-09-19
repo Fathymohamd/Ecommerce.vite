@@ -1,66 +1,191 @@
-import React from 'react'
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import {Link } from "react-router-dom"
+
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa6";
+import {useDispatch} from "react-redux"
+import {setUser} from "../../Redux/authSlice"
 import { useTranslation } from "react-i18next";
-function Login() {
-  const {t} = useTranslation()
-  const navigate = useNavigate()
-   const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-const handleLogin = async (e) => {
-  e.preventDefault();
-
-  const res = await fetch("https://ecommerce-vite-9iwf.vercel.app/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-     credentials: "include",
-    body: JSON.stringify({
-      email,
-      password,
-    }),
+const Login = () => {
+  const navigate = useNavigate();
+const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
   });
+const { t , i18n} = useTranslation();
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  const data = await res.json();
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
-  if (!res.ok) {
-    setError(data.message);
-    return;
-  }else {
-    setEmail("")
-    setPassword("")
-setTimeout(()=>{
-    navigate("/");
-} , 3000)
-  }
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
-};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setError("");
+    setSuccess("");
+
+    if (!formData.email || !formData.password) {
+      setError("Please enter email and password");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const response = await fetch(
+        "http://localhost:8080/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+      
+          credentials: "include",
+
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.message || "Invalid email or password");
+        return;
+      }else {
+  setFormData ({
+   email: "",
+    password: "",
+  })
+    setSuccess("Login successful!");
+console.log("DATA:", data);
+console.log("USER:", data.user);
+   dispatch(setUser(data.user));
+
+setTimeout(() => {
+  navigate("/");
+}, 3000);
+      }
+
+    
+    } catch (error) {
+      console.error(error);
+      setError("Unable to connect to server");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div>
-  <form className='form' onSubmit={handleLogin}>
-  {error && <p className='error'>{error}</p>}
-    <label className='email'>{t("Email")} :</label>
-  <input type='email' value={email}  placeholder={t("Email")}  onChange={(e) => setEmail(e.target.value)} name='email'/>
-  <label className='password'>{t("Password")} </label>
-  <input type="password" value={password}  placeholder={t("Password")} onChange={(e) => setPassword(e.target.value)} name='password' />
-
-<div className="login-actions">
-  <button type="submit" className="form_Sumbut">
-     {t("Login")}
-  </button>
-<Link to="/forgotPassword" className='link'><p className="forgot-password">
-    {t("Forgot Password?")}
-  </p></Link>
- 
-</div>
-  </form>
+ <div  className={"login-page"}>
+  <div className="login-card">
+    <div className="login-header">
+      <h1>{t("login.welcomeBack")}</h1>
+      <p>{t("login.loginToAccount")}</p>
     </div>
-  )
-}
 
-export default Login
+    <form onSubmit={handleSubmit}>
+      {/* Email */}
+      <div className="form-group">
+        <label htmlFor="email">{t("login.email")}</label>
 
+        <div className="input-wrapper">
+          <FaEnvelope />
 
+          <input
+            id="email"
+            type="text"
+            name="email"
+            placeholder={t("login.enterYourEmail")}
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
+
+      {/* Password */}
+      <div className="form-group">
+        <label htmlFor="password">{t("login.password")}</label>
+
+        <div className="input-wrapper">
+          <FaLock />
+
+          <input
+            id="password"
+            type={showPassword ? "text" : "password"}
+            name="password"
+            placeholder={t("login.enterYourPassword")}
+            value={formData.password}
+            onChange={handleChange}
+          />
+
+      <button
+  type="button"
+  className={`password-toggle ${
+    i18n.language === "ar" ? "rtl" : "ltr"
+  }`}
+  onClick={() => setShowPassword(!showPassword)}
+>
+  {showPassword ? <FaEyeSlash /> : <FaEye />}
+</button>
+        </div>
+      </div>
+
+      {/* Forgot Password */}
+      <div className="forgot-password">
+        <Link to="/forgotPassword">
+          {t("login.forgotPassword")}
+        </Link>
+      </div>
+
+      {/* Error */}
+      {error && (
+        <div className="error-message">
+          {error}
+        </div>
+      )}
+
+      {/* Success */}
+      {success && (
+        <div className="success-message">
+          {success}
+        </div>
+      )}
+
+      {/* Login Button */}
+      <button
+        type="submit"
+        className="login-btn"
+        disabled={loading}
+      >
+        {loading
+          ? t("login.loggingIn")
+          : t("login.login")}
+      </button>
+    </form>
+
+    <div className="register-link">
+      <span>{t("login.dontHaveAccount")}</span>
+
+      <Link to="/register">
+        {t("login.createAccount")}
+      </Link>
+    </div>
+  </div>
+</div>
+  );
+};
+
+export default Login;

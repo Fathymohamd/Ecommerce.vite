@@ -1,88 +1,149 @@
 import React, { useState } from "react";
-import { useParams  , useNavigate} from "react-router-dom";
 
+import { useParams, useNavigate } from "react-router-dom";
+
+import { useTranslation } from "react-i18next";
 
 function ResetPassword() {
+
   const { token } = useParams();
-  const navigate = useNavigate()
+
+  const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const [password, setPassword] = useState("");
+
   const [confirmPassword, setConfirmPassword] = useState("");
+
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
-     if(password ==  "" && confirmPassword == "") {
-        setMessage("Passwords and  confirmPassword is required");
+
+    if (password == "" && confirmPassword == "") {
+
+      setMessage(
+        t("resetPassword.passwordRequired")
+      );
+
       return;
-     }
+    }
+
     if (password !== confirmPassword) {
-      setMessage("Passwords do not match");
+
+      setMessage(
+        t("resetPassword.passwordsDoNotMatch")
+      );
+
       return;
     }
 
     try {
+
       const res = await fetch(
         `http://localhost:5000/api/reset-password/${token}`,
         {
           method: "POST",
+
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ password , token}),
+
+          body: JSON.stringify({
+            password,
+            token,
+          }),
         }
       );
 
       const data = await res.json();
 
       if (!res.ok) {
+
         setMessage(data.message);
+
         return;
-      }else {
+
+      } else {
+
         setMessage(data.message);
-        setPassword("")
-        setConfirmPassword("")
-      
-        setTimeout(()=>{
-          navigate("/Login")
-        } , 3000)
+
+        setPassword("");
+
+        setConfirmPassword("");
+
+        setTimeout(() => {
+
+          navigate("/Login");
+
+        }, 3000);
+
       }
+
     } catch (error) {
-      setMessage("Something went wrong");
+
+      setMessage(
+        t("resetPassword.somethingWentWrong")
+      );
+
     }
+
   };
 
   return (
+
     <div className="reset-container">
+
       <div className="reset-card">
-        <h2>Reset Password</h2>
 
-        <p>Create a new password for your account.</p>
+        <h2>
+          {t("resetPassword.title")}
+        </h2>
 
-        {message && <p className="message">{message}</p>}
+        <p>
+          {t("resetPassword.description")}
+        </p>
+
+        {message && (
+          <p className="message">
+            {message}
+          </p>
+        )}
 
         <form onSubmit={handleSubmit}>
+
           <input
             type="password"
-            placeholder="New Password"
+            placeholder={t("resetPassword.newPassword")}
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) =>
+              setPassword(e.target.value)
+            }
           />
 
           <input
             type="password"
-            placeholder="Confirm Password"
+            placeholder={t("resetPassword.confirmPassword")}
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={(e) =>
+              setConfirmPassword(e.target.value)
+            }
           />
 
           <button type="submit">
-            Change Password
+            {t("resetPassword.changePassword")}
           </button>
+
         </form>
+
       </div>
+
     </div>
+
   );
+
 }
 
 export default ResetPassword;

@@ -197,3 +197,92 @@
     font-size: 15px;
   }
 }
+
+/* ================= FAILED PAYMENT DARK MODE ================= */
+
+.app.dark-mode .failed-container {
+  background: #121212;
+}
+
+.app.dark-mode .failed-card {
+  background: #1e1e1e;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+}
+
+.app.dark-mode .failed-icon {
+  background: #dc2626;
+  color: #fff;
+}
+
+.app.dark-mode .failed-card h1 {
+  color: #fff;
+}
+
+.app.dark-mode .failed-card p {
+  color: #999;
+}
+
+.app.dark-mode .failed-buttons {
+  color: #fff;
+}
+
+.app.dark-mode .failed-buttons button {
+  background: #dc2626;
+  color: #fff;
+}
+
+.app.dark-mode .failed-buttons button:hover {
+  background: #b91c1c;
+}
+
+/* ================= LAPTOP ================= */
+
+@media (max-width: 1200px) {
+  .app.dark-mode .failed-card {
+    background: #1e1e1e;
+  }
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 768px) {
+  .app.dark-mode .failed-container {
+    background: #121212;
+  }
+
+  .app.dark-mode .failed-card {
+    background: #1e1e1e;
+  }
+
+  .app.dark-mode .failed-card h1 {
+    color: #fff;
+  }
+
+  .app.dark-mode .failed-card p {
+    color: #999;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 576px) {
+  .app.dark-mode .failed-container {
+    background: #121212;
+  }
+
+  .app.dark-mode .failed-card {
+    background: #1e1e1e;
+  }
+
+  .app.dark-mode .failed-icon {
+    background: #dc2626;
+  }
+
+  .app.dark-mode .failed-card h1 {
+    color: #fff;
+  }
+
+  .app.dark-mode .failed-card p {
+    color: #999;
+  }
+}

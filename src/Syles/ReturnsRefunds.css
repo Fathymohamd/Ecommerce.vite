@@ -1,0 +1,265 @@
+
+.returns-page {
+  min-height: 100vh;
+  background: #f7f8fa;
+  padding-bottom: 60px;
+}
+
+.returns-hero {
+background: linear-gradient(135deg, #ff9900, #e68a00);
+  color: #fff;
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.returns-hero svg {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.returns-hero h1 {
+  font-size: 38px;
+  margin: 0 0 12px;
+}
+
+.returns-hero p {
+  margin: 0;
+  font-size: 17px;
+  opacity: 0.9;
+}
+
+.returns-container {
+  width: min(1100px, 92%);
+  margin: 50px auto 0;
+}
+
+.returns-intro {
+  background: #fff;
+  padding: 35px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.returns-intro h2 {
+  margin-top: 0;
+  color: #1f2937;
+  font-size: 28px;
+}
+
+.returns-intro p {
+  color: #6b7280;
+  line-height: 1.8;
+  max-width: 750px;
+  margin: auto;
+}
+
+.return-cards {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.return-card {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+  transition: 0.3s ease;
+}
+
+.return-card:hover {
+  transform: translateY(-7px);
+}
+
+.return-icon {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: #f0fdf4;
+   color: #ff9900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 27px;
+}
+
+.return-card h3 {
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.return-card p {
+  color: #6b7280;
+  line-height: 1.7;
+}
+
+.return-conditions {
+  background: #fff;
+  margin-top: 30px;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.return-conditions h2 {
+  color: #1f2937;
+  margin-top: 0;
+}
+
+.return-conditions ul {
+  padding-left: 22px;
+  margin-bottom: 0;
+}
+
+.return-conditions li {
+  color: #6b7280;
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 900px) {
+  .return-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .returns-hero {
+    padding: 50px 15px;
+  }
+
+  .returns-hero h1 {
+    font-size: 28px;
+  }
+
+  .return-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .returns-intro,
+  .return-conditions {
+    padding: 25px 20px;
+  }
+}
+
+/* ================= RETURNS PAGE DARK MODE ================= */
+
+.app.dark-mode .returns-page {
+  background: #121212;
+}
+
+/* Hero */
+
+.app.dark-mode .returns-hero {
+  background: linear-gradient(135deg, #d88e03, #a96800);
+  color: #fff;
+}
+
+.app.dark-mode .returns-hero svg {
+  color: #fff;
+}
+
+.app.dark-mode .returns-hero h1 {
+  color: #fff;
+}
+
+.app.dark-mode .returns-hero p {
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* Intro */
+
+.app.dark-mode .returns-intro {
+  background: #1e1e1e;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+}
+
+.app.dark-mode .returns-intro h2 {
+  color: #fff;
+}
+
+.app.dark-mode .returns-intro p {
+  color: #999;
+}
+
+/* Return Cards */
+
+.app.dark-mode .return-card {
+  background: #1e1e1e;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+}
+
+.app.dark-mode .return-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+}
+
+.app.dark-mode .return-icon {
+  background: #2a2115;
+  color: #ff9900;
+}
+
+.app.dark-mode .return-card h3 {
+  color: #fff;
+}
+
+.app.dark-mode .return-card p {
+  color: #999;
+}
+
+/* Conditions */
+
+.app.dark-mode .return-conditions {
+  background: #1e1e1e;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+}
+
+.app.dark-mode .return-conditions h2 {
+  color: #fff;
+}
+
+.app.dark-mode .return-conditions li {
+  color: #999;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 900px) {
+  .app.dark-mode .return-card {
+    background: #1e1e1e;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+  .app.dark-mode .returns-page {
+    background: #121212;
+  }
+
+  .app.dark-mode .returns-hero {
+    background: linear-gradient(135deg, #d88e03, #a96800);
+  }
+
+  .app.dark-mode .returns-intro,
+  .app.dark-mode .return-conditions {
+    background: #1e1e1e;
+  }
+
+  .app.dark-mode .return-card {
+    background: #1e1e1e;
+  }
+
+  .app.dark-mode .return-icon {
+    background: #2a2115;
+  }
+}

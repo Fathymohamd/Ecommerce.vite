@@ -1,19 +1,23 @@
 import React from 'react'
-import MySlider from "../eCommerce/MySlider";
-import Products from './Products';
-import Imgas from './Imgas';
 import SwiperData from '../eCommerce/SwiperData';
-import CheckImgs from './CheckImgs';
-
-
+import Features from "../eCommerce/Features";
+import Categories from "../eCommerce/Categories";
+import FeaturedProducts from "../eCommerce/FeaturedProducts";
+import BigDeals from "../eCommerce/BigDeals";
+import BestSellers from "../eCommerce/BestSellers";
+import NewArrivals from "../eCommerce/NewArrivals";
+import Newsletter from "../eCommerce/Newsletter";
 function Home() {
   return (
     <div>
   <SwiperData/>
- <MySlider/>
- <Imgas/>
-<Products/>
-<CheckImgs/>
+  <Features/>
+  <Categories/>
+ <FeaturedProducts/>
+ <BigDeals/>
+<BestSellers/>
+<NewArrivals/>
+<Newsletter/>
     </div>
   )
 }

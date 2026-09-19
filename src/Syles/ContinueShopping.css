@@ -77,3 +77,49 @@
     width: 90%;
   }
 }
+
+/* ================= PRODUCTS DARK MODE ================= */
+
+.app.dark-mode .continus {
+  background: #121212;
+}
+
+.app.dark-mode .product_Fathy,
+.app.dark-mode .fakestoreap {
+  background: #121212;
+}
+
+.app.dark-mode .fakestoreap_Data {
+  color: #fff;
+}
+
+/* لو الـpagination موجودة */
+.app.dark-mode .pagination {
+  color: #fff;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .app.dark-mode .continus {
+    background: #121212;
+  }
+
+  .app.dark-mode .product_Fathy,
+  .app.dark-mode .fakestoreap {
+    background: #121212;
+  }
+}
+
+/* ================= TABLET / LAPTOP ================= */
+
+@media (max-width: 1200px) {
+  .app.dark-mode .continus {
+    background: #121212;
+  }
+
+  .app.dark-mode .product_Fathy,
+  .app.dark-mode .fakestoreap {
+    background: #121212;
+  }
+}

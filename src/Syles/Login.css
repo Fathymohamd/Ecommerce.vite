@@ -1,361 +1,308 @@
-*{
- padding: 0;
- margin: 0;
- box-sizing: border-box;
-}
-.error {
-     width: 30%;
-   margin: 4px auto;
-   text-align: center;
-   background-color: rgb(204, 43, 43);
-   padding: 4px;
-   border-radius: 3px;
-   -webkit-border-radius: 3px;
-   -moz-border-radius: 3px;
-   -ms-border-radius: 3px;
-   -o-border-radius: 3px;
-   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-   color: #fff;
+.login-page {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background: #f8fafc;
 }
 
-html[dir="rtl"] .Fris_Name{
- margin-right: -35rem;
-}
-html[dir="rtl"] .email {
- margin-right: -34rem;
-}
-html[dir="rtl"] .password {
- margin-right: -35rem;
-}
-.form {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
-   width:  60%;
-   margin: 1rem auto;
-   box-shadow: 1px 0  10px rgba(0, 170, 231, 0.8);
-   margin-top: 2rem;
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  padding: 35px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-.form  input , .form  input{
-    margin-top: 1rem;
-    padding: 6px;
-    border: none;
-    outline: none;
-    border: 1px solid #00ccff;
-    width: 70%;
-    margin: auto;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
-    font-size: 15px;
-    font-weight: 600;
-}
-.form  input:focus , .form  input:focus {
-    border: 1px solid #111;
-}
-.supabase , .supabase_And{
-   border-radius: 5px;
-   -webkit-border-radius: 5px;
-   -moz-border-radius: 5px;
-   -ms-border-radius: 5px;
-   -o-border-radius: 5px;
-   width: 50%;
-   margin: 1rem auto;
-   text-align: center;
-   font-size: 20px;
-   font-weight: 600;
-}
-.supabase {
-background-color: #111;
-   padding: 5px;
-      color: #fff;
-}
-.supabase_And {
-   color: red;
-   background-color: #f4e7e7e1;
-   padding: 5px;
-}
-.add {
-   display: none;
-}
-.form_Sumbut {
-     width: 20%;
-     margin: auto;
-     background-color: #00ccff;
-     text-align: center;
-     padding: 5px;
-     margin: 1rem;
-     border-radius: 5px;
-     -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-     -ms-border-radius: 5px;
-     -o-border-radius: 5px;
-     font-size: 20px;
-     font-weight: 600;
-     cursor: pointer;
-     transition: 0.3s;
-     -webkit-transition: 0.3s;
-     -moz-transition: 0.3s;
-     -ms-transition: 0.3s;
-     -o-transition: 0.3s;
-     padding: 10px;
-     border: none;
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.form_Sumbut:hover {
- opacity: 0.7;
- transition: 0.3s;
- -webkit-transition: 0.3s;
- -moz-transition: 0.3s;
- -ms-transition: 0.3s;
- -o-transition: 0.3s;
+.login-header h1 {
+  margin: 0 0 8px;
+  color: #111827;
+  font-size: 30px;
 }
 
-.email  , .password , .password_Forget , .Fris_Name {
-   font-size: 18px;
-   font-weight: 700;
-   margin: 7px 0;
-}
- .password  {
- margin-right: 35rem;
-}
-.email  {
- margin-right: 37rem;   
-}
-.Fris_Name {
- margin-right: 34.3rem; 
-}
-.password_Forget {
-margin-right: 31rem;
-}
-.login-actions{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-top:20px;
+.login-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
 }
 
-.form_Sumbut{
-    width:160px;
-    padding:12px;
-    border:none;
-    border-radius:8px;
-    background:#0077ff;
-    color:#fff;
-    font-size:16px;
-    cursor:pointer;
-    transition:.3s;
+.form-group {
+  margin-bottom: 20px;
 }
 
-.form_Sumbut:hover{
-    background:#005fd1;
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.forgot-password{
-    color:#0077ff;
-    font-size:15px;
-    font-weight:500;
-    cursor:pointer;
-    transition:.3s;
+.input-wrapper {
+  position: relative;
+  width: 100%;
 }
 
-.forgot-password:hover{
-    color:#0056b3;
-    text-decoration:underline;
+.input-wrapper > svg {
+  position: absolute;
+  left: 3px !important;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  pointer-events: none;
 }
 
+.input-wrapper input {
+  width: 100%;
+  height: 45px;
+  box-sizing: border-box;
 
+  padding-left: 45px;
+  padding-right: 45px;
+}
 
-@media(max-width: 768px) {
+.input-wrapper input::placeholder {
+  padding-left: 6px;
+}
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.password-toggle:hover {
+  color: #2563eb;
+}
+
 .forgot-password {
-margin-left: 10px;
-width: 100%;
-}
-.login-actions{
-    display:grid;
-}
-.error {
-     width: 95%;
-   margin: 10px auto;
-   text-align: center;
-   background-color: rgb(204, 43, 43);
-   padding: 4px;
-   border-radius: 3px;
-   -webkit-border-radius: 3px;
-   -moz-border-radius: 3px;
-   -ms-border-radius: 3px;
-   -o-border-radius: 3px;
-   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-   color: #fff;
- 
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -8px;
+  margin-bottom: 20px;
 }
 
-   
-.form {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
-   width: 90%;
-   margin: 1rem auto;
-   margin-top: 2rem;
-}
-.form  input , .form  input{
-    padding: 6px;
-    border: none;
-    outline: none;
-    border: 1px solid #00ccff;
-    width: 70%;
-    margin: auto;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
-}
-.email  , .password , .password_Forget {
-   font-size: 18px;
-   font-weight: 700;
-   margin: 5px 0;
-}
- .password  {
- margin-right: 11rem;
-}
-.email  {
- margin-right: 13rem;   
-}
-.password_Forget {
-margin-right: 8rem;
+.forgot-password a {
+  color: #2563eb;
+  font-size: 14px;
+  text-decoration: none;
 }
 
-.form_Sumbut {
-     width: 70%;
-     margin: auto;
-     background-color: #00ccff;
-     text-align: center;
-     padding: 5px;
-     margin: 1rem;
-     border-radius: 5px;
-     -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-     -ms-border-radius: 5px;
-     -o-border-radius: 5px;
-     font-size: 20px;
-     font-weight: 600;
-     cursor: pointer;
-     transition: 0.3s;
-     -webkit-transition: 0.3s;
-     -moz-transition: 0.3s;
-     -ms-transition: 0.3s;
-     -o-transition: 0.3s;
-}
-.supabase_And {
-   color: red;
-   background-color: #f4e7e7e1;
-   padding: 5px;
-   width: 80%;
-   margin:1rem auto;
-}
+.forgot-password a:hover {
+  text-decoration: underline;
 }
 
+.error-message {
+  margin-bottom: 18px;
+  padding: 12px;
+  border-radius: 7px;
+  background: #fef2f2;
+  color: #dc2626;
+  font-size: 14px;
+  text-align: center;
+}
 
-/* Laptop */
-@media (max-width: 1200px) {
-  .form {
-    width: 80%;
-    margin: 2rem auto;
+.success-message {
+  margin-bottom: 18px;
+  padding: 12px;
+  border-radius: 7px;
+  background: #f0fdf4;
+  color: #16a34a;
+  font-size: 14px;
+  text-align: center;
+}
+
+.login-btn {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.login-btn:hover {
+  background: #1d4ed8;
+}
+
+.login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.register-link {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 22px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.register-link a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+  .login-page {
+    padding: 25px 15px;
   }
 
-  .form input {
-    width: 75%;
+  .login-card {
+    padding: 25px 20px;
   }
-  .email,
-  .password,
-  .Fris_Name {
-    width: 75%;
-    margin: 10px auto 5px;
-    font-size: 18px;
-    font-weight: 700;
-    text-align: left;
-  }
-  .form_Sumbut {
-    width: 75%;
+
+  .login-header h1 {
+    font-size: 26px;
   }
 }
 
-/* Tablet */
-@media (max-width: 768px) {
-  .error {
-    width: 95%;
-    margin: 10px auto;
-    text-align: center;
-    background: rgb(204, 43, 43);
+/* ================= LOGIN DARK MODE ================= */
+
+.app.dark-mode .login-page {
+  background: #121212;
+}
+
+.app.dark-mode .login-card {
+  background: #1e1e1e;
+  border-color: #333;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.app.dark-mode .login-header h1 {
+  color: #fff;
+}
+
+.app.dark-mode .login-header p {
+  color: #999;
+}
+
+/* Form */
+
+.app.dark-mode .form-group label {
+  color: #ddd;
+}
+
+.app.dark-mode .input-wrapper > svg:first-child {
+  color: #888;
+}
+
+.app.dark-mode .input-wrapper input {
+  background: #242424;
+  color: #fff;
+  border-color: #444;
+}
+
+.app.dark-mode .input-wrapper input::placeholder {
+  color: #777;
+}
+
+.app.dark-mode .input-wrapper input:focus {
+  border-color: #ff9900;
+  box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.15);
+}
+
+/* Password */
+
+.app.dark-mode .password-toggle {
+  color: #999;
+}
+
+.app.dark-mode .password-toggle:hover {
+  color: #ff9900;
+}
+
+/* Forgot Password */
+
+.app.dark-mode .forgot-password a {
+  color: #ff9900;
+}
+
+.app.dark-mode .forgot-password a:hover {
+  color: #ffb84d;
+}
+
+/* Error */
+
+.app.dark-mode .error-message {
+  background: #351818;
+  color: #ff6b6b;
+}
+
+/* Success */
+
+.app.dark-mode .success-message {
+  background: #16351f;
+  color: #4ade80;
+}
+
+/* Login Button */
+
+.app.dark-mode .login-btn {
+  background: #ff9900;
+  color: #111;
+}
+
+.app.dark-mode .login-btn:hover {
+  background: #d88e03;
+}
+
+.app.dark-mode .login-btn:disabled {
+  opacity: 0.7;
+}
+
+/* Register */
+
+.app.dark-mode .register-link {
+  color: #999;
+}
+
+.app.dark-mode .register-link a {
+  color: #ff9900;
+}
+
+.app.dark-mode .register-link a:hover {
+  color: #ffb84d;
+}
+
+
+
+@media (max-width: 500px) {
+  .app.dark-mode .login-page {
+    background: #121212;
+  }
+
+  .app.dark-mode .login-card {
+    background: #1e1e1e;
+  }
+
+  .app.dark-mode .login-header h1 {
     color: #fff;
-    padding: 8px;
-    border-radius: 5px;
-  }
-
-  .form {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin: 2rem auto;
-  }
-
-  .form input {
-    width: 80%;
-    padding: 8px;
-  }
-
-  .email,
-  .password,
-  .Fris_Name {
-    width: 80%;
-    margin: 10px auto 5px;
-    font-size: 18px;
-    font-weight: 700;
-    text-align: left;
-  }
-
-  .form_Sumbut {
-    width: 100%;
-    margin: 1rem auto;
-  }
-
-  .supabase_And {
-    width: 90%;
-    margin: 1rem auto;
-  }
-}
-
-/* Mobile */
-@media (max-width: 576px) {
-  .form {
-    width: 95%;
-  }
-
-  .form input {
-    width: 95%;
-  }
-
-  .email,
-  .password,
-  .Fris_Name {
-    width: 95%;
-    font-size: 16px;
-  }
-
-  .form_Sumbut {
-    width:100%;
-    font-size: 18px;
-  }
-
-  .supabase_And {
-    width: 95%;
-    font-size: 14px;
   }
 }

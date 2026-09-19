@@ -1,0 +1,278 @@
+
+
+.shipping-page {
+  min-height: 100vh;
+  background: #f7f8fa;
+  padding-bottom: 60px;
+}
+
+.shipping-hero {
+   background: linear-gradient(135deg, #ff9900, #e68a00);
+  color: #fff;
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.shipping-hero svg {
+  font-size: 55px;
+  margin-bottom: 15px;
+  
+}
+
+.shipping-hero h1 {
+  font-size: 38px;
+  margin: 0 0 12px;
+}
+
+.shipping-hero p {
+  font-size: 17px;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.shipping-container {
+  width: min(1100px, 92%);
+  margin: 50px auto 0;
+}
+
+.shipping-container > h2 {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 30px;
+  color: #1f2937;
+}
+
+.shipping-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.shipping-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px 25px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+  transition: 0.3s ease;
+}
+
+.shipping-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.shipping-icon {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: #eff6ff;
+  color: #ff9900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 27px;
+}
+
+.shipping-card h3 {
+  color: #1f2937;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.shipping-card p {
+  color: #6b7280;
+  line-height: 1.7;
+  min-height: 55px;
+}
+
+.shipping-card strong {
+  display: block;
+  margin-top: 18px;
+   color: #ff9900;
+  font-size: 18px;
+}
+
+.shipping-info {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.shipping-info > div {
+  background: #fff;
+  padding: 25px;
+  border-radius: 14px;
+  display: flex;
+  gap: 18px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.shipping-info svg {
+   color: #ff9900;
+  font-size: 28px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.shipping-info h3 {
+  margin: 0 0 8px;
+  color: #1f2937;
+  font-size: 18px;
+}
+
+.shipping-info p {
+  margin: 0;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 900px) {
+  .shipping-grid,
+  .shipping-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .shipping-hero {
+    padding: 50px 15px;
+  }
+
+  .shipping-hero h1 {
+    font-size: 28px;
+  }
+
+  .shipping-grid,
+  .shipping-info {
+    grid-template-columns: 1fr;
+  }
+
+  .shipping-container {
+    margin-top: 35px;
+  }
+}
+
+/* ================= SHIPPING & DELIVERY DARK MODE ================= */
+
+.app.dark-mode .shipping-page {
+  background: #121212;
+}
+
+/* Hero */
+
+.app.dark-mode .shipping-hero {
+  background: linear-gradient(135deg, #d88e03, #a96800);
+  color: #fff;
+}
+
+.app.dark-mode .shipping-hero svg {
+  color: #fff;
+}
+
+.app.dark-mode .shipping-hero h1 {
+  color: #fff;
+}
+
+.app.dark-mode .shipping-hero p {
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* Container Title */
+
+.app.dark-mode .shipping-container > h2 {
+  color: #fff;
+}
+
+/* Shipping Cards */
+
+.app.dark-mode .shipping-card {
+  background: #1e1e1e;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+}
+
+.app.dark-mode .shipping-card:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+}
+
+.app.dark-mode .shipping-icon {
+  background: #172554;
+  color: #ff9900;
+}
+
+.app.dark-mode .shipping-card h3 {
+  color: #fff;
+}
+
+.app.dark-mode .shipping-card p {
+  color: #999;
+}
+
+.app.dark-mode .shipping-card strong {
+  color: #ff9900;
+}
+
+/* Shipping Info */
+
+.app.dark-mode .shipping-info > div {
+  background: #1e1e1e;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.app.dark-mode .shipping-info svg {
+  color: #ff9900;
+}
+
+.app.dark-mode .shipping-info h3 {
+  color: #fff;
+}
+
+.app.dark-mode .shipping-info p {
+  color: #999;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 900px) {
+  .app.dark-mode .shipping-card,
+  .app.dark-mode .shipping-info > div {
+    background: #1e1e1e;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+  .app.dark-mode .shipping-page {
+    background: #121212;
+  }
+
+  .app.dark-mode .shipping-hero {
+    background: linear-gradient(135deg, #d88e03, #a96800);
+  }
+
+  .app.dark-mode .shipping-container > h2 {
+    color: #fff;
+  }
+
+  .app.dark-mode .shipping-card {
+    background: #1e1e1e;
+  }
+
+  .app.dark-mode .shipping-info > div {
+    background: #1e1e1e;
+  }
+
+  .app.dark-mode .shipping-icon {
+    background: #172554;
+    color: #ff9900;
+  }
+}

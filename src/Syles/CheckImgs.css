@@ -81,3 +81,33 @@ background: url("../assets/imgs_MySlider/10.png") center center / cover no-repea
 .CheckImgs1 {
 background: url("../assets/imgs_MySlider/11.png") center center / cover no-repeat;
 }
+
+/* =========================
+   Dark Mode
+========================= */
+
+.app.dark-mode #CheckImgs {
+  background-color: #121212;
+}
+
+.app.dark-mode #show h4 {
+  color: #fff;
+}
+
+.app.dark-mode .CheckImgs,
+.app.dark-mode .CheckImgs1 {
+  border-color: #333;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* RTL */
+.app.dark-mode html[dir="rtl"] #show {
+  color: #fff;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .app.dark-mode #CheckImgs {
+    background-color: #121212;
+  }
+}

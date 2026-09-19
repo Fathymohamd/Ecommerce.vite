@@ -5,16 +5,23 @@ const bcrypt = require("bcrypt");
 const User = require("../models/Login")
 
 router.post("/Sinup", async (req, res) => {
-  const { firstName, email, password } = req.body;
+  
+  const { name , email, password } = req.body;
 
   try {
-   
-    if (!firstName || !email || !password) {
+  
+    if (!name || !email || !password) {
       return res.status(400).json({
         message: "All fields are required",
       });
     }
+   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+if (!emailRegex.test(email)) {
+  return res.status(400).json({
+    message: "Please enter a valid email address",
+  });
+}
     const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
 
     if (!strongPassword.test(password)) {
@@ -33,7 +40,7 @@ router.post("/Sinup", async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({
-      firstName,
+      name,
       email,
       password: hashedPassword,
     });

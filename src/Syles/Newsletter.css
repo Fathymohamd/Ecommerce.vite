@@ -1,0 +1,445 @@
+/* ================= NEWSLETTER ================= */
+
+.newsletter {
+  width: 100%;
+  background: #ffffff;
+
+  border-top: 1px solid #e5e7eb;
+}
+
+.newsletter-container {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+
+  padding: 55px 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 50px;
+}
+
+
+
+.newsletter-content {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.newsletter-icon {
+  width: 58px;
+  height: 58px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #fff4df;
+
+  color: #ff9900;
+
+  font-size: 23px;
+}
+
+.newsletter-text span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #e47911;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.newsletter-text h2 {
+  margin: 0 0 6px;
+
+  color: #111827;
+
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.newsletter-text p {
+  max-width: 520px;
+
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+
+
+.newsletter-form {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 430px;
+}
+
+.email-input {
+  height: 46px;
+
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 0 14px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  transition: 0.3s;
+}
+
+.email-input:focus-within {
+  border-color: #ff9900;
+
+  box-shadow:
+    0 0 0 3px rgba(255, 153, 0, 0.12);
+}
+
+.email-input svg {
+  flex-shrink: 0;
+
+  color: #9ca3af;
+
+  font-size: 14px;
+}
+
+.email-input input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #111827;
+
+  font-size: 13px;
+}
+
+.email-input input::placeholder {
+  color: #9ca3af;
+}
+
+
+
+.newsletter-form button {
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+margin: 0;
+  gap: 8px;
+
+  padding: 0 18px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: #ff9900;
+
+  color: #111827;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: 0.3s;
+}
+
+.newsletter-form button:hover {
+  background: #e88a00;
+
+  transform: translateY(-1px);
+}
+
+.newsletter-form button svg {
+  font-size: 12px;
+
+  transition: 0.3s;
+}
+
+.newsletter-form button:hover svg {
+  transform: translateX(4px);
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 1000px) {
+
+  .newsletter-container {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 25px;
+
+    padding: 50px 30px;
+  }
+
+  .newsletter-form {
+    width: 100%;
+
+    min-width: 0;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+  .newsletter-container {
+    padding: 45px 15px;
+
+    gap: 25px;
+  }
+
+  .newsletter-content {
+    align-items: flex-start;
+
+    gap: 14px;
+  }
+
+  .newsletter-icon {
+    width: 50px;
+    height: 50px;
+
+    font-size: 20px;
+  }
+
+  .newsletter-text h2 {
+    font-size: 19px;
+  }
+
+  .newsletter-text p {
+    font-size: 12px;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 10px;
+  }
+
+  .email-input,
+  .newsletter-form button {
+    width: 100%;
+  }
+}/* ================= PRODUCTS RESPONSIVE ================= */
+
+@media (max-width: 1200px) {
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .email-input {
+  height: 100px !important;
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 0 14px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  transition: 0.3s;
+}
+}
+
+/* ================= NEWSLETTER DARK MODE ================= */
+
+.app.dark-mode .newsletter {
+  background: #121212;
+  border-top-color: #333;
+}
+
+.app.dark-mode .newsletter-container {
+  background: #121212;
+}
+
+/* Newsletter Content */
+
+.app.dark-mode .newsletter-icon {
+  background: #2a2115;
+  color: #ff9900;
+}
+
+.app.dark-mode .newsletter-text span {
+  color: #ff9900;
+}
+
+.app.dark-mode .newsletter-text h2 {
+  color: #fff;
+}
+
+.app.dark-mode .newsletter-text p {
+  color: #999;
+}
+
+/* Email Input */
+
+.app.dark-mode .email-input {
+  background: #242424;
+  border-color: #444;
+}
+
+.app.dark-mode .email-input:focus-within {
+  border-color: #ff9900;
+  box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.15);
+}
+
+.app.dark-mode .email-input svg {
+  color: #888;
+}
+
+.app.dark-mode .email-input input {
+  background: transparent;
+  color: #fff;
+}
+
+.app.dark-mode .email-input input::placeholder {
+  color: #777;
+}
+
+/* Subscribe Button */
+
+.app.dark-mode .newsletter-form button {
+  background: #ff9900;
+  color: #111;
+}
+
+.app.dark-mode .newsletter-form button:hover {
+  background: #d88e03;
+}
+
+.app.dark-mode .newsletter-form button svg {
+  color: #111;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 1000px) {
+  .app.dark-mode .newsletter-container {
+    background: #121212;
+  }
+
+  .app.dark-mode .newsletter-form {
+    width: 100%;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+  .app.dark-mode .newsletter {
+    background: #121212;
+  }
+
+  .app.dark-mode .newsletter-container {
+    background: #121212;
+  }
+
+  .app.dark-mode .newsletter-icon {
+    background: #2a2115;
+    color: #ff9900;
+  }
+
+  .app.dark-mode .email-input {
+    background: #242424;
+    border-color: #444;
+  }
+
+  .app.dark-mode .newsletter-form button {
+    background: #ff9900;
+    color: #111;
+  }
+}
+
+/* ================= PRODUCTS RESPONSIVE ================= */
+
+@media (max-width: 1200px) {
+  .app.dark-mode .products-grid {
+    background: #121212;
+  }
+}
+
+@media (max-width: 900px) {
+  .app.dark-mode .products-grid {
+    background: #121212;
+  }
+}
+
+@media (max-width: 600px) {
+  .app.dark-mode .products-grid {
+    background: #121212;
+  }
+}
+
+@media (max-width: 480px) {
+  .app.dark-mode .products-grid {
+    background: #121212;
+  }
+}

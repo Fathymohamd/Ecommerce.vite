@@ -1,0 +1,221 @@
+.category-products {
+  width: 100%;
+  min-height: 100vh;
+  background: #f8f9fa;
+  padding: 40px 0 60px;
+}
+
+.category-products-container {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+
+
+.category-products-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.category-products-header h1 {
+  margin: 0;
+  color: #111827;
+  font-size: 30px;
+  font-weight: 700;
+  text-transform: capitalize;
+
+}
+
+.category-products-header p {
+  margin: 8px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+
+
+.product-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  overflow: hidden;
+  padding: 15px;
+  transition: 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ================= IMAGE ================= */
+
+.product-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 15px;
+}
+
+
+.product-card h3 {
+  margin: 0 0 10px;
+  color: #111827;
+  font-size: 16px;
+  font-weight: 600;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+*/
+
+.product-card .price {
+  color: #ff9900;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+
+
+.product-card button {
+  width: 100%;
+  border: none;
+  background: #ff9900;
+  color: #ffffff;
+  padding: 11px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.product-card button:hover {
+  background: #e88a00;
+}
+
+
+
+@media (max-width: 1000px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+@media (max-width: 750px) {
+  .category-products {
+    padding: 30px 0 50px;
+  }
+
+  .category-products-container {
+    width: 92%;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .product-card img {
+    height: 180px;
+  }
+
+  .category-products-header h1 {
+    font-size: 24px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: repeat(2 , 1fr);
+  }
+
+  .product-card img {
+    height: 220px;
+  }
+}
+
+/* =====================================================
+   CATEGORY PRODUCTS - DARK MODE
+===================================================== */
+
+
+/* ================= MAIN SECTION ================= */
+
+.app.dark-mode .category-products {
+  background: #121212;
+}
+
+
+/* ================= CONTAINER HEADER ================= */
+
+.app.dark-mode .category-products-header h1 {
+  color: #ffffff;
+}
+
+.app.dark-mode .category-products-header p {
+  color: #999999;
+}
+
+
+/* ================= PRODUCT CARD ================= */
+
+.app.dark-mode .product-card {
+  background: #1e1e1e;
+  border-color: #333333;
+}
+
+.app.dark-mode .product-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+
+/* ================= PRODUCT IMAGE ================= */
+
+.app.dark-mode .product-card img {
+  background: transparent;
+}
+
+
+/* ================= PRODUCT TITLE ================= */
+
+.app.dark-mode .product-card h3 {
+  color: #ffffff;
+}
+
+
+/* ================= PRICE ================= */
+
+.app.dark-mode .product-card .price {
+  color: #ff9900;
+}
+
+
+/* ================= BUTTON ================= */
+
+.app.dark-mode .product-card button {
+  background: #ff9900;
+  color: #111111;
+}
+
+.app.dark-mode .product-card button:hover {
+  background: #d88e03;
+}

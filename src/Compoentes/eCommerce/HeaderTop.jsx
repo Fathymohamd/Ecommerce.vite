@@ -23,6 +23,7 @@ const [products, setProducts] = useState([]);
 
 const searchRef = useRef(null);
 const {t , i18n} = useTranslation()
+
 useEffect(()=>{
 const  handleClickOutside  = (e)=>{
 if (searchRef.current && !searchRef.current.contains(e.target) ) { 

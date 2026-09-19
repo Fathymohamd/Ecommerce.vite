@@ -1,68 +1,376 @@
-import { useState  , useEffect} from "react";
-import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next"
- function MyOrders() {
-    const [orders, setOrders] = useState([]);
- const {t , i18n} = useTranslation()
-useEffect(() => {
-  fetch("https://ecommerce-vite-9iwf.vercel.app/api/orders")
-    .then((res) => res.json())
-    .then((data) => setOrders(data));
-}, []);
-  return (
-  <div>
-{orders.length === 0 ? (
-  <h2 id="orders_products">{t("No orders yet.")}</h2>
-) : (
-  <div className="orders-container">
-      <h1>{t("My Orders")}</h1>
+import React, { useEffect, useState } from "react";
 
-      {Array.isArray(orders) &&  orders?.map((order) => (
-        <div className="order-card" key={order._id}>
-          <div className="order-header">
-            <div>
-             <h2> {t("My Orders")}#{order._id.slice(0,8)}</h2>
-              <p>{new Date(order.createdAt).toLocaleDateString()}</p>
-            </div>
+import { Link } from "react-router-dom";
 
-            <div className="status-box">
-              <span className={`payment ${order.paymentStatus.toLowerCase()}`}>
-                {order.paymentStatus}
-              </span>
+import {
+  FaBox,
+  FaArrowLeft,
+  FaTruck,
+  FaCheck,
+} from "react-icons/fa6";
 
-              <span className={`status ${order.status.toLowerCase()}`}>
-                {order.status}
-              </span>
-            </div>
-          </div>
+import { useTranslation } from "react-i18next";
 
-          <div className="products">
-            {order.products.map((item) => (
-              <div className="product" key={item.id}>
-                <img src={item?.image || item.images?.[0]} alt={item.title} />
+const Orders = () => {
 
-                <div className="product-info">
-                  <h3>{t(`products.${item.id}.title`)}</h3>
-                  <p>{t("Price")}: ${item.price}</p>
-                  <p> {t("Quantity")}: {item.quantity}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+  const { t } = useTranslation();
 
-          <div className="order-footer">
-           <h3> {t("Total")}: ${order.finalPrice.toFixed(2)}</h3>
+  const [orders, setOrders] = useState([]);
 
-     {/*        <button>View Details</button> */}
-          </div>
+  const [loading, setLoading] = useState(true);
+
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+
+    const fetchOrders = async () => {
+
+      try {
+
+        setLoading(true);
+
+        setError("");
+
+        const res = await fetch(
+          "http://localhost:8080/api/orders",
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
+
+        const data = await res.json();
+
+        if (!res.ok) {
+
+          throw new Error(
+            data.message || t("orders.somethingWentWrong")
+          );
+
+        }
+
+        setOrders(
+          Array.isArray(data) ? data : data.orders || []
+        );
+
+      } catch (error) {
+
+        console.log("ORDERS ERROR:", error);
+
+        setError(
+          error.message || t("orders.somethingWentWrong")
+        );
+
+      } finally {
+
+        setLoading(false);
+
+      }
+
+    };
+
+    fetchOrders();
+
+  }, []);
+
+  if (loading) {
+
+    return (
+
+      <div className="orders-page">
+
+        <div className="orders-loading">
+
+          <h2>{t("orders.loadingOrders")}</h2>
+
         </div>
-      ))}
-    </div>
-)}
 
-  </div>
+      </div>
+
+    );
+
+  }
+
+  if (error) {
+
+    return (
+
+      <div className="orders-page">
+
+        <div className="orders-error">
+
+          <h2>{error}</h2>
+
+        </div>
+
+      </div>
+
+    );
+
+  }
+
+  return (
+
+    <div className="orders-page">
+
+      {/* Header */}
+
+      <div className="orders-header">
+
+        <div>
+
+          <h1>{t("orders.myOrders")}</h1>
+
+          <p>{t("orders.trackAndManage")}</p>
+
+        </div>
+
+        <Link
+          to="/productsShopNow"
+          className="continue-shopping"
+        >
+
+          <FaArrowLeft />
+
+          {t("orders.continueShopping")}
+
+        </Link>
+
+      </div>
+
+
+      {orders.length === 0 ? (
+
+        <div className="empty-orders">
+
+          <FaBox className="empty-icon" />
+
+          <h2>{t("orders.noOrdersYet")}</h2>
+
+          <p>
+
+            {t("orders.noOrdersDescription")}
+
+          </p>
+
+          <Link to="/productsShopNow">
+
+            {t("orders.startShopping")}
+
+          </Link>
+
+        </div>
+
+      ) : (
+
+        <div className="orders-list">
+
+          {orders.map((order) => (
+
+            <div
+              className="order-card"
+              key={order._id}
+            >
+
+              {/* Order Top */}
+
+              <div className="order-top">
+
+                <div>
+
+                  <span>{t("orders.orderId")}</span>
+
+                  <strong>
+
+                    #{order._id?.slice(0, 8)}
+
+                  </strong>
+
+                </div>
+
+                <div>
+
+                  <span>{t("orders.orderDate")}</span>
+
+                  <strong>
+
+                    {new Date(
+                      order.createdAt
+                    ).toLocaleDateString()}
+
+                  </strong>
+
+                </div>
+
+                <div>
+
+                  <span>{t("orders.total")}</span>
+
+                  <strong>
+
+                    $
+
+                    {Number(
+                      order.finalPrice || 0
+                    ).toFixed(2)}
+
+                  </strong>
+
+                </div>
+
+                <div
+                  className={`order-status ${
+                    order.status?.toLowerCase() || "pending"
+                  }`}
+                >
+
+                  {order.status === "Pending"
+                    ? t("orders.pending")
+                    : order.status}
+
+                </div>
+
+              </div>
+
+
+              <div className="order-products">
+
+                {order.products?.map((item, index) => {
+
+                  console.log("ORDER PRODUCT:", item);
+
+                  const productImage =
+                    item.image || item.images?.[0];
+
+                  return (
+
+                    <div
+                      className="order-product"
+                      key={
+                        item.id ||
+                        item._id ||
+                        index
+                      }
+                    >
+
+                      <img
+                        src={productImage}
+                        alt={t(
+                          `products.${item.id}.title`,
+                          {
+                            defaultValue: item.title
+                          }
+                        )}
+                      />
+
+                      <div className="product-info">
+
+                        <h3>
+
+                          {t(
+                            `products.${item.id}.title`,
+                            {
+                              defaultValue: item.title
+                            }
+                          )}
+
+                        </h3>
+
+                        <p>
+
+                          {t("orders.quantity")}:{" "}
+
+                          {item.quantity || 1}
+
+                        </p>
+
+                        <strong>
+
+                          $
+
+                          {Number(
+                            item.price || 0
+                          ).toFixed(2)}
+
+                        </strong>
+
+                      </div>
+
+                    </div>
+
+                  );
+
+                })}
+
+              </div>
+
+              {/* Bottom */}
+
+              <div className="order-bottom">
+
+                <div className="delivery-info">
+
+                  {order.status === "Delivered" ? (
+
+                    <>
+
+                      <FaCheck />
+
+                      <span>
+
+                        {t(
+                          "orders.deliveredSuccessfully"
+                        )}
+
+                      </span>
+
+                    </>
+
+                  ) : (
+
+                    <>
+
+                      <FaTruck />
+
+                      <span>
+
+                        {t(
+                          "orders.orderOnTheWay"
+                        )}
+
+                      </span>
+
+                    </>
+
+                  )}
+
+                </div>
+
+                <button
+                  type="button"
+                  className="view-order"
+                >
+
+                  {t(
+                    "orders.viewOrderDetails"
+                  )}
+
+                </button>
+
+              </div>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      )}
+
+    </div>
 
   );
-}
 
-export default MyOrders;
+};
+
+export default Orders;

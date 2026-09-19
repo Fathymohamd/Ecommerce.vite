@@ -1,23 +1,21 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-
 const initialState = {
   data: [],
   fakestoreap: [],
   productsTolist: [],
   product : [],
-  cartData: JSON.parse(localStorage.getItem("cart")) || [],
+  cartData: [],
    category: [],
   Loading: false,
   error: false,
   selectedCategories: [],
-
 };
 
 export const fetchAllProducts = createAsyncThunk(
   "products/fetchAll",
   async () => {
-    const res = await fetch("https://ecommerce-vite-9iwf.vercel.app/api/products");
+    const res = await fetch("http://localhost:8080/api/products");
     const data = await res.json();
     return data.products;
   }
@@ -27,7 +25,7 @@ export const fetchProductsByCategory = createAsyncThunk(
   "products/fetchByCategory",
   async (category) => {
     const res = await fetch(
-      `https://ecommerce-vite-fgou.vercel.app/api/products/category/${category}`
+      `http://localhost:8080/api/products/category/${category}`
     );
     return await res.json();
   }
@@ -46,9 +44,13 @@ export const fetchAllProductS = createAsyncThunk(
 
 export const fetchById = createAsyncThunk(
   "products/fetchById",
-  async (id) => {
-    const res = await fetch(`https://ecommerce-vite-9iwf.vercel.app/api/products/${id}`);
+  async (id , { rejectWithValue }) => {
+    try{
+      const res = await fetch(`http://localhost:8080/api/products/${id}`);
     return await res.json();
+    }catch(error){
+   return rejectWithValue(error.message);
+    }
   }
 );
 
@@ -56,7 +58,7 @@ export const fetchById = createAsyncThunk(
 export const fetchFakeStore = createAsyncThunk(
   "fakestore/fetchAll",
   async () => {
-    const res = await fetch("https://ecommerce-vite-9iwf.vercel.app/api/users");
+    const res = await fetch("http://localhost:8080/api/users");
     const data = await res.json();
 
   return data;
@@ -66,7 +68,7 @@ export const fetchFakeStore = createAsyncThunk(
 export const fetchFakeStoreid = createAsyncThunk(
   "feature/action",
   async (id) => {
-    const res = await fetch(`https://ecommerce-vite-9iwf.vercel.app/api/users/${id}`);
+    const res = await fetch(`http://localhost:8080/api/users/${id}`);
     return await res.json();
   }
 );
@@ -76,43 +78,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    Remove: (state, action) => {
-      state.cartData = state.cartData.filter(
-        (item) => item.id !== action.payload
-      );
 
-      localStorage.setItem("cart", JSON.stringify(state.cartData));
-    },
-
-    addToCart: (state, action) => {
-      const existing = state.cartData.find(
-        (item) => item.id === action.payload.id
-      );
-
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        state.cartData.push({
-          ...action.payload,
-          quantity: 1,
-        });
-      }
-
-      localStorage.setItem("cart", JSON.stringify(state.cartData));
-    },
-
-increaseQuantity:(state , action) => {
-  const item = state.cartData.find(i => i.id === action.payload)
-  if(item){
- item.quantity += 1;
-  }
-},
-decreaseQuantity: (state, action) => {
-  const item = state.cartData.find(i => i.id === action.payload);
-  if (item && item.quantity > 1) {
-    item.quantity -= 1;
-  }
-},
   toggleCategory: (state, action) => {
     const category = action.payload;
 
@@ -124,6 +90,7 @@ decreaseQuantity: (state, action) => {
       state.selectedCategories.push(category);
     }
   },
+
   clearCart: (state) => {
   state.cartData = [];
   localStorage.removeItem("cart");
@@ -143,7 +110,7 @@ decreaseQuantity: (state, action) => {
        
       .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
        state.Loading = false;
-       state.data = action.payload;
+       state.selectedCategories = action.payload;
        })
 
       .addCase(fetchById.fulfilled, (state, action) => {
@@ -164,8 +131,7 @@ decreaseQuantity: (state, action) => {
      state.Loading = false;
       state.product = action.payload;
       })
-
-
+      
 
       .addCase(fetchAllProducts.rejected, (state) => {
         state.Loading = false;

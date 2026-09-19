@@ -1,8 +1,102 @@
 {
- 
-  "Due to current circumstances, there may be slight delays in order processing": "نظرًا للظروف الحالية، قد يكون هناك بعض التأخير في معالجة الطلبات",
-  "Sell On Jumia": "البيع على جوميا",
-    "Jumia": "جوميا",
+       "login": {
+    "welcomeBack": "مرحبًا بعودتك",
+    "loginToAccount": "سجّل الدخول إلى حسابك",
+    "email": "البريد الإلكتروني",
+    "enterYourEmail": "أدخل بريدك الإلكتروني",
+    "password": "كلمة المرور",
+    "enterYourPassword": "أدخل كلمة المرور",
+    "forgotPassword": "هل نسيت كلمة المرور؟",
+    "loggingIn": "جاري تسجيل الدخول...",
+    "login": "تسجيل الدخول",
+    "dontHaveAccount": "ليس لديك حساب؟",
+    "createAccount": "إنشاء حساب"
+  },
+
+    "register": {
+    "createAccount": "إنشاء حساب",
+    "createAccountAndStartShopping": "أنشئ حسابك وابدأ التسوق",
+    "fullName": "الاسم بالكامل",
+    "enterYourName": "أدخل اسمك",
+    "email": "البريد الإلكتروني",
+    "enterYourEmail": "أدخل بريدك الإلكتروني",
+    "password": "كلمة المرور",
+    "enterYourPassword": "أدخل كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "confirmYourPassword": "أكد كلمة المرور",
+    "creatingAccount": "جاري إنشاء الحساب...",
+    "alreadyHaveAccount": "لديك حساب بالفعل؟",
+    "login": "تسجيل الدخول"
+  },
+
+
+    "bestSellers": {
+    "customerFavorites": "اختيارات العملاء المفضلة",
+    "best": "الأكثر",
+    "sellers": "مبيعًا",
+    "description": "اكتشف المنتجات التي يحبها عملاؤنا أكثر من غيرها.",
+    "viewAll": "عرض الكل",
+    "bestSeller": "الأكثر مبيعًا",
+    "addToWishlist": "إضافة إلى المفضلة",
+    "sold": "تم بيعها",
+    "addToCart": "أضف إلى السلة"
+  },
+
+"bigDeals": {
+  "limitedTimeOffer": "عرض لفترة محدودة",
+  "bigDeals": "عروض كبيرة.",
+  "bigSavings": "توفير كبير.",
+  "description": "وفر المزيد على منتجاتك المفضلة. لا تفوّت هذه العروض الحصرية.",
+  "upTo": "خصم يصل إلى",
+  "off": "خصم",
+  "shopDeals": "تسوق العروض"
+},
+
+"categorie": {
+  "exploreOurStore": "استكشف متجرنا",
+  "shopBy": "تسوق حسب",
+  "category": "الفئة",
+  "description": "اعثر على كل ما تحتاجه من مجموعتنا الواسعة من فئات المنتجات.",
+  "viewAll": "عرض الكل"
+},
+
+"categories": {
+    "exploreOurStore": "استكشف متجرنا",
+  "shopBy": "تسوق حسب",
+  "category": "الفئة",
+  "description": "اعثر على كل ما تحتاجه من مجموعتنا الواسعة من فئات المنتجات.",
+  "viewAll": "عرض الكل",
+  "beauty": "الجمال",
+  "fragrances": "العطور",
+  "furniture": "الأثاث",
+  "groceries": "البقالة",
+  "homeDecoration": "ديكور المنزل",
+  "kitchenAccessories": "إكسسوارات المطبخ",
+  "laptops": "أجهزة اللابتوب",
+  "mensShirts": "قمصان رجالية",
+  "mensShoes": "أحذية رجالية",
+  "mensWatches": "ساعات رجالية",
+  "mobileAccessories": "إكسسوارات الموبايل",
+  "motorcycle": "دراجات نارية",
+  "skinCare": "العناية بالبشرة",
+  "smartphones": "الهواتف الذكية",
+  "sportsAccessories": "إكسسوارات رياضية",
+  "sunglasses": "نظارات شمسية",
+  "tablets": "أجهزة التابلت",
+  "tops": "ملابس علوية",
+  "vehicle": "مركبات",
+  "womens-bags": "حقائب نسائية",
+  "womensDresses": "فساتين نسائية",
+  "womensJewellery": "مجوهرات نسائية",
+  "womensShoes": "أحذية نسائية",
+  "womensWatches": "ساعات نسائية"
+},
+
+"categoryProducts": {
+  "addToWishlist": "إضافة إلى المفضلة",
+  "addToCart": "أضف إلى السلة"
+},
+
   "My Orders": "طلباتي",
    "Login": "تسجيل الدخول",
   "SinUp": "إنشاء حساب",
@@ -70,7 +164,6 @@
   "Privacy Policy": "سياسة الخصوصية",
   "Terms and Conditions": "الشروط والأحكام",
   "Cookie": "ملفات تعريف الارتباط",
-    "checkout": "الدفع",
   "Continue Shopping": "متابعة التسوق",
     "Total Price": "السعر الإجمالي",
     "Remove" : "حذف",
@@ -140,6 +233,556 @@
   "Processing": "قيد المعالجة",
   "Cancelled": "ملغي",
     "Product added to cart!": "تمت إضافة المنتج إلى السلة",
+
+
+"contact": {
+  "contactUs": "اتصل بنا",
+  "haveQuestion": "هل لديك سؤال أو تحتاج إلى مساعدة؟ نحن هنا لمساعدتك.",
+  "getInTouch": "تواصل معنا",
+  "contactDescription": "إذا كان لديك أي أسئلة حول منتجاتنا أو طلباتك أو خدماتنا، فلا تتردد في التواصل معنا.",
+  "email": "البريد الإلكتروني",
+  "phone": "الهاتف",
+  "location": "الموقع",
+  "egypt": "مصر",
+  "sendUsMessage": "أرسل لنا رسالة",
+  "fullName": "الاسم بالكامل",
+  "enterYourName": "أدخل اسمك",
+  "enterYourEmail": "أدخل بريدك الإلكتروني",
+  "message": "الرسالة",
+  "writeYourMessage": "اكتب رسالتك...",
+  "sending": "جاري الإرسال...",
+  "sendMessage": "إرسال الرسالة"
+},
+
+"deals": {
+  "todaysDeals": "عروض اليوم",
+  "saveMore": "وفر المزيد على منتجاتك المفضلة",
+  "deals": "عروض",
+  "noDealsAvailable": "لا توجد عروض متاحة",
+  "checkBackLater": "تحقق مرة أخرى لاحقًا للحصول على عروض جديدة.",
+  "off": "خصم",
+  "addToWishlist": "إضافة إلى المفضلة",
+  "limitedTimeDeal": "عرض لفترة محدودة",
+  "addToCart": "أضف إلى السلة"
+},
+
+"electronics": {
+  "electronics": "الإلكترونيات",
+  "description": "اكتشف أحدث الأجهزة الإلكترونية والتكنولوجيا",
+  "products": "منتجات",
+  "allElectronics": "جميع الإلكترونيات",
+  "smartphones": "الهواتف الذكية",
+  "laptops": "أجهزة اللابتوب",
+  "tablets": "أجهزة التابلت",
+  "noElectronicsFound": "لم يتم العثور على إلكترونيات",
+  "noElectronicsAvailable": "لا توجد منتجات إلكترونية متاحة.",
+  "addToWishlist": "إضافة إلى المفضلة",
+  "addToCart": "أضف إلى السلة"
+},
+
+"productDetails": {
+  "home": "الرئيسية",
+  "products": "المنتجات",
+  "ratings": "تقييمات",
+  "price": "السعر",
+  "taxIncluded": "جميع الأسعار تشمل الضرائب المطبقة.",
+  "aboutThisItem": "حول هذا المنتج",
+  "inStock": "متوفر في المخزون",
+  "addToCart": "أضف إلى السلة",
+  "buyNow": "اشترِ الآن",
+  "subtotal": "الإجمالي الفرعي",
+  "youMayAlsoLike": "قد يعجبك أيضًا"
+},
+
+
+"faq": {
+  "frequentlyAskedQuestions": "الأسئلة الشائعة",
+  "description": "اعثر على إجابات لأكثر الأسئلة شيوعًا.",
+  "howCanWeHelp": "كيف يمكننا مساعدتك؟",
+
+  "howPlaceOrder": {
+    "question": "كيف يمكنني تقديم طلب؟",
+    "answer": "اختر المنتج الذي تريده، وأضفه إلى سلة التسوق، ثم انتقل إلى الدفع وأكمل طلبك."
+  },
+
+  "deliveryTime": {
+    "question": "كم يستغرق التوصيل؟",
+    "answer": "عادةً ما يستغرق التوصيل القياسي من 3 إلى 5 أيام عمل."
+  },
+
+  "freeShipping": {
+    "question": "هل تقدمون شحنًا مجانيًا؟",
+    "answer": "نعم. الطلبات التي تزيد قيمتها عن 200 جنيه مصري مؤهلة للشحن المجاني."
+  },
+
+  "returnOrder": {
+    "question": "هل يمكنني إرجاع طلبي؟",
+    "answer": "نعم. يمكنك طلب إرجاع خلال 30 يومًا طالما أن المنتج يستوفي شروط الإرجاع."
+  },
+
+  "refund": {
+    "question": "كيف يمكنني استرداد أموالي؟",
+    "answer": "بعد الموافقة على طلب الإرجاع واستلام المنتج، سيتم معالجة المبلغ المسترد."
+  },
+
+  "securePayment": {
+    "question": "هل الدفع الإلكتروني آمن؟",
+    "answer": "نعم. نستخدم معالجة دفع آمنة لحماية معلومات الدفع الخاصة بك."
+  },
+
+  "contactSupport": {
+    "question": "كيف يمكنني التواصل مع دعم العملاء؟",
+    "answer": "يمكنك التواصل مع فريق الدعم من خلال صفحة اتصل بنا."
+  }
+},
+
+"footer": {
+  "description": "متجرك الإلكتروني الشامل للمنتجات عالية الجودة، والأسعار الرائعة، وتجربة تسوق مميزة.",
+  "shop": "تسوق",
+  "allProducts": "جميع المنتجات",
+  "categories": "الفئات",
+  "bestSellers": "الأكثر مبيعًا",
+  "newArrivals": "وصل حديثًا",
+  "dealsOffers": "العروض والتخفيضات",
+
+  "customerService": "خدمة العملاء",
+  "contactUs": "اتصل بنا",
+  "shippingDelivery": "الشحن والتوصيل",
+  "returnsRefunds": "الإرجاع واسترداد الأموال",
+  "faq": "الأسئلة الشائعة",
+  "privacyPolicy": "سياسة الخصوصية",
+
+  "myAccount": "حسابي",
+  "login": "تسجيل الدخول",
+  "createAccount": "إنشاء حساب",
+  "myOrders": "طلباتي",
+  "shoppingCart": "سلة التسوق",
+  "wishlist": "المفضلة",
+
+  "securePayments": "مدفوعات آمنة",
+  "paymentProtected": "معلومات الدفع الخاصة بك محمية.",
+  "allRightsReserved": "جميع الحقوق محفوظة.",
+  "privacy": "الخصوصية",
+  "terms": "الشروط",
+  "cookies": "ملفات تعريف الارتباط"
+},
+
+"fashion": {
+  "allFashion": "جميع منتجات الأزياء",
+  "mensShirts": "قمصان رجالية",
+  "mensShoes": "أحذية رجالية",
+  "mensWatches": "ساعات رجالية",
+  "womensDresses": "فساتين نسائية",
+  "womensShoes": "أحذية نسائية",
+  "womensWatches": "ساعات نسائية",
+  "womensBags": "حقائب نسائية",
+  "tops": "ملابس علوية",
+  "sunglasses": "نظارات شمسية",
+  "noFashionProductsFound": "لم يتم العثور على منتجات أزياء",
+  "noFashionProductsAvailable": "لا توجد منتجات أزياء متاحة في هذا القسم.",
+  "addToCart": "أضف إلى السلة"
+},
+
+"featured": {
+  "topPicks": "أفضل اختياراتنا لك",
+  "featured": "منتجات",
+  "products": "مميزة",
+  "description": "اكتشف مجموعتنا المختارة بعناية من المنتجات الشهيرة بأسعار رائعة.",
+  "viewAll": "عرض الكل",
+  "new": "جديد",
+  "addToWishlist": "إضافة إلى المفضلة",
+  "addToCart": "أضف إلى السلة"
+},
+
+"features": {
+  "fastFreeShipping": {
+    "title": "شحن سريع ومجاني",
+    "description": "شحن مجاني للطلبات التي تزيد عن 200 جنيه مصري"
+  },
+  "securePayment": {
+    "title": "دفع آمن",
+    "description": "دفع آمن ومضمون بنسبة 100%"
+  },
+  "customerSupport": {
+    "title": "دعم العملاء على مدار الساعة",
+    "description": "نحن هنا دائمًا لمساعدتك"
+  },
+  "easyReturns": {
+    "title": "إرجاع سهل",
+    "description": "إمكانية إرجاع المنتجات خلال 30 يومًا بدون عناء"
+  }
+},
+
+"header": {
+  "deliverTo": "التوصيل إلى",
+  "egypt": "مصر",
+  "all": "الكل",
+  "electronics": "الإلكترونيات",
+  "fashion": "الأزياء",
+  "beauty": "الجمال",
+  "sports": "الرياضة",
+  "searchPlaceholder": "ابحث عن المنتجات والعلامات التجارية والمزيد...",
+  "hello": "مرحبًا",
+  "signIn": "تسجيل الدخول",
+  "account": "الحساب",
+  "welcome": "مرحبًا!",
+  "wishlist": "المفضلة",
+  "myAccount": "حسابي",
+  "myOrders": "طلباتي",
+  "settings": "الإعدادات",
+  "logout": "تسجيل الخروج",
+  "welcomeBack": "مرحبًا بعودتك!",
+  "signInAccess": "سجّل الدخول للوصول إلى حسابك",
+  "newCustomer": "عميل جديد؟",
+  "createAccount": "إنشاء حساب",
+  "language": "اللغة",
+  "cart": "السلة",
+  "home": "الرئيسية",
+  "todaysDeals": "عروض اليوم",
+  "bestSellers": "الأكثر مبيعًا",
+  "homeKitchen": "المنزل والمطبخ",
+  "newArrivals": "وصل حديثًا"
+},
+    
+"homeKitchen": {
+  "title": "المنزل والمطبخ",
+  "description": "كل ما تحتاجه لمنزلك",
+  "products": "منتجات",
+  "allHomeKitchen": "جميع منتجات المنزل والمطبخ",
+  "homeDecoration": "ديكور المنزل",
+  "kitchenAccessories": "إكسسوارات المطبخ",
+  "groceries": "البقالة",
+  "noProductsFound": "لم يتم العثور على منتجات للمنزل والمطبخ",
+  "noProductsAvailable": "لا توجد منتجات متاحة.",
+  "off": "خصم",
+  "limitedTimeDeal": "عرض لفترة محدودة",
+  "addToCart": "أضف إلى السلة",
+  "pleaseLoginFirst": "يرجى تسجيل الدخول أولًا",
+  "productAddedToCart": "تمت إضافة المنتج إلى السلة!",
+  "productAddedToWishlist": "تمت إضافة المنتج إلى المفضلة!",
+  "somethingWentWrong": "حدث خطأ ما"
+},
+"newArrivals": {
+  "justAdded": "أُضيف حديثًا",
+  "new": "جديد",
+  "arrivals": "وصل حديثًا",
+  "description": "اكتشف أحدث المنتجات التي تمت إضافتها إلى متجرنا.",
+  "viewAll": "عرض الكل",
+  "addToWishlist": "إضافة إلى المفضلة",
+  "addToCart": "أضف إلى السلة",
+  "pleaseLoginFirst": "يرجى تسجيل الدخول أولًا",
+  "productAddedToCart": "تمت إضافة المنتج إلى السلة!",
+  "productAddedToWishlist": "تمت إضافة المنتج إلى المفضلة!",
+  "somethingWentWrong": "حدث خطأ ما"
+},
+"newsletter": {
+  "stayUpdated": "ابقَ على اطلاع",
+  "latestDeals": "احصل على أحدث العروض والتخفيضات",
+  "description": "اشترك في نشرتنا البريدية وكن أول من يعرف عن المنتجات الجديدة والعروض الحصرية.",
+  "emailPlaceholder": "أدخل بريدك الإلكتروني",
+  "subscribe": "اشترك"
+},
+"orders": {
+  "loadingOrders": "جاري تحميل الطلبات...",
+  "somethingWentWrong": "حدث خطأ ما",
+  "myOrders": "طلباتي",
+  "trackAndManage": "تتبع وإدارة طلباتك",
+  "continueShopping": "متابعة التسوق",
+  "noOrdersYet": "لا توجد طلبات حتى الآن",
+  "noOrdersDescription": "لم تقم بإجراء أي طلبات حتى الآن.",
+  "startShopping": "ابدأ التسوق",
+  "orderId": "رقم الطلب",
+  "orderDate": "تاريخ الطلب",
+  "total": "الإجمالي",
+  "pending": "قيد الانتظار",
+  "quantity": "الكمية",
+  "deliveredSuccessfully": "تم توصيل طلبك بنجاح",
+  "orderOnTheWay": "طلبك في الطريق",
+  "viewOrderDetails": "عرض تفاصيل الطلب"
+},
+
+"pagination": {
+  "productAddedToCart": "تمت إضافة المنتج إلى السلة!",
+  "addToCart": "أضف إلى السلة",
+  "prev": "السابق",
+  "next": "التالي"
+},
+"productDetail": {
+  "home": "الرئيسية",
+  "products": "المنتجات",
+  "ratings": "تقييمات",
+  "price": "السعر",
+  "taxIncluded": "جميع الأسعار تشمل الضرائب المطبقة.",
+  "aboutThisItem": "حول هذا المنتج",
+  "inStock": "متوفر في المخزون",
+  "addToCart": "أضف إلى السلة",
+  "buyNow": "اشترِ الآن",
+  "subtotal": "الإجمالي الفرعي",
+  "youMayAlsoLike": "قد يعجبك أيضًا",
+  "productNotFound": "المنتج غير موجود",
+  "backToProducts": "العودة إلى المنتجات",
+  "pleaseLoginFirst": "يرجى تسجيل الدخول أولًا",
+  "productAddedToCart": "تمت إضافة المنتج إلى السلة!",
+  "somethingWentWrong": "حدث خطأ ما",
+  "defaultDescription": "منتج عالي الجودة بأداء ممتاز وقيمة رائعة."
+},
+"product": {
+  "inStock": "متوفر في المخزون",
+  "addToCart": "أضف إلى السلة",
+  "productAddedToCart": "تمت إضافة المنتج إلى السلة!"
+},
+"productsShopNow": {
+  "shopOurProducts": "تسوق منتجاتنا",
+  "description": "اعثر على المنتجات التي تحبها بأسعار رائعة.",
+  "addToCart": "أضف إلى السلة",
+  "pleaseLoginFirst": "يرجى تسجيل الدخول أولًا",
+  "productAddedToCart": "تمت إضافة المنتج إلى السلة!",
+  "productAddedToWishlist": "تمت إضافة المنتج إلى المفضلة!",
+  "somethingWentWrong": "حدث خطأ ما"
+},
+"profile": {
+  "myProfile": "ملفي الشخصي",
+  "managePersonalInformation": "إدارة معلوماتك الشخصية",
+  "profile": "الملف الشخصي",
+  "cancel": "إلغاء",
+  "editProfile": "تعديل الملف الشخصي",
+  "personalInformation": "المعلومات الشخصية",
+  "basicAccountInformation": "معلومات حسابك الأساسية",
+  "fullName": "الاسم الكامل",
+  "emailAddress": "عنوان البريد الإلكتروني",
+  "phoneNumber": "رقم الهاتف",
+  "notAdded": "لم تتم الإضافة",
+  "address": "العنوان",
+  "memberSince": "عضو منذ",
+  "september2026": "سبتمبر 2026",
+  "saveChanges": "حفظ التغييرات"
+},
+
+"resetPassword": {
+  "title": "إعادة تعيين كلمة المرور",
+  "description": "أنشئ كلمة مرور جديدة لحسابك.",
+  "passwordRequired": "كلمة المرور وتأكيد كلمة المرور مطلوبان",
+  "passwordsDoNotMatch": "كلمتا المرور غير متطابقتين",
+  "newPassword": "كلمة المرور الجديدة",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "changePassword": "تغيير كلمة المرور",
+  "somethingWentWrong": "حدث خطأ ما"
+},
+"returnsRefunds": {
+  "title": "الإرجاع واسترداد الأموال",
+  "description": "إرجاع سهل وعملية استرداد بسيطة.",
+  "ourReturnPolicy": "سياسة الإرجاع الخاصة بنا",
+  "policyDescription": "نريدك أن تكون راضيًا تمامًا عن مشترياتك. إذا لم تكن راضيًا عن المنتج، يمكنك طلب إرجاعه خلال 30 يومًا.",
+  "requestReturn": "طلب إرجاع",
+  "requestReturnText": "تواصل معنا وأخبرنا بسبب رغبتك في إرجاع المنتج.",
+  "productInspection": "فحص المنتج",
+  "productInspectionText": "سنقوم بفحص المنتج للتأكد من أنه يستوفي شروط الإرجاع الخاصة بنا.",
+  "getRefund": "استرداد أموالك",
+  "getRefundText": "بمجرد الموافقة على طلب الإرجاع، سيتم معالجة المبلغ المسترد.",
+  "returnConditions": "شروط الإرجاع",
+  "condition1": "يجب إرجاع المنتج خلال 30 يومًا.",
+  "condition2": "يجب أن يكون المنتج غير مستخدم وفي حالة جيدة.",
+  "condition3": "يجب أن تكون العبوة الأصلية متوفرة.",
+  "condition4": "قد يُطلب إثبات الشراء.",
+  "condition5": "قد تستغرق معالجة المبلغ المسترد عدة أيام عمل."
+},
+
+"settings": {
+  "account": "الحساب",
+  "managePersonalInformation": "إدارة معلوماتك الشخصية",
+  "fullName": "الاسم الكامل",
+  "enterYourName": "أدخل اسمك",
+  "emailAddress": "عنوان البريد الإلكتروني",
+  "enterYourEmail": "أدخل بريدك الإلكتروني",
+  "saving": "جارٍ الحفظ...",
+  "saveChanges": "حفظ التغييرات",
+  "profileUpdatedSuccessfully": "تم تحديث الملف الشخصي بنجاح",
+
+  "security": "الأمان",
+  "keepAccountSecure": "حافظ على أمان حسابك",
+  "currentPassword": "كلمة المرور الحالية",
+  "newPassword": "كلمة المرور الجديدة",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "changePassword": "تغيير كلمة المرور",
+  "passwordChangedSuccessfully": "تم تغيير كلمة المرور بنجاح",
+
+  "language": "اللغة",
+  "choosePreferredLanguage": "اختر لغتك المفضلة",
+  "selectYourLanguage": "اختر لغتك",
+
+  "notifications": "الإشعارات",
+  "controlNotificationPreferences": "تحكم في تفضيلات الإشعارات الخاصة بك",
+  "pushNotifications": "الإشعارات الفورية",
+  "receiveOrderNotifications": "تلقي إشعارات حول طلباتك",
+
+  "appearance": "المظهر",
+  "customizeAppearance": "تخصيص مظهر الموقع",
+  "darkMode": "الوضع الداكن",
+  "useDarkTheme": "استخدام المظهر الداكن",
+
+  "deleteAccount": "حذف الحساب",
+  "permanentlyDeleteAccount": "حذف حسابك نهائيًا",
+  "deleteAccountQuestion": "حذف الحساب؟",
+  "deleteAccountWarning": "هل أنت متأكد أنك تريد حذف حسابك؟ لا يمكن التراجع عن هذا الإجراء.",
+  "cancel": "إلغاء"
+},
+"shippingDelivery": {
+  "title": "الشحن والتوصيل",
+  "description": "توصيل سريع وآمن وموثوق إلى باب منزلك.",
+  "shippingOptions": "خيارات الشحن",
+
+  "standardShipping": "الشحن العادي",
+  "standardShippingText": "التوصيل خلال 3–5 أيام عمل.",
+
+  "freeShipping": "الشحن المجاني",
+  "freeShippingText": "شحن مجاني للطلبات التي تزيد قيمتها عن 200 جنيه مصري.",
+
+  "expressShipping": "الشحن السريع",
+  "expressShippingText": "استلم طلبك خلال 1–2 يوم عمل.",
+
+  "orderProcessing": "تجهيز الطلب",
+  "orderProcessingText": "عادةً تتم معالجة الطلبات خلال 24 ساعة بعد تأكيد الدفع.",
+
+  "deliveryAreas": "مناطق التوصيل",
+  "deliveryAreasText": "نقوم بتوصيل الطلبات إلى جميع أنحاء مصر حسب عنوان الشحن الذي تقدمه.",
+
+  "trackYourOrder": "تتبع طلبك",
+  "trackYourOrderText": "يمكنك تتبع طلبك باستخدام معلومات التتبع المرسلة إلى بريدك الإلكتروني."
+},
+
+"hero": {
+  "newCollection": "مجموعة جديدة 2026",
+  "discoverProducts": "اكتشف المنتجات",
+  "youll": "التي",
+  "love": "ستحبها",
+  "description": "تسوق أحدث المنتجات من علاماتك التجارية المفضلة بأسعار رائعة وتوصيل سريع.",
+  "shopNow": "تسوق الآن",
+  "viewWishlist": "عرض المفضلة",
+  "products": "المنتجات",
+  "customers": "العملاء",
+  "rating": "التقييم",
+  "specialOffers": "عروض خاصة",
+  "freeShipping": "شحن مجاني",
+  "onOrdersOver50": "للطلبات التي تزيد عن 50 دولارًا",
+  "everythingYouNeed": "كل ما تحتاجه،",
+  "allInOnePlace": "في مكان واحد.",
+  "fastDelivery": "توصيل سريع",
+  "quickReliableDelivery": "توصيل سريع وموثوق",
+  "securePayment": "دفع آمن",
+  "secureCheckout": "دفع آمن بنسبة 100%",
+  "support247": "دعم على مدار الساعة",
+  "alwaysHereToHelp": "نحن هنا دائمًا لمساعدتك",
+  "bestPrices": "أفضل الأسعار",
+  "greatDealsEveryDay": "عروض رائعة كل يوم"
+},
+
+"wishlist": {
+  "myWishlist": "قائمة المفضلة",
+  "description": "احفظ منتجاتك المفضلة وتسوقها في أي وقت.",
+  "items": "منتجات",
+  "emptyTitle": "قائمة المفضلة فارغة",
+  "emptyDescription": "لم تقم بإضافة أي منتجات إلى قائمة المفضلة حتى الآن.",
+  "startShopping": "ابدأ التسوق",
+  "summary": "ملخص المفضلة",
+  "continueShopping": "متابعة التسوق",
+  "addToCart": "أضف إلى السلة",
+  "removeFromWishlist": "إزالة من المفضلة",
+  "productNotFound": "المنتج غير موجود",
+  "productRemovedFromWishlist": "تمت إزالة المنتج من المفضلة!",
+  "failedToRemoveProduct": "فشل في إزالة المنتج",
+  "productAddedToCart": "تمت إضافة المنتج إلى السلة!",
+  "failedToAddProduct": "فشل في إضافة المنتج إلى السلة"
+},
+
+"forgotPassword": {
+  "title": "نسيت كلمة المرور",
+  "description": "أدخل عنوان بريدك الإلكتروني وسنرسل لك رابط إعادة تعيين كلمة المرور.",
+  "emailPlaceholder": "أدخل بريدك الإلكتروني",
+  "sendResetLink": "إرسال رابط إعادة التعيين"
+},
+
+"cart": {
+  "shoppingBag": "حقيبة التسوق",
+  "your": "سلة",
+  "cart": "التسوق",
+  "reviewItems": "راجع منتجاتك قبل إتمام طلبك.",
+  "shoppingCart": "سلة التسوق",
+  "items": "منتجات",
+  "emptyTitle": "سلة التسوق فارغة",
+  "emptyDescription": "لم تقم بإضافة أي منتجات إلى سلة التسوق حتى الآن.",
+  "startShopping": "ابدأ التسوق",
+  "remove": "إزالة",
+  "continueShopping": "متابعة التسوق",
+  "orderSummary": "ملخص الطلب",
+  "subtotal": "الإجمالي الفرعي",
+  "shipping": "الشحن",
+  "free": "مجاني",
+  "total": "الإجمالي",
+  "proceedToCheckout": "المتابعة إلى الدفع",
+  "secureCheckout": "دفع آمن ومشفّر",
+  "qualifyFreeShipping": "أنت مؤهل للشحن المجاني!",
+  "addMoreForFreeShipping": "أضف {{amount}} دولارًا للحصول على شحن مجاني.",
+  "productRemovedFromCart": "تمت إزالة المنتج من السلة!",
+  "failedToRemoveProduct": "فشل في إزالة المنتج",
+  "somethingWentWrong": "حدث خطأ ما"
+},
+
+"checkout": {
+  "secureCheckout": "دفع آمن",
+  "deliveryAddress": "عنوان التوصيل",
+  "deliveryDescription": "أين نُوصل طلبك؟",
+  "firstName": "الاسم الأول",
+  "firstNamePlaceholder": "الاسم الأول",
+  "lastName": "اسم العائلة",
+  "lastNamePlaceholder": "اسم العائلة",
+  "emailAddress": "عنوان البريد الإلكتروني",
+  "phoneNumber": "رقم الهاتف",
+  "country": "الدولة",
+  "governorate": "المحافظة",
+  "selectGovernorate": "اختر المحافظة",
+  "city": "المدينة",
+  "cityPlaceholder": "المدينة",
+  "fullAddress": "العنوان بالكامل",
+  "addressPlaceholder": "اسم الشارع، رقم المبنى، الشقة...",
+  "paymentMethod": "طريقة الدفع",
+  "paymentDescription": "اختر طريقة الدفع التي تفضلها.",
+  "cashOnDelivery": "الدفع عند الاستلام",
+  "payWhenArrives": "ادفع عند وصول طلبك",
+  "creditDebitCard": "بطاقة ائتمان / خصم",
+  "visaMastercard": "فيزا وماستركارد وغيرها",
+  "mobileWallet": "المحفظة الإلكترونية",
+  "payUsingWallet": "ادفع باستخدام محفظتك الإلكترونية",
+  "reviewYourItems": "مراجعة المنتجات",
+  "reviewDescription": "راجع منتجاتك قبل تقديم الطلب.",
+  "inStock": "متوفر في المخزون",
+  "orderSummary": "ملخص الطلب",
+  "items": "المنتجات",
+  "shipping": "الشحن",
+  "free": "مجاني",
+  "orderTotal": "إجمالي الطلب",
+  "processing": "جارٍ المعالجة...",
+  "placeYourOrder": "تأكيد الطلب",
+  "protection": "معلومات الدفع والمعلومات الشخصية الخاصة بك محمية.",
+  "backToCart": "العودة إلى السلة",
+  "pleaseLoginFirst": "يرجى تسجيل الدخول أولًا",
+  "choosePaymentMethod": "يرجى اختيار طريقة الدفع.",
+  "cartEmpty": "سلة التسوق فارغة.",
+  "loginBeforeOrder": "يرجى تسجيل الدخول قبل تقديم طلبك.",
+  "somethingWentWrong": "حدث خطأ ما",
+  "egp": "جنيه مصري",
+  "countries": {
+    "egypt": "مصر",
+    "saudiArabia": "المملكة العربية السعودية",
+    "unitedArabEmirates": "الإمارات العربية المتحدة"
+  },
+  "governorates": {
+    "cairo": "القاهرة",
+    "giza": "الجيزة",
+    "alexandria": "الإسكندرية",
+    "sharqia": "الشرقية",
+    "dakahlia": "الدقهلية"
+  }
+},
   "products": { 
 "1": {
   "title": "ماسكارا إيسنس لاش برنسس",

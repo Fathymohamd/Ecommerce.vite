@@ -86,3 +86,76 @@
     font-size: 12px;
   }
 }
+
+/* ================= PAGINATION DARK MODE ================= */
+
+.app.dark-mode .pagination {
+  color: #fff;
+}
+
+.app.dark-mode .pagination p {
+  background: #1e1e1e;
+  border-color: #444;
+  color: #ddd;
+}
+
+.app.dark-mode .pagination p:hover {
+  background-color: #333;
+  color: #fff;
+  border-color: #555;
+}
+
+.app.dark-mode .pagination p.active {
+  background-color: #ff9900;
+  color: #111;
+  border-color: #ff9900;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 768px) {
+  .app.dark-mode .pagination p {
+    background: #1e1e1e;
+    border-color: #444;
+    color: #ddd;
+  }
+
+  .app.dark-mode .pagination p:hover {
+    background: #333;
+  }
+
+  .app.dark-mode .pagination p.active {
+    background: #ff9900;
+    color: #111;
+    border-color: #ff9900;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 480px) {
+  .app.dark-mode .pagination p {
+    background: #1e1e1e;
+    border-color: #444;
+    color: #ddd;
+  }
+
+  .app.dark-mode .pagination p:hover {
+    background: #333;
+  }
+
+  .app.dark-mode .pagination p.active {
+    background: #ff9900;
+    color: #111;
+  }
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 360px) {
+  .app.dark-mode .pagination p {
+    background: #1e1e1e;
+    border-color: #444;
+    color: #ddd;
+  }
+}

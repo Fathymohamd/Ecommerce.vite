@@ -154,3 +154,108 @@
     margin: 10px 0;
 }
 
+
+/* ================= RAINCOATS / OLD PRODUCTS DARK MODE ================= */
+
+.app.dark-mode .Raincoats1,
+.app.dark-mode .Raincoats,
+.app.dark-mode .Raincoats_and {
+  background: #121212;
+}
+
+/* Product Cards */
+
+.app.dark-mode .Raincoats1 .card,
+.app.dark-mode .Raincoats1 .array,
+.app.dark-mode .Raincoats .card,
+.app.dark-mode .Raincoats .array,
+.app.dark-mode .Raincoats_and .card,
+.app.dark-mode .Raincoats_and .array {
+  background: #1e1e1e;
+  border-color: #333;
+  color: #fff;
+}
+
+/* Product Title */
+
+.app.dark-mode .title_item {
+  color: #fff;
+}
+
+/* Product Images */
+
+.app.dark-mode #image,
+.app.dark-mode #img_products {
+  background: transparent;
+}
+
+/* Product Data */
+
+.app.dark-mode .productsData {
+  color: #fff;
+}
+
+.app.dark-mode .productsData h1,
+.app.dark-mode .productsData h2,
+.app.dark-mode .productsData h3,
+.app.dark-mode .productsData p {
+  color: #fff;
+}
+
+/* Similar Products */
+
+.app.dark-mode .similar_products {
+  background: #121212;
+}
+
+.app.dark-mode #similar_products {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+/* Slider */
+
+.app.dark-mode #slider_counter {
+  color: #fff;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 768px) {
+  .app.dark-mode .Raincoats,
+  .app.dark-mode .Raincoats1,
+  .app.dark-mode .Raincoats_and {
+    background: #121212;
+  }
+
+  .app.dark-mode .productsData {
+    background: #121212;
+    color: #fff;
+  }
+
+  .app.dark-mode .similar_products {
+    background: #121212;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 576px) {
+  .app.dark-mode .Raincoats,
+  .app.dark-mode .Raincoats1,
+  .app.dark-mode .Raincoats_and {
+    background: #121212;
+  }
+
+  .app.dark-mode .productsData {
+    background: #121212;
+  }
+
+  .app.dark-mode .similar_products {
+    background: #121212;
+  }
+
+  .app.dark-mode .title_item {
+    color: #fff;
+  }
+}

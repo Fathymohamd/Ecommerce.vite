@@ -1,127 +1,353 @@
-import { Autoplay, Navigation } from "swiper/modules";
-import { Link } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import Animation from '../eCommerce/Animation';
-import { useParams } from "react-router-dom";
+import { Link ,useParams, useNavigate } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
  import {FaCartShopping} from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import { useSelector , useDispatch } from 'react-redux';
-import {  fetchFakeStoreid , addToCart  , fetchFakeStore  } from "../../Redux/createSlice";
+import {  fetchFakeStoreid   , fetchFakeStore  } from "../../Redux/createSlice";
+import { addToCart } from "../../Redux/cartSlice";
 import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
-function Fakestoreapi() {
-  const [t , i18n] = useTranslation()
-const { id } = useParams();
-  const action = useSelector((state) => state.counter.product)
-  const counter = useSelector((state) => state.counter.fakestoreap)
-  const Loading = useSelector((state) => state.counter.Loading)
-const handleAddToCart = (product) => {
-  
-  dispatch(addToCart(product));
-toast.success(t("Product added to cart!"), {
-  duration: 3000,
-  position: "top-right",
-  style: {
-    background: "#ffffff",
-    color: "#222",
-    border: "1px solid #e5e5e5",
-    borderRadius: "12px",
-    padding: "14px 18px",
-    fontSize: "15px",
-    fontWeight: "500",
-    boxShadow: "0 8px 25px rgba(0, 0, 0, 0.12)",
-  },
-});
-};
 
 
-
-  const product = counter?.data?.find(
-  (item) => item.id === Number(id)
+const Fakestoreapi = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+   const {t , i18n} = useTranslation() 
+const action = useSelector((state) => state.counter.product);
+const counter = useSelector((state) => state.counter.fakestoreap);
+const loading = useSelector((state) => state.counter.Loading);
+  const user = useSelector((state) => state.auth.user);
+const product = counter?.data?.find(
+  (item) => item._id === id
 );
 
-const similarProducts =  counter?.data?.filter(
-  (item) =>
-    item.category === action.category &&
-    item.id !== action.id
-);
+const similarProducts =
+  counter?.data?.filter(
+    (item) =>
+      item.category === action?.category &&
+      item.id !== action?.id
+  ) || [];
 
-console.log(similarProducts)
-if(Loading) {return <Animation/>}
+useEffect(() => {
+  dispatch(fetchFakeStoreid(id));
+  dispatch(fetchFakeStore());
+}, [dispatch, id]);
 
-   const dispatch = useDispatch()
-    useEffect(() => {
-    dispatch(fetchFakeStoreid(id)); 
-     dispatch(fetchFakeStore())
-    }, [dispatch, id]);
-  return (
-    <div>
+const totalPrice = action?.price || 0;
+  const [selectedImage, setSelectedImage] = useState("");
 
-    {action && (
-         <div className="productsData1">
-         <div className="product_image"><img id="product_images" src={action?.image} alt={action.title} />
-          <div className="Sin_img">
-     <div className="similar_products">
-<img id="product_image"
-  src={product?.image}
-  alt={product?.title}
-  onClick={() =>
-    document.getElementById("product_images").src = product.image
-  }
-/>
- </div>
- 
-          </div>
-         </div>
-          <div className="product_title">
-           <h1 className="productTitle1">{t(`fakestoreapi.${action.id}.title`)}</h1>
-           <div className="statr"><FaStar color="rgb(255, 255, 0)"/>
-           <FaStar color="rgb(255, 255, 0)"/><FaStar color="rgb(255, 255, 0)"/><FaStar color="rgb(255, 255, 0)"/></div>
-              <div className="product_price">
-              <div className="derr">$ <span>{action.price}</span></div>
-           </div>
-          <div className="description">{t(`fakestoreapi.${action.id}.description`)}</div>
-          <div className="stock"><span> {t(`fakestoreapi.${action.id}.hurry`)}</span></div>
-          <button id="Add_To_Cart" onClick={()=> handleAddToCart(action)}>{t("Add To Cart")} <FaCartShopping /> </button>
-          </div>
-         </div>
-       )} 
+  useEffect(() => {
+    if (action) {
+      setSelectedImage(action.image);
+    }
+  }, [action]);
 
-      <Swiper id="slider_counter"
-      modules={[Autoplay, Navigation]}
-      navigation
-      autoplay={{ delay: 2000 }}
-      loop={true}
-      slidesPerView={5}
-    >
-  {Array.isArray(similarProducts) && similarProducts?.map((item) => (
-  <>
-    <SwiperSlide key={item.id}>
-       <div className="slider_counter_Ahamed">
-           <Link to={`/Fakestoreapi/${item.id}`} className="link">
-        <img id="image"src={item.image} />
-        <div className="Slider_center_and">
-          <h1 title={t(`fakestoreapi.${action.id}.title`)}>{t(`fakestoreapi.${action.id}.title`)}</h1>
-            <div className="FaStar"><FaStar color="rgb(255, 255, 0)"/>
-          <FaStar color="rgb(255, 255, 0)"/><FaStar color="rgb(255, 255, 0)"/><FaStar color="rgb(255, 255, 0)"/></div>
-        </div>
-        </Link>
-        <div className="price">
-          <span>$ {item.price}</span>
-          <button className="buttonAdd" onClick={()=> handleAddToCart(action)}>{t("Add To Cart")} </button>
-        </div>
+  if (!action) {
+    return (
+      <div className="productNotFound">
+        <h2>Product not found</h2>
+        <button onClick={() => navigate("/products")}>
+          Back to Products
+        </button>
       </div>
-  
-    </SwiperSlide>
-  </>
-  ))}
-</Swiper>
+    );
+  }
 
-    </div>
-  )
+const images = action?.image
+  ? [action.image]
+  : [];
+
+  const rating = action.rating?.rate || action.rating || 4.5;
+  const reviews = action.rating?.count || 0;
+
+  // const totalPrice = product.price * quantity;
+
+  const handleAddToCart = () => {
+    navigate("/checkout");
+  };
+
+
+const handleAddToCarTt = async (product) => {
+
+  if (!user) {
+    toast.error(t("Please login first"));
+    setTimeout(()=>{
+      navigate("/login");
+    }, 2000)
+    return;
+  }
+
+  const result = await dispatch(addToCart({
+          productId: product._id,
+      productModel: "products",
+  }));
+ 
+  if (addToCart.fulfilled.match(result)) {
+    toast.success(t("Product added to cart!"), {
+      duration: 3000,
+      position: "top-right",
+      style: {
+        background: "#ffffff",
+        color: "#222",
+        border: "1px solid #e5e5e5",
+        borderRadius: "12px",
+        padding: "14px 18px",
+        fontSize: "15px",
+        fontWeight: "500",
+        boxShadow: "0 8px 25px rgba(0, 0, 0, 0.12)",
+      },
+    });
+    
+  } else {
+    toast.error(result.payload || t("Something went wrong"));
+  }
+};
+const getCartwishlistState = async (product) => {
+  if (!user) {
+    toast.error(t("Please login first"));
+    setTimeout(()=>{
+      navigate("/login");
+    }, 2000)
+    return;
+  }
+const res = await dispatch(addToCartwishlist({
+        productId: product._id,
+      productModel: "products",
+}));
+if(addToCartwishlist.fulfilled.match(res)){
+  toast.success(t("Product added to wishlis!"), {
+    duration: 3000,
+    position: "top-right",
+    style: {
+      background: "#ffffff",
+      color: "#222",
+      border: "1px solid #e5e5e5",
+      borderRadius: "12px",
+      padding: "14px 18px",
+      fontSize: "15px",
+      fontWeight: "500",
+      boxShadow: "0 8px 25px rgba(0, 0, 0, 0.12)",
+    },
+  });
+}else {
+     toast.error(result.payload || t("Something went wrong"));
+}
 }
 
-export default Fakestoreapi
+
+ if(loading){
+  return <div className="loading-container">
+  <FaSpinner className="loader-icon" />
+</div>
+ }
+
+  return (
+
+<div className="productDetails">
+
+  <div className="productBreadcrumb">
+    {t("productDetails.home")} /{" "}
+    {t("productDetails.products")} /{" "}
+    {t(`products.${action.id}.title`, {
+      defaultValue: action.title,
+    })}
+  </div>
+
+  <div className="productDetailsContainer">
+
+    <div className="productImages">
+
+      <div className="thumbnailList">
+        {Array.isArray(images) &&
+          images.map((image, index) => (
+            <button
+              key={index}
+              className={
+                selectedImage === image
+                  ? "thumbnail active"
+                  : "thumbnail"
+              }
+              onClick={() => setSelectedImage(image)}
+            >
+              <img
+                src={image}
+                alt={t(`products.${action.id}.title`, {
+                  defaultValue: action.title,
+                })}
+              />
+            </button>
+          ))}
+      </div>
+
+      <div className="mainProductImage">
+        <img
+          src={selectedImage}
+          alt={t(`products.${action.id}.title`, {
+            defaultValue: action.title,
+          })}
+        />
+      </div>
+
+    </div>
+
+    <div className="productInfo">
+
+      <h1>
+        {t(`products.${action.id}.title`, {
+          defaultValue: action.title,
+        })}
+      </h1>
+
+      <div className="ratingRow">
+
+        <span className="rating">
+          {rating} ★
+        </span>
+
+        <span className="reviewText">
+          {reviews} {t("productDetails.ratings")}
+        </span>
+
+      </div>
+
+      <div className="divider" />
+
+      <div className="priceSection">
+
+        <span className="priceLabel">
+          {t("productDetails.price")}:
+        </span>
+
+        <span className="productPrice">
+          ${action.price}
+        </span>
+
+      </div>
+
+      <p className="taxText">
+        {t("productDetails.taxIncluded")}
+      </p>
+
+      <div className="divider" />
+
+      <div className="productDescription">
+
+        <h3>
+          {t("productDetails.aboutThisItem")}
+        </h3>
+
+        <p>
+          {t(`products.${action.id}.description`, {
+            defaultValue:
+              action.description ||
+              "High quality product with excellent performance and great value.",
+          })}
+        </p>
+
+      </div>
+
+      <div className="divider" />
+
+      {/* Stock */}
+      <div className="stock">
+        <span>
+          {t("productDetails.inStock")}
+        </span>
+      </div>
+
+      {/* Quantity */}
+      <div className="quantitySection">
+      </div>
+
+      <div className="productActions">
+
+        <button
+          className="addCartBtn"
+          onClick={() => handleAddToCarTt(action)}
+        >
+          {t("productDetails.addToCart")}
+        </button>
+
+        <button
+          className="buyNowBtn"
+          onClick={handleAddToCart}
+        >
+          {t("productDetails.buyNow")}
+        </button>
+
+      </div>
+
+
+
+    </div>
+  </div>
+
+  {similarProducts?.length > 0 && (
+
+    <section className="relatedProducts">
+
+      <h2>
+        {t("productDetails.youMayAlsoLike")}
+      </h2>
+
+      <div className="relatedProductsGrid">
+
+        {similarProducts.slice(0, 5).map((item) => (
+
+          <div
+            className="relatedProductCard"
+            key={item.id}
+          >
+
+            <Link
+              className="link"
+              to={`/Fakestoreapi/${item.id}`}
+            >
+
+              <img
+                src={item.image}
+                alt={t(`products.${item.id}.title`, {
+                  defaultValue: item.title,
+                })}
+              />
+
+              <h3>
+                {t(`products.${item.id}.title`, {
+                  defaultValue: item.title,
+                })}
+              </h3>
+
+              <div className="relatedRating">
+                <FaStar /> {item.rating?.rate || 4.5}
+              </div>
+
+              <p className="relatedPrice">
+                ${item.price}
+              </p>
+
+            </Link>
+
+            <button
+              onClick={() => handleAddToCarTt(item)}
+            >
+              {t("productDetails.addToCart")}
+            </button>
+
+          </div>
+
+        ))}
+
+      </div>
+
+    </section>
+
+  )}
+
+</div>
+
+
+  );
+};
+
+export default Fakestoreapi;

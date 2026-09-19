@@ -1,0 +1,294 @@
+.register-page {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background: #f8fafc;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 35px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.register-header h1 {
+  margin: 0 0 8px;
+  color: #111827;
+  font-size: 30px;
+}
+
+.register-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper > svg:first-child {
+  position: absolute;
+  left: 14px;
+  color: #9ca3af;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.input-wrapper input {
+  width: 100%;
+  height: 48px;
+  padding: 0 45px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  transition: 0.3s ease;
+  box-sizing: border-box;
+}
+
+.input-wrapper input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.password-toggle:hover {
+  color: #2563eb;
+}
+
+.error-message {
+  margin-bottom: 18px;
+  padding: 12px;
+  border-radius: 7px;
+  background: #fef2f2;
+  color: #dc2626;
+  font-size: 14px;
+  text-align: center;
+}
+
+.success-message {
+  margin-bottom: 18px;
+  padding: 12px;
+  border-radius: 7px;
+  background: #f0fdf4;
+  color: #16a34a;
+  font-size: 14px;
+  text-align: center;
+}
+
+.register-btn {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.register-btn:hover {
+  background: #1d4ed8;
+}
+
+.register-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.login-link {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 22px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.login-link a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+  .register-page {
+    padding: 25px 15px;
+  }
+
+  .register-card {
+    padding: 25px 20px;
+  }
+
+  .register-header h1 {
+    font-size: 26px;
+  }
+}
+
+/* ================= REGISTER PAGE DARK MODE ================= */
+
+.app.dark-mode .register-page {
+  background: #121212;
+}
+
+/* Register Card */
+
+.app.dark-mode .register-card {
+  background: #1e1e1e;
+  border-color: #333;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Header */
+
+.app.dark-mode .register-header h1 {
+  color: #fff;
+}
+
+.app.dark-mode .register-header p {
+  color: #999;
+}
+
+/* Form */
+
+.app.dark-mode .form-group label {
+  color: #ddd;
+}
+
+.app.dark-mode .input-wrapper > svg:first-child {
+  color: #888;
+}
+
+.app.dark-mode .input-wrapper input {
+  background: #242424;
+  color: #fff;
+  border-color: #444;
+}
+
+.app.dark-mode .input-wrapper input::placeholder {
+  color: #777;
+}
+
+.app.dark-mode .input-wrapper input:focus {
+  border-color: #ff9900;
+  box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.15);
+}
+
+/* Password Toggle */
+
+.app.dark-mode .password-toggle {
+  color: #999;
+}
+
+.app.dark-mode .password-toggle:hover {
+  color: #ff9900;
+}
+
+/* Error */
+
+.app.dark-mode .error-message {
+  background: #351818;
+  color: #ff6b6b;
+}
+
+/* Success */
+
+.app.dark-mode .success-message {
+  background: #16351f;
+  color: #4ade80;
+}
+
+/* Register Button */
+
+.app.dark-mode .register-btn {
+  background: #ff9900;
+  color: #111;
+}
+
+.app.dark-mode .register-btn:hover {
+  background: #d88e03;
+}
+
+.app.dark-mode .register-btn:disabled {
+  opacity: 0.7;
+}
+
+/* Login Link */
+
+.app.dark-mode .login-link {
+  color: #999;
+}
+
+.app.dark-mode .login-link a {
+  color: #ff9900;
+}
+
+.app.dark-mode .login-link a:hover {
+  color: #ffb84d;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 500px) {
+  .app.dark-mode .register-page {
+    background: #121212;
+  }
+
+  .app.dark-mode .register-card {
+    background: #1e1e1e;
+  }
+
+  .app.dark-mode .register-header h1 {
+    color: #fff;
+  }
+
+  .app.dark-mode .register-header p {
+    color: #999;
+  }
+}

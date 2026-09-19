@@ -4,3 +4,50 @@
   box-sizing: border-box;
 }
 
+.app {
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #222222;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.app.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.app.dark-mode header {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.app.dark-mode section {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.app.dark-mode div {
+  color: inherit;
+}
+
+.app.dark-mode p,
+.app.dark-mode h1,
+.app.dark-mode h2,
+.app.dark-mode h3,
+.app.dark-mode h4,
+.app.dark-mode span {
+  color: inherit;
+}
+
+.app.dark-mode input,
+.app.dark-mode textarea,
+.app.dark-mode select {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border-color: #444;
+}

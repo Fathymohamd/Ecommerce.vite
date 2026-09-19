@@ -1,59 +1,92 @@
 import React from 'react'
+
 import {useState} from 'react'
+
 import { useTranslation } from "react-i18next";
+
 function ForgotPassword() {
+
   const {t , i18n} = useTranslation()
+
   const [email, setEmail] = useState("");
+
   const [error , setError] = useState("")
+
   const handLeSubmit = async(e)=>{
+
    try {
-     const res = await fetch("https://ecommerce-vite-9iwf.vercel.app/api/users/ForgotPassword" , {
+
+     const res = await fetch("http://localhost:8080/api/users/ForgotPassword" , {
+
        method: "POST",
-      credentials: "include",
+
+       credentials: "include",
+
        headers : { "Content-Type": "application/json"},
+
        body : JSON.stringify({email})
+
     })
+
     const data = await res.json()
+
     if (!res.ok) {
+
       setError(data.message);
+
        return
+
     }else {
+
       setError(data.message);
+
       setEmail("")
+
     }
+
    }catch(error){
+
     console.log(error)
+
    }
+
    }
 
     return (
+
       <>
-   
+
     <div className="forgot-container">
+
        {error && <p className='error' id='error'>{error}</p>}
+
       <div className="forgot-card">
-        <h2>{t("Forgot Password")}</h2>
-       
+
+        <h2>{t("forgotPassword.title")}</h2>
+
         <p>
-    {t("Enter your email address and we'll send you a password reset link.")}
+          {t("forgotPassword.description")}
         </p>
 
        <input
   type="email"
   value={email}
   onChange={(e) => setEmail(e.target.value)}
-  placeholder={t("Enter your email")}
+  placeholder={t("forgotPassword.emailPlaceholder")}
 />
 
-        <button onClick={handLeSubmit}>{t("Send Reset Link")}</button>
-      </div>
-    </div>
-      </>
-   
-  );
+        <button onClick={handLeSubmit}>
+          {t("forgotPassword.sendResetLink")}
+        </button>
 
+      </div>
+
+    </div>
+
+      </>
+
+  );
   }
- 
 
 
 export default ForgotPassword

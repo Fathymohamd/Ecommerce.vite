@@ -127,3 +127,65 @@ Link {
 overflow: hidden;
 }
 }
+
+
+/* ================= OLD PRODUCT CARDS DARK MODE ================= */
+
+.app.dark-mode .card,
+.app.dark-mode .array {
+  background: #1e1e1e;
+  border-color: #333;
+  color: #fff;
+}
+
+/* Product title */
+
+.app.dark-mode .Slider_center h1 {
+  color: #fff;
+}
+
+/* Price */
+
+.app.dark-mode .price {
+  color: #fff;
+}
+
+.app.dark-mode .price span {
+  color: #ff9900;
+}
+
+/* Add button */
+
+.app.dark-mode .buttonAdd {
+  background-color: #ff9900;
+  color: #111;
+}
+
+.app.dark-mode .buttonAdd:hover {
+  background-color: #d88e03;
+  color: #111;
+  opacity: 1;
+}
+
+/* Product image hover */
+
+.app.dark-mode .card:hover #img_products,
+.app.dark-mode .array:hover #image {
+  transform: scale(1.1);
+}
+
+/* Links */
+
+.app.dark-mode a,
+.app.dark-mode Link {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Sidebar */
+
+@media (max-width: 768px) {
+  .app.dark-mode .sidbar {
+    background: #121212;
+  }
+}
