@@ -58,7 +58,7 @@ function ForgotPassword() {
 
     <div className="forgot-container">
 
-       {error && <p className='error' id='error'>{error}</p>}
+       {error && <p id='error'>{error}</p>}
 
       <div className="forgot-card">
 

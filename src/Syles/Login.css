@@ -7,6 +7,59 @@
   background: #f8fafc;
 }
 
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper > svg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+/* English */
+.input-wrapper.ltr > svg {
+  left: 15px;
+}
+
+.input-wrapper.ltr input {
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+/* Arabic */
+.input-wrapper.rtl > svg {
+  right: 15px;
+}
+
+.input-wrapper.rtl input {
+  padding-right: 45px;
+  padding-left: 45px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.password-toggle.ltr {
+  right: 15px;
+  left: auto;
+}
+
+.password-toggle.rtl {
+  left: 15px;
+  right: auto;
+}
+
 .login-card {
   width: 100%;
   max-width: 450px;

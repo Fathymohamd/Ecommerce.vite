@@ -176,6 +176,258 @@ function Checkout() {
     }
   };
 
+const countries = [
+  { value: "Afghanistan", key: "afghanistan" },
+  { value: "Albania", key: "albania" },
+  { value: "Algeria", key: "algeria" },
+  { value: "Andorra", key: "andorra" },
+  { value: "Angola", key: "angola" },
+  { value: "Antigua and Barbuda", key: "antiguaAndBarbuda" },
+  { value: "Argentina", key: "argentina" },
+  { value: "Armenia", key: "armenia" },
+  { value: "Australia", key: "australia" },
+  { value: "Austria", key: "austria" },
+  { value: "Azerbaijan", key: "azerbaijan" },
+
+  { value: "Bahamas", key: "bahamas" },
+  { value: "Bahrain", key: "bahrain" },
+  { value: "Bangladesh", key: "bangladesh" },
+  { value: "Barbados", key: "barbados" },
+  { value: "Belarus", key: "belarus" },
+  { value: "Belgium", key: "belgium" },
+  { value: "Belize", key: "belize" },
+  { value: "Benin", key: "benin" },
+  { value: "Bhutan", key: "bhutan" },
+  { value: "Bolivia", key: "bolivia" },
+  { value: "Bosnia and Herzegovina", key: "bosniaAndHerzegovina" },
+  { value: "Botswana", key: "botswana" },
+  { value: "Brazil", key: "brazil" },
+  { value: "Brunei", key: "brunei" },
+  { value: "Bulgaria", key: "bulgaria" },
+  { value: "Burkina Faso", key: "burkinaFaso" },
+  { value: "Burundi", key: "burundi" },
+
+  { value: "Cabo Verde", key: "caboVerde" },
+  { value: "Cambodia", key: "cambodia" },
+  { value: "Cameroon", key: "cameroon" },
+  { value: "Canada", key: "canada" },
+  { value: "Central African Republic", key: "centralAfricanRepublic" },
+  { value: "Chad", key: "chad" },
+  { value: "Chile", key: "chile" },
+  { value: "China", key: "china" },
+  { value: "Colombia", key: "colombia" },
+  { value: "Comoros", key: "comoros" },
+  { value: "Congo", key: "congo" },
+  { value: "Costa Rica", key: "costaRica" },
+  { value: "Croatia", key: "croatia" },
+  { value: "Cuba", key: "cuba" },
+  { value: "Cyprus", key: "cyprus" },
+  { value: "Czech Republic", key: "czechRepublic" },
+
+  { value: "Denmark", key: "denmark" },
+  { value: "Djibouti", key: "djibouti" },
+  { value: "Dominica", key: "dominica" },
+  { value: "Dominican Republic", key: "dominicanRepublic" },
+
+  { value: "Ecuador", key: "ecuador" },
+  { value: "Egypt", key: "egypt" },
+  { value: "El Salvador", key: "elSalvador" },
+  { value: "Equatorial Guinea", key: "equatorialGuinea" },
+  { value: "Eritrea", key: "eritrea" },
+  { value: "Estonia", key: "estonia" },
+  { value: "Eswatini", key: "eswatini" },
+  { value: "Ethiopia", key: "ethiopia" },
+
+  { value: "Fiji", key: "fiji" },
+  { value: "Finland", key: "finland" },
+  { value: "France", key: "france" },
+
+  { value: "Gabon", key: "gabon" },
+  { value: "Gambia", key: "gambia" },
+  { value: "Georgia", key: "georgia" },
+  { value: "Germany", key: "germany" },
+  { value: "Ghana", key: "ghana" },
+  { value: "Greece", key: "greece" },
+  { value: "Grenada", key: "grenada" },
+  { value: "Guatemala", key: "guatemala" },
+  { value: "Guinea", key: "guinea" },
+  { value: "Guinea-Bissau", key: "guineaBissau" },
+  { value: "Guyana", key: "guyana" },
+
+  { value: "Haiti", key: "haiti" },
+  { value: "Honduras", key: "honduras" },
+  { value: "Hungary", key: "hungary" },
+
+  { value: "Iceland", key: "iceland" },
+  { value: "India", key: "india" },
+  { value: "Indonesia", key: "indonesia" },
+  { value: "Iran", key: "iran" },
+  { value: "Iraq", key: "iraq" },
+  { value: "Ireland", key: "ireland" },
+  { value: "Israel", key: "israel" },
+  { value: "Italy", key: "italy" },
+
+  { value: "Jamaica", key: "jamaica" },
+  { value: "Japan", key: "japan" },
+  { value: "Jordan", key: "jordan" },
+
+  { value: "Kazakhstan", key: "kazakhstan" },
+  { value: "Kenya", key: "kenya" },
+  { value: "Kiribati", key: "kiribati" },
+  { value: "Kuwait", key: "kuwait" },
+  { value: "Kyrgyzstan", key: "kyrgyzstan" },
+
+  { value: "Laos", key: "laos" },
+  { value: "Latvia", key: "latvia" },
+  { value: "Lebanon", key: "lebanon" },
+  { value: "Lesotho", key: "lesotho" },
+  { value: "Liberia", key: "liberia" },
+  { value: "Libya", key: "libya" },
+  { value: "Liechtenstein", key: "liechtenstein" },
+  { value: "Lithuania", key: "lithuania" },
+  { value: "Luxembourg", key: "luxembourg" },
+
+  { value: "Madagascar", key: "madagascar" },
+  { value: "Malawi", key: "malawi" },
+  { value: "Malaysia", key: "malaysia" },
+  { value: "Maldives", key: "maldives" },
+  { value: "Mali", key: "mali" },
+  { value: "Malta", key: "malta" },
+  { value: "Marshall Islands", key: "marshallIslands" },
+  { value: "Mauritania", key: "mauritania" },
+  { value: "Mauritius", key: "mauritius" },
+  { value: "Mexico", key: "mexico" },
+  { value: "Micronesia", key: "micronesia" },
+  { value: "Moldova", key: "moldova" },
+  { value: "Monaco", key: "monaco" },
+  { value: "Mongolia", key: "mongolia" },
+  { value: "Montenegro", key: "montenegro" },
+  { value: "Morocco", key: "morocco" },
+  { value: "Mozambique", key: "mozambique" },
+  { value: "Myanmar", key: "myanmar" },
+
+  { value: "Namibia", key: "namibia" },
+  { value: "Nauru", key: "nauru" },
+  { value: "Nepal", key: "nepal" },
+  { value: "Netherlands", key: "netherlands" },
+  { value: "New Zealand", key: "newZealand" },
+  { value: "Nicaragua", key: "nicaragua" },
+  { value: "Niger", key: "niger" },
+  { value: "Nigeria", key: "nigeria" },
+  { value: "North Korea", key: "northKorea" },
+  { value: "North Macedonia", key: "northMacedonia" },
+  { value: "Norway", key: "norway" },
+
+  { value: "Oman", key: "oman" },
+
+  { value: "Pakistan", key: "pakistan" },
+  { value: "Palau", key: "palau" },
+  { value: "Palestine", key: "palestine" },
+  { value: "Panama", key: "panama" },
+  { value: "Papua New Guinea", key: "papuaNewGuinea" },
+  { value: "Paraguay", key: "paraguay" },
+  { value: "Peru", key: "peru" },
+  { value: "Philippines", key: "philippines" },
+  { value: "Poland", key: "poland" },
+  { value: "Portugal", key: "portugal" },
+
+  { value: "Qatar", key: "qatar" },
+
+  { value: "Romania", key: "romania" },
+  { value: "Russia", key: "russia" },
+  { value: "Rwanda", key: "rwanda" },
+
+  { value: "Saint Kitts and Nevis", key: "saintKittsAndNevis" },
+  { value: "Saint Lucia", key: "saintLucia" },
+  {
+    value: "Saint Vincent and the Grenadines",
+    key: "saintVincentAndTheGrenadines",
+  },
+  { value: "Samoa", key: "samoa" },
+  { value: "San Marino", key: "sanMarino" },
+  { value: "Sao Tome and Principe", key: "saoTomeAndPrincipe" },
+  { value: "Saudi Arabia", key: "saudiArabia" },
+  { value: "Senegal", key: "senegal" },
+  { value: "Serbia", key: "serbia" },
+  { value: "Seychelles", key: "seychelles" },
+  { value: "Sierra Leone", key: "sierraLeone" },
+  { value: "Singapore", key: "singapore" },
+  { value: "Slovakia", key: "slovakia" },
+  { value: "Slovenia", key: "slovenia" },
+  { value: "Solomon Islands", key: "solomonIslands" },
+  { value: "Somalia", key: "somalia" },
+  { value: "South Africa", key: "southAfrica" },
+  { value: "South Korea", key: "southKorea" },
+  { value: "South Sudan", key: "southSudan" },
+  { value: "Spain", key: "spain" },
+  { value: "Sri Lanka", key: "sriLanka" },
+  { value: "Sudan", key: "sudan" },
+  { value: "Suriname", key: "suriname" },
+  { value: "Sweden", key: "sweden" },
+  { value: "Switzerland", key: "switzerland" },
+  { value: "Syria", key: "syria" },
+
+  { value: "Taiwan", key: "taiwan" },
+  { value: "Tajikistan", key: "tajikistan" },
+  { value: "Tanzania", key: "tanzania" },
+  { value: "Thailand", key: "thailand" },
+  { value: "Timor-Leste", key: "timorLeste" },
+  { value: "Togo", key: "togo" },
+  { value: "Tonga", key: "tonga" },
+  { value: "Trinidad and Tobago", key: "trinidadAndTobago" },
+  { value: "Tunisia", key: "tunisia" },
+  { value: "Turkey", key: "turkey" },
+  { value: "Turkmenistan", key: "turkmenistan" },
+  { value: "Tuvalu", key: "tuvalu" },
+
+  { value: "Uganda", key: "uganda" },
+  { value: "Ukraine", key: "ukraine" },
+  { value: "United Arab Emirates", key: "unitedArabEmirates" },
+  { value: "United Kingdom", key: "unitedKingdom" },
+  { value: "United States", key: "unitedStates" },
+  { value: "Uruguay", key: "uruguay" },
+  { value: "Uzbekistan", key: "uzbekistan" },
+
+  { value: "Vanuatu", key: "vanuatu" },
+  { value: "Vatican City", key: "vaticanCity" },
+  { value: "Venezuela", key: "venezuela" },
+  { value: "Vietnam", key: "vietnam" },
+
+  { value: "Yemen", key: "yemen" },
+
+  { value: "Zambia", key: "zambia" },
+  { value: "Zimbabwe", key: "zimbabwe" },
+];
+
+const governorates = [
+  { value: "Cairo", key: "cairo" },
+  { value: "Alexandria", key: "alexandria" },
+  { value: "Port Said", key: "portSaid" },
+  { value: "Suez", key: "suez" },
+  { value: "Damietta", key: "damietta" },
+  { value: "Dakahlia", key: "dakahlia" },
+  { value: "Sharqia", key: "sharqia" },
+  { value: "Qalyubia", key: "qalyubia" },
+  { value: "Kafr El Sheikh", key: "kafrElSheikh" },
+  { value: "Gharbia", key: "gharbia" },
+  { value: "Monufia", key: "monufia" },
+  { value: "Beheira", key: "beheira" },
+  { value: "Ismailia", key: "ismailia" },
+  { value: "Giza", key: "giza" },
+  { value: "Beni Suef", key: "beniSuef" },
+  { value: "Fayoum", key: "fayoum" },
+  { value: "Minya", key: "minya" },
+  { value: "Asyut", key: "asyut" },
+  { value: "Sohag", key: "sohag" },
+  { value: "Qena", key: "qena" },
+  { value: "Luxor", key: "luxor" },
+  { value: "Aswan", key: "aswan" },
+  { value: "Red Sea", key: "redSea" },
+  { value: "New Valley", key: "newValley" },
+  { value: "Matrouh", key: "matrouh" },
+  { value: "North Sinai", key: "northSinai" },
+  { value: "South Sinai", key: "southSinai" },
+];
   return (
     <main className="checkout-page">
 
@@ -309,33 +561,21 @@ function Checkout() {
 
               </div>
 
-              <div className="form-group full">
+             <div className="form-group full">
+  <label>{t("checkout.country")}</label>
 
-                <label>
-                  {t("checkout.country")}
-                </label>
-
-                <select
-                  name="country"
-                  value={formData.country}
-                  onChange={handleChange}
-                >
-
-                  <option value="Egypt">
-                    {t("checkout.countries.egypt")}
-                  </option>
-
-                  <option value="Saudi Arabia">
-                    {t("checkout.countries.saudiArabia")}
-                  </option>
-
-                  <option value="United Arab Emirates">
-                    {t("checkout.countries.unitedArabEmirates")}
-                  </option>
-
-                </select>
-
-              </div>
+<select
+  name="country"
+  value={formData.country}
+  onChange={handleChange}
+>
+  {countries.map((country) => (
+    <option key={country.value} value={country.value}>
+      {t(`countries.${country.key}`)}
+    </option>
+  ))}
+</select>
+</div>
 
               <div className="form-group">
 
@@ -343,38 +583,25 @@ function Checkout() {
                   {t("checkout.governorate")}
                 </label>
 
-                <select
-                  name="governorate"
-                  value={formData.governorate}
-                  onChange={handleChange}
-                  required
-                >
+  <select
+  name="governorate"
+  value={formData.governorate}
+  onChange={handleChange}
+  required
+>
+  <option value="">
+    {t("checkouts.selectGovernorate")}
+  </option>
 
-                  <option value="">
-                    {t("checkout.selectGovernorate")}
-                  </option>
-
-                  <option value="Cairo">
-                    {t("checkout.governorates.cairo")}
-                  </option>
-
-                  <option value="Giza">
-                    {t("checkout.governorates.giza")}
-                  </option>
-
-                  <option value="Alexandria">
-                    {t("checkout.governorates.alexandria")}
-                  </option>
-
-                  <option value="Sharqia">
-                    {t("checkout.governorates.sharqia")}
-                  </option>
-
-                  <option value="Dakahlia">
-                    {t("checkout.governorates.dakahlia")}
-                  </option>
-
-                </select>
+  {governorates.map((governorate) => (
+    <option
+      key={governorate.value}
+      value={governorate.value}
+    >
+      {t(`checkouts.governorates.${governorate.key}`)}
+    </option>
+  ))}
+</select>
 
               </div>
 
