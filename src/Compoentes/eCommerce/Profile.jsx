@@ -58,7 +58,7 @@ const Profile = () => {
       if (user.profileImage) {
 
         setProfileImage(
-          `http://localhost:8080${user.profileImage}`
+          `https://ecommerce-vite-black.vercel.app${user.profileImage}`
         );
 
       }

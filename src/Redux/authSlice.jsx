@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const getMe  = createAsyncThunk(
-   "auth/getMe" , async()=>{
+export const getMe = createAsyncThunk(
+  "auth/getMe",
+  async (_, { rejectWithValue }) => {
     try {
-   const response = await fetch(
-        "http://localhost:8080/api/auth/me",
+      const response = await fetch(
+        "https://ecommerce-vite-black.vercel.app/api/auth/me",
         {
           method: "GET",
           credentials: "include",
@@ -14,14 +15,15 @@ export const getMe  = createAsyncThunk(
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message);
+        return rejectWithValue(data.message);
       }
 
       return data.user;
-    }catch(error){
-        console.log(error)
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
-})
+  }
+);
 
 const initialState = {
   user: null,
@@ -55,22 +57,31 @@ const authSlice = createSlice({
       state.error = action.payload;
     },
   },
-  extraReducers:(builder)=>{
+
+  extraReducers: (builder) => {
     builder
-    .addCase(getMe.pending , (state)=>{
-      state.loading = true;
-      state.error = null;
-    })
-.addCase(getMe.fulfilled, (state, action) => {
-  state.loading = false;
-  state.user = action.payload;
-  state.isAuthenticated = true;
-})
-      .addCase(getMe.rejected , (state)=>{
-      state.loading = false;
-      state.error = action.error.message;
-    })
-  }
+
+      .addCase(getMe.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+
+      .addCase(getMe.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+        state.isAuthenticated = true;
+        state.error = null;
+      })
+
+      .addCase(getMe.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || action.error.message;
+
+      
+        state.user = null;
+        state.isAuthenticated = false;
+      });
+  },
 });
 
 export const {
@@ -78,7 +89,6 @@ export const {
   logout,
   setLoading,
   setError,
-
 } = authSlice.actions;
 
 export default authSlice.reducer;

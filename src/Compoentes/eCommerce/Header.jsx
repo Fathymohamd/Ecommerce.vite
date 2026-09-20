@@ -104,20 +104,23 @@ const handleProductClick = () => {
     return () => clearTimeout(delayDebounce);
   }, [search]);
 
-  const handleSearch = async () => {
-    const res = await fetch(
-      `http://localhost:8080/api/products/search?q=${search}`
-    );
+const handleSearch = async () => {
+  const res = await fetch(
+    `https://ecommerce-vite-black.vercel.app/api/products/search?q=${search}`,
+    {
+      credentials: "include",
+    }
+  );
 
-    const data = await res.json();
+  const data = await res.json();
 
-    setProducts(data);
-  };
+  setProducts(data);
+};
 
   const handleLogout = async () => {
     try {
       const res = await fetch(
-        "http://localhost:8080/logout",
+        "https://ecommerce-vite-black.vercel.app/logout",
         {
           method: "POST",
           credentials: "include",

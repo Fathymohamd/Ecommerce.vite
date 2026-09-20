@@ -50,7 +50,7 @@ const Login = () => {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:8080/login",
+        "https://ecommerce-vite-black.vercel.app/login",
         {
           method: "POST",
           headers: {

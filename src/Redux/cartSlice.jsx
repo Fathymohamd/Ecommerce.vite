@@ -1,22 +1,24 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-
 export const addToCart = createAsyncThunk(
   "cart/addToCart",
-  async ({ productId, productModel } , { rejectWithValue }) => {
+  async ({ productId, productModel }, { rejectWithValue }) => {
     try {
-      const res = await fetch("http://localhost:8080/cart", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({
-          productId,
-          productModel
-        }),
-      });
+      const res = await fetch(
+        "https://ecommerce-vite-black.vercel.app/cart",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            productId,
+            productModel,
+          }),
+        }
+      );
 
       const data = await res.json();
 
@@ -30,16 +32,18 @@ export const addToCart = createAsyncThunk(
     }
   }
 );
-
 
 export const getCart = createAsyncThunk(
   "cart/getCart",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await fetch("http://localhost:8080/cart", {
-        method: "GET",
-        credentials: "include",
-      });
+      const res = await fetch(
+        "https://ecommerce-vite-black.vercel.app/cart",
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
 
       const data = await res.json();
 
@@ -53,14 +57,13 @@ export const getCart = createAsyncThunk(
     }
   }
 );
-
 
 export const removeFromCart = createAsyncThunk(
   "cart/removeFromCart",
   async (cartId, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `http://localhost:8080/cart/${cartId}`,
+        `https://ecommerce-vite-black.vercel.app/cart/${cartId}`,
         {
           method: "DELETE",
           credentials: "include",
@@ -83,7 +86,7 @@ export const removeFromCart = createAsyncThunk(
 export const increaseQuantity = async (productId) => {
   try {
     const res = await axios.patch(
-      `http://localhost:8080/api/cart/increase/${productId}`,
+      `https://ecommerce-vite-black.vercel.app/cart/increase/${productId}`,
       {},
       {
         withCredentials: true,
@@ -92,15 +95,15 @@ export const increaseQuantity = async (productId) => {
 
     return res.data.cart;
   } catch (error) {
-    console.log(error);
+    console.log("ERROR:", error.response?.data?.message);
+    throw error;
   }
 };
-
 
 export const decreaseQuantity = async (productId) => {
   try {
     const res = await axios.patch(
-      `http://localhost:8080/api/cart/decrease/${productId}`,
+      `https://ecommerce-vite-black.vercel.app/cart/decrease/${productId}`,
       {},
       {
         withCredentials: true,
@@ -108,13 +111,11 @@ export const decreaseQuantity = async (productId) => {
     );
 
     return res.data.cart;
-  }  catch (error) {
+  } catch (error) {
     console.log("ERROR:", error.response?.data?.message);
-
     throw error;
-   }
+  }
 };
-
 
 const initialState = {
   cart: [],
@@ -124,31 +125,33 @@ const initialState = {
 
 const cartSlice = createSlice({
   name: "cart",
+
   initialState,
 
   reducers: {
     updateQuantity: (state, action) => {
-  const updatedCart = action.payload;
+      const updatedCart = action.payload;
 
-  const item = state.cart.find(
-    (item) => item._id === updatedCart._id
-  );
+      const item = state.cart.find(
+        (item) => item._id === updatedCart._id
+      );
 
-  if (item) {
-    item.quantity = updatedCart.quantity;
-  }
-},},
+      if (item) {
+        item.quantity = updatedCart.quantity;
+      }
+    },
+  },
+
   extraReducers: (builder) => {
     builder
 
-      
+      // ================= GET CART =================
       .addCase(getCart.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
 
       .addCase(getCart.fulfilled, (state, action) => {
-      
         state.loading = false;
         state.cart = action.payload || [];
       })
@@ -158,7 +161,7 @@ const cartSlice = createSlice({
         state.error = action.payload;
       })
 
-  
+      // ================= ADD TO CART =================
       .addCase(addToCart.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -173,25 +176,25 @@ const cartSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
- 
+
+      // ================= REMOVE FROM CART =================
       .addCase(removeFromCart.pending, (state) => {
-  state.loading = true;
-  state.error = null;
-})
+        state.loading = true;
+        state.error = null;
+      })
 
-.addCase(removeFromCart.fulfilled, (state, action) => {
-  state.loading = false;
-  state.cart = action.payload || [];
-})
+      .addCase(removeFromCart.fulfilled, (state, action) => {
+        state.loading = false;
+        state.cart = action.payload || [];
+      })
 
-.addCase(removeFromCart.rejected, (state, action) => {
-  state.loading = false;
-  state.error = action.payload;
-})
-      
-      
+      .addCase(removeFromCart.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
   },
-})
-export const { Remove   , updateQuantity 
-, toggleCategory} = cartSlice.actions
+});
+
+export const { updateQuantity } = cartSlice.actions;
+
 export default cartSlice.reducer;

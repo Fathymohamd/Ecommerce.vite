@@ -43,7 +43,7 @@ function ResetPassword() {
     try {
 
       const res = await fetch(
-        `http://localhost:5000/api/reset-password/${token}`,
+        `https://ecommerce-vite-black.vercel.app/api/reset-password/${token}`,
         {
           method: "POST",
 

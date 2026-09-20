@@ -1,43 +1,26 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+
+// ================= ADD TO WISHLIST =================
+
 export const addToCartwishlist = createAsyncThunk(
-   "wishlist/getWishlist",
+  "wishlist/addToWishlist",
   async ({ productId, productModel }, { rejectWithValue }) => {
     try {
-      const res = await fetch("http://localhost:8080/wishlist", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({
-          productId,
-          productModel
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        return rejectWithValue(data.message);
-      }
-
-      return data.cart;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-
-export const getCartwishlist = createAsyncThunk(
-  "wishlist/getWishlist",
-  async (_, { rejectWithValue }) => {
-    try {
-      const res = await fetch("http://localhost:8080/wishlist", {
-        method: "GET",
-        credentials: "include",
-      });
+      const res = await fetch(
+        "https://ecommerce-vite-black.vercel.app/wishlist",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            productId,
+            productModel,
+          }),
+        }
+      );
 
       const data = await res.json();
 
@@ -46,7 +29,6 @@ export const getCartwishlist = createAsyncThunk(
       }
 
       return data.wishlist;
-     
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -54,12 +36,42 @@ export const getCartwishlist = createAsyncThunk(
 );
 
 
+// ================= GET WISHLIST =================
+
+export const getCartwishlist = createAsyncThunk(
+  "wishlist/getWishlist",
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await fetch(
+        "https://ecommerce-vite-black.vercel.app/wishlist",
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        return rejectWithValue(data.message);
+      }
+
+      return data.wishlist;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+
+// ================= REMOVE FROM WISHLIST =================
+
 export const romovewishlistdelet = createAsyncThunk(
   "wishlist/removeWishlist",
   async (wishlistId, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `http://localhost:8080/wishlist/${wishlistId}`,
+        `https://ecommerce-vite-black.vercel.app/wishlist/${wishlistId}`,
         {
           method: "DELETE",
           credentials: "include",
@@ -80,13 +92,14 @@ export const romovewishlistdelet = createAsyncThunk(
 );
 
 
+// ================= CLEAR USER CART =================
 
-export const clearUserCart  = createAsyncThunk(
+export const clearUserCart = createAsyncThunk(
   "UserCart/removeUserCart",
-  async (_ , { rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `http://localhost:8080/clearUserCart`,
+        "https://ecommerce-vite-black.vercel.app/clearUserCart",
         {
           method: "DELETE",
           credentials: "include",
@@ -106,14 +119,21 @@ export const clearUserCart  = createAsyncThunk(
   }
 );
 
+
+// ================= INITIAL STATE =================
+
 const initialState = {
   wishlist: [],
   loading: false,
   error: null,
 };
 
+
+// ================= WISHLIST SLICE =================
+
 const wishlistSlice = createSlice({
   name: "wishlist",
+
   initialState,
 
   reducers: {
@@ -132,6 +152,9 @@ const wishlistSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
+
+      // ================= GET WISHLIST =================
+
       .addCase(getCartwishlist.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -147,7 +170,10 @@ const wishlistSlice = createSlice({
         state.error = action.payload;
       })
 
-        .addCase(romovewishlistdelet.pending, (state) => {
+
+      // ================= REMOVE WISHLIST =================
+
+      .addCase(romovewishlistdelet.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
@@ -161,22 +187,27 @@ const wishlistSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-.addCase(clearUserCart.pending, (state) => {
-  state.loading = true;
-  state.error = null;
-})
 
-.addCase(clearUserCart.fulfilled, (state) => {
-  state.loading = false;
-  state.cart = [];
-})
 
-.addCase(clearUserCart.rejected, (state, action) => {
-  state.loading = false;
-  state.error = action.payload;
-});
+      // ================= CLEAR CART =================
+
+      .addCase(clearUserCart.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+
+      .addCase(clearUserCart.fulfilled, (state) => {
+        state.loading = false;
+        state.wishlist = [];
+      })
+
+      .addCase(clearUserCart.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
   },
 });
+
 
 export const { addToWishlist } = wishlistSlice.actions;
 

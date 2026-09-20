@@ -71,7 +71,7 @@ const Register = () => {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:8080/Sinup",
+        "https://ecommerce-vite-black.vercel.app/Sinup",
         {
           method: "POST",
           headers: {

@@ -1,19 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-// ================= UPDATE DARK MODE =================
+
 
 export const updateDarkMode = createAsyncThunk(
   "darkMode/update",
   async (darkMode, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        "http://localhost:8080/api/users/DarkMode",
+        "https://ecommerce-vite-black.vercel.app/api/users/DarkMode",
         {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
-          credentials: "include",
+         credentials: "include",
           body: JSON.stringify({
             darkMode,
           }),
@@ -41,7 +41,7 @@ export const getDarkMode = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        "http://localhost:8080/api/users/DarkMode",
+        "https://ecommerce-vite-black.vercel.app/api/users/darkMode",
         {
           method: "GET",
           credentials: "include",

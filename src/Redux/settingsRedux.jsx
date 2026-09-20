@@ -8,7 +8,7 @@ export const updateProfile = createAsyncThunk(
   async ({ name, email }, thunkAPI) => {
     try {
       const response = await fetch(
-        "http://localhost:8080/api/users/profile",
+        "https://ecommerce-vite-black.vercel.app/api/users/profile",
         {
           method: "PATCH",
 
@@ -55,10 +55,10 @@ export const changePassword = createAsyncThunk(
   ) => {
     try {
       const response = await fetch(
-        "http://localhost:8080/api/users/password",
+        "https://ecommerce-vite-black.vercel.app/api/users/password",
         {
           method: "PATCH",
-
+         
           headers: {
             "Content-Type": "application/json",
           },

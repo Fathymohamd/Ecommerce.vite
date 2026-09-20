@@ -7,8 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAllProducts,
   fetchById,
-  increaseQuantity,
-  decreaseQuantity,
+
 } from "../../Redux/createSlice";
 
 import { Link } from "react-router-dom";

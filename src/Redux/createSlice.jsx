@@ -14,65 +14,173 @@ const initialState = {
 
 export const fetchAllProducts = createAsyncThunk(
   "products/fetchAll",
-  async () => {
-    const res = await fetch("http://localhost:8080/api/products");
-    const data = await res.json();
-    return data.products;
-  }
-);
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await fetch(
+        "https://ecommerce-vite-black.vercel.app/api/products",
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
 
-export const fetchProductsByCategory = createAsyncThunk(
-  "products/fetchByCategory",
-  async (category) => {
-    const res = await fetch(
-      `http://localhost:8080/api/products/category/${category}`
-    );
-    return await res.json();
-  }
-);
+      const data = await res.json();
 
-export const fetchAllProductS = createAsyncThunk(
-  "products/fetchByPrice",
-  async ({ min, max }) => {
-    const res = await fetch(
-      `http://localhost:8080/api/products?min=${min}&max=${max}`
-    );
-    const data = await res.json();
-    return data;
-  }
-);
+      if (!res.ok) {
+        return rejectWithValue(data.message);
+      }
 
-export const fetchById = createAsyncThunk(
-  "products/fetchById",
-  async (id , { rejectWithValue }) => {
-    try{
-      const res = await fetch(`http://localhost:8080/api/products/${id}`);
-    return await res.json();
-    }catch(error){
-   return rejectWithValue(error.message);
+      return data.products;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );
 
 
+// =========================
+// Get Products By Category
+// =========================
+export const fetchProductsByCategory = createAsyncThunk(
+  "products/fetchByCategory",
+  async (category, { rejectWithValue }) => {
+    try {
+      const res = await fetch(
+        `https://ecommerce-vite-black.vercel.app/api/products/category/${category}`,
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        return rejectWithValue(data.message);
+      }
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+
+// =========================
+// Get Products By Price
+// =========================
+export const fetchAllProductS = createAsyncThunk(
+  "products/fetchByPrice",
+  async ({ min, max }, { rejectWithValue }) => {
+    try {
+      const res = await fetch(
+        `https://ecommerce-vite-black.vercel.app/api/products/price?min=${min}&max=${max}`,
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        return rejectWithValue(data.message);
+      }
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+
+// =========================
+// Get Product By ID
+// =========================
+export const fetchById = createAsyncThunk(
+  "products/fetchById",
+  async (id, { rejectWithValue }) => {
+    try {
+      const res = await fetch(
+        `https://ecommerce-vite-black.vercel.app/api/products/${id}`,
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        return rejectWithValue(data.message);
+      }
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+
+// =========================
+// Get All Users
+// =========================
 export const fetchFakeStore = createAsyncThunk(
   "fakestore/fetchAll",
-  async () => {
-    const res = await fetch("http://localhost:8080/api/users");
-    const data = await res.json();
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await fetch(
+        "https://ecommerce-vite-black.vercel.app/api/users",
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
 
-  return data;
+      const data = await res.json();
+
+      if (!res.ok) {
+        return rejectWithValue(data.message);
+      }
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
   }
 );
 
+
+// =========================
+// Get User By ID
+// =========================
 export const fetchFakeStoreid = createAsyncThunk(
   "feature/action",
-  async (id) => {
-    const res = await fetch(`http://localhost:8080/api/users/${id}`);
-    return await res.json();
+  async (id, { rejectWithValue }) => {
+    try {
+      const res = await fetch(
+        `https://ecommerce-vite-black.vercel.app/api/users/${id}`,
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        return rejectWithValue(data.message);
+      }
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
   }
 );
-
 
 const cartSlice = createSlice({
   name: "cart",
