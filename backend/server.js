@@ -41,12 +41,24 @@ const app = express();
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-    ],
-        credentials: true,
+    origin: function (origin, callback) {
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      if (
+        origin === "http://localhost:5173" ||
+        /^https:\/\/ecommerce-vite-[a-z0-9-]+\.vercel\.app$/.test(origin)
+      ) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
+
+    credentials: true,
   })
-);
+);;
 
 
 app.use(cookieParser());
