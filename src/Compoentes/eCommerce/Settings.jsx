@@ -63,7 +63,7 @@ const Settings = () => {
 
   const handleDeleteAccount = async () => {
     try {
-      const res = await fetch("http://localhost:8080/logout", {
+      const res = await fetch("https://ecommerce-vite-two.vercel.app/logout", {
         method: "POST",
         credentials: "include",
       });

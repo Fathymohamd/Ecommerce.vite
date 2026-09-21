@@ -96,7 +96,7 @@ const Profile = () => {
     try {
 
       const res = fetch(
-        "http://localhost:8080/profile/image",
+        "https://ecommerce-vite-two.vercel.app/profile/image",
         {
           method: "POST",
           body: {
@@ -119,7 +119,7 @@ const Profile = () => {
       }
 
       setProfileImage(
-        `http://localhost:8080${data.image}`
+        `https://ecommerce-vite-two.vercel.app${data.image}`
       );
 
       dispatch(getMe());

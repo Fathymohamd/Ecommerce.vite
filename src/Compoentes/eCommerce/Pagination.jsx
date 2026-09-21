@@ -79,7 +79,7 @@ function Pagination() {
   const paginationRouter = async (page) => {
 
     const res = await fetch(
-      `http://localhost:8080/api/product?page=${page}&limit=10`
+      `https://ecommerce-vite-two.vercel.app/api/product?page=${page}&limit=10`
     );
 
     const data = await res.json();
