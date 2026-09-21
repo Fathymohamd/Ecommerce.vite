@@ -5,7 +5,7 @@ export const getMe = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        "https://ecommerce-vite-black.vercel.app/api/auth/me",
+        "https://ecommerce-vite-two.vercel.app/api/auth/me",
         {
           method: "GET",
           credentials: "include",

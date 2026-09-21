@@ -7,7 +7,7 @@ const User = require("../models/Login");
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
-
+ console.log(email)
   try {
     if (!email || !password) {
       return res.status(400).json({
@@ -29,6 +29,8 @@ if (!emailRegex.test(email)) {
     message: "Please enter a valid email address",
   });
 }
+
+
     const isMatch = await bcrypt.compare(
       password,
       user.password

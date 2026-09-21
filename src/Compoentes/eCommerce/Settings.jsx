@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 import { updateDarkMode } from "../../Redux/darkMode";
 
 import { getMe, logout } from "../../Redux/authSlice";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
+
 const Settings = () => {
   const [language, setLanguage] = useState("English");
   const navigate = useNavigate()

@@ -41,16 +41,19 @@ const Login = () => {
     setError("");
     setSuccess("");
 
-    if (!formData.email || !formData.password) {
-      setError(t("login.enterEmailAndPassword"));
+    if (!formData.email) {
+      setError(t("login.enterYourEmail"));
       return;
     }
-
+   if (!formData.password) {
+      setError(t("login.enterYourPassword"));
+      return;
+    }
     try {
       setLoading(true);
 
       const response = await fetch(
-        "https://ecommerce-vite-black.vercel.app/login",
+        "https://ecommerce-vite-two.vercel.app/login",
         {
           method: "POST",
           headers: {
@@ -178,21 +181,21 @@ const Login = () => {
             </Link>
           </div>
 
-          {/* Error */}
-          {error && (
+        
+         {error && (
             <div className="error-message">
               {error}
             </div>
           )}
 
-          {/* Success */}
+         
           {success && (
             <div className="success-message">
               {success}
             </div>
           )}
 
-          {/* Login Button */}
+         
           <button
             type="submit"
             className="login-btn"

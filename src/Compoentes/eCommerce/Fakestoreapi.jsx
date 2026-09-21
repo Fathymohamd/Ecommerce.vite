@@ -7,7 +7,7 @@ import {  fetchFakeStoreid   , fetchFakeStore  } from "../../Redux/createSlice";
 import { addToCart } from "../../Redux/cartSlice";
 import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
-
+import Tilt from "react-parallax-tilt";
 
 const Fakestoreapi = () => {
   const { id } = useParams();
@@ -283,28 +283,33 @@ if(addToCartwishlist.fulfilled.match(res)){
     </div>
   </div>
 
-  {similarProducts?.length > 0 && (
+{similarProducts?.length > 0 && (
+  <section className="relatedProducts">
+    <h2>
+      {t("productDetails.youMayAlsoLike")}
+    </h2>
 
-    <section className="relatedProducts">
-
-      <h2>
-        {t("productDetails.youMayAlsoLike")}
-      </h2>
-
-      <div className="relatedProductsGrid">
-
-        {similarProducts.slice(0, 5).map((item) => (
-
-          <div
-            className="relatedProductCard"
-            key={item.id}
-          >
+    <div className="relatedProductsGrid">
+      {similarProducts.slice(0, 5).map((item) => (
+        <Tilt
+          key={item.id}
+          tiltMaxAngleX={8}
+          tiltMaxAngleY={8}
+          perspective={1000}
+          scale={1.03}
+          transitionSpeed={1000}
+          glareEnable={true}
+          glareMaxOpacity={0.15}
+          glareColor="#ffffff"
+          glarePosition="all"
+          className="relatedProductTilt"
+        >
+          <div className="relatedProductCard">
 
             <Link
               className="link"
               to={`/Fakestoreapi/${item.id}`}
             >
-
               <img
                 src={item.image}
                 alt={t(`products.${item.id}.title`, {
@@ -325,7 +330,6 @@ if(addToCartwishlist.fulfilled.match(res)){
               <p className="relatedPrice">
                 ${item.price}
               </p>
-
             </Link>
 
             <button
@@ -335,15 +339,11 @@ if(addToCartwishlist.fulfilled.match(res)){
             </button>
 
           </div>
-
-        ))}
-
-      </div>
-
-    </section>
-
-  )}
-
+        </Tilt>
+      ))}
+    </div>
+  </section>
+)}
 </div>
 
 

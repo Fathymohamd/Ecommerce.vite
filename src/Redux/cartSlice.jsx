@@ -6,7 +6,7 @@ export const addToCart = createAsyncThunk(
   async ({ productId, productModel }, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        "https://ecommerce-vite-black.vercel.app/cart",
+        "https://ecommerce-vite-two.vercel.app/cart",
         {
           method: "POST",
           headers: {
@@ -38,7 +38,7 @@ export const getCart = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        "https://ecommerce-vite-black.vercel.app/cart",
+        "https://ecommerce-vite-two.vercel.app/cart",
         {
           method: "GET",
           credentials: "include",
@@ -63,7 +63,7 @@ export const removeFromCart = createAsyncThunk(
   async (cartId, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `https://ecommerce-vite-black.vercel.app/cart/${cartId}`,
+        `https://ecommerce-vite-two.vercel.app/cart/${cartId}`,
         {
           method: "DELETE",
           credentials: "include",
@@ -86,7 +86,7 @@ export const removeFromCart = createAsyncThunk(
 export const increaseQuantity = async (productId) => {
   try {
     const res = await axios.patch(
-      `https://ecommerce-vite-black.vercel.app/cart/increase/${productId}`,
+       `https://ecommerce-vite-two.vercel.app/api/cart/increase/${productId}`,
       {},
       {
         withCredentials: true,
@@ -103,13 +103,12 @@ export const increaseQuantity = async (productId) => {
 export const decreaseQuantity = async (productId) => {
   try {
     const res = await axios.patch(
-      `https://ecommerce-vite-black.vercel.app/cart/decrease/${productId}`,
+      `https://ecommerce-vite-two.vercel.app/api/cart/decrease/${productId}`,
       {},
       {
         withCredentials: true,
       }
     );
-
     return res.data.cart;
   } catch (error) {
     console.log("ERROR:", error.response?.data?.message);

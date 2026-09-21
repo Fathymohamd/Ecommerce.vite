@@ -16,7 +16,7 @@ function ForgotPassword() {
 
    try {
 
-     const res = await fetch("https://ecommerce-vite-black.vercel.app/users/ForgotPassword" , {
+     const res = await fetch("https://ecommerce-vite-two.vercel.app/api/users/ForgotPassword" , {
 
        method: "POST",
 

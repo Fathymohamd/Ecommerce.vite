@@ -4,7 +4,7 @@ export const Notifications = createAsyncThunk(
 "push/Notifications",
 async(checkbox , { rejectWithValue })=>{
 try {
-    const res = await fetch("https://ecommerce-vite-black.vercel.app/api/users/Notifications" , {
+    const res = await fetch("https://ecommerce-vite-two.vercel.app/api/users/Notifications" , {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

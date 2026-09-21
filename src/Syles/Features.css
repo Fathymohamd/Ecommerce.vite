@@ -1,26 +1,52 @@
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 20vh;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff9900;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e68a00;
+}
 
 
-.features-section {
+.app.dark-mode::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.app.dark-mode::-webkit-scrollbar-thumb {
+  background: #ff9900;
+}
+
+.benefits-section {
   width: 100%;
   background: #ffffff;
   border-bottom: 1px solid #e5e7eb;
   height: 25vh;
- 
 }
 
-.features-container {
-  max-width: 1400px;
+.benefits-container {
+  max-width: 94%;
   margin: 0 auto;
-  padding: 28px 40px;
-   display: none;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 10px;
 }
 
-
-
-.feature-item {
+.feature-card {
   display: flex;
   align-items: center;
   gap: 15px;
@@ -28,126 +54,117 @@
   transition: 0.3s ease;
 }
 
-
-
-.feature-item:not(:last-child) {
+.feature-card:not(:last-child) {
   border-right: 1px solid #e5e7eb;
 }
 
-.feature-item:hover {
+.feature-card:hover {
   transform: translateY(-3px);
 }
-
-
 
 .feature-icon {
   width: 52px;
   height: 52px;
-
   flex-shrink: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border-radius: 12px;
-
   background: #fff4df;
   color: #ff9900;
-
   font-size: 22px;
 }
 
-
-
 .feature-content h3 {
   margin: 0 0 5px;
-
   color: #111827;
-
   font-size: 15px;
   font-weight: 700;
 }
 
 .feature-content p {
   margin: 0;
-
   color: #6b7280;
-
   font-size: 13px;
   line-height: 1.5;
 }
 
+
+/* ================= TABLET ================= */
+
 @media (max-width: 1000px) {
-  .features-container {
+  .benefits-container {
     grid-template-columns: repeat(2, 1fr);
     padding: 25px;
   }
 
-  .feature-item:nth-child(2) {
+  .feature-card:nth-child(2) {
     border-right: none;
   }
 
-  .feature-item:nth-child(1),
-  .feature-item:nth-child(2) {
+  .feature-card:nth-child(1),
+  .feature-card:nth-child(2) {
     border-bottom: 1px solid #e5e7eb;
   }
 }
 
+
 /* ================= MOBILE ================= */
 
 @media (max-width: 600px) {
-  .features-container {
+  .benefits-container {
     grid-template-columns: 1fr;
-    padding: 20px 15px;
+    width: 94%;
+    margin: auto;
+    padding:  15px;
     gap: 20px 0;
+    height: 40vh;
   }
 
-  .feature-item {
+  .feature-card {
     padding: 16px 5px;
   }
 
-  .feature-item:not(:last-child) {
+  .feature-card:not(:last-child) {
     border-right: none;
     border-bottom: 1px solid #e5e7eb;
   }
 
-  .feature-item:nth-child(2) {
+  .feature-card:nth-child(2) {
     border-bottom: 1px solid #e5e7eb;
   }
 
   .feature-icon {
     width: 48px;
     height: 48px;
-
     font-size: 20px;
   }
 
-  .features-section {
-  width: 100%;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  height: 50vh;
- 
+  .benefits-section {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    height: 50vh;
+  }
 }
 
-}
 
+/* ================= DARK MODE ================= */
 
-.app.dark-mode .features-section {
+.app.dark-mode .benefits-section {
   background: #121212;
   border-bottom-color: #333;
 }
 
-.app.dark-mode .features-container {
+.app.dark-mode .benefits-container {
   background: #121212;
 }
 
-.app.dark-mode .feature-item {
+.app.dark-mode .feature-card {
   color: #fff;
 }
 
-.app.dark-mode .feature-item:not(:last-child) {
+.app.dark-mode .feature-card:not(:last-child) {
   border-right-color: #333;
 }
 
@@ -164,28 +181,30 @@
   color: #999;
 }
 
-/* ================= TABLET ================= */
+
+/* ================= TABLET DARK MODE ================= */
 
 @media (max-width: 1000px) {
-  .app.dark-mode .feature-item:nth-child(1),
-  .app.dark-mode .feature-item:nth-child(2) {
+  .app.dark-mode .feature-card:nth-child(1),
+  .app.dark-mode .feature-card:nth-child(2) {
     border-bottom-color: #333;
   }
 
-  .app.dark-mode .feature-item:nth-child(2) {
+  .app.dark-mode .feature-card:nth-child(2) {
     border-right-color: transparent;
   }
 }
 
-/* ================= MOBILE ================= */
+
+/* ================= MOBILE DARK MODE ================= */
 
 @media (max-width: 600px) {
-  .app.dark-mode .feature-item:not(:last-child) {
+  .app.dark-mode .feature-card:not(:last-child) {
     border-right-color: transparent;
     border-bottom-color: #333;
   }
 
-  .app.dark-mode .feature-item:nth-child(2) {
+  .app.dark-mode .feature-card:nth-child(2) {
     border-bottom-color: #333;
   }
 

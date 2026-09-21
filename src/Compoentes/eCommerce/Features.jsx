@@ -34,32 +34,30 @@ function Features() {
   ];
 
   return (
-    <section className="features-section">
-      <div className="features-container">
+  <section className="benefits-section">
+  <div className="benefits-container">
+    {features.map((feature, index) => (
+      <div
+        className="feature-card"
+        key={index}
+      >
+        <div className="feature-icon">
+          {feature.icon}
+        </div>
 
-        {features.map((feature, index) => (
-          <div
-            className="feature-card"
-            key={index}
-          >
-            <div className="feature-icon">
-              {feature.icon}
-            </div>
+        <div className="feature-content">
+          <h3>
+            {t(feature.title)}
+          </h3>
 
-            <div className="feature-content">
-              <h3>
-                {t(feature.title)}
-              </h3>
-
-              <p>
-                {t(feature.description)}
-              </p>
-            </div>
-          </div>
-        ))}
-
+          <p>
+            {t(feature.description)}
+          </p>
+        </div>
       </div>
-    </section>
+    ))}
+  </div>
+</section>
   );
 }
 

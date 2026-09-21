@@ -3,14 +3,17 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { useTranslation } from "react-i18next";
-
+import { Eye, EyeOff } from "lucide-react";
 function ResetPassword() {
-
+const [showPassword, setShowPassword] = useState(false);
+const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { token } = useParams();
 
   const navigate = useNavigate();
 
-  const { t } = useTranslation();
+const { t, i18n } = useTranslation();
+
+const isArabic = i18n.language === "ar";
 
   const [password, setPassword] = useState("");
 
@@ -43,7 +46,7 @@ function ResetPassword() {
     try {
 
       const res = await fetch(
-        `https://ecommerce-vite-black.vercel.app/api/reset-password/${token}`,
+        `https://ecommerce-vite-two.vercel.app/api/reset-password/${token}`,
         {
           method: "POST",
 
@@ -111,32 +114,67 @@ function ResetPassword() {
             {message}
           </p>
         )}
+<form onSubmit={handleSubmit}>
 
-        <form onSubmit={handleSubmit}>
+  <div className="password-input-wrapper">
 
-          <input
-            type="password"
-            placeholder={t("resetPassword.newPassword")}
-            value={password}
-            onChange={(e) =>
-              setPassword(e.target.value)
-            }
-          />
+    <input
+      type={showPassword ? "text" : "password"}
+      placeholder={t("resetPassword.newPassword")}
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+    />
 
-          <input
-            type="password"
-            placeholder={t("resetPassword.confirmPassword")}
-            value={confirmPassword}
-            onChange={(e) =>
-              setConfirmPassword(e.target.value)
-            }
-          />
+    <button
+      type="button"
+         className={`password-toggle ${
+                  i18n.language === "ar" ? "rtl" : "ltr"
+                }`}
+  
+      onClick={() => setShowPassword(!showPassword)}
+    >
+      {showPassword ? (
+        <EyeOff size={18} />
+      ) : (
+        <Eye size={18} />
+      )}
+    </button>
 
-          <button type="submit">
-            {t("resetPassword.changePassword")}
-          </button>
+  </div>
 
-        </form>
+  <div className="password-input-wrapper">
+
+    <input
+      type={showConfirmPassword ? "text" : "password"}
+      placeholder={t("resetPassword.confirmPassword")}
+      value={confirmPassword}
+      onChange={(e) => setConfirmPassword(e.target.value)}
+    />
+
+    <button
+      type="button"
+        className={`password-toggle ${
+                  i18n.language === "ar" ? "rtl" : "ltr"
+                }`}
+  
+      onClick={() =>
+        setShowConfirmPassword(!showConfirmPassword)
+      }
+    >
+      {showConfirmPassword ? (
+        <EyeOff size={18} />
+      ) : (
+        <Eye size={18} />
+      )}
+    </button>
+
+  </div>
+
+  <button type="submit">
+    {t("resetPassword.changePassword")}
+  </button>
+
+</form>
 
       </div>
 

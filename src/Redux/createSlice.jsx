@@ -17,7 +17,7 @@ export const fetchAllProducts = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        "https://ecommerce-vite-black.vercel.app/api/products",
+        "https://ecommerce-vite-two.vercel.app/api/products",
         {
           method: "GET",
           credentials: "include",
@@ -46,7 +46,7 @@ export const fetchProductsByCategory = createAsyncThunk(
   async (category, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `https://ecommerce-vite-black.vercel.app/api/products/category/${category}`,
+        `https://ecommerce-vite-two.vercel.app/api/products/category/${category}`,
         {
           method: "GET",
           credentials: "include",
@@ -75,7 +75,7 @@ export const fetchAllProductS = createAsyncThunk(
   async ({ min, max }, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `https://ecommerce-vite-black.vercel.app/api/products/price?min=${min}&max=${max}`,
+        `https://ecommerce-vite-two.vercel.app/api/products/price?min=${min}&max=${max}`,
         {
           method: "GET",
           credentials: "include",
@@ -104,7 +104,7 @@ export const fetchById = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `https://ecommerce-vite-black.vercel.app/api/products/${id}`,
+        `https://ecommerce-vite-two.vercel.app/api/products/${id}`,
         {
           method: "GET",
           credentials: "include",
@@ -133,7 +133,7 @@ export const fetchFakeStore = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        "https://ecommerce-vite-black.vercel.app/api/users",
+        "https://ecommerce-vite-two.vercel.app/api/users",
         {
           method: "GET",
           credentials: "include",
@@ -162,7 +162,7 @@ export const fetchFakeStoreid = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `https://ecommerce-vite-black.vercel.app/api/users/${id}`,
+        `https://ecommerce-vite-two.vercel.app/api/users/${id}`,
         {
           method: "GET",
           credentials: "include",

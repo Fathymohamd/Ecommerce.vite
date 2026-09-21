@@ -7,16 +7,18 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAllProducts,
   fetchById,
-
 } from "../../Redux/createSlice";
 
 import { Link } from "react-router-dom";
 
-import { FaStar } from "react-icons/fa6";
+import { FaStar, FaHeart } from "react-icons/fa6";
 
 import { getCart, addToCart } from "../../Redux/cartSlice";
 
-import { getCartwishlist, addToCartwishlist } from "../../Redux/wishlistSlice";
+import {
+  getCartwishlist,
+  addToCartwishlist,
+} from "../../Redux/wishlistSlice";
 
 import { toast } from "react-hot-toast";
 
@@ -33,42 +35,62 @@ const ProductDetails = () => {
 
   const [mainImage, setMainImage] = useState("");
 
-  const product = useSelector((state) => state.counter.productsTolist);
+  const [selectedImage, setSelectedImage] = useState("");
 
-  const products = useSelector((state) => state.counter.data);
+  const product = useSelector(
+    (state) => state.counter.productsTolist
+  );
 
-  const user = useSelector((state) => state.auth.user);
+  const products = useSelector(
+    (state) => state.counter.data
+  );
 
-  const cartData = useSelector((state) => state.counter.cartData);
+  const user = useSelector(
+    (state) => state.auth.user
+  );
+
+  const cartData = useSelector(
+    (state) => state.counter.cartData
+  );
+
+  const wishlistData = useSelector(
+    (state) => state.wishlist?.wishlist || []
+  );
 
   const similarProducts = products.filter(
     (item) =>
-      item.category === product.category &&
-      item.id !== product.id
+      item.category === product?.category &&
+      item.id !== product?.id
   );
 
   useEffect(() => {
     dispatch(fetchById(id));
     dispatch(fetchAllProducts());
     dispatch(getCart());
-  }, [dispatch, id]);
+
+    if (user) {
+      dispatch(getCartwishlist());
+    }
+  }, [dispatch, id, user]);
 
   const totalPrice = cartData.reduce((acc, item) => {
     return acc + item.price * item.quantity;
   }, 0);
 
-  const [selectedImage, setSelectedImage] = useState("");
-
   useEffect(() => {
     if (product) {
-      setSelectedImage(product.image || product.images?.[0]);
+      setSelectedImage(
+        product.image || product.images?.[0]
+      );
     }
   }, [product]);
 
   if (!product) {
     return (
       <div className="productNotFound">
-        <h2>{t("productDetail.productNotFound")}</h2>
+        <h2>
+          {t("productDetail.productNotFound")}
+        </h2>
 
         <button onClick={() => navigate("/products")}>
           {t("productDetail.backToProducts")}
@@ -81,11 +103,11 @@ const ProductDetails = () => {
     ? product.images
     : [product.image];
 
-  const rating = product.rating?.rate || product.rating || 4.5;
+  const rating =
+    product.rating?.rate || product.rating || 4.5;
 
-  const reviews = product.rating?.count || 0;
-
-  // const totalPrice = product.price * quantity;
+  const reviews =
+    product.rating?.count || 0;
 
   const handleAddToCart = () => {
     navigate("/checkout");
@@ -93,7 +115,9 @@ const ProductDetails = () => {
 
   const handleAddToCarT = async (product) => {
     if (!user) {
-      toast.error(t("productDetail.pleaseLoginFirst"));
+      toast.error(
+        t("productDetail.pleaseLoginFirst")
+      );
 
       setTimeout(() => {
         navigate("/login");
@@ -110,39 +134,97 @@ const ProductDetails = () => {
     );
 
     if (addToCart.fulfilled.match(result)) {
-      toast.success(t("productDetail.productAddedToCart"), {
-        duration: 3000,
-        position: "top-right",
-        style: {
-          background: "#ffffff",
-          color: "#222",
-          border: "1px solid #e5e5e5",
-          borderRadius: "12px",
-          padding: "14px 18px",
-          fontSize: "15px",
-          fontWeight: "500",
-          boxShadow: "0 8px 25px rgba(0, 0, 0, 0.12)",
-        },
-      });
+      toast.success(
+        t("productDetail.productAddedToCart"),
+        {
+          duration: 3000,
+          position: "top-right",
+
+          style: {
+            background: "#ffffff",
+            color: "#222",
+            border: "1px solid #e5e5e5",
+            borderRadius: "12px",
+            padding: "14px 18px",
+            fontSize: "15px",
+            fontWeight: "500",
+            boxShadow:
+              "0 8px 25px rgba(0, 0, 0, 0.12)",
+          },
+        }
+      );
     } else {
       toast.error(
-        result.payload || t("productDetail.somethingWentWrong")
+        result.payload ||
+          t("productDetail.somethingWentWrong")
       );
     }
   };
 
+
+  const handleAddToWishlist = async (product) => {
+    if (!user) {
+      toast.error(
+        t("productDetail.pleaseLoginFirst")
+      );
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+
+      return;
+    }
+
+    const result = await dispatch(
+      addToCartwishlist({
+        productId: product._id,
+        productModel: "externalproducts",
+      })
+    );
+
+    if (addToCartwishlist.fulfilled.match(result)) {
+      toast.success(
+        t("addedToWishlist"),
+        {
+          duration: 3000,
+          position: "top-right",
+        }
+      );
+
+      dispatch(getCartwishlist());
+    } else {
+      toast.error(
+        result.payload ||
+          t("addedToWishlist.somethingWentWrong")
+      );
+    }
+  };
+
+  const isInWishlist = wishlistData.some(
+    (item) =>
+      item.product?._id === product._id ||
+      item.product === product._id
+  );
+
   return (
     <div className="productDetails">
-      {/* Breadcrumb */}
 
+      {/* Breadcrumb */}
       <div className="productBreadcrumb">
         {t("productDetail.home")} /{" "}
-        {t("productDetail.products")} / {t(`products.${product.id}.title`)}
+        {t("productDetail.products")} /{" "}
+        {t(`products.${product.id}.title`)}
       </div>
 
       <div className="productDetailsContainer">
+
+        {/* =========================
+            Product Images
+        ========================= */}
         <div className="productImages">
+
           <div className="thumbnailList">
+
             {images.map((image, index) => (
               <button
                 key={index}
@@ -151,7 +233,9 @@ const ProductDetails = () => {
                     ? "thumbnail active"
                     : "thumbnail"
                 }
-                onClick={() => setSelectedImage(image)}
+                onClick={() =>
+                  setSelectedImage(image)
+                }
               >
                 <img
                   src={image}
@@ -159,34 +243,65 @@ const ProductDetails = () => {
                 />
               </button>
             ))}
+
           </div>
 
           <div className="mainProductImage">
+
             <img
               src={selectedImage}
               alt={product.title}
             />
+
+            {/* =========================
+                Wishlist Button
+            ========================= */}
+            <button
+              className={
+                isInWishlist
+                  ? "productWishlistBtn active"
+                  : "productWishlistBtn"
+              }
+              onClick={() =>
+                handleAddToWishlist(product)
+              }
+              title={t(
+                "productDetail.addToWishlist"
+              )}
+            >
+              <FaHeart />
+            </button>
+
           </div>
+
         </div>
 
+        {/* =========================
+            Product Info
+        ========================= */}
         <div className="productInfo">
-           <h3>
-                    {t(`products.${product.id}.title`)}
-                  </h3>
+
+          <h3>
+            {t(`products.${product.id}.title`)}
+          </h3>
 
           <div className="ratingRow">
+
             <span className="rating">
               {rating} ★
             </span>
 
             <span className="reviewText">
-              {reviews} {t("productDetail.ratings")}
+              {reviews}{" "}
+              {t("productDetail.ratings")}
             </span>
+
           </div>
 
           <div className="divider" />
 
           <div className="priceSection">
+
             <span className="priceLabel">
               {t("productDetail.price")}:
             </span>
@@ -194,6 +309,7 @@ const ProductDetails = () => {
             <span className="productPrice">
               ${product.price}
             </span>
+
           </div>
 
           <p className="taxText">
@@ -203,29 +319,37 @@ const ProductDetails = () => {
           <div className="divider" />
 
           <div className="productDescription">
+
             <h3>
               {t("productDetail.aboutThisItem")}
             </h3>
 
-        <p>
-  {t(`products.${product.id}.description`)}
-</p>
+            <p>
+              {t(
+                `products.${product.id}.description`
+              )}
+            </p>
+
           </div>
 
           <div className="divider" />
 
           {/* Stock */}
-
           <div className="stock">
+
             <span>
               {t("productDetail.inStock")}
             </span>
+
           </div>
 
           <div className="productActions">
+
             <button
               className="addCartBtn"
-              onClick={() => handleAddToCarT(product)}
+              onClick={() =>
+                handleAddToCarT(product)
+              }
             >
               {t("productDetail.addToCart")}
             </button>
@@ -236,59 +360,97 @@ const ProductDetails = () => {
             >
               {t("productDetail.buyNow")}
             </button>
+
           </div>
 
-        
-
-         
         </div>
       </div>
 
+      {/* =========================
+          Related Products
+      ========================= */}
       {similarProducts?.length > 0 && (
+
         <section className="relatedProducts">
+
           <h2>
             {t("productDetail.youMayAlsoLike")}
           </h2>
 
           <div className="relatedProductsGrid">
-            {similarProducts.slice(0, 5).map((item) => (
-              <div
-                className="relatedProductCard"
-                key={item.id}
-              >
-                <Link
-                  className="link"
-                  to={`/products/${item.id}`}
+
+            {similarProducts
+              .slice(0, 5)
+              .map((item) => (
+
+                <div
+                  className="relatedProductCard"
+                  key={item.id}
                 >
-                  <img
-                    src={item.image || item.images?.[0]}
-                    alt={item.title}
-                  />
 
-                  <h3>
-                    {t(`products.${item.id}.title`)}
-                  </h3>
+                  <Link
+                    className="link"
+                    to={`/products/${item.id}`}
+                  >
 
-                  <div className="relatedRating">
-                    <FaStar />{" "}
-                    {item.rating?.rate || 4.5}
+                    <img
+                      src={
+                        item.image ||
+                        item.images?.[0]
+                      }
+                      alt={item.title}
+                    />
+
+                    <h3>
+                      {t(
+                        `products.${item.id}.title`
+                      )}
+                    </h3>
+
+                    <div className="relatedRating">
+                      <FaStar />{" "}
+                      {item.rating?.rate || 4.5}
+                    </div>
+
+                    <p className="relatedPrice">
+                      ${item.price}
+                    </p>
+
+                  </Link>
+
+                  <div className="relatedProductActions">
+
+                    <button
+                      onClick={() =>
+                        handleAddToCarT(item)
+                      }
+                    >
+                      {t(
+                        "productDetail.addToCart"
+                      )}
+                    </button>
+
+                    <button
+                      className="relatedWishlistBtn"
+                      onClick={() =>
+                        handleAddToWishlist(item)
+                      }
+                    >
+                      <FaHeart />
+                    </button>
+
                   </div>
 
-                  <p className="relatedPrice">
-                    ${item.price}
-                  </p>
-                </Link>
+                </div>
 
-                <button
-                  onClick={() => handleAddToCarT(product)}
-                >
-                  {t("productDetail.addToCart")}
-                </button>
-              </div>
-            ))}
+              ))}
+
           </div>
+
         </section>
+
       )}
+
     </div>
   );
 };

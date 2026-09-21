@@ -47,18 +47,28 @@ const Register = () => {
     setError("");
     setSuccess("");
 
-    if (
-      !formData.name ||
-      !formData.email ||
-      !formData.password ||
-      !formData.confirmPassword
-    ) {
-      setError("Please fill in all fields");
-      return;
-    }
+if (!formData.name) {
+  setError(t("register.enterYourName"));
+  return;
+}
+
+if (!formData.email) {
+  setError(t("register.enterYourEmail"));
+  return;
+}
+
+if (!formData.password) {
+  setError(t("register.enterYourPassword"));
+  return;
+}
+
+if (!formData.confirmPassword) {
+  setError(t("register.confirmYourPassword"));
+  return;
+}
 
     if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match");
+      setError(t("register.passwordsDoNotMatch"));
       return;
     }
 
@@ -71,7 +81,7 @@ const Register = () => {
       setLoading(true);
 
       const response = await fetch(
-        "https://ecommerce-vite-black.vercel.app/Sinup",
+        "https://ecommerce-vite-two.vercel.app/Sinup",
         {
           method: "POST",
           headers: {

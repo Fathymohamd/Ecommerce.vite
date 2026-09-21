@@ -106,7 +106,7 @@ const handleProductClick = () => {
 
 const handleSearch = async () => {
   const res = await fetch(
-    `https://ecommerce-vite-black.vercel.app/api/products/search?q=${search}`,
+    `https://ecommerce-vite-two.vercel.app/api/products/search?q=${search}`,
     {
       credentials: "include",
     }
@@ -120,7 +120,7 @@ const handleSearch = async () => {
   const handleLogout = async () => {
     try {
       const res = await fetch(
-        "https://ecommerce-vite-black.vercel.app/logout",
+        "hhttps://ecommerce-vite-two.vercel.app/logout",
         {
           method: "POST",
           credentials: "include",

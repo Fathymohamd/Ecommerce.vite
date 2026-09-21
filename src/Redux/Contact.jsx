@@ -8,7 +8,7 @@ export const createContact = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        "https://ecommerce-vite-black.vercel.app/api/contact",
+        "https://ecommerce-vite-two.vercel.app/api/contact",
         {
           method: "POST",
            credentials: "include",

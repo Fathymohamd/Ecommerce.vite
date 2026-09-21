@@ -8,7 +8,7 @@ export const addToCartwishlist = createAsyncThunk(
   async ({ productId, productModel }, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        "https://ecommerce-vite-black.vercel.app/wishlist",
+        "https://ecommerce-vite-two.vercel.app/wishlist",
         {
           method: "POST",
           credentials: "include",
@@ -43,7 +43,7 @@ export const getCartwishlist = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        "https://ecommerce-vite-black.vercel.app/wishlist",
+        "https://ecommerce-vite-two.vercel.app/wishlist",
         {
           method: "GET",
           credentials: "include",
@@ -71,7 +71,7 @@ export const romovewishlistdelet = createAsyncThunk(
   async (wishlistId, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        `https://ecommerce-vite-black.vercel.app/wishlist/${wishlistId}`,
+        `https://ecommerce-vite-two.vercel.app/wishlist/${wishlistId}`,
         {
           method: "DELETE",
           credentials: "include",
@@ -92,14 +92,14 @@ export const romovewishlistdelet = createAsyncThunk(
 );
 
 
-// ================= CLEAR USER CART =================
+
 
 export const clearUserCart = createAsyncThunk(
   "UserCart/removeUserCart",
   async (_, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        "https://ecommerce-vite-black.vercel.app/clearUserCart",
+        "https://ecommerce-vite-two.vercel.app/clearUserCart",
         {
           method: "DELETE",
           credentials: "include",

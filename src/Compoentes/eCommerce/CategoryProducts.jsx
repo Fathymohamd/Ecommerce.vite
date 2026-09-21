@@ -8,7 +8,7 @@ import {fetchAllProducts} from "../../Redux/createSlice"
 import {getCart , addToCart} from "../../Redux/cartSlice"
 import {getCartwishlist    , addToCartwishlist} from "../../Redux/wishlistSlice"
 import {FaSpinner , FaHeart} from "react-icons/fa";
-
+import Tilt from "react-parallax-tilt";
 function CategoryProducts() {
   const { category } = useParams();
   const dispatch = useDispatch();
@@ -110,11 +110,23 @@ if(addToCartwishlist.fulfilled.match(res)){
       {t(`categories.${category}`)}
     </h1>
 
-    <div className="products-grid">
-      {products?.map((item) => {
-
-        return(
-          <div className="product-card" key={item._id}>
+   <div className="products-grid">
+  {products?.map((item) => {
+    return (
+      <Tilt
+        key={item._id}
+        tiltMaxAngleX={8}
+        tiltMaxAngleY={8}
+        perspective={1000}
+        scale={1.03}
+        transitionSpeed={1000}
+        glareEnable={true}
+        glareMaxOpacity={0.12}
+        glareColor="#ffffff"
+        glarePosition="all"
+        className="product-card-tilt"
+      >
+        <div className="product-card">
 
           <button
             className="wishlist-btn"
@@ -130,24 +142,27 @@ if(addToCartwishlist.fulfilled.match(res)){
           >
             <img
               src={item.images?.[0]}
-            
+              alt={t(`products.${item.id}.title`)}
             />
 
             <h3>
               {t(`products.${item.id}.title`)}
             </h3>
- 
+
             <p>${item.price}</p>
           </Link>
 
-          <button onClick={() => handleAddToCart(item)}>
+          <button
+            onClick={() => handleAddToCart(item)}
+          >
             {t("categoryProducts.addToCart")}
           </button>
 
         </div>
-        )
-      })}
-    </div>
+      </Tilt>
+    );
+  })}
+</div>
 
   </div>
 </section>

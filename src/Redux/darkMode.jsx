@@ -7,13 +7,14 @@ export const updateDarkMode = createAsyncThunk(
   async (darkMode, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        "https://ecommerce-vite-black.vercel.app/api/users/DarkMode",
+        "https://ecommerce-vite-two.vercel.app/api/users/DarkMode",
         {
           method: "PATCH",
+           credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },
-         credentials: "include",
+        
           body: JSON.stringify({
             darkMode,
           }),
@@ -34,14 +35,13 @@ export const updateDarkMode = createAsyncThunk(
 );
 
 
-// ================= GET DARK MODE =================
 
 export const getDarkMode = createAsyncThunk(
-  "darkMode/get",
+  "darkMode/getDarkMode",
   async (_, { rejectWithValue }) => {
     try {
       const res = await fetch(
-        "https://ecommerce-vite-black.vercel.app/api/users/darkMode",
+        "https://ecommerce-vite-two.vercel.app/api/users/darkMode",
         {
           method: "GET",
           credentials: "include",
@@ -49,7 +49,7 @@ export const getDarkMode = createAsyncThunk(
       );
 
       const data = await res.json();
-   console.log(data)
+  
       if (!res.ok) {
         return rejectWithValue(data.message);
       }

@@ -26,6 +26,7 @@
     "confirmYourPassword": "أكد كلمة المرور",
     "creatingAccount": "جاري إنشاء الحساب...",
     "alreadyHaveAccount": "لديك حساب بالفعل؟",
+    "passwordsDoNotMatch": "كلمة المرور غير متطابقة",
     "login": "تسجيل الدخول"
   },
 
@@ -1036,6 +1037,7 @@
     "southSinai": "جنوب سيناء"
   }
 },
+"addedToWishlist": "تمت إضافة المنتج إلى المفضلة",
   "products": { 
 "1": {
   "title": "ماسكارا إيسنس لاش برنسس",
