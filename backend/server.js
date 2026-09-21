@@ -43,7 +43,6 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-     "https://ecommerce-vite-2fi4.vercel.app"
     ],
         credentials: true,
   })
