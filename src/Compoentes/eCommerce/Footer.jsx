@@ -114,7 +114,7 @@ return (
         </ul>
       </div>
 
-      {/* CUSTOMER SERVICE */}
+     
       <div className="footer-column">
         <h3>{t("footer.customerService")}</h3>
 

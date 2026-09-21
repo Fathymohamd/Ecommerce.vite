@@ -139,7 +139,7 @@ if(addToCartwishlist.fulfilled.match(res)){
     </span>
   </div>
 
-  {/* Deals */}
+ 
   {products.length === 0 ? (
     <div className="no-deals">
       <h2>{t("deals.noDealsAvailable")}</h2>
@@ -156,7 +156,7 @@ if(addToCartwishlist.fulfilled.match(res)){
         return (
           <div className="deal-card" key={product._id}>
 
-            {/* Discount */}
+         
             <div className="discount-badge">
               {Math.round(product.discountPercentage)}%{" "}
               {t("deals.off")}
@@ -202,7 +202,7 @@ if(addToCartwishlist.fulfilled.match(res)){
                 </span>
               </div>
 
-              {/* Progress */}
+             
               <div className="deal-progress">
                 <div className="progress-bar">
                   <span></span>
@@ -213,7 +213,7 @@ if(addToCartwishlist.fulfilled.match(res)){
                 </small>
               </div>
 
-              {/* Button */}
+  
               <button
                 className="deal-cart-btn"
                 onClick={() => handleAddToCart(product)}

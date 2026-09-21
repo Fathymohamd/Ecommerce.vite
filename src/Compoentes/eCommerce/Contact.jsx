@@ -71,7 +71,6 @@ const handleSubmit = async (e) => {
 <div className="contact-page">
   <div className="contact-container">
 
-    {/* Header */}
     <div className="contact-header">
       <h1>{t("contact.contactUs")}</h1>
 
@@ -82,7 +81,7 @@ const handleSubmit = async (e) => {
 
     <div className="contact-content">
 
-      {/* Contact Information */}
+     
       <div className="contact-info">
         <h2>{t("contact.getInTouch")}</h2>
 
@@ -124,7 +123,7 @@ const handleSubmit = async (e) => {
         </div>
       </div>
 
-      {/* Contact Form */}
+  
       <div className="contact-form">
         <h2>{t("contact.sendUsMessage")}</h2>
 

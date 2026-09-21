@@ -249,14 +249,14 @@ if(addToCartwishlist.fulfilled.match(res)){
 
       <div className="divider" />
 
-      {/* Stock */}
+      
       <div className="stock">
         <span>
           {t("productDetails.inStock")}
         </span>
       </div>
 
-      {/* Quantity */}
+     
       <div className="quantitySection">
       </div>
 

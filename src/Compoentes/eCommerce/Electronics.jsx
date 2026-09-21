@@ -122,7 +122,7 @@ if(addToCartwishlist.fulfilled.match(res)){
 
 <section className="electronics-page">
 
-  {/* Header */}
+ 
   <div className="electronics-header">
     <div>
       <h1>{t("electronics.electronics")}</h1>
@@ -136,7 +136,7 @@ if(addToCartwishlist.fulfilled.match(res)){
     </div>
   </div>
 
-  {/* Categories */}
+ 
   <div className="electronics-categories">
     <button
       onClick={() => setCategory("all")}
@@ -182,7 +182,7 @@ if(addToCartwishlist.fulfilled.match(res)){
           key={product._id}
         >
 
-          {/* Wishlist */}
+       
           <button
             className="electronics-heart"
             onClick={() => getCartwishlistState(product)}
@@ -220,7 +220,7 @@ if(addToCartwishlist.fulfilled.match(res)){
               })}
             </h2>
 
-            {/* Rating */}
+         
             <div className="electronics-rating">
               <span className="stars">
                 <FaStar />

@@ -229,7 +229,7 @@ const products = data.filter((product) => {
 
 return (
   <>
-    {/* Categories */}
+
     <div className="electronics-categories">
 
       <button
@@ -457,7 +457,7 @@ return (
                 ${product.price}
               </div>
 
-              {/* Cart */}
+           
               <button
                 className="category-cart"
                 onClick={() =>
