@@ -113,9 +113,7 @@ const HomeKitchen = () => {
     }
   };
 
-  // =========================
-  // Add To Wishlist
-  // =========================
+
 
   const getCartwishlistState = async (product) => {
     if (!user) {

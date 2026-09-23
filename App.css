@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -8,12 +8,6 @@
   min-height: 100vh;
   background-color: #ffffff;
   color: #222222;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.app.dark-mode {
-  background-color: #121212;
-  color: #ffffff;
 }
 
 .app.dark-mode {
@@ -31,23 +25,68 @@
   color: #ffffff;
 }
 
-.app.dark-mode div {
-  color: inherit;
-}
-
-.app.dark-mode p,
-.app.dark-mode h1,
-.app.dark-mode h2,
-.app.dark-mode h3,
-.app.dark-mode h4,
-.app.dark-mode span {
-  color: inherit;
-}
-
 .app.dark-mode input,
 .app.dark-mode textarea,
 .app.dark-mode select {
   background-color: #1e1e1e;
   color: #ffffff;
   border-color: #444;
+}
+
+
+
+.notFoundPage {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: #f8f9fa;
+}
+
+.notFoundContent {
+  text-align: center;
+  max-width: 600px;
+  padding: 50px 30px;
+}
+
+.notFoundContent h1 {
+  margin: 0;
+  font-size: 120px;
+  line-height: 1;
+  font-weight: 800;
+  color: #ff9900;
+  letter-spacing: -5px;
+}
+
+.notFoundContent h2 {
+  margin: 20px 0 10px;
+  font-size: 32px;
+  color: #111827;
+  font-weight: 700;
+}
+
+.notFoundContent p {
+  margin: 0 auto 30px;
+  max-width: 500px;
+  color: #6b7280;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.notFoundContent a {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 8px;
+  background: #ff9900;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.notFoundContent a:hover {
+  background: #e68a00;
+  transform: translateY(-2px);
 }

@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchFakeStore} from "../../Redux/createSlice";
 import { Link } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
+import Tilt from "react-parallax-tilt";
 import {getCart , addToCart} from "../../Redux/cartSlice"
 import {getCartwishlist    , addToCartwishlist} from "../../Redux/wishlistSlice"
 import { toast } from "react-hot-toast";
@@ -127,9 +127,23 @@ return (
 
       <div className="best-products-grid">
 
-        {fakestoreap?.data?.map((product) => (
-
-          <article
+        {fakestoreap?.data?.map((product) => {
+          return (
+           /*  import Tilt from "react-parallax-tilt"; */
+   <Tilt
+              key={product._id}
+              tiltMaxAngleX={8}
+              tiltMaxAngleY={8}
+              perspective={1000}
+              scale={1.03}
+              transitionSpeed={1000}
+              glareEnable={true}
+              glareMaxOpacity={0.12}
+              glareColor="#ffffff"
+              glarePosition="all"
+              className="product-card-tilt"
+            >
+                    <article
             className="best-product-card"
             key={product?._id}
           >
@@ -223,8 +237,12 @@ return (
             </div>
 
           </article>
+</Tilt>
+          )
+        }
+ 
 
-        ))}
+        )}
 
       </div>
 

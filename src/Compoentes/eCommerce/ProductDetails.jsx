@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-
+import Tilt from "react-parallax-tilt";
 import {
   fetchAllProducts,
   fetchById,
@@ -218,9 +218,7 @@ const ProductDetails = () => {
 
       <div className="productDetailsContainer">
 
-        {/* =========================
-            Product Images
-        ========================= */}
+      
         <div className="productImages">
 
           <div className="thumbnailList">
@@ -276,9 +274,7 @@ const ProductDetails = () => {
 
         </div>
 
-        {/* =========================
-            Product Info
-        ========================= */}
+   
         <div className="productInfo">
 
           <h3>
@@ -366,90 +362,72 @@ const ProductDetails = () => {
         </div>
       </div>
 
-      {/* =========================
-          Related Products
-      ========================= */}
-      {similarProducts?.length > 0 && (
 
-        <section className="relatedProducts">
+  {similarProducts?.length > 0 && (
+  <section className="relatedProducts">
+    <h2>
+      {t("productDetail.youMayAlsoLike")}
+    </h2>
 
-          <h2>
-            {t("productDetail.youMayAlsoLike")}
-          </h2>
+    <div className="relatedProductsGrid">
+      {similarProducts.slice(0, 5).map((item) => (
+        <Tilt
+          key={item._id || item.id}
+          tiltMaxAngleX={8}
+          tiltMaxAngleY={8}
+          perspective={1000}
+          scale={1.03}
+          transitionSpeed={1000}
+          glareEnable={true}
+          glareMaxOpacity={0.15}
+          glareColor="#ffffff"
+          glarePosition="all"
+          className="relatedProductTilt"
+        >
+          <div className="relatedProductCard">
+            <Link
+              className="link"
+              to={`/products/${item.id}`}
+            >
+              <img
+                src={item.image || item.images?.[0]}
+                alt={item.title}
+              />
 
-          <div className="relatedProductsGrid">
+              <h3>
+                {t(`products.${item.id}.title`)}
+              </h3>
 
-            {similarProducts
-              .slice(0, 5)
-              .map((item) => (
+              <div className="relatedRating">
+                <FaStar />{" "}
+                {item.rating?.rate || item.rating || 4.5}
+              </div>
 
-                <div
-                  className="relatedProductCard"
-                  key={item.id}
-                >
+              <p className="relatedPrice">
+                ${item.price}
+              </p>
+            </Link>
 
-                  <Link
-                    className="link"
-                    to={`/products/${item.id}`}
-                  >
+            <div className="relatedProductActions">
+              <button
+                onClick={() => handleAddToCarT(item)}
+              >
+                {t("productDetail.addToCart")}
+              </button>
 
-                    <img
-                      src={
-                        item.image ||
-                        item.images?.[0]
-                      }
-                      alt={item.title}
-                    />
-
-                    <h3>
-                      {t(
-                        `products.${item.id}.title`
-                      )}
-                    </h3>
-
-                    <div className="relatedRating">
-                      <FaStar />{" "}
-                      {item.rating?.rate || 4.5}
-                    </div>
-
-                    <p className="relatedPrice">
-                      ${item.price}
-                    </p>
-
-                  </Link>
-
-                  <div className="relatedProductActions">
-
-                    <button
-                      onClick={() =>
-                        handleAddToCarT(item)
-                      }
-                    >
-                      {t(
-                        "productDetail.addToCart"
-                      )}
-                    </button>
-
-                    <button
-                      className="relatedWishlistBtn"
-                      onClick={() =>
-                        handleAddToWishlist(item)
-                      }
-                    >
-                      <FaHeart />
-                    </button>
-
-                  </div>
-
-                </div>
-
-              ))}
-
+              <button
+                className="relatedWishlistBtn"
+                onClick={() => handleAddToWishlist(item)}
+              >
+                <FaHeart />
+              </button>
+            </div>
           </div>
-
-        </section>
-
-      )}
+        </Tilt>
+      ))}
+    </div>
+  </section>
+)}
 
     </div>
   );

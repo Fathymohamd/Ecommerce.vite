@@ -27,6 +27,7 @@ const SettindsPassword = require("./routes/SettindsPassword")
 const Notifications = require("./routes/Notifications")
 const DarkMode = require("./routes/DarkMode")
 const contactController = require("./routes/contactController")
+const updateProfile = require("./routes/updateProfile")
 
 const CartRouter = require("./routes/CartRouter")
 const removeFromCart = require("./routes/removeFromCart")
@@ -58,7 +59,7 @@ app.use(
 
     credentials: true,
   })
-);;
+);
 
 
 app.use(cookieParser());
@@ -121,7 +122,7 @@ app.use("/api/users/ForgotPassword", forgotPassword);
 
 app.use("/api/reset-password", resetPassword);
 
-
+app.use("/api/users/UPprofile", updateProfile);
 
 app.use("/api/product", pagination);
 

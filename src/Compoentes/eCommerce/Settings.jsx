@@ -30,18 +30,17 @@ const Settings = () => {
   const [language, setLanguage] = useState("English");
   const navigate = useNavigate()
   const { t, i18n } = useTranslation();
+const errorPassword = useSelector((state) => state.settings.errorPassword);
 
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
-      
+  const [errors , setError] = useState("")
+  const [error , setErrors] = useState("")
   const loading = useSelector((state) => state.settings.loading);
   const user = useSelector((state) => state.auth.user);
-  const error = useSelector((state) => state.settings.error);
-  const errorPassword = useSelector(
-    (state) => state.settings.errorPassword
-  );
+  
   const darkMode = useSelector((state) => state.darkMode.darkMode);
 
   const dispatch = useDispatch();
@@ -94,7 +93,25 @@ const Settings = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+if (!formData.name.trim() && !formData.email.trim()) {
+  setErrors(t("profile.fillAllFields"));
+  return;
+}
 
+if (!formData.name.trim()) {
+  setErrors(t("profile.nameRequired"));
+  return;
+}
+
+if (!formData.email.trim()) {
+  setErrors(t("profile.emailRequired"));
+  return;
+}
+
+if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+  setErrors(t("profile.invalidEmail"));
+  return;
+}
     const resultAction = await dispatch(
       updateProfile({
         name: formData.name,
@@ -105,7 +122,7 @@ const Settings = () => {
     if (updateProfile.fulfilled.match(resultAction)) {
       toast.success(t("settings.profileUpdatedSuccessfully"));
     }
-
+  setErrors("")
     setFormData({
       name: "",
       email: "",
@@ -129,6 +146,45 @@ const Settings = () => {
 
   const handleSubmitPassowrd = async (e) => {
     e.preventDefault();
+  setError("");
+
+  if (
+    !passwordData.password.trim() &&
+    !passwordData.newPassword.trim() &&
+    !passwordData.confirmPassword.trim()
+  ) {
+    setError(t("changePassword.fillAllFields"));
+    return;
+  }
+
+  if (!passwordData.password.trim()) {
+    setError(t("changePassword.passwordRequired"));
+    return;
+  }
+
+  if (!passwordData.newPassword.trim()) {
+    setError(t("changePassword.newPasswordRequired"));
+    return;
+  }
+
+  if (
+    !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+      passwordData.newPassword
+    )
+  ) {
+    setError(t("changePassword.strongPassword"));
+    return;
+  }
+
+  if (!passwordData.confirmPassword.trim()) {
+    setError(t("changePassword.confirmPasswordRequired"));
+    return;
+  }
+
+  if (passwordData.newPassword !== passwordData.confirmPassword) {
+    setError(t("changePassword.passwordsDoNotMatch"));
+    return;
+  }
 
     const resultAction = await dispatch(
       changePassword({
@@ -137,10 +193,10 @@ const Settings = () => {
         confirmPassword: passwordData.confirmPassword,
       })
     );
-
+console.log("CHANGE PASSWORD RESULT:", resultAction);
     if (changePassword.fulfilled.match(resultAction)) {
       toast.success(t("settings.passwordChangedSuccessfully"));
-
+         setError("")
       setPasswordData({
         password: "",
         newPassword: "",
@@ -166,7 +222,7 @@ const Settings = () => {
 
           <div className="settings-content">
 
-            {/* Full Name */}
+            
             <div className="input-group">
               <label>{t("settings.fullName")}</label>
 
@@ -179,7 +235,7 @@ const Settings = () => {
               />
             </div>
 
-            {/* Email */}
+          
             <div className="input-group">
               <label>{t("settings.emailAddress")}</label>
 
@@ -192,14 +248,14 @@ const Settings = () => {
               />
             </div>
 
-            {/* Error */}
+            
             {error && (
               <div className="error-message">
                 {error}
               </div>
             )}
 
-            {/* Save Button */}
+          
             <button
               type="button"
               className="save-btn"
@@ -301,12 +357,16 @@ const Settings = () => {
               </div>
             </div>
 
-            {errorPassword && (
+            {errors && (
               <div className="error-message">
-                {errorPassword}
+                {errors}
               </div>
             )}
-
+            {errorPassword && (
+  <p className="error-message">
+    {errorPassword}
+  </p>
+)}
             <button
               className="save-btn"
               onClick={handleSubmitPassowrd}

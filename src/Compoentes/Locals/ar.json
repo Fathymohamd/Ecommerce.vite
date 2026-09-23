@@ -10,7 +10,12 @@
     "loggingIn": "جاري تسجيل الدخول...",
     "login": "تسجيل الدخول",
     "dontHaveAccount": "ليس لديك حساب؟",
-    "createAccount": "إنشاء حساب"
+    "createAccount": "إنشاء حساب",
+       "fillAllFields": "يرجى ملء جميع الحقول المطلوبة",
+  "emailRequired": "البريد الإلكتروني مطلوب",
+  "invalidEmail": "يرجى إدخال بريد إلكتروني صحيح",
+  "passwordRequired": "كلمة المرور مطلوبة",
+  "strongPassword": "كلمة المرور يجب أن تحتوي على 8 أحرف على الأقل، وحرف كبير وحرف صغير ورقم ورمز خاص"
   },
 
     "register": {
@@ -27,9 +32,24 @@
     "creatingAccount": "جاري إنشاء الحساب...",
     "alreadyHaveAccount": "لديك حساب بالفعل؟",
     "passwordsDoNotMatch": "كلمة المرور غير متطابقة",
-    "login": "تسجيل الدخول"
+    "login": "تسجيل الدخول",
+    "fillAllFields": "يرجى ملء جميع الحقول المطلوبة",
+  "nameRequired": "الاسم مطلوب",
+  "emailRequired": "البريد الإلكتروني مطلوب",
+  "invalidEmail": "يرجى إدخال بريد إلكتروني صحيح",
+  "passwordRequired": "كلمة المرور مطلوبة",
+  "strongPassword": "كلمة المرور يجب أن تحتوي على 8 أحرف على الأقل، وحرف كبير وحرف صغير ورقم ورمز خاص",
+  "confirmPasswordRequired": "تأكيد كلمة المرور مطلوب"
   },
-
+  
+"changePassword": {
+  "fillAllFields": "يرجى ملء جميع الحقول المطلوبة",
+  "passwordRequired": "كلمة المرور الحالية مطلوبة",
+  "newPasswordRequired": "كلمة المرور الجديدة مطلوبة",
+  "strongPassword": "كلمة المرور يجب أن تحتوي على 8 أحرف على الأقل، وحرف كبير وحرف صغير ورقم ورمز خاص",
+  "confirmPasswordRequired": "تأكيد كلمة المرور مطلوب",
+  "passwordsDoNotMatch": "كلمتا المرور غير متطابقتين"
+},
 
     "bestSellers": {
     "customerFavorites": "اختيارات العملاء المفضلة",
@@ -62,35 +82,53 @@
 },
 
 "categories": {
-    "exploreOurStore": "استكشف متجرنا",
+  "exploreOurStore": "استكشف متجرنا",
   "shopBy": "تسوق حسب",
   "category": "الفئة",
   "description": "اعثر على كل ما تحتاجه من مجموعتنا الواسعة من فئات المنتجات.",
   "viewAll": "عرض الكل",
+
   "beauty": "الجمال",
   "fragrances": "العطور",
   "furniture": "الأثاث",
   "groceries": "البقالة",
-  "homeDecoration": "ديكور المنزل",
-  "kitchenAccessories": "إكسسوارات المطبخ",
+  "home-decoration": "ديكور المنزل",
+  "kitchen-accessories": "إكسسوارات المطبخ",
+
   "laptops": "أجهزة اللابتوب",
-  "mensShirts": "قمصان رجالية",
-  "mensShoes": "أحذية رجالية",
-  "mensWatches": "ساعات رجالية",
-  "mobileAccessories": "إكسسوارات الموبايل",
+
+  "mens-shirts": "قمصان رجالية",
+  "mens-shoes": "أحذية رجالية",
+  "mens-watches": "ساعات رجالية",
+
+  "mobile-accessories": "إكسسوارات الموبايل",
   "motorcycle": "دراجات نارية",
-  "skinCare": "العناية بالبشرة",
+  "skin-care": "العناية بالبشرة",
   "smartphones": "الهواتف الذكية",
-  "sportsAccessories": "إكسسوارات رياضية",
+  "sports-accessories": "إكسسوارات رياضية",
   "sunglasses": "نظارات شمسية",
   "tablets": "أجهزة التابلت",
   "tops": "ملابس علوية",
   "vehicle": "مركبات",
+
   "womens-bags": "حقائب نسائية",
-  "womensDresses": "فساتين نسائية",
-  "womensJewellery": "مجوهرات نسائية",
-  "womensShoes": "أحذية نسائية",
-  "womensWatches": "ساعات نسائية"
+  "womens-dresses": "فساتين نسائية",
+  "womens-jewellery": "مجوهرات نسائية",
+  "womens-shoes": "أحذية نسائية",
+  "womens-watches": "ساعات نسائية"
+},
+"checkoud": {
+  "firstNameRequired": "الاسم الأول مطلوب",
+  "lastNameRequired": "اسم العائلة مطلوب",
+  "emailRequired": "البريد الإلكتروني مطلوب",
+  "invalidEmail": "يرجى إدخال بريد إلكتروني صحيح",
+  "phoneRequired": "رقم الهاتف مطلوب",
+  "invalidPhone": "يرجى إدخال رقم هاتف مصري صحيح",
+  "countryRequired": "الدولة مطلوبة",
+  "governorateRequired": "المحافظة مطلوبة",
+  "cityRequired": "المدينة مطلوبة",
+  "addressRequired": "العنوان مطلوب",
+  "fillAllFields": "يرجى ملء جميع الحقول المطلوبة قبل المتابعة"
 },
 
 "categoryProducts": {
@@ -542,6 +580,10 @@
   "somethingWentWrong": "حدث خطأ ما"
 },
 "profile": {
+    "fillAllFields": "يرجى ملء جميع الحقول المطلوبة",
+  "nameRequired": "الاسم مطلوب",
+  "emailRequired": "البريد الإلكتروني مطلوب",
+  "invalidEmail": "يرجى إدخال بريد إلكتروني صحيح",
   "myProfile": "ملفي الشخصي",
   "managePersonalInformation": "إدارة معلوماتك الشخصية",
   "profile": "الملف الشخصي",

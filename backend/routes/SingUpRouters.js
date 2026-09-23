@@ -15,7 +15,10 @@ router.post("/Sinup", async (req, res) => {
         message: "All fields are required",
       });
     }
-   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 if (!emailRegex.test(email)) {
   return res.status(400).json({

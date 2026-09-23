@@ -12,7 +12,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 
 import { getMe } from "../../Redux/authSlice";
-
+import { updateProfile } from "../../Redux/updateProfile";
 import { useTranslation } from "react-i18next";
 
 const Profile = () => {
@@ -32,6 +32,29 @@ const Profile = () => {
     address: "",
   });
 
+
+const handleUpdateProfile = async (e) => {
+  e.preventDefault();
+
+  const resultAction = await dispatch(
+    updateProfile({
+      name: userData.name,
+      email: userData.email,
+      phone: userData.phone,
+      address: userData.address,
+    })
+  );
+
+  console.log("UPDATE PROFILE RESULT:", resultAction);
+
+  if (updateProfile.fulfilled.match(resultAction)) {
+    toast.success("Profile updated successfully");
+  }
+};
+
+
+
+
   const fileInputRef = useRef(null);
 
   const [profileImage, setProfileImage] = useState("");
@@ -42,7 +65,7 @@ const Profile = () => {
 
   }, [dispatch]);
 
-  // عندما تصل بيانات المستخدم من Redux
+ 
 
   useEffect(() => {
 
@@ -133,7 +156,7 @@ const Profile = () => {
   }
 
 
-  // حفظ بيانات المستخدم
+
 
   const handleSave = async () => {
 
@@ -187,7 +210,7 @@ const Profile = () => {
 
           <input
             type="file"
-            accept="image/*"
+            accept="image"
             ref={fileInputRef}
             onChange={handleImageChange}
             hidden
@@ -243,7 +266,7 @@ const Profile = () => {
 
           <div className="profile-info">
 
-            {/* Name */}
+         
 
             <div className="profile-field">
 
@@ -279,7 +302,7 @@ const Profile = () => {
             </div>
 
 
-            {/* Email */}
+            
 
             <div className="profile-field">
 
@@ -418,7 +441,7 @@ const Profile = () => {
 
             <button
               className="save-profile-btn"
-              onClick={handleSave}
+              onClick={handleUpdateProfile}
             >
 
               {t("profile.saveChanges")}

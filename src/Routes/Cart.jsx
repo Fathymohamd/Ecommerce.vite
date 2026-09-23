@@ -32,7 +32,7 @@ function Cart() {
 
   const cart = useSelector((state) => state.cart.cart);
 
-  const data = useSelector((state) => state.counter.data);
+
 
   const [error, setError] = useState("");
 

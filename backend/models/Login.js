@@ -26,7 +26,16 @@ notifications: {
 darkMode: {
   type: Boolean,
   default: false
-}
+},
+  phone: {
+    type: String,
+    default: "",
+  },
+
+  address: {
+    type: String,
+    default: "",
+  }
 , role: {
 
     type: String,

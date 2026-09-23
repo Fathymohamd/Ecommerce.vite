@@ -8,6 +8,7 @@ import settingsRedux from "./settingsRedux";
 import Notifications from "./Notifications";
 import darkModeReducer from "./darkMode";
 import contactReducer from "./Contact";
+import updateProfile from "./updateProfile";
 
 export const store = configureStore({
   reducer: {
@@ -19,5 +20,6 @@ export const store = configureStore({
     notifications: Notifications,
     darkMode: darkModeReducer,
     contact: contactReducer,
+    profile: updateProfile,
   },
 });

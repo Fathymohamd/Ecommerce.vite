@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./Compoentes/Layout/Layout";
 import Cart from "./Routes/Cart";
@@ -85,10 +86,20 @@ import {getDarkMode}  from "./Redux/darkMode"
 import "../App.css";
 function App() {
 const darkMode = useSelector((state) => state.darkMode.darkMode);
-const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getDarkMode());
-  }, [dispatch]);
+
+const initialized = useSelector(
+  (state) => state.darkMode.initialized
+);
+
+const dispatch = useDispatch();
+
+useEffect(() => {
+  dispatch(getDarkMode());
+}, [dispatch]);
+
+if (!initialized) {
+  return null;
+}
   return (
     <>
        <div className={darkMode ? "app dark-mode" : "app"}>
@@ -108,7 +119,26 @@ const dispatch = useDispatch()
          <Route path="/categories" element={<Categories />}/>
         <Route path="/bigDeals" element={<BigDeals />}/>;
         <Route path="/features" element={<Features />}/>;
-          <Route path="*" element={<h1>Page Not Found</h1>} />
+      <Route
+  path="*"
+  element={
+    <div className="notFoundPage">
+      <div className="notFoundContent">
+        <h1>404</h1>
+
+        <h2>Page Not Found</h2>
+
+        <p>
+          Sorry, the page you're looking for doesn't exist or has been moved.
+        </p>
+
+        <Link to="/">
+          Back to Home
+        </Link>
+      </div>
+    </div>
+  }
+/>
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="payment-failed" element={<PaymentFailed />} />
           <Route path="/productsShopNow" element={<ProductsShopNow />} />

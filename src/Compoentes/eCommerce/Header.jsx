@@ -39,7 +39,6 @@ function Header() {
   const searchRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [language, setLanguage] = useState("EN");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { t, i18n } = useTranslation();
   const cart = useSelector((state) => state.cart.cart);
   const wishlist = useSelector((state) => state.wishlist.wishlist);
@@ -120,7 +119,7 @@ const handleSearch = async () => {
   const handleLogout = async () => {
     try {
       const res = await fetch(
-        "hhttps://ecommerce-vite-two.vercel.app/logout",
+        "https://ecommerce-vite-two.vercel.app/logout",
         {
           method: "POST",
           credentials: "include",
@@ -241,7 +240,7 @@ const handleSearch = async () => {
             <div className="account-dropdown">
 
               <div className="dropdown-title">
-                {t("header.welcome")} <FaStar />
+                {t("header.welcome")}  <FaStar />
               </div>
 
               {user ? (

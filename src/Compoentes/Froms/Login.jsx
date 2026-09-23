@@ -41,14 +41,31 @@ const Login = () => {
     setError("");
     setSuccess("");
 
-    if (!formData.email) {
-      setError(t("login.enterYourEmail"));
-      return;
-    }
-   if (!formData.password) {
-      setError(t("login.enterYourPassword"));
-      return;
-    }
+if (!formData.email.trim() && !formData.password.trim()) {
+  setError(t("login.fillAllFields"));
+  return;
+}
+
+if (!formData.email.trim()) {
+  setError(t("login.emailRequired"));
+  return;
+} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+  setError(t("login.invalidEmail"));
+  return;
+}
+
+if (!formData.password.trim()) {
+  setError(t("login.passwordRequired"));
+  return;
+} else if (
+  !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+    formData.password
+  )
+) {
+  setError(t("login.strongPassword"));
+  return;
+}
+
     try {
       setLoading(true);
 

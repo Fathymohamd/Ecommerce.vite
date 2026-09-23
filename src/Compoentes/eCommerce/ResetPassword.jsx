@@ -22,17 +22,20 @@ const isArabic = i18n.language === "ar";
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
+if (!password.trim()) {
+  setMessage(t("register.passwordRequired"));
+  return;
+} else if (
+  !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+    password
+  )
+) {
+  setMessage(t("register.strongPassword"));
+  return;
+}
+    
 
-    if (password == "" && confirmPassword == "") {
-
-      setMessage(
-        t("resetPassword.passwordRequired")
-      );
-
-      return;
-    }
 
     if (password !== confirmPassword) {
 

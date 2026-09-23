@@ -106,16 +106,16 @@ const darkModeSlice = createSlice({
       })
 
       .addCase(getDarkMode.fulfilled, (state, action) => {
-        state.loading = false;
-
-        state.darkMode =
-        action.payload.user.darkMode;
-      })
+      state.loading = false;
+      state.initialized = true;
+      state.darkMode = action.payload.user.darkMode;
+     })
 
       .addCase(getDarkMode.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      });
+  state.loading = false;
+  state.initialized = true;
+  state.error = action.payload;
+})
 
   },
 });

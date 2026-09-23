@@ -9,7 +9,7 @@ import {
 import React, { useEffect, useState } from 'react'
 import { useSelector  , useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import Tilt from "react-parallax-tilt";
 import {getCart , addToCart} from "../../Redux/cartSlice"
 import {getCartwishlist    , addToCartwishlist} from "../../Redux/wishlistSlice"
 
@@ -70,34 +70,43 @@ const handleAddToCart = async (product) => {
 const getCartwishlistState = async (product) => {
   if (!user) {
     toast.error(t("Please login first"));
-    setTimeout(()=>{
+
+    setTimeout(() => {
       navigate("/login");
-    }, 2000)
+    }, 2000);
+
     return;
   }
-const res = await dispatch(addToCartwishlist({
-        productId: product._id,
+
+  const res = await dispatch(
+    addToCartwishlist({
+      productId: product._id,
       productModel: "externalproducts",
-}));
-if(addToCartwishlist.fulfilled.match(res)){
-  toast.success(t("Product added to wishlis!"), {
-    duration: 3000,
-    position: "top-right",
-    style: {
-      background: "#ffffff",
-      color: "#222",
-      border: "1px solid #e5e5e5",
-      borderRadius: "12px",
-      padding: "14px 18px",
-      fontSize: "15px",
-      fontWeight: "500",
-      boxShadow: "0 8px 25px rgba(0, 0, 0, 0.12)",
-    },
-  });
-}else {
-     toast.error(result.payload || t("Something went wrong"));
-}
-}
+    })
+  );
+
+  if (addToCartwishlist.fulfilled.match(res)) {
+    // تحديث الـ Wishlist في Redux مباشرة
+    dispatch(getCartwishlist());
+
+    toast.success(t("Product added to wishlist!"), {
+      duration: 3000,
+      position: "top-right",
+      style: {
+        background: "#ffffff",
+        color: "#222",
+        border: "1px solid #e5e5e5",
+        borderRadius: "12px",
+        padding: "14px 18px",
+        fontSize: "15px",
+        fontWeight: "500",
+        boxShadow: "0 8px 25px rgba(0, 0, 0, 0.12)",
+      },
+    });
+  } else {
+    toast.error(res.payload || t("Something went wrong"));
+  }
+};
 
  if(loading){
   return <div className="loading-container">
@@ -143,9 +152,23 @@ if(addToCartwishlist.fulfilled.match(res)){
 
     <div className="featured-grid">
 
-      {Data.slice(5, 29).map((product) => (
+      {Data.slice(5, 29).map((product) => {
+        return (
+               <Tilt
+              key={product._id}
+              tiltMaxAngleX={8}
+              tiltMaxAngleY={8}
+              perspective={1000}
+              scale={1.03}
+              transitionSpeed={1000}
+              glareEnable={true}
+              glareMaxOpacity={0.12}
+              glareColor="#ffffff"
+              glarePosition="all"
+              className="product-card-tilt"
+            >
 
-        <article
+      <article
           className="product-card"
           key={product.id}
         >
@@ -249,8 +272,11 @@ if(addToCartwishlist.fulfilled.match(res)){
           </div>
 
         </article>
+            </Tilt>
+        )
+      }
 
-      ))}
+      )}
 
     </div>
   </div>

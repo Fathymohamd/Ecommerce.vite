@@ -39,43 +39,60 @@ const Register = () => {
       ...prev,
       [name]: value,
     }));
+      if (name === "email") {
+    setError("");
+  }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setError("");
-    setSuccess("");
+  
 
-if (!formData.name) {
-  setError(t("register.enterYourName"));
+if (
+  !formData.name.trim() &&
+  !formData.email.trim() &&
+  !formData.password.trim() &&
+  !formData.confirmPassword.trim()
+) {
+  setError(t("register.fillAllFields"));
   return;
 }
 
-if (!formData.email) {
-  setError(t("register.enterYourEmail"));
+if (!formData.name.trim()) {
+  setError(t("register.nameRequired"));
   return;
 }
 
-if (!formData.password) {
-  setError(t("register.enterYourPassword"));
+if (!formData.email.trim()) {
+  setError(t("register.emailRequired"));
+  return;
+} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+  setError(t("register.invalidEmail"));
   return;
 }
 
-if (!formData.confirmPassword) {
-  setError(t("register.confirmYourPassword"));
+if (!formData.password.trim()) {
+  setError(t("register.passwordRequired"));
+  return;
+} else if (
+  !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+    formData.password
+  )
+) {
+  setError(t("register.strongPassword"));
   return;
 }
 
-    if (formData.password !== formData.confirmPassword) {
-      setError(t("register.passwordsDoNotMatch"));
-      return;
-    }
+if (!formData.confirmPassword.trim()) {
+  setError(t("register.confirmPasswordRequired"));
+  return;
+}
 
-    if (formData.password.length < 6) {
-      setError("Password must be at least 6 characters");
-      return;
-    }
+if (formData.password !== formData.confirmPassword) {
+  setError(t("register.passwordsDoNotMatch"));
+  return;
+}
 
     try {
       setLoading(true);
@@ -160,7 +177,7 @@ if (!formData.confirmPassword) {
             </div>
           </div>
 
-          {/* Email */}
+         
           <div className="form-group">
             <label htmlFor="email">
               {t("register.email")}
@@ -184,7 +201,7 @@ if (!formData.confirmPassword) {
             </div>
           </div>
 
-          {/* Password */}
+          
           <div className="form-group">
             <label htmlFor="password">
               {t("register.password")}

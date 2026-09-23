@@ -153,7 +153,20 @@ const wishlistSlice = createSlice({
   extraReducers: (builder) => {
     builder
 
-      // ================= GET WISHLIST =================
+       .addCase(addToCartwishlist.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+
+      .addCase(addToCartwishlist.fulfilled, (state, action) => {
+        state.loading = false;
+      state.wishlist = [...state.wishlist ,action.payload] ;
+      })
+
+      .addCase(addToCartwishlist.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
 
       .addCase(getCartwishlist.pending, (state) => {
         state.loading = true;
@@ -162,7 +175,7 @@ const wishlistSlice = createSlice({
 
       .addCase(getCartwishlist.fulfilled, (state, action) => {
         state.loading = false;
-        state.wishlist = action.payload || [];
+      state.wishlist = action.payload ;
       })
 
       .addCase(getCartwishlist.rejected, (state, action) => {
@@ -171,7 +184,7 @@ const wishlistSlice = createSlice({
       })
 
 
-      // ================= REMOVE WISHLIST =================
+     
 
       .addCase(romovewishlistdelet.pending, (state) => {
         state.loading = true;

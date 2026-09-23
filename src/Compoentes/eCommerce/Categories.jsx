@@ -274,7 +274,7 @@ function Categories() {
 
                   <h3>
                     {t(
-                      `categories.${category.translationKey}`
+                      `categories.${category.category}`
                     )}
                   </h3>
 

@@ -7,6 +7,7 @@ import {
   FaArrowLeft,
   FaTruck,
   FaCheck,
+  FaSpinner
 } from "react-icons/fa6";
 
 import { useTranslation } from "react-i18next";
@@ -73,23 +74,11 @@ const Orders = () => {
 
   }, []);
 
-  if (loading) {
-
-    return (
-
-      <div className="orders-page">
-
-        <div className="orders-loading">
-
-          <h2>{t("orders.loadingOrders")}</h2>
-
-        </div>
-
-      </div>
-
-    );
-
-  }
+ if(loading){
+  return <div className="loading-container">
+  <FaSpinner className="loader-icon" />
+</div>
+ }
 
   if (error) {
 

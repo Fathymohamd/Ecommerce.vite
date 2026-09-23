@@ -13,7 +13,13 @@ function ForgotPassword() {
   const [error , setError] = useState("")
 
   const handLeSubmit = async(e)=>{
-
+if (!email.trim()) {
+  setError(t("register.emailRequired"));
+  return;
+} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  setError(t("register.invalidEmail"));
+  return;
+}
    try {
 
      const res = await fetch("https://ecommerce-vite-two.vercel.app/api/users/ForgotPassword" , {

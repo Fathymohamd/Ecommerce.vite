@@ -96,9 +96,7 @@ export const fetchAllProductS = createAsyncThunk(
 );
 
 
-// =========================
-// Get Product By ID
-// =========================
+
 export const fetchById = createAsyncThunk(
   "products/fetchById",
   async (id, { rejectWithValue }) => {

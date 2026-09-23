@@ -47,6 +47,7 @@ export const getCart = createAsyncThunk(
 
       const data = await res.json();
 
+
       if (!res.ok) {
         return rejectWithValue(data.message);
       }
@@ -166,17 +167,20 @@ const cartSlice = createSlice({
         state.error = null;
       })
 
-      .addCase(addToCart.fulfilled, (state, action) => {
-        state.loading = false;
-        state.cart = action.payload || [];
-      })
+.addCase(addToCart.fulfilled, (state, action) => {
+  state.loading = false;
 
+  state.cart = [
+    ...state.cart,
+    action.payload
+  ];
+})
       .addCase(addToCart.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
 
-      // ================= REMOVE FROM CART =================
+     
       .addCase(removeFromCart.pending, (state) => {
         state.loading = true;
         state.error = null;

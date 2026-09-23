@@ -10,11 +10,31 @@
     "loggingIn": "Logging in...",
     "login": "Login",
     "dontHaveAccount": "Don't have an account?",
-    "createAccount": "Create Account"
+    "createAccount": "Create Account",
+      "fillAllFields": "Please fill in all required fields",
+  "emailRequired": "Email is required",
+  "invalidEmail": "Please enter a valid email address",
+  "passwordRequired": "Password is required",
+  "strongPassword": "Password must be at least 8 characters and contain an uppercase letter, lowercase letter, number, and special character"
   },
   
+"changePassword": {
+  "fillAllFields": "Please fill in all required fields",
+  "passwordRequired": "Current password is required",
+  "newPasswordRequired": "New password is required",
+  "strongPassword": "Password must be at least 8 characters and contain an uppercase letter, lowercase letter, number, and special character",
+  "confirmPasswordRequired": "Password confirmation is required",
+  "passwordsDoNotMatch": "Passwords do not match"
+},
 
   "register": {
+    "fillAllFields": "Please fill in all required fields",
+  "nameRequired": "Name is required",
+  "emailRequired": "Email is required",
+  "invalidEmail": "Please enter a valid email address",
+  "passwordRequired": "Password is required",
+  "strongPassword": "Password must be at least 8 characters and contain an uppercase letter, lowercase letter, number, and special character",
+  "confirmPasswordRequired": "Confirm password is required",
     "createAccount": "Create Account",
     "createAccountAndStartShopping": "Create your account and start shopping",
     "fullName": "Full Name",
@@ -44,7 +64,19 @@
     "addToCart": "Add to Cart"
   },
 
-
+"checkoud": {
+  "firstNameRequired": "First name is required",
+  "lastNameRequired": "Last name is required",
+  "emailRequired": "Email is required",
+  "invalidEmail": "Please enter a valid email address",
+  "phoneRequired": "Phone number is required",
+  "invalidPhone": "Please enter a valid Egyptian phone number",
+  "countryRequired": "Country is required",
+  "governorateRequired": "Governorate is required",
+  "cityRequired": "City is required",
+  "addressRequired": "Address is required",
+  "fillAllFields": "Please fill in all required fields before continuing"
+},
 "bigDeals": {
   "limitedTimeOffer": "Limited Time Offer",
   "bigDeals": "Big Deals.",
@@ -64,35 +96,40 @@
 },
 
 "categories": {
-    "exploreOurStore": "Explore Our Store",
-  "shopBy": "Shop by",
+  "exploreOurStore": "Explore Our Store",
+  "shopBy": "Shop By",
   "category": "Category",
   "description": "Find everything you need from our wide range of product categories.",
   "viewAll": "View All",
+
   "beauty": "Beauty",
   "fragrances": "Fragrances",
   "furniture": "Furniture",
   "groceries": "Groceries",
-  "homeDecoration": "Home Decoration",
-  "kitchenAccessories": "Kitchen Accessories",
+  "home-decoration": "Home Decoration",
+  "kitchen-accessories": "Kitchen Accessories",
+
   "laptops": "Laptops",
-  "mensShirts": "Men's Shirts",
-  "mensShoes": "Men's Shoes",
-  "mensWatches": "Men's Watches",
-  "mobileAccessories": "Mobile Accessories",
+
+  "mens-shirts": "Men's Shirts",
+  "mens-shoes": "Men's Shoes",
+  "mens-watches": "Men's Watches",
+
+  "mobile-accessories": "Mobile Accessories",
   "motorcycle": "Motorcycle",
-  "skinCare": "Skin Care",
+  "skin-care": "Skin Care",
   "smartphones": "Smartphones",
-  "sportsAccessories": "Sports Accessories",
+  "sports-accessories": "Sports Accessories",
   "sunglasses": "Sunglasses",
   "tablets": "Tablets",
   "tops": "Tops",
   "vehicle": "Vehicle",
-  "womensBags": "Women's Bags",
-  "womensDresses": "Women's Dresses",
-  "womensJewellery": "Women's Jewellery",
-  "womensShoes": "Women's Shoes",
-  "womensWatches": "Women's Watches"
+
+  "womens-bags": "Women's Bags",
+  "womens-dresses": "Women's Dresses",
+  "womens-jewellery": "Women's Jewellery",
+  "womens-shoes": "Women's Shoes",
+  "womens-watches": "Women's Watches"
 },
 "categoryProducts": {
   "addToWishlist": "Add to wishlist",
@@ -403,6 +440,10 @@
   "somethingWentWrong": "Something went wrong"
 },
 "profile": {
+    "fillAllFields": "Please fill in all required fields",
+  "nameRequired": "Name is required",
+  "emailRequired": "Email is required",
+  "invalidEmail": "Please enter a valid email address",
   "myProfile": "My Profile",
   "managePersonalInformation": "Manage your personal information",
   "profile": "Profile",

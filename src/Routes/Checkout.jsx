@@ -17,13 +17,21 @@ import { useTranslation } from "react-i18next";
 
 import { toast } from "react-hot-toast";
 
-import { getCart } from "../Redux/cartSlice";
 
 import { clearUserCart } from "../Redux/wishlistSlice";
+import {
+  getCart,
+  updateQuantity,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+} from "../Redux/cartSlice";
+import { frameData } from "framer-motion";
+
 
 function Checkout() {
   const { t } = useTranslation();
-
+  
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -31,7 +39,7 @@ function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState("cash");
 
   const [error, setError] = useState("");
-
+  const [errorcart , setErrorcart] = useState("")
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -93,10 +101,67 @@ function Checkout() {
 
         return;
       }
+if (
+  !formData.firstName.trim() &&
+  !formData.lastName.trim() &&
+  !formData.email.trim() &&
+  !formData.phone.trim() &&
+  !formData.governorate.trim() &&
+  !formData.city.trim() &&
+  !formData.address.trim()
+) {
+  setError(t("checkoud.fillAllFields"));
+  return;
+}
+
+if (!formData.firstName.trim()) {
+  setError(t("checkoud.firstNameRequired"));
+  return;
+}
+
+if (!formData.lastName.trim()) {
+  setError(t("checkoud.lastNameRequired"));
+  return;
+}
+
+if (!formData.email.trim()) {
+  setError(t("checkoud.emailRequired"));
+  return;
+} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+  setError(t("checkoud.invalidEmail"));
+  return;
+}
+
+if (!formData.phone.trim()) {
+  setError(t("checkoud.phoneRequired"));
+  return;
+} else if (!/^01[0125][0-9]{8}$/.test(formData.phone)) {
+  setError(t("checkoud.invalidPhone"));
+  return;
+}
+
+if (!formData.country.trim()) {
+  setError(t("checkoud.countryRequired"));
+  return;
+}
+
+if (!formData.governorate.trim()) {
+  setError(t("checkoud.governorateRequired"));
+  return;
+}
+
+if (!formData.city.trim()) {
+  setError(t("checkoud.cityRequired"));
+  return;
+}
+
+if (!formData.address.trim()) {
+  setError(t("checkoud.addressRequired"));
+  return;
+}
 
       if (!paymentMethod) {
         setError(t("checkout.choosePaymentMethod"));
-
         return;
       }
 
@@ -428,6 +493,40 @@ const governorates = [
   { value: "North Sinai", key: "northSinai" },
   { value: "South Sinai", key: "southSinai" },
 ];
+
+
+  const handleIncrease = async (id) => {
+    try {
+      setError("");
+
+      const updatedCart = await increaseQuantity(id);
+
+      if (updatedCart) {
+        dispatch(updateQuantity(updatedCart));
+      }
+    } catch (error) {
+      setError(
+        error.response?.data?.message || t("cart.somethingWentWrong")
+      );
+    }
+  };
+
+  const handleDecrease = async (id) => {
+    try {
+      setErrorcart("");
+
+      const updatedCart = await decreaseQuantity(id);
+
+      if (updatedCart) {
+        dispatch(updateQuantity(updatedCart));
+      }
+    } catch (error) {
+      setErrorcart(
+        error.response?.data?.message || t("cart.somethingWentWrong")
+      );
+    }
+  };
+
   return (
     <main className="checkout-page">
 
@@ -796,9 +895,13 @@ const governorates = [
           </section>
 
           {/* REVIEW */}
-
+ 
           <section className="checkout-section">
-
+   {errorcart && (
+            <div className="cart-error">
+              {errorcart}
+            </div>
+          )}
             <div className="checkout-section-title">
 
               <div className="section-number">
@@ -864,17 +967,19 @@ const governorates = [
 
                       <div className="product-quantity">
 
-                        <button type="button">
+                        <button type="button" onClick={()=> handleDecrease(item._id)}>
                           <FaMinus />
                         </button>
 
                         <b>
-                          {quantity}
+                          <span>{item.quantity}</span>
                         </b>
 
-                        <button type="button">
-                          <FaPlus />
-                        </button>
+                            <button
+                             type="button"
+                          onClick={()=> handleIncrease(item._id)}>
+                                                    <FaPlus />
+                                                  </button>
 
                       </div>
 

@@ -21,7 +21,7 @@ useEffect(()=>{
   useEffect(() => {
     const getDeals = async () => {
       try {
-        const res = await fetch("hhttps://ecommerce-vite-two.vercel.app/api/products");
+        const res = await fetch("https://ecommerce-vite-two.vercel.app/api/products");
 
         const data = await res.json();
 

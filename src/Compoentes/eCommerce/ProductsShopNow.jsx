@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { fetchAllProducts } from "../../Redux/createSlice";
 
-import { FaSpinner } from "react-icons/fa";
+import { FaSpinner, FaHeart } from "react-icons/fa";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -19,10 +19,9 @@ import { toast } from "react-hot-toast";
 
 import { useTranslation } from "react-i18next";
 
-import { FaHeart } from "react-icons/fa";
+import Tilt from "react-parallax-tilt";
 
 const ProductsShopNow = () => {
-
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state.counter.data);
@@ -36,20 +35,13 @@ const ProductsShopNow = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-
     dispatch(fetchAllProducts());
-
     dispatch(getCart());
-
     dispatch(getCartwishlist());
-
   }, [dispatch]);
 
-
   const handleAddToCart = async (product) => {
-
     if (!user) {
-
       toast.error(t("productsShopNow.pleaseLoginFirst"));
 
       setTimeout(() => {
@@ -67,7 +59,6 @@ const ProductsShopNow = () => {
     );
 
     if (addToCart.fulfilled.match(result)) {
-
       toast.success(
         t("productsShopNow.productAddedToCart"),
         {
@@ -85,23 +76,16 @@ const ProductsShopNow = () => {
           },
         }
       );
-
     } else {
-
       toast.error(
         result.payload ||
           t("productsShopNow.somethingWentWrong")
       );
-
     }
-
   };
 
-
   const handleAddToWishlist = async (product) => {
-
     if (!user) {
-
       toast.error(
         t("productsShopNow.pleaseLoginFirst")
       );
@@ -121,7 +105,6 @@ const ProductsShopNow = () => {
     );
 
     if (addToCartwishlist.fulfilled.match(result)) {
-
       toast.success(
         t("productsShopNow.productAddedToWishlist"),
         {
@@ -139,36 +122,24 @@ const ProductsShopNow = () => {
           },
         }
       );
-
     } else {
-
       toast.error(
         result.payload ||
           t("productsShopNow.somethingWentWrong")
       );
-
     }
-
   };
 
-
   if (loading) {
-
     return (
       <div className="loading-container">
-
         <FaSpinner className="loader-icon" />
-
       </div>
     );
-
   }
 
-
   return (
-
     <div className="products-page">
-
       <h1>
         {t("productsShopNow.shopOurProducts")}
       </h1>
@@ -178,85 +149,85 @@ const ProductsShopNow = () => {
       </p>
 
       <div className="products-grid">
-
-        {data.map((item) => (
-
-          <div
-            className="product-card"
-            key={item.id}
-          >
-
-            <div className="product-image-wrapper">
-
-              <Link
-                className="link"
-                to={`/products/${item.id}`}
-              >
-
-                <img
-                  src={item.images?.[0] || item.image}
-                  alt={t(`products.${item.id}.title`, {
-                    defaultValue: item.title,
-                  })}
-                />
-
-              </Link>
-
-              {/* Heart */}
-
-              <button
-                className="wishlist-btn"
-                onClick={() =>
-                  handleAddToWishlist(item)
-                }
-              >
-
-                <FaHeart />
-
-              </button>
-
-            </div>
-
-
-            <Link
-              className="link"
-              to={`/products/${item.id}`}
+        {data.map((item) => {
+          return (
+            <Tilt
+              key={item._id}
+              tiltMaxAngleX={8}
+              tiltMaxAngleY={8}
+              perspective={1000}
+              scale={1.03}
+              transitionSpeed={1000}
+              glareEnable={true}
+              glareMaxOpacity={0.12}
+              glareColor="#ffffff"
+              glarePosition="all"
+              className="product-card-tilt"
             >
+              <div className="product-card">
+                <div className="product-image-wrapper">
+                  <Link
+                    className="link"
+                    to={`/products/${item.id}`}
+                  >
+                    <img
+                      src={
+                        item.images?.[0] ||
+                        item.image
+                      }
+                      alt={t(
+                        `products.${item.id}.title`,
+                        {
+                          defaultValue: item.title,
+                        }
+                      )}
+                    />
+                  </Link>
 
-              <h3>
-                {t(`products.${item.id}.title`, {
-                  defaultValue: item.title,
-                })}
-              </h3>
+                  {/* Heart */}
+                  <button
+                    className="wishlist-btn"
+                    onClick={() =>
+                      handleAddToWishlist(item)
+                    }
+                  >
+                    <FaHeart />
+                  </button>
+                </div>
 
-              <p>
-                ${item.price}
-              </p>
+                <Link
+                  className="link"
+                  to={`/products/${item.id}`}
+                >
+                  <h3>
+                    {t(
+                      `products.${item.id}.title`,
+                      {
+                        defaultValue: item.title,
+                      }
+                    )}
+                  </h3>
 
-            </Link>
+                  <p>
+                    ${item.price}
+                  </p>
+                </Link>
 
-
-            <button
-              className="add-cart-btn"
-              onClick={() =>
-                handleAddToCart(item)
-              }
-            >
-
-              {t("productsShopNow.addToCart")}
-
-            </button>
-
-          </div>
-
-        ))}
-
+                <button
+                  className="add-cart-btn"
+                  onClick={() =>
+                    handleAddToCart(item)
+                  }
+                >
+                  {t("productsShopNow.addToCart")}
+                </button>
+              </div>
+            </Tilt>
+          );
+        })}
       </div>
-
     </div>
-
   );
-
 };
 
 export default ProductsShopNow;
