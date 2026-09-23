@@ -1,5 +1,6 @@
 {
       "login": {
+    "messageRequired": "Message is required",
     "welcomeBack": "Welcome Back",
     "loginToAccount": "Login to your account",
     "email": "Email",

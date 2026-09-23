@@ -1,5 +1,6 @@
 {
        "login": {
+    "messageRequired": "الرسالة مطلوبة",
     "welcomeBack": "مرحبًا بعودتك",
     "loginToAccount": "سجّل الدخول إلى حسابك",
     "email": "البريد الإلكتروني",

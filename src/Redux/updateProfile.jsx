@@ -26,8 +26,6 @@ export const updateProfile = createAsyncThunk(
 
       const data = await response.json();
 
-      console.log("UPDATE PROFILE RESPONSE:", data);
-
       if (!response.ok) {
         return rejectWithValue(data.message);
       }

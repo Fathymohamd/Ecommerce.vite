@@ -28,7 +28,7 @@ const Notifications = require("./routes/Notifications")
 const DarkMode = require("./routes/DarkMode")
 const contactController = require("./routes/contactController")
 const updateProfile = require("./routes/updateProfile")
-
+const Webhook = require("./routes/Webhook");
 const CartRouter = require("./routes/CartRouter")
 const removeFromCart = require("./routes/removeFromCart")
 const romoveWishlist = require("./routes/romoveWishlist")
@@ -115,6 +115,8 @@ app.use("/api", orderRoutes);
 
 app.use("/api/orders", orderProducts);
 
+
+app.use("/api/paymob/webhook", Webhook);
 
 app.use("/logout", Logout);
 

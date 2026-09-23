@@ -21,9 +21,10 @@ const {
   loading,
 success, 
   message,
-  error,
+ 
 } = useSelector((state) => state.contact);
 const user = useSelector((state) => state.auth.user);
+ const [error , setError] = useState("")
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -44,7 +45,7 @@ const user = useSelector((state) => state.auth.user);
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  if (!user) {
+    if (!user) {
     toast.error("Please login first");
 
     setTimeout(() => {
@@ -53,6 +54,26 @@ const handleSubmit = async (e) => {
 
     return;
   }
+
+
+if (!formData.email.trim() && !formData.email.trim() && !formData.message.trim()) {
+  setError(t("login.fillAllFields"));
+  return;
+}
+
+if (!formData.email.trim()) {
+  setError(t("login.emailRequired"));
+  return;
+} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+  setError(t("login.invalidEmail"));
+  return;
+}
+
+if (!formData.message.trim()) {
+  setError(t("login.messageRequired"));
+  return false;
+}
+
 
   const result = await dispatch(
     createContact(formData)

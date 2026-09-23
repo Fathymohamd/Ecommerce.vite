@@ -116,25 +116,28 @@ const handleSearch = async () => {
   setProducts(data);
 };
 
-  const handleLogout = async () => {
-    try {
-      const res = await fetch(
-        "https://ecommerce-vite-two.vercel.app/logout",
-        {
-          method: "POST",
-          credentials: "include",
-        }
-      );
-
-      if (res.ok) {
-        dispatch(logout());
+const handleLogout = async () => {
+  try {
+    const res = await fetch(
+      "https://ecommerce-vite-two.vercel.app/logout",
+      {
+        method: "POST",
+        credentials: "include",
       }
+    );
 
-      setShowLogoutModal(true);
-    } catch (error) {
-      console.log(error);
+    const data = await res.json();
+
+    console.log("LOGOUT RESPONSE:", res.status, data);
+
+    if (res.ok) {
+      dispatch(logout());
+      console.log("USER AFTER LOGOUT:", null);
     }
-  };
+  } catch (error) {
+    console.log("LOGOUT ERROR:", error);
+  }
+};
 
   return (
     <>

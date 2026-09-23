@@ -1,58 +1,45 @@
 
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
-const OrderSchema = new mongoose.Schema(
-  {
-    firstName: String,
-    lastName: String,
-    email: String,
-    phone: String,
-    country: String,
-    city: String,
-    address: String,
+// const orderSchema = new mongoose.Schema({
+//   user: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: "User",
+//     required: true,
+//   },
 
- products: [
-  {
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    quantity: {
-      type: Number,
-      required: true,
-    },
-    image: {
-      type: String,
-      default: "",
-    },
-  },
-],
-    paymentMethod: String,
-    finalPrice: Number,
+//   firstName: String,
+//   lastName: String,
+//   email: String,
+//   phone: String,
+//   country: String,
+//   city: String,
+//   address: String,
 
-    paymentStatus: {
-      type: String,
-      default: "Pending",
-    },
+//   products: Array,
 
-    status: {
-      type: String,
-      default: "Pending",
-    },
+//   paymentMethod: String,
 
-    transactionId: String,
-  },
-  {
-    timestamps: true,
-  }
-);
+//   finalPrice: Number,
 
-module.exports = mongoose.model("Order", OrderSchema);
+//   paymentStatus: {
+//     type: String,
+//     default: "Pending",
+//   },
+
+//   status: {
+//     type: String,
+//     default: "Pending",
+//   },
+
+//   paymobTransactionId: {
+//     type: Number,
+//     default: null,
+//   },
+
+//   paymobOrderId: {
+//     type: Number,
+//     default: null,
+//   },
+// });
+// module.exports = mongoose.model("Order", orderSchema);

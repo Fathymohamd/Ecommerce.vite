@@ -44,14 +44,12 @@ const handleUpdateProfile = async (e) => {
       address: userData.address,
     })
   );
-
-  console.log("UPDATE PROFILE RESULT:", resultAction);
+ setIsEditing(false)
 
   if (updateProfile.fulfilled.match(resultAction)) {
     toast.success("Profile updated successfully");
   }
 };
-
 
 
 
