@@ -56,7 +56,7 @@ const Orders = () => {
 
       } catch (error) {
 
-        console.log("ORDERS ERROR:", error);
+       
 
         setError(
           error.message || t("orders.somethingWentWrong")

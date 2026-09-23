@@ -1,351 +1,188 @@
 require("dotenv").config();
 
 const express = require("express");
-
 const router = express.Router();
-
+const order = require("../Schemas/Order");
 const axios = require("axios");
+const User = require("../models/Login");
+const verifyToken = require("../middleware/verifyToken");
 
-const PaymentSession =
-  require("../models/PaymentSession");
+const PAYMOB_API_URL = process.env.PAYMOB_API_URL;
+const SECRET_KEY = process.env.SECRET_KEY;
+const IFRAME_KEY = process.env.IFRAME_KEY;
+router.post("/order", verifyToken, async (req, res) => {
 
-const User =
-  require("../models/Login");
+  const {
+    firstName,
+    lastName,
+    email,
+    phone,
+    country,
+    city,
+    products,
+    address,
+    paymentMethod,
+    finalPrice
+  } = req.body;
 
-const verifyToken =
-  require("../middleware/verifyToken");
+  try {
 
-const PAYMOB_API_URL =
-  process.env.PAYMOB_API_URL;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const SECRET_KEY =
-  process.env.SECRET_KEY;
+if (!emailRegex.test(email)) {
+  return res.status(400).json({
+    message: "Please enter a valid email address",
+  });
+}
 
-const CARD_INTEGRATION_ID =
-  process.env.CARD_INTEGRATION_ID;
+    if (
+      !firstName ||
+      !lastName ||
+      !email ||
+      !phone ||
+      !country ||
+      !city ||
+      !address ||
+      !finalPrice ||
+      !paymentMethod ||
+      !products ||
+      products.length === 0
+    ) {
+      return res.status(400).json({
+        message: "All fields are required"
+      });
+    }
 
 
-// =====================================================
-// CREATE PAYMENT SESSION
-// =====================================================
 
-router.post(
-  "/order",
-  verifyToken,
-  async (req, res) => {
+    const user = await User.findById(req.user.id);
 
-    const {
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found"
+      });
+    }
+
+  
+const orderProducts = products.map((item) => ({
+  id: item.product._id,
+  title: item.product.title,
+  price: item.product.price,
+  quantity: item.quantity,
+  image: item.product.images?.[0] || item.product.image
+}));
+   
+    const newOrder = await order.create({
+      user: user.id,
       firstName,
       lastName,
       email,
       phone,
       country,
       city,
-      products,
       address,
+      products: orderProducts,
       paymentMethod,
       finalPrice,
-    } = req.body;
+      paymentStatus: "Pending",
+      status: "Pending"
+    });
 
-    try {
+   
 
-      // =========================
-      // VALIDATION
-      // =========================
+//       let integrationId;
 
-      const emailRegex =
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//  if (paymentMethod === "cash") {
+//   integrationId = process.env.IFRAME_KEY;
 
-      if (!emailRegex.test(email)) {
-        return res.status(400).json({
-          message:
-            "Please enter a valid email address",
-        });
-      }
+//   return res.status(200).json({
+//     message: "Order placed successfully",
+//     order: newOrder
+//   });
+// }
 
-      if (
-        !firstName ||
-        !lastName ||
-        !email ||
-        !phone ||
-        !country ||
-        !city ||
-        !address ||
-        finalPrice == null ||
-        !paymentMethod ||
-        !products ||
-        products.length === 0
-      ) {
-        return res.status(400).json({
-          message:
-            "All fields are required",
-        });
-      }
 
-      // =========================
-      // FIND USER
-      // =========================
+    // if (paymentMethod === "card") {
 
-      const user =
-        await User.findById(req.user.id);
+    //   integrationId = process.env.CARD_INTEGRATION_ID;
 
-      if (!user) {
-        return res.status(404).json({
-          message:
-            "User not found",
-        });
-      }
+    // } else if (paymentMethod === "wallet") {
 
-      // =========================
-      // CHECK PAYMOB CONFIG
-      // =========================
+    //   integrationId = process.env.WALLET_INTEGRATION_ID;
 
-      if (!SECRET_KEY) {
-        return res.status(500).json({
-          message:
-            "Paymob SECRET_KEY is missing",
-        });
-      }
+    // } else {
 
-      if (!CARD_INTEGRATION_ID) {
-        return res.status(500).json({
-          message:
-            "CARD_INTEGRATION_ID is missing",
-        });
-      }
+    //   return res.status(400).json({
+    //     message: "Invalid payment method"
+    //   });
 
-      if (!PAYMOB_API_URL) {
-        return res.status(500).json({
-          message:
-            "PAYMOB_API_URL is missing",
-        });
-      }
-
- 
-
-      const orderProducts =
-        products.map((item) => ({
-          id: item.product._id,
-
-          title:
-            item.product.title,
-
-          price:
-            item.product.price,
-
-          quantity:
-            item.quantity,
-
-          image:
-            item.product.images?.[0] ||
-            item.product.image ||
-            "",
-        }));
+    // }
 
   
 
-      const orderData =
-        await axios.post(
-          PAYMOB_API_URL,
-          {
-            amount:
-              Math.round(
-                Number(finalPrice) * 100
-              ),
+    // if (!integrationId) {
 
-            currency:
-              "EGP",
+    //   return res.status(500).json({
+    //     message: "Integration ID is missing"
+    //   });
 
-            payment_methods: [
-              Number(
-                CARD_INTEGRATION_ID
-              ),
-            ],
+    // }
 
-            items:
-              orderProducts.map(
-                (item) => ({
-                  name:
-                    item.title,
 
-                  amount:
-                    Math.round(
-                      Number(
-                        item.price
-                      ) * 100
-                    ),
+    const orderData = await axios.post(
+      PAYMOB_API_URL,
+      {
+        amount: Math.round(finalPrice * 100),
 
-                  description:
-                    item.title,
+        currency: "EGP",
 
-                  quantity:
-                    item.quantity,
-                })
-              ),
+        payment_methods: [Number(IFRAME_KEY)],
 
-            billing_data: {
-              apartment:
-                "NA",
-
-              floor:
-                "NA",
-
-              street:
-                address,
-
-              building:
-                "NA",
-
-              first_name:
-                firstName,
-
-              last_name:
-                lastName,
-
-              phone_number:
-                phone,
-
-              city:
-                city,
-
-              country:
-                country,
-
-              email:
-                email,
-
-              state:
-                city,
-            },
-
-            special_reference:
-              `USER_${user._id}_${Date.now()}`,
-
-      
-
-            notification_url:
-              "https://ecommerce-vite-two.vercel.app/api/paymob/webhook",
-          },
-
-          {
-            headers: {
-              Authorization:
-                `Token ${SECRET_KEY}`,
-
-              "Content-Type":
-                "application/json",
-            },
-          }
-        );
-
-      // =========================
-      // PAYMOB DATA
-      // =========================
-
-      const paymobOrderId =
-        orderData.data
-          .intention_order_id;
-
-      const intentionId =
-        orderData.data.id;
-
-      const clientSecret =
-        orderData.data
-          .client_secret;
-
-      console.log(
-        "PAYMOB ORDER ID:",
-        paymobOrderId
-      );
-
-      console.log(
-        "PAYMOB INTENTION ID:",
-        intentionId
-      );
+        billing_data: {
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          phone_number: phone,
+          country: country,
+          city: city,
+          address: address
+        }
+      },
+      {
+        headers: {
+          Authorization: `Token ${SECRET_KEY}`,
+          "Content-Type": "application/json"
+        }
+      }
+    );
 
 
 
-      const paymentSession =
-        await PaymentSession.create({
-          user:
-            user._id,
+    return res.status(200).json({
+      message: "Order placed successfully",
 
-          firstName:
-            firstName,
+      orderId: newOrder.id,
 
-          lastName:
-            lastName,
+      paymobOrderId: orderData.data.id,
 
-          email:
-            email,
+      client_secret: orderData.data.client_secret
+    });
 
-          phone:
-            phone,
+  } catch (error) {
 
-          country:
-            country,
+    console.error(
+      "PAYMOB ERROR:",
+      error.response?.data || error.message
+    );
 
-          city:
-            city,
-
-          address:
-            address,
-
-          products:
-            orderProducts,
-
-          paymentMethod:
-            paymentMethod,
-
-          finalPrice:
-            finalPrice,
-
-          paymobOrderId:
-            paymobOrderId,
-
-          intentionId:
-            intentionId,
-
-          status:
-            "Pending",
-        });
-
-
-
-      return res.status(200).json({
-        message:
-          "Payment session created",
-
-        paymentSessionId:
-          paymentSession._id,
-
-        paymobOrderId:
-          paymobOrderId,
-
-        intentionId:
-          intentionId,
-
-        client_secret:
-          clientSecret,
-      });
-
-    } catch (error) {
-
-      console.error(
-        "PAYMOB ERROR:",
-        error.response?.data ||
-        error.message
-      );
-
-      return res.status(500).json({
-        message:
-          error.response?.data?.detail ||
-          error.response?.data?.message ||
-          error.message ||
-          "Payment error",
-      });
-    }
+    return res.status(500).json({
+      message:
+        error.response?.data?.message ||
+        error.response?.data?.detail ||
+        error.message ||
+        "Payment error"
+    });
   }
-);
+});
 
 module.exports = router;
