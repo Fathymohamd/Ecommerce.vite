@@ -53,7 +53,7 @@ res.cookie("token", token, {
   secure: true,
   sameSite: "none",
   path: "/",
-  expires: new Date(0),
+  maxAge: 7 * 24 * 60 * 60 * 1000,
 });
 
 return res.status(200).json({
