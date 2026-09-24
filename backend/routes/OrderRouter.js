@@ -10,8 +10,8 @@ const verifyToken = require("../middleware/verifyToken");
 const PAYMOB_API_URL = process.env.PAYMOB_API_URL;
 const SECRET_KEY = process.env.SECRET_KEY;
 const IFRAME_KEY = process.env.IFRAME_KEY;
-router.post("/order", verifyToken, async (req, res) => {
 
+router.post("/order", verifyToken, async (req, res) => {
   const {
     firstName,
     lastName,
@@ -26,14 +26,17 @@ router.post("/order", verifyToken, async (req, res) => {
   } = req.body;
 
   try {
+    // ================= EMAIL VALIDATION =================
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-if (!emailRegex.test(email)) {
-  return res.status(400).json({
-    message: "Please enter a valid email address",
-  });
-}
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({
+        message: "Please enter a valid email address"
+      });
+    }
+
+    // ================= REQUIRED FIELDS =================
 
     if (
       !firstName ||
@@ -53,7 +56,7 @@ if (!emailRegex.test(email)) {
       });
     }
 
-
+    // ================= FIND USER =================
 
     const user = await User.findById(req.user.id);
 
@@ -63,15 +66,18 @@ if (!emailRegex.test(email)) {
       });
     }
 
-  
-const orderProducts = products.map((item) => ({
-  id: item.product._id,
-  title: item.product.title,
-  price: item.product.price,
-  quantity: item.quantity,
-  image: item.product.images?.[0] || item.product.image
-}));
-   
+    // ================= ORDER PRODUCTS =================
+
+    const orderProducts = products.map((item) => ({
+      id: item.product._id,
+      title: item.product.title,
+      price: item.product.price,
+      quantity: item.quantity,
+      image: item.product.images?.[0] || item.product.image
+    }));
+
+    // ================= CREATE ORDER =================
+
     const newOrder = await order.create({
       user: user.id,
       firstName,
@@ -88,46 +94,7 @@ const orderProducts = products.map((item) => ({
       status: "Pending"
     });
 
-   
-
-//       let integrationId;
-
-//  if (paymentMethod === "cash") {
-//   integrationId = process.env.IFRAME_KEY;
-
-//   return res.status(200).json({
-//     message: "Order placed successfully",
-//     order: newOrder
-//   });
-// }
-
-
-    // if (paymentMethod === "card") {
-
-    //   integrationId = process.env.CARD_INTEGRATION_ID;
-
-    // } else if (paymentMethod === "wallet") {
-
-    //   integrationId = process.env.WALLET_INTEGRATION_ID;
-
-    // } else {
-
-    //   return res.status(400).json({
-    //     message: "Invalid payment method"
-    //   });
-
-    // }
-
-  
-
-    // if (!integrationId) {
-
-    //   return res.status(500).json({
-    //     message: "Integration ID is missing"
-    //   });
-
-    // }
-
+    // ================= PAYMOB =================
 
     const orderData = await axios.post(
       PAYMOB_API_URL,
@@ -156,15 +123,12 @@ const orderProducts = products.map((item) => ({
       }
     );
 
-
+    // ================= RESPONSE =================
 
     return res.status(200).json({
       message: "Order placed successfully",
-
       orderId: newOrder.id,
-
       paymobOrderId: orderData.data.id,
-
       client_secret: orderData.data.client_secret
     });
 
