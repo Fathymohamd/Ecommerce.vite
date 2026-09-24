@@ -100,9 +100,7 @@ router.post("/order", verifyToken, async (req, res) => {
       PAYMOB_API_URL,
       {
         amount: Math.round(finalPrice * 100),
-
         currency: "EGP",
-
         payment_methods: [Number(IFRAME_KEY)],
 
         billing_data: {
@@ -123,6 +121,12 @@ router.post("/order", verifyToken, async (req, res) => {
       }
     );
 
+    // ================= SAVE PAYMOB ORDER ID =================
+
+    newOrder.paymobOrderId = orderData.data.id;
+
+    await newOrder.save();
+
     // ================= RESPONSE =================
 
     return res.status(200).json({
@@ -133,7 +137,6 @@ router.post("/order", verifyToken, async (req, res) => {
     });
 
   } catch (error) {
-
     console.error(
       "PAYMOB ERROR:",
       error.response?.data || error.message
