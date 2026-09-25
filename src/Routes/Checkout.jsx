@@ -232,8 +232,7 @@ if (!formData.address.trim()) {
       await dispatch(clearUserCart());
 
     } catch (err) {
-      console.error("Error:", err);
-
+  
       setError(t("checkout.somethingWentWrong"));
 
     } finally {

@@ -67,7 +67,7 @@ const authSlice = createSlice({
       })
 
       .addCase(getMe.fulfilled, (state, action) => {
-         console.log("GET ME AFTER REFRESH:", action.payload);
+    
         state.loading = false;
         state.user = action.payload;
         state.isAuthenticated = true;
