@@ -11,7 +11,11 @@ const verifyToken = require("../middleware/verifyToken");
 const PAYMOB_API_URL = process.env.PAYMOB_API_URL;
 const SECRET_KEY = process.env.SECRET_KEY;
 const IFRAME_KEY = process.env.IFRAME_KEY;
-
+router.get("/test", (req, res) => {
+  res.json({
+    message: "Order router is working"
+  });
+});
 router.post("/", verifyToken, async (req, res) => {
   const {
     firstName,
