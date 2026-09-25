@@ -129,7 +129,7 @@ return (
 
         {fakestoreap?.data?.map((product) => {
           return (
-           /*  import Tilt from "react-parallax-tilt"; */
+         
    <Tilt
               key={product._id}
               tiltMaxAngleX={8}

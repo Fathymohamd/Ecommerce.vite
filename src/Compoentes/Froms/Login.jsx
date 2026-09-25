@@ -98,10 +98,9 @@ if (!formData.password.trim()) {
         password: "",
       });
 
-      setSuccess(t("login.loginSuccessful"));
+      setSuccess(t("login.Successful"));
 
-      console.log("DATA:", data);
-      console.log("USER:", data.user);
+   
 
       dispatch(setUser(data.user));
 

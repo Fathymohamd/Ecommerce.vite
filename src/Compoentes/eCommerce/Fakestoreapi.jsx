@@ -149,9 +149,7 @@ if(addToCartwishlist.fulfilled.match(res)){
   <div className="productBreadcrumb">
     {t("productDetails.home")} /{" "}
     {t("productDetails.products")} /{" "}
-    {t(`products.${action.id}.title`, {
-      defaultValue: action.title,
-    })}
+  {t(`fakestoreapi.${action.id}.title`)}
   </div>
 
   <div className="productDetailsContainer">
@@ -194,9 +192,7 @@ if(addToCartwishlist.fulfilled.match(res)){
     <div className="productInfo">
 
       <h1>
-        {t(`products.${action.id}.title`, {
-          defaultValue: action.title,
-        })}
+      {t(`fakestoreapi.${action.id}.title`)}
       </h1>
 
       <div className="ratingRow">
@@ -318,9 +314,7 @@ if(addToCartwishlist.fulfilled.match(res)){
               />
 
               <h3>
-                {t(`products.${item.id}.title`, {
-                  defaultValue: item.title,
-                })}
+             {t(`fakestoreapi.${action.id}.title`)}
               </h3>
 
               <div className="relatedRating">
