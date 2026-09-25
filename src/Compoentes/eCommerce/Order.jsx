@@ -33,7 +33,7 @@ const Orders = () => {
         setError("");
 
         const res = await fetch(
-          "https://ecommerce-vite-two.vercel.app/api/orders",
+          "https://ecommerce-vite-two.vercel.app/api",
           {
             method: "GET",
             credentials: "include",

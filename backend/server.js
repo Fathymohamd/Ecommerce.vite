@@ -13,8 +13,11 @@ const searchRoutes = require("./routes/search");
 const category = require("./routes/category");
 const searchPrice = require("./routes/fetchByPrice");
 const productsmongodb = require("./routes/productsmongodb");
-const orderRoutes = require("./routes/OrderRouter");
+
+const orderRoute = require("./routes/OrderRouter");
+
 const orderProducts = require("./routes/orderProducts");
+
 const Logout = require("./routes/Logout");
 const forgotPassword = require("./routes/ForgotPassword");
 const resetPassword = require("./routes/ResetPassword");
@@ -111,9 +114,10 @@ app.use("/api/users/password", SettindsPassword);
 app.use("/api/users/Notifications", Notifications);
 
 app.use("/api/contact", contactController);
-app.use("/api", orderRoutes);
 
-app.use("/api/orders", orderProducts);
+app.use("/api", orderProducts);
+
+app.use("/order", orderRoute);
 
 
 app.use("/logout", Logout);
