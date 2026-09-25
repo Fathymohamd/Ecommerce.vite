@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const order = require("../Schemas/Order");
+
 const axios = require("axios");
 const User = require("../models/Login");
 const verifyToken = require("../middleware/verifyToken");
@@ -11,7 +12,7 @@ const PAYMOB_API_URL = process.env.PAYMOB_API_URL;
 const SECRET_KEY = process.env.SECRET_KEY;
 const IFRAME_KEY = process.env.IFRAME_KEY;
 
-router.post("/order", verifyToken, async (req, res) => {
+router.post("/", verifyToken, async (req, res) => {
   const {
     firstName,
     lastName,
@@ -26,7 +27,7 @@ router.post("/order", verifyToken, async (req, res) => {
   } = req.body;
 
   try {
-    // ================= EMAIL VALIDATION =================
+
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -36,7 +37,7 @@ router.post("/order", verifyToken, async (req, res) => {
       });
     }
 
-    // ================= REQUIRED FIELDS =================
+   
 
     if (
       !firstName ||
@@ -94,7 +95,6 @@ router.post("/order", verifyToken, async (req, res) => {
       status: "Pending"
     });
 
-    // ================= PAYMOB =================
 
     const orderData = await axios.post(
       PAYMOB_API_URL,
@@ -121,13 +121,11 @@ router.post("/order", verifyToken, async (req, res) => {
       }
     );
 
-    // ================= SAVE PAYMOB ORDER ID =================
+
 
     newOrder.paymobOrderId = orderData.data.id;
 
     await newOrder.save();
-
-    // ================= RESPONSE =================
 
     return res.status(200).json({
       message: "Order placed successfully",

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const orderSchema = new mongoose.Schema(
   {
     user: {
@@ -33,12 +32,12 @@ const orderSchema = new mongoose.Schema(
     },
 
     paymobTransactionId: {
-      type: Number,
+      type: String,
       default: null,
     },
 
     paymobOrderId: {
-      type: Number,
+      type: String,
       default: null,
     },
   },
@@ -46,6 +45,7 @@ const orderSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+;
 
 module.exports =
   mongoose.models.Order ||

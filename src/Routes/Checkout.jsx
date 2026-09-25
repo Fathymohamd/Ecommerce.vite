@@ -172,7 +172,7 @@ if (!formData.address.trim()) {
       setLoading(true);
 
       const res = await fetch(
-        "https://ecommerce-vite-two.vercel.app/api/order",
+        "https://ecommerce-vite-two.vercel.app/api/orders",
         {
           method: "POST",
 
