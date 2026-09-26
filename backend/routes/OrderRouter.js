@@ -1,3 +1,5 @@
+
+
 require("dotenv").config();
 
 const express = require("express");
@@ -77,7 +79,7 @@ router.post("/", verifyToken, async (req, res) => {
       image: item.product.images?.[0] || item.product.image
     }));
 
-    // ================= CREATE ORDER =================
+console.log("🔥 STEP 1 - Creating MongoDB order");
 
     const newOrder = await order.create({
       user: user.id,
@@ -95,7 +97,16 @@ router.post("/", verifyToken, async (req, res) => {
       status: "Pending"
     });
 
+console.log("🔥 STEP 2 - MongoDB order created");
+console.log("Mongo Order ID:", newOrder._id);
 
+// ================= PAYMOB =================
+
+console.log("🔥 STEP 3 - Before Paymob request");
+
+console.log("PAYMOB_API_URL:", PAYMOB_API_URL);
+console.log("SECRET_KEY exists:", !!SECRET_KEY);
+console.log("IFRAME_KEY:", IFRAME_KEY);
     const orderData = await axios.post(
       PAYMOB_API_URL,
       {
@@ -122,7 +133,14 @@ router.post("/", verifyToken, async (req, res) => {
     );
 
 
-
+console.log("========== PAYMOB RESPONSE ==========");
+console.log({
+  id: orderData.data.id,
+  client_secret: !!orderData.data.client_secret,
+  amount: orderData.data.amount,
+  currency: orderData.data.currency,
+});
+console.log("====================================");
     newOrder.paymobOrderId = orderData.data.id;
 
     await newOrder.save();
@@ -134,20 +152,37 @@ router.post("/", verifyToken, async (req, res) => {
       client_secret: orderData.data.client_secret
     });
 
-  } catch (error) {
-    console.error(
-      "PAYMOB ERROR:",
-      error.response?.data || error.message
-    );
+} catch (error) {
 
-    return res.status(500).json({
-      message:
-        error.response?.data?.message ||
-        error.response?.data?.detail ||
-        error.message ||
-        "Payment error"
-    });
-  }
+  console.error("🔥🔥🔥 PAYMOB ERROR 🔥🔥🔥");
+
+  console.error("MESSAGE:", error.message);
+
+  console.error(
+    "RESPONSE:",
+    error.response?.data
+  );
+
+  console.error(
+    "STATUS:",
+    error.response?.status
+  );
+
+  console.error(
+    "URL:",
+    error.config?.url
+  );
+
+  console.error("🔥🔥🔥 END ERROR 🔥🔥🔥");
+
+  return res.status(500).json({
+    message:
+      error.response?.data?.message ||
+      error.response?.data?.detail ||
+      error.message ||
+      "Payment error"
+  });
+}
 });
 
 module.exports = router;

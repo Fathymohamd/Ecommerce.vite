@@ -3,8 +3,6 @@ const router = express.Router();
 
 const Order = require("../Schemas/Order");
 
-
-
 router.get("/", async (req, res) => {
   try {
     const orders = await Order.find();
