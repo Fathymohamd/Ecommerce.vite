@@ -47,7 +47,7 @@ const token = jwt.sign(
   process.env.JWT_SECRET,
   { expiresIn: "7d" }
 );
-
+const isProduction = process.env.JWT_SECRET=== "production";
 res.cookie("token", token, {
   httpOnly: true,
   secure: isProduction,
