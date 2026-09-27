@@ -13,7 +13,7 @@ const verifyToken = require("../middleware/verifyToken");
 const PAYMOB_API_URL = process.env.PAYMOB_API_URL;
 const SECRET_KEY = process.env.SECRET_KEY;
 const IFRAME_KEY = process.env.IFRAME_KEY;
-
+;
 router.post("/", verifyToken, async (req, res) => {
   const {
     firstName,
@@ -102,6 +102,7 @@ router.post("/", verifyToken, async (req, res) => {
       {
         amount: Math.round(finalPrice * 100),
         currency: "EGP",
+        
         payment_methods: [Number(IFRAME_KEY)],
 
         billing_data: {

@@ -22,7 +22,6 @@ import { clearUserCart } from "../Redux/wishlistSlice";
 import {
   getCart,
   updateQuantity,
-  removeFromCart,
   increaseQuantity,
   decreaseQuantity,
 } from "../Redux/cartSlice";
@@ -241,15 +240,10 @@ const handlePayment = async (e) => {
     }
 
 
-  console.log("publicKey =", publicKey);
-console.log("client_secret =", data.client_secret);
-console.log("typeof publicKey =", typeof publicKey);
-console.log("typeof client_secret =", typeof data.client_secret);
 
-const url = `https://accept.paymob.com/unifiedcheckout/?publicKey=${publicKey}&clientSecret=${data.client_secret}`;
 
-console.log("URL =", JSON.stringify(url));
-console.log("URL length =", url.length);
+const url = `https://accept.paymob.com/unifiedcheckout/?publicKey=${publicKey}&clientSecret=${data.client_secret}`;  
+await dispatch(clearUserCart())
     window.location.href = url;
   } catch (err) {
 
