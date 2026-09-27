@@ -92,7 +92,7 @@ const handlePayment = async (e) => {
     e.preventDefault();
 
     if (!user) {
-      toast.error(t("checkout.pleaseLoginFirst"));
+      toast.error(t("checkout.loginBeforeOrder"));
 
       setTimeout(() => {
         navigate("/login");
@@ -101,89 +101,79 @@ const handlePayment = async (e) => {
       return;
     }
 
-    if (
-      !formData.firstName.trim() &&
-      !formData.lastName.trim() &&
-      !formData.email.trim() &&
-      !formData.phone.trim() &&
-      !formData.country.trim() &&
-      !formData.governorate.trim() &&
-      !formData.city.trim() &&
-      !formData.address.trim()
-    ) {
-      setError(t("checkout.fillAllFields"));
-      return;
-    }
+if (
+  !formData.firstName.trim() &&
+  !formData.lastName.trim() &&
+  !formData.email.trim() &&
+  !formData.phone.trim() &&
+  !formData.country.trim() &&
+  !formData.governorate.trim() &&
+  !formData.city.trim() &&
+  !formData.address.trim()
+) {
+  setError(t("checkout.fillAllFields"));
+  return;
+}
 
+if (!formData.firstName.trim()) {
+  setError(t("checkout.firstNameRequired"));
+  return;
+}
 
-    if (!formData.firstName.trim()) {
-      setError(t("checkout.firstNameRequired"));
-      return;
-    }
+if (!formData.lastName.trim()) {
+  setError(t("checkout.lastNameRequired"));
+  return;
+}
 
-    if (!formData.lastName.trim()) {
-      setError(t("checkout.lastNameRequired"));
-      return;
-    }
+if (!formData.email.trim()) {
+  setError(t("checkout.emailRequired"));
+  return;
+}
 
+if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+  setError(t("checkout.invalidEmail"));
+  return;
+}
 
-    if (!formData.email.trim()) {
-      setError(t("checkout.emailRequired"));
-      return;
-    }
+if (!formData.phone.trim()) {
+  setError(t("checkout.phoneRequired"));
+  return;
+}
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      setError(t("checkout.invalidEmail"));
-      return;
-    }
+if (!/^01[0125][0-9]{8}$/.test(formData.phone)) {
+  setError(t("checkout.invalidPhone"));
+  return;
+}
 
-    // 6️⃣ Phone
-    if (!formData.phone.trim()) {
-      setError(t("checkout.phoneRequired"));
-      return;
-    }
+if (!formData.country.trim()) {
+  setError(t("checkout.countryRequired"));
+  return;
+}
 
-    if (!/^01[0125][0-9]{8}$/.test(formData.phone)) {
-      setError(t("checkout.invalidPhone"));
-      return;
-    }
+if (!formData.governorate.trim()) {
+  setError(t("checkout.governorateRequired"));
+  return;
+}
 
-    // 7️⃣ Country
-    if (!formData.country.trim()) {
-      setError(t("checkout.countryRequired"));
-      return;
-    }
+if (!formData.city.trim()) {
+  setError(t("checkout.cityRequired"));
+  return;
+}
 
-    // 8️⃣ Governorate
-    if (!formData.governorate.trim()) {
-      setError(t("checkout.governorateRequired"));
-      return;
-    }
+if (!formData.address.trim()) {
+  setError(t("checkout.addressRequired"));
+  return;
+}
 
-    // 9️⃣ City
-    if (!formData.city.trim()) {
-      setError(t("checkout.cityRequired"));
-      return;
-    }
+if (!paymentMethod) {
+  setError(t("checkout.choosePaymentMethod"));
+  return;
+}
 
-
-    if (!formData.address.trim()) {
-      setError(t("checkout.addressRequired"));
-      return;
-    }
-
-
-    if (!paymentMethod) {
-      setError(t("checkout.choosePaymentMethod"));
-      return;
-    }
-
-
-    if (!cartData || cartData.length === 0) {
-      setError(t("checkout.cartEmpty"));
-      return;
-    }
-
+if (!cartData || cartData.length === 0) {
+  setError(t("checkout.cartEmpty"));
+  return;
+}
     setLoading(true);
     setError("");
 

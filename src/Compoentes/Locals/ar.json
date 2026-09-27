@@ -773,6 +773,17 @@
 },
 
 "checkout": {
+  "fillAllFields": "يرجى ملء جميع الحقول المطلوبة.",
+"firstNameRequired": "يرجى إدخال الاسم الأول.",
+"lastNameRequired": "يرجى إدخال اسم العائلة.",
+"emailRequired": "يرجى إدخال البريد الإلكتروني.",
+"invalidEmail": "يرجى إدخال بريد إلكتروني صحيح.",
+"phoneRequired": "يرجى إدخال رقم الهاتف.",
+"invalidPhone": "يرجى إدخال رقم هاتف مصري صحيح.",
+"countryRequired": "يرجى اختيار الدولة.",
+"governorateRequired": "يرجى اختيار المحافظة.",
+"cityRequired": "يرجى إدخال المدينة.",
+"addressRequired": "يرجى إدخال العنوان بالكامل.",
   "secureCheckout": "دفع آمن",
   "deliveryAddress": "عنوان التوصيل",
   "deliveryDescription": "أين نُوصل طلبك؟",
