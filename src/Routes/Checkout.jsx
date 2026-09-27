@@ -88,157 +88,176 @@ function Checkout() {
     }));
   };
 
-  const handlePayment = async (e) => {
-    try {
-      e.preventDefault();
+const handlePayment = async (e) => {
+  try {
+    e.preventDefault();
 
-      if (!user) {
-        toast.error(t("checkout.pleaseLoginFirst"));
+    if (!user) {
+      toast.error(t("checkout.pleaseLoginFirst"));
 
-        setTimeout(() => {
-          navigate("/login");
-        }, 2000);
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
 
-        return;
-      }
-if (
-  !formData.firstName.trim() &&
-  !formData.lastName.trim() &&
-  !formData.email.trim() &&
-  !formData.phone.trim() &&
-  !formData.governorate.trim() &&
-  !formData.city.trim() &&
-  !formData.address.trim()
-) {
-  setError(t("checkoud.fillAllFields"));
-  return;
-}
-
-if (!formData.firstName.trim()) {
-  setError(t("checkoud.firstNameRequired"));
-  return;
-}
-
-if (!formData.lastName.trim()) {
-  setError(t("checkoud.lastNameRequired"));
-  return;
-}
-
-if (!formData.email.trim()) {
-  setError(t("checkoud.emailRequired"));
-  return;
-} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-  setError(t("checkoud.invalidEmail"));
-  return;
-}
-
-if (!formData.phone.trim()) {
-  setError(t("checkoud.phoneRequired"));
-  return;
-} else if (!/^01[0125][0-9]{8}$/.test(formData.phone)) {
-  setError(t("checkoud.invalidPhone"));
-  return;
-}
-
-if (!formData.country.trim()) {
-  setError(t("checkoud.countryRequired"));
-  return;
-}
-
-if (!formData.governorate.trim()) {
-  setError(t("checkoud.governorateRequired"));
-  return;
-}
-
-if (!formData.city.trim()) {
-  setError(t("checkoud.cityRequired"));
-  return;
-}
-
-if (!formData.address.trim()) {
-  setError(t("checkoud.addressRequired"));
-  return;
-}
-
-      if (!paymentMethod) {
-        setError(t("checkout.choosePaymentMethod"));
-        return;
-      }
-
-      if (cartData.length === 0) {
-        return setError(t("checkout.cartEmpty"));
-      }
-
-      setLoading(true);
-
-      const res = await fetch(
-        "https://ecommerce-vite-two.vercel.app/order",
-        {
-          method: "POST",
-
-          credentials: "include",
-
-          headers: {
-            "Content-Type": "application/json",
-          },
-
-          body: JSON.stringify({
-            ...formData,
-            products: cartData,
-            finalPrice: total,
-            paymentMethod,
-          }),
-        }
-      );
-
-      const data = await res.json();
-
-      if (res.status === 401) {
-        setError(t("checkout.loginBeforeOrder"));
-
-        setTimeout(() => {
-          navigate("/login");
-        }, 3000);
-
-        return;
-      }
-
-      if (!res.ok) {
-        setError(data.message);
-
-        return;
-      }
-
-      const publicKey =
-        import.meta.env.VITE_PAYMOB_PUBLIC_KEY;
-
-      const url = `https://accept.paymob.com/unifiedcheckout/?publicKey=${publicKey}&clientSecret=${data.client_secret}`;
-
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        country: "",
-        governorate: "",
-        city: "",
-        address: "",
-      });
-
-      setError("");
-
-      window.location.href = url;
-
-      await dispatch(clearUserCart());
-
-    } catch (err) {
-  
-      setError(t("checkout.somethingWentWrong"));
-
-    } finally {
-      setLoading(false);
+      return;
     }
-  };
+
+    if (
+      !formData.firstName.trim() &&
+      !formData.lastName.trim() &&
+      !formData.email.trim() &&
+      !formData.phone.trim() &&
+      !formData.country.trim() &&
+      !formData.governorate.trim() &&
+      !formData.city.trim() &&
+      !formData.address.trim()
+    ) {
+      setError(t("checkout.fillAllFields"));
+      return;
+    }
+
+
+    if (!formData.firstName.trim()) {
+      setError(t("checkout.firstNameRequired"));
+      return;
+    }
+
+    if (!formData.lastName.trim()) {
+      setError(t("checkout.lastNameRequired"));
+      return;
+    }
+
+
+    if (!formData.email.trim()) {
+      setError(t("checkout.emailRequired"));
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      setError(t("checkout.invalidEmail"));
+      return;
+    }
+
+    // 6️⃣ Phone
+    if (!formData.phone.trim()) {
+      setError(t("checkout.phoneRequired"));
+      return;
+    }
+
+    if (!/^01[0125][0-9]{8}$/.test(formData.phone)) {
+      setError(t("checkout.invalidPhone"));
+      return;
+    }
+
+    // 7️⃣ Country
+    if (!formData.country.trim()) {
+      setError(t("checkout.countryRequired"));
+      return;
+    }
+
+    // 8️⃣ Governorate
+    if (!formData.governorate.trim()) {
+      setError(t("checkout.governorateRequired"));
+      return;
+    }
+
+    // 9️⃣ City
+    if (!formData.city.trim()) {
+      setError(t("checkout.cityRequired"));
+      return;
+    }
+
+
+    if (!formData.address.trim()) {
+      setError(t("checkout.addressRequired"));
+      return;
+    }
+
+
+    if (!paymentMethod) {
+      setError(t("checkout.choosePaymentMethod"));
+      return;
+    }
+
+
+    if (!cartData || cartData.length === 0) {
+      setError(t("checkout.cartEmpty"));
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+
+   
+    const res = await fetch(
+      "https://ecommerce-vite-two.vercel.app/order",
+      {
+        method: "POST",
+
+        credentials: "include",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          ...formData,
+          products: cartData,
+          finalPrice: total,
+          paymentMethod,
+        }),
+      }
+    );
+
+    const data = await res.json();
+
+    if (res.status === 401) {
+      setError(t("checkout.loginBeforeOrder"));
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
+
+      return;
+    }
+
+ 
+    if (!res.ok) {
+      setError(data.message || t("checkout.somethingWentWrong"));
+      return;
+    }
+
+ 
+    if (!data.client_secret) {
+      setError(t("checkout.somethingWentWrong"));
+      return;
+    }
+
+    const publicKey = import.meta.env.VITE_PAYMOB_PUBLIC_KEY;
+
+    if (!publicKey) {
+      setError(t("checkout.somethingWentWrong"));
+      return;
+    }
+
+
+  console.log("publicKey =", publicKey);
+console.log("client_secret =", data.client_secret);
+console.log("typeof publicKey =", typeof publicKey);
+console.log("typeof client_secret =", typeof data.client_secret);
+
+const url = `https://accept.paymob.com/unifiedcheckout/?publicKey=${publicKey}&clientSecret=${data.client_secret}`;
+
+console.log("URL =", JSON.stringify(url));
+console.log("URL length =", url.length);
+    window.location.href = url;
+  } catch (err) {
+
+    setError(t("checkout.somethingWentWrong"));
+  } finally {
+    setLoading(false);
+  }
+};
 
 const countries = [
   { value: "Afghanistan", key: "afghanistan" },

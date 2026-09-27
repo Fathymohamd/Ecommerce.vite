@@ -59,7 +59,7 @@ router.post("/", verifyToken, async (req, res) => {
       });
     }
 
-    // ================= FIND USER =================
+   
 
     const user = await User.findById(req.user.id);
 
@@ -69,7 +69,7 @@ router.post("/", verifyToken, async (req, res) => {
       });
     }
 
-    // ================= ORDER PRODUCTS =================
+ 
 
     const orderProducts = products.map((item) => ({
       id: item.product._id,
@@ -79,7 +79,7 @@ router.post("/", verifyToken, async (req, res) => {
       image: item.product.images?.[0] || item.product.image
     }));
 
-console.log("🔥 STEP 1 - Creating MongoDB order");
+
 
     const newOrder = await order.create({
       user: user.id,
@@ -97,16 +97,6 @@ console.log("🔥 STEP 1 - Creating MongoDB order");
       status: "Pending"
     });
 
-console.log("🔥 STEP 2 - MongoDB order created");
-console.log("Mongo Order ID:", newOrder._id);
-
-// ================= PAYMOB =================
-
-console.log("🔥 STEP 3 - Before Paymob request");
-
-console.log("PAYMOB_API_URL:", PAYMOB_API_URL);
-console.log("SECRET_KEY exists:", !!SECRET_KEY);
-console.log("IFRAME_KEY:", IFRAME_KEY);
     const orderData = await axios.post(
       PAYMOB_API_URL,
       {
@@ -132,15 +122,6 @@ console.log("IFRAME_KEY:", IFRAME_KEY);
       }
     );
 
-
-console.log("========== PAYMOB RESPONSE ==========");
-console.log({
-  id: orderData.data.id,
-  client_secret: !!orderData.data.client_secret,
-  amount: orderData.data.amount,
-  currency: orderData.data.currency,
-});
-console.log("====================================");
     newOrder.paymobOrderId = orderData.data.id;
 
     await newOrder.save();
@@ -154,26 +135,6 @@ console.log("====================================");
 
 } catch (error) {
 
-  console.error("🔥🔥🔥 PAYMOB ERROR 🔥🔥🔥");
-
-  console.error("MESSAGE:", error.message);
-
-  console.error(
-    "RESPONSE:",
-    error.response?.data
-  );
-
-  console.error(
-    "STATUS:",
-    error.response?.status
-  );
-
-  console.error(
-    "URL:",
-    error.config?.url
-  );
-
-  console.error("🔥🔥🔥 END ERROR 🔥🔥🔥");
 
   return res.status(500).json({
     message:
