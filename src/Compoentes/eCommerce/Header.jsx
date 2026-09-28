@@ -198,6 +198,7 @@ const handleLogout = async () => {
 </option>
 </select>
 
+
             <input
               type="text"
               placeholder={t("header.searchPlaceholder")}
@@ -390,7 +391,7 @@ const handleLogout = async () => {
             </span>
 
           </Link>
-
+<h1>Discover Products You'll Love</h1>
           <a href="/cart" className="cart">
 
             <div className="cart-icon">
