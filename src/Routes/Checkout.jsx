@@ -179,7 +179,7 @@ if (!cartData || cartData.length === 0) {
 
    
     const res = await fetch(
-      "hhttps://ecommerce-vite-9s8j.vercel.app/order",
+      "https://ecommerce-vite-two.vercel.app/order",
       {
         method: "POST",
 
@@ -227,7 +227,7 @@ console.log("🔥 ORDER RESPONSE:", data);
     const publicKey = import.meta.env.VITE_PAYMOB_PUBLIC_KEY;
 
     if (!publicKey) {
-        console.error("❌ Paymob Public Key is missing");
+      
       setError(t("checkout.somethingWentWrong"));
       return;
     }
