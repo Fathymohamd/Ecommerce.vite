@@ -198,7 +198,9 @@ if (!cartData || cartData.length === 0) {
       }
     );
 
-    const data = await res.json();
+   const data = await res.json();
+
+
 
     if (res.status === 401) {
       setError(t("checkout.loginBeforeOrder"));
