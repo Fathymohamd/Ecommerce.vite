@@ -102,13 +102,13 @@ const handlePayment = async (e) => {
     }
 
 if (
-  !formData.firstName.trim() &&
-  !formData.lastName.trim() &&
-  !formData.email.trim() &&
-  !formData.phone.trim() &&
-  !formData.country.trim() &&
-  !formData.governorate.trim() &&
-  !formData.city.trim() &&
+  !formData.firstName.trim() ||
+  !formData.lastName.trim() ||
+  !formData.email.trim() ||
+  !formData.phone.trim() ||
+  !formData.country.trim() ||
+  !formData.governorate.trim() ||
+  !formData.city.trim() ||
   !formData.address.trim()
 ) {
   setError(t("checkout.fillAllFields"));
