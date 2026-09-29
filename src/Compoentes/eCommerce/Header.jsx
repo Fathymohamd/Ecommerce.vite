@@ -20,6 +20,7 @@ import {
   FaBox,
   FaCog,
   FaSignOutAlt,
+
 } from "react-icons/fa";
 
 import { FaHeart, FaStar } from "react-icons/fa6";
@@ -244,7 +245,7 @@ const handleLogout = async () => {
             <div className="account-dropdown">
 
               <div className="dropdown-title">
-                {t("header.welcome")}  <FaStar />
+                {t("header.welcome")}  <span>👋</span>
               </div>
 
               {user ? (
