@@ -85,7 +85,9 @@ if (!formData.password.trim()) {
       );
 
       const data = await response.json();
-
+console.log("LOGIN RESPONSE:", data);
+console.log("USER:", data.user);
+console.log("ROLE:", data.user?.role);
       if (!response.ok) {
         setError(
           data.message || t("login.invalidCredentials")
@@ -98,15 +100,21 @@ if (!formData.password.trim()) {
         password: "",
       });
 
-      setSuccess(t("login.Successful"));
-
    
 
-      dispatch(setUser(data.user));
+setSuccess(t("login.Successful"));
 
-      setTimeout(() => {
-        navigate("/");
-      }, 3000);
+console.log("USER:", data.user);
+console.log("ROLE:", data.user?.role);
+
+dispatch(setUser(data.user));
+
+if (data.user?.role === "admin") {
+  navigate("/admin");
+} else {
+  navigate("/");
+}
+
     } catch (error) {
       console.error(error);
       setError(t("login.serverError"));

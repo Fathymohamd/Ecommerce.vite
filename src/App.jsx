@@ -33,6 +33,18 @@ import ShippingDelivery from "./Compoentes/eCommerce/ShippingDelivery";
 import ReturnsRefunds from "./Compoentes/eCommerce/ReturnsRefunds";
 import FAQ from "./Compoentes/eCommerce/FAQ";
 
+import AdminLayout from "./Compoentes/Admin/AdminLayout";
+import AdminDashboard from "./Compoentes/Admin/AdminDashboard";
+import AdminProducts from "./Compoentes/Admin/AdminProducts";
+import AdminAddProduct from "./Compoentes/Admin/AdminAddProduct";
+import AdminEditProduct from "./Compoentes/Admin/AdminEditProduct";
+import AdminOrders from "./Compoentes/Admin/AdminOrders";
+import AdminOrderDetails from "./Compoentes/Admin/AdminOrderDetails";
+import AdminUsers from "./Compoentes/Admin/AdminUsers";
+import AdminSettings from "./Compoentes/Admin/AdminSettings";
+import AdminRoute from "./Compoentes/Admin/AdminRoute";
+import "./Syles/Admin/Admin.css";
+
 import "./Syles/Header.css"
 import "./Syles/HeaderTop.css"
 import "./Syles/MySlider.css"
@@ -119,6 +131,26 @@ if (!initialized) {
          <Route path="/categories" element={<Categories />}/>
         <Route path="/bigDeals" element={<BigDeals />}/>;
         <Route path="/features" element={<Features />}/>;
+
+<Route path="/admin" element={<AdminLayout />}>
+  <Route index element={<AdminDashboard />} />
+  <Route path="/admin/login" element={<AdminRoute />} />
+  <Route path="products" element={<AdminProducts />} />
+
+  <Route path="products/add" element={<AdminAddProduct />} />
+
+  <Route path="products/edit/:id" element={<AdminEditProduct />} />
+
+  <Route path="orders" element={<AdminOrders />} />
+
+  <Route path="orders/:id" element={<AdminOrderDetails />} />
+
+  <Route path="users" element={<AdminUsers />} />
+
+  <Route path="settings" element={<AdminSettings />} />
+</Route>
+
+
       <Route
   path="*"
   element={
