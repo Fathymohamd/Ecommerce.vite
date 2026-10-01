@@ -245,7 +245,7 @@ const handleLogout = async () => {
             <div className="account-dropdown">
 
               <div className="dropdown-title">
-                {t("header.welcome")}  <span>👋</span>
+                {t("header.welcome")} <div  id="user-avatar">{user?.name?.[0]} </div> <span>👋</span>
               </div>
 
               {user ? (

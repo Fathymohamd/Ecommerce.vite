@@ -213,7 +213,9 @@
 
 .dropdown-title {
   padding: 10px 12px;
-
+   display: flex;
+   justify-content: start;
+   align-items: center;
   font-size: 15px;
   font-weight: 700;
 
@@ -275,7 +277,18 @@
   color: #b91c1c;
 }
 
-
+#user-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: orange;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
 
 .nav-icon {
   position: relative;
