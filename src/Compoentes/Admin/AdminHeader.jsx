@@ -12,10 +12,10 @@ const user = useSelector((state) => state.auth.user);
       </div>
 
       <div className="admin-header-right">
-        <button className="admin-notification-btn">
+     {/*    <button className="admin-notification-btn">
           <FaBell />
-          <span>3</span>
-        </button>
+          <span>{user?.length || 2}</span>
+        </button> */}
 
         <div className="admin-profile">
           <div className="admin-avatar">
