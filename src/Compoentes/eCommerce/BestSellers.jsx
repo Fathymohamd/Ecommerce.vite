@@ -17,6 +17,8 @@ import { useTranslation } from "react-i18next";
 function BestSellers() {
 const { t } = useTranslation();
 const fakestoreap = useSelector((state)=> state.counter.fakestoreap)
+  console.log("PRODUCT:", fakestoreap);
+  console.log("IMAGE:", fakestoreap.images);
 const user = useSelector((state) => state.auth.user);
 const dispatch = useDispatch()
 useEffect(()=>{
@@ -207,9 +209,7 @@ return (
 
               </div>
 
-              <div className="best-sold">
-                🔥 {product.sold ?? 0} {t("bestSellers.sold")}
-              </div>
+      
 
               <div className="best-price">
 

@@ -105,7 +105,6 @@ export const decreaseQuantity = async (productId) => {
   try {
     const res = await axios.patch(
       `https://ecommerce-vite-two.vercel.app/api/cart/decrease/${productId}`,
-      {},
       {
         withCredentials: true,
       }
@@ -145,7 +144,7 @@ const cartSlice = createSlice({
   extraReducers: (builder) => {
     builder
 
-      // ================= GET CART =================
+    
       .addCase(getCart.pending, (state) => {
         state.loading = true;
         state.error = null;

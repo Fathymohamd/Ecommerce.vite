@@ -1,5 +1,5 @@
-import React from "react";
-
+import React, { useState  , useEffect} from "react";
+import {useSelector} from "react-redux"
 import {
   FaDollarSign,
   FaCartShopping,
@@ -7,60 +7,118 @@ import {
   FaUsers,
 } from "react-icons/fa6";
 
+import { useTranslation } from "react-i18next";
+
 function AdminDashboard() {
-  const stats = [
+ 
+const { t } = useTranslation();
+
+const [orders, setOrders] = useState([]);
+
+const totalProducts = orders.reduce(
+  (total, order) => total + (order.products?.length || 0),
+  0
+);
+const TotalSales = orders.reduce(
+  (total, order) => total + (order.finalPrice || 0) , 0)
+
+  const totalUsers = new Set(
+  orders.map((order) => order.email)
+).size;
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const res = await fetch(
+          "https://ecommerce-vite-two.vercel.app/api",
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
+
+        const data = await res.json();
+
+        if (!res.ok) {
+
+          throw new Error(
+            data.message || t("orders.somethingWentWrong")
+          );
+        }
+
+        setOrders(
+          Array.isArray(data) ? data : data.orders || []
+        );
+
+      } catch (error) {
+       console.log(
+          error.message || t("orders.somethingWentWrong")
+        );
+      } 
+
+    };
+
+fetchOrders();
+
+  }, []);
+
+ const stats = [
     {
       title: "Total Sales",
-      value: "$25,400",
+      value: TotalSales.toFixed(2),
       icon: <FaDollarSign />,
     },
     {
       title: "Total Orders",
-      value: "580",
+      value: orders.length,
       icon: <FaCartShopping />,
     },
     {
       title: "Total Products",
-      value: "194",
+      value: totalProducts,
       icon: <FaBoxOpen />,
     },
     {
       title: "Total Users",
-      value: "1,250",
+      value:  totalUsers,
       icon: <FaUsers />,
     },
   ];
 
-  const orders = [
-    {
-      id: "#1001",
-      customer: "Ahmed Mohamed",
-      date: "Sep 29, 2026",
-      total: "$120",
-      status: "Completed",
-    },
-    {
-      id: "#1002",
-      customer: "Mohamed Ali",
-      date: "Sep 28, 2026",
-      total: "$250",
-      status: "Pending",
-    },
-    {
-      id: "#1003",
-      customer: "Sara Ahmed",
-      date: "Sep 28, 2026",
-      total: "$85",
-      status: "Processing",
-    },
-    {
-      id: "#1004",
-      customer: "Omar Hassan",
-      date: "Sep 27, 2026",
-      total: "$310",
-      status: "Completed",
-    },
-  ];
+const salesByDay = orders.reduce((acc, order) => {
+  const date = new Date(order.createdAt).toLocaleDateString();
+
+  if (!acc[date]) {
+    acc[date] = 0;
+  }
+
+  acc[date] += order.finalPrice || 0;
+
+  return acc;
+}, {});
+
+const last7Days = Array.from({ length: 7 }, (_, index) => {
+  const date = new Date();
+
+  date.setDate(date.getDate() - (6 - index));
+
+  return date;
+});
+
+const chartData = last7Days.map((date) => {
+  const dateKey = date.toLocaleDateString();
+
+  return {
+    date: dateKey,
+    sales: salesByDay[dateKey] || 0,
+  };
+});
+
+const maxSales = Math.max(
+  ...chartData.map((item) => item.sales),
+  1
+);
+
 
   return (
     <div>
@@ -88,39 +146,43 @@ function AdminDashboard() {
       {/* Sales Overview */}
       <div className="admin-dashboard-grid">
 
-        <div className="admin-dashboard-card">
-          <div className="admin-card-header">
-            <h2>Sales Overview</h2>
+    <div className="admin-dashboard-card">
+  <div className="admin-card-header">
+    <h2>Sales Overview</h2>
 
-            <select>
-              <option>Last 7 Days</option>
-              <option>Last 30 Days</option>
-              <option>Last 6 Months</option>
-            </select>
-          </div>
+    <select>
+      <option>Last 7 Days</option>
+      <option>Last 30 Days</option>
+      <option>Last 6 Months</option>
+    </select>
+  </div>
 
-          <div className="admin-fake-chart">
-            <div className="admin-chart-bars">
-              <div style={{ height: "40%" }}></div>
-              <div style={{ height: "65%" }}></div>
-              <div style={{ height: "50%" }}></div>
-              <div style={{ height: "80%" }}></div>
-              <div style={{ height: "60%" }}></div>
-              <div style={{ height: "90%" }}></div>
-              <div style={{ height: "75%" }}></div>
-            </div>
+  <div className="admin-fake-chart">
 
-            <div className="admin-chart-days">
-              <span>Mon</span>
-              <span>Tue</span>
-              <span>Wed</span>
-              <span>Thu</span>
-              <span>Fri</span>
-              <span>Sat</span>
-              <span>Sun</span>
-            </div>
-          </div>
-        </div>
+    <div className="admin-chart-bars">
+      {chartData.map((item) => (
+        <div
+          key={item.date}
+          style={{
+            height: `${(item.sales / maxSales) * 100}%`,
+          }}
+          title={`$${item.sales.toLocaleString()}`}
+        ></div>
+      ))}
+    </div>
+
+    <div className="admin-chart-days">
+      {chartData.map((item) => (
+        <span key={item.date}>
+          {new Date(item.date).toLocaleDateString("en-US", {
+            weekday: "short",
+          })}
+        </span>
+      ))}
+    </div>
+
+  </div>
+</div>
 
         {/* Recent Orders */}
         <div className="admin-dashboard-card">
@@ -128,29 +190,48 @@ function AdminDashboard() {
             <h2>Recent Orders</h2>
           </div>
 
-          <div className="admin-recent-orders">
-            {orders.map((order) => (
-              <div
-                className="admin-recent-order"
-                key={order.id}
-              >
-                <div>
-                  <strong>{order.id}</strong>
-                  <p>{order.customer}</p>
-                </div>
+  {orders.length === 0 ? 
+  <div className="admin-no-orders">
+    <FaBoxOpen />
+    <h3>No Recent Orders</h3>
+    <p>There are no orders to display yet.</p>
+  </div>
+  
+  :(
 
-                <div>
-                  <strong>{order.total}</strong>
+<div className="admin-recent-orders">
+  {orders.map((order) => (
+    <div
+      className="admin-recent-order"
+      key={order._id}
+    >
+      <div>
+        <strong>#{order._id}</strong>
 
-                  <span
-                    className={`admin-status ${order.status.toLowerCase()}`}
-                  >
-                    {order.status}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+        <p>
+          {order.firstName} {order.lastName}
+        </p>
+
+        <p>{order.email}</p>
+      </div>
+
+      <div>
+        <strong>
+          ${order.finalPrice?.toLocaleString()}
+        </strong>
+
+        <span
+          className={`admin-status ${order.status?.toLowerCase()}`}
+        >
+          {order.status}
+        </span>
+      </div>
+    </div>
+  ))}
+</div>
+
+  )}
+
         </div>
 
       </div>

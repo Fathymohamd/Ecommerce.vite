@@ -9,7 +9,9 @@ import Notifications from "./Notifications";
 import darkModeReducer from "./darkMode";
 import contactReducer from "./Contact";
 import updateProfile from "./updateProfile";
-
+import getUsers from "./getUsers";
+import order from "./oderproduct";
+import settingsStoreName from "./settingsStoreName";
 export const store = configureStore({
   reducer: {
     counter: createSlice,
@@ -21,5 +23,8 @@ export const store = configureStore({
     darkMode: darkModeReducer,
     contact: contactReducer,
     profile: updateProfile,
+    gitUser : getUsers,
+    orders : order,
+    settings : settingsStoreName,
   },
 });

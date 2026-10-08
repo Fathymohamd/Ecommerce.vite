@@ -1,16 +1,22 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-
+import {useDispatch} from 'react-redux'
+import {fetchAllProducts} from "../../Redux/createSlice"
 function AdminAddProduct() {
+
   const navigate = useNavigate();
 
+  const dispatch = useDispatch()
+
+  const [error , setError] = useState("")
   const [formData, setFormData] = useState({
-    name: "",
+    title: "",
     price: "",
     category: "",
     description: "",
-    image: "",
-    stock: "",
+    images: "",
+
   });
 
   const handleChange = (e) => {
@@ -20,15 +26,70 @@ function AdminAddProduct() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    console.log("Product:", formData);
+  if (!formData.title.trim()) {
+    toast.error("Product title is required");
+    return;
+  }
 
-    alert("Product added successfully");
+  if (!formData.price.trim()) {
+    toast.error("Product description is required");
+    return;
+  }
 
+  if (!formData.category.trim()) {
+    toast.error("Please select a category");
+    return;
+  }
+
+  if (!formData.description.trim()) {
+    toast.error("Product price is required");
+    return;
+  }
+
+
+  if (!formData.images.trim()) {
+    toast.error("Product image is required");
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      "https://ecommerce-vite-two.vercel.app/api/AdminAddProduct",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: formData.title.trim(),
+          description: formData.description.trim(),
+          category: formData.category,
+          price: Number(formData.price),
+          images: [formData.images.trim()],
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      toast.error(data.message || "Failed to add product");
+      return;
+    }
+
+    toast.success("Product added successfully");
+
+    dispatch(fetchAllProducts());
     navigate("/admin/products");
-  };
+
+  } catch (error) {
+    console.error(error);
+    toast.error("Something went wrong");
+  }
+};
 
   return (
     <div>
@@ -36,21 +97,25 @@ function AdminAddProduct() {
         <h1>Add Product</h1>
         <p>Create a new product</p>
       </div>
-
+        {error && (
+              <div className="error-message">
+                {error}
+              </div>
+            )}
       <div className="admin-form-card">
         <form onSubmit={handleSubmit}>
 
           <div className="admin-form-grid">
 
-            {/* Product Name */}
+           
             <div className="admin-form-group">
               <label>Product Name</label>
 
               <input
                 type="text"
-                name="name"
+                name="title"
                 placeholder="Enter product name"
-                value={formData.name}
+                value={formData.title}
                 onChange={handleChange}
               />
             </div>
@@ -72,31 +137,62 @@ function AdminAddProduct() {
             <div className="admin-form-group">
               <label>Category</label>
 
-              <select
-                name="category"
-                value={formData.category}
-                onChange={handleChange}
-              >
-                <option value="">Select Category</option>
-                <option value="smartphones">Smartphones</option>
-                <option value="laptops">Laptops</option>
-                <option value="tablets">Tablets</option>
-                <option value="electronics">Electronics</option>
-              </select>
+   <select
+  name="category"
+  value={formData.category}
+  onChange={handleChange}
+>
+  <option value="beauty">Beauty</option>
+
+  <option value="fragrances">Fragrances</option>
+
+  <option value="furniture">Furniture</option>
+
+  <option value="groceries">Groceries</option>
+
+  <option value="home-decoration">Home Decoration</option>
+
+  <option value="kitchen-accessories">Kitchen Accessories</option>
+
+  <option value="laptops">Laptops</option>
+
+  <option value="mens-shirts">Men's Shirts</option>
+
+  <option value="mens-shoes">Men's Shoes</option>
+
+  <option value="mens-watches">Men's Watches</option>
+
+  <option value="mobile-accessories">Mobile Accessories</option>
+
+  <option value="motorcycle">Motorcycle</option>
+
+  <option value="skin-care">Skin Care</option>
+
+  <option value="smartphones">Smartphones</option>
+
+  <option value="sports-accessories">Sports Accessories</option>
+
+  <option value="sunglasses">Sunglasses</option>
+
+  <option value="tablets">Tablets</option>
+
+  <option value="tops">Tops</option>
+
+  <option value="vehicle">Vehicle</option>
+
+  <option value="womens-bags">Women's Bags</option>
+
+  <option value="womens-dresses">Women's Dresses</option>
+
+  <option value="womens-jewellery">Women's Jewellery</option>
+
+  <option value="womens-shoes">Women's Shoes</option>
+
+  <option value="womens-watches">Women's Watches</option>
+</select>
             </div>
 
-            {/* Stock */}
-            <div className="admin-form-group">
-              <label>Stock</label>
 
-              <input
-                type="number"
-                name="stock"
-                placeholder="Enter stock"
-                value={formData.stock}
-                onChange={handleChange}
-              />
-            </div>
 
           </div>
 
@@ -119,9 +215,9 @@ function AdminAddProduct() {
 
             <input
               type="text"
-              name="image"
+              name="images"
               placeholder="Enter image URL"
-              value={formData.image}
+              value={formData.images}
               onChange={handleChange}
             />
           </div>

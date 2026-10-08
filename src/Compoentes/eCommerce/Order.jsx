@@ -47,7 +47,6 @@ const Orders = () => {
           throw new Error(
             data.message || t("orders.somethingWentWrong")
           );
-
         }
 
         setOrders(
@@ -55,25 +54,21 @@ const Orders = () => {
         );
 
       } catch (error) {
-
-       
-
         setError(
           error.message || t("orders.somethingWentWrong")
         );
-
       } finally {
 
         setLoading(false);
-
       }
 
     };
 
-    fetchOrders();
+fetchOrders();
 
   }, []);
 
+  
  if(loading){
   return <div className="loading-container">
   <FaSpinner className="loader-icon" />
@@ -101,8 +96,6 @@ const Orders = () => {
   return (
 
     <div className="orders-page">
-
-      {/* Header */}
 
       <div className="orders-header">
 

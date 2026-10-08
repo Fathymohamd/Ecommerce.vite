@@ -17,4 +17,19 @@ router.get("/", async (req, res) => {
   }
 });
 
+
+router.get("/:id" , async (req, res) => {
+  try {
+    const orders = await Order.findById(req.params.id);
+
+    res.json(orders);
+  } catch (error) {
+
+
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+});
+
 module.exports = router;

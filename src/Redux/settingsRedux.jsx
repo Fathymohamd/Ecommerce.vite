@@ -105,9 +105,6 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
 
     builder
-
-
-
       .addCase(updateProfile.pending, (state) => {
         state.loading = true;
         state.error = null;

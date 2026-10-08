@@ -24,6 +24,7 @@ import { useTranslation } from "react-i18next";
 import { updateDarkMode } from "../../Redux/darkMode";
 
 import { getMe, logout } from "../../Redux/authSlice";
+
 import {  useNavigate } from "react-router-dom";
 
 const Settings = () => {
@@ -33,12 +34,19 @@ const Settings = () => {
 const errorPassword = useSelector((state) => state.settings.errorPassword);
 
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+
   const [showNewPassword, setShowNewPassword] = useState(false);
+
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+
   const [errors , setError] = useState("")
+
   const [error , setErrors] = useState("")
+
   const loading = useSelector((state) => state.settings.loading);
+  
   const user = useSelector((state) => state.auth.user);
   
   const darkMode = useSelector((state) => state.darkMode.darkMode);

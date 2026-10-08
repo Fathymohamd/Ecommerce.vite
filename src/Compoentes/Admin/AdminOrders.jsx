@@ -1,42 +1,65 @@
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 
+import { useTranslation } from "react-i18next";
+
 function AdminOrders() {
-  const orders = [
-    {
-      id: "1001",
-      customer: "Ahmed Mohamed",
-      date: "Sep 29, 2026",
-      total: "$120",
-      payment: "Paid",
-      status: "Completed",
-    },
-    {
-      id: "1002",
-      customer: "Mohamed Ali",
-      date: "Sep 28, 2026",
-      total: "$250",
-      payment: "Pending",
-      status: "Pending",
-    },
-    {
-      id: "1003",
-      customer: "Sara Ahmed",
-      date: "Sep 28, 2026",
-      total: "$85",
-      payment: "Paid",
-      status: "Processing",
-    },
-    {
-      id: "1004",
-      customer: "Omar Hassan",
-      date: "Sep 27, 2026",
-      total: "$310",
-      payment: "Paid",
-      status: "Completed",
-    },
-  ];
+
+  const { t } = useTranslation();
+
+  const [orders, setOrders] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+
+    const fetchOrders = async () => {
+
+      try {
+
+        setLoading(true);
+
+        setError("");
+
+        const res = await fetch(
+          "https://ecommerce-vite-two.vercel.app/api",
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
+
+        const data = await res.json();
+
+        if (!res.ok) {
+
+          throw new Error(
+            data.message || t("orders.somethingWentWrong")
+          );
+        }
+
+        setOrders(
+          Array.isArray(data) ? data : data.orders || []
+        );
+
+      } catch (error) {
+        setError(
+          error.message || t("orders.somethingWentWrong")
+        );
+      } finally {
+
+        setLoading(false);
+      }
+
+    };
+
+fetchOrders();
+
+  }, []);
 
   return (
     <div>
@@ -47,6 +70,11 @@ function AdminOrders() {
       </div>
 
       {/* Orders Table */}
+
+      {orders.length === 0 ? (<p className="no-products-message">
+  No products found in this order.
+</p>) : (
+
       <div className="admin-dashboard-card">
         <div className="admin-table-container">
           <table className="admin-table">
@@ -64,20 +92,20 @@ function AdminOrders() {
 
             <tbody>
               {orders.map((order) => (
-                <tr key={order.id}>
+                <tr key={order._id}>
                   <td>
-                    <strong>#{order.id}</strong>
+                    <strong>#{order.user}</strong>
                   </td>
 
-                  <td>{order.customer}</td>
+                  <td>{order.firstName}</td>
 
-                  <td>{order.date}</td>
+                  <td>{order.createdAt}</td>
 
-                  <td>{order.total}</td>
+                  <td>{order.finalPrice}</td>
 
                   <td>
                     <span className="admin-status">
-                      {order.payment}
+                      {order.paymentMethod}
                     </span>
                   </td>
 
@@ -91,7 +119,7 @@ function AdminOrders() {
 
                   <td>
                     <Link
-                      to={`/admin/orders/${order.id}`}
+                      to={`/admin/orders/${order._id}`}
                       className="admin-view-btn"
                     >
                       View Details
@@ -103,6 +131,10 @@ function AdminOrders() {
           </table>
         </div>
       </div>
+
+      )}
+
+
     </div>
   );
 }

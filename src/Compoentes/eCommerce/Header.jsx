@@ -28,7 +28,7 @@ import { FaHeart, FaStar } from "react-icons/fa6";
 import { getMe, logout } from "../../Redux/authSlice";
 
 import { getCart } from "../../Redux/cartSlice";
-
+import {getSettings} from "../../Redux/settingsStoreName"
 import { getCartwishlist } from "../../Redux/wishlistSlice";
 import { useNavigate } from "react-router-dom";
 
@@ -47,7 +47,7 @@ function Header() {
   const toggleLanguage = () => {
     setLanguage((prev) => (prev === "EN" ? "AR" : "EN"));
   };
-
+const settings = useSelector((state) => state.settings.setting);
   const user = useSelector((state) => state.auth.user);
 
   const dispatch = useDispatch();
@@ -56,6 +56,7 @@ function Header() {
     dispatch(getMe());
     dispatch(getCartwishlist());
     dispatch(getCart());
+    dispatch(getSettings())
   }, [dispatch]);
 
   const changeLanguage = (lang) => {
@@ -146,7 +147,8 @@ const handleLogout = async () => {
         <div className="navbar-container">
 
           <a href="/" className="logo">
-            <span>Shop</span>Zone
+          
+            {settings?.setting || <> <span>Shop</span>Zone </>}
           </a>
 
           <div className="location">
