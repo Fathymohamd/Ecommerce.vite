@@ -6,6 +6,7 @@ export const getOrderById = createAsyncThunk(
     try {
       const response = await fetch(
         `https://ecommerce-vite-two.vercel.app/api/orders/${id}`,
+
         {
           method: "GET",
           credentials: "include",

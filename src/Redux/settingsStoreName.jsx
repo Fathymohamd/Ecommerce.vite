@@ -6,6 +6,7 @@ export const updateSettings = createAsyncThunk(
     try {
       const response = await fetch(
         "https://ecommerce-vite-two.vercel.app/api/settings",
+
         {
           method: "PATCH",
           headers: {

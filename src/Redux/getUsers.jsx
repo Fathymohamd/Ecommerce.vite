@@ -6,7 +6,9 @@ export const getUsers = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await fetch(
+
         "https://ecommerce-vite-two.vercel.app/userget",
+
         {
               method: "GET",
            credentials: "include",
