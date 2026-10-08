@@ -4,39 +4,77 @@ const express = require("express");
 const connectDB = require("./config/db");
 
 const productsRoutes = require("./routes/productsRoutes");
+
+const updatedProduct = require("./routes/Admin/updatedProduct");
+
 const DataRoutesId = require("./routes/DataRoutesId");
+
 const usersRoutes = require("./routes/usersRoutes");
+
 const useRoutesId = require("./routes/useRoutesId");
+
 const SinUpRoutes = require("./routes/SingUpRouters");
+
 const LoginRoutes = require("./routes/LogonRoutes");
+
 const searchRoutes = require("./routes/search");
+
 const category = require("./routes/category");
+
 const searchPrice = require("./routes/fetchByPrice");
+
 const productsmongodb = require("./routes/productsmongodb");
 
 const orderRoute = require("./routes/OrderRouter");
 
+const userget = require("./routes/Admin/userget")
+
+const userDelete = require("./routes/Admin/userDelete")
+
 const orderProducts = require("./routes/orderProducts");
 
 const Logout = require("./routes/Logout");
+
 const forgotPassword = require("./routes/ForgotPassword");
+
 const resetPassword = require("./routes/ResetPassword");
+
 const pagination = require("./routes/pagination");
+
 const clearUserCart = require("./routes/clearUserCart");
+
 const authRoutes = require("./routes/authRoutes")
+
 const wishlistRoutes = require("./routes/wishlistRoutes")
+
 const settings = require("./routes/settings")
+
 const SettindsPassword = require("./routes/SettindsPassword")
+
 const Notifications = require("./routes/Notifications")
+
 const DarkMode = require("./routes/DarkMode")
+
 const contactController = require("./routes/contactController")
+
 const updateProfile = require("./routes/updateProfile")
 
 const CartRouter = require("./routes/CartRouter")
+
 const removeFromCart = require("./routes/removeFromCart")
+
 const romoveWishlist = require("./routes/romoveWishlist")
+
 const increase = require("./routes/increase")
+
 const decrease = require("./routes/decrease")
+
+const storeNameGet = require("./routes/Admin/storeNameGet")
+
+const settingPathy = require("./routes/Admin/settingPathy")
+
+const AdminAddProduct = require("./routes/Admin/AdminAddProduct")
+
 const multer = require("./routes/multer")
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -117,8 +155,13 @@ app.use("/api/contact", contactController);
 
 app.use("/api", orderProducts);
 
+app.use("/api/orders", orderProducts);
+
 app.use("/order", orderRoute);
 
+app.use("/", userget);
+
+app.use("/userDelete", userDelete);
 
 app.use("/logout", Logout);
 
@@ -136,9 +179,13 @@ app.use("/", SinUpRoutes);
 
 app.use("/", LoginRoutes);
 
+app.use("/settings", storeNameGet);
 
+app.use("/api/settings", settingPathy);
 
+app.use("/api/updatedProduct", updatedProduct);
 
+app.use("/api/AdminAddProduct", AdminAddProduct);
 app.get("/", (req, res) => {
   res.send("Backend is running");
 });

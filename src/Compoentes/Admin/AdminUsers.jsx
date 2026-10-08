@@ -1,29 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getUsers, deleteUser } from "../../Redux/getUsers";
 
 function AdminUsers() {
-  const users = [
-    {
-      id: 1,
-      name: "Ahmed Mohamed",
-      email: "ahmed@example.com",
-      role: "User",
-      date: "Sep 20, 2026",
-    },
-    {
-      id: 2,
-      name: "Sara Ahmed",
-      email: "sara@example.com",
-      role: "User",
-      date: "Sep 18, 2026",
-    },
-    {
-      id: 3,
-      name: "Mohamed Ali",
-      email: "mohamed@example.com",
-      role: "Admin",
-      date: "Sep 15, 2026",
-    },
-  ];
+  const users = useSelector((state) => state.gitUser.users);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
 
   return (
     <div>
@@ -47,7 +33,7 @@ function AdminUsers() {
 
             <tbody>
               {users.map((user) => (
-                <tr key={user.id}>
+                <tr key={user._id}>
                   <td>
                     <strong>{user.name}</strong>
                   </td>
@@ -60,15 +46,24 @@ function AdminUsers() {
                     </span>
                   </td>
 
-                  <td>{user.date}</td>
+                  <td>
+                    {new Date(user.createdAt).toLocaleDateString()}
+                  </td>
 
                   <td>
                     <div className="admin-table-actions">
-                      <button className="admin-edit-btn">
+                    {/*   <button className="admin-edit-btn">
                         Edit
-                      </button>
+                      </button> */}
 
-                      <button className="admin-delete-btn">
+                      <button
+                        className="admin-delete-btn"
+                        onClick={() => {
+                        
+
+                          dispatch(deleteUser(user._id));
+                        }}
+                      >
                         Delete
                       </button>
                     </div>

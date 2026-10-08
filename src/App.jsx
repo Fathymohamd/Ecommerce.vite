@@ -148,10 +148,10 @@ if (!initialized) {
   <Route path="users" element={<AdminUsers />} />
 
   <Route path="settings" element={<AdminSettings />} />
+  
 </Route>
 
-
-      <Route
+<Route
   path="*"
   element={
     <div className="notFoundPage">

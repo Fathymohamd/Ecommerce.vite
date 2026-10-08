@@ -136,7 +136,35 @@
 }
 
 
-/* Toolbar */
+.admin-no-orders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.admin-no-orders svg {
+  font-size: 45px;
+  color: #999;
+  margin-bottom: 12px;
+}
+
+.admin-no-orders h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  color: #333;
+}
+
+.admin-no-orders p {
+  margin: 0;
+  color: #777;
+  font-size: 14px;
+}
 
 .admin-products-toolbar {
   display: flex;
@@ -311,48 +339,28 @@
 
 /* Product Information */
 
-.admin-product-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
 .admin-product-image {
   width: 42px;
   height: 42px;
+  flex-shrink: 0;
+  border-radius: 7px;
+  overflow: hidden;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  flex-shrink: 0;
-
-  border-radius: 7px;
-
   background: #f3f3f3;
-
   color: #131921;
-
   font-size: 17px;
   font-weight: 700;
 }
 
-.admin-product-info strong {
+.admin-product-image img {
+  width: 100%;
+  height: 100%;
   display: block;
-
-  color: #131921;
-
-  font-size: 14px;
-
-  margin-bottom: 4px;
-}
-
-.admin-product-info small {
-  display: block;
-
-  color: #999;
-
-  font-size: 11px;
+  object-fit: cover;
 }
 
 
@@ -405,8 +413,61 @@
   color: #c2410c;
 }
 
+.order-not-found {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  background: #f8fafc;
+}
 
-/* Actions */
+.order-not-found-icon {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  background: #ffffff;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.order-not-found h2 {
+  margin: 0 0 10px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.order-not-found p {
+  max-width: 450px;
+  margin: 0 0 25px;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.order-not-found button {
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.order-not-found button:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
 
 .admin-table-actions {
   display: flex;
@@ -416,7 +477,7 @@
 
 .admin-edit-btn,
 .admin-delete-btn {
-  width: 34px;
+  width: 50px;
   height: 34px;
 
   display: inline-flex;
@@ -1122,10 +1183,17 @@
   font-size: 12px;
 }
 
+.no-products-message {
+  text-align: center;
+  padding: 30px 20px;
+  margin: 0;
+  color: #6b7280;
+  font-size: 15px;
+  background: #f9fafb;
+  border: 1px dashed #d1d5db;
+  border-radius: 10px;
+}
 
-/* =========================================
-   SETTINGS
-========================================= */
 
 .admin-settings-grid {
   display: grid;
@@ -1147,6 +1215,7 @@
   padding: 11px 20px;
   border-radius: 7px;
   cursor: pointer;
+  margin-top: 1rem;
 }
 
 .admin-logout-danger:hover {
