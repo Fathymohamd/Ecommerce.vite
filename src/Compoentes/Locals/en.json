@@ -384,17 +384,27 @@
   "subscribe": "Subscribe"
 },
 "orders": {
-  "loadingOrders": "Loading orders...",
+    "title": "Orders",
+  "description": "Manage customer orders",
+  "noOrders": "No products found in this order.",
+  "orderId": "Order ID",
+  "customer": "Customer",
+  "date": "Date",
+  "total": "Total",
+  "payment": "Payment",
+  "status": "Status",
+  "action": "Action",
+  "viewDetails": "View Details",
   "somethingWentWrong": "Something went wrong",
+  "loadingOrders": "Loading orders...",
+
   "myOrders": "My Orders",
   "trackAndManage": "Track and manage your orders",
   "continueShopping": "Continue Shopping",
   "noOrdersYet": "No orders yet",
   "noOrdersDescription": "You haven't placed any orders yet.",
   "startShopping": "Start Shopping",
-  "orderId": "Order ID",
   "orderDate": "Order Date",
-  "total": "Total",
   "pending": "Pending",
   "quantity": "Quantity",
   "deliveredSuccessfully": "Delivered successfully",
@@ -692,6 +702,128 @@
 }
 },
 
+"adminSidebar": {
+  "logo": "MyShop Admin",
+  "dashboard": "Dashboard",
+  "products": "Products",
+  "addProduct": "Add Product",
+  "orders": "Orders",
+  "users": "Users",
+  "settings": "Settings",
+  "logout": "Logout"
+},
+"adminUsers": {
+  "title": "Users",
+  "description": "Manage website users",
+  "name": "Name",
+  "email": "Email",
+  "role": "Role",
+  "joinedDate": "Joined Date",
+  "actions": "Actions",
+  "delete": "Delete",
+  "noUsers": "No users found"
+},
+
+
+"adminSettings": {
+  "title": "Settings",
+  "description": "Manage your account and website settings",
+  "adminProfile": "Admin Profile",
+  "name": "Name",
+  "email": "Email",
+  "enterName": "Enter your name",
+  "enterEmail": "Enter your email",
+  "saveProfile": "Save Profile",
+  "websiteSettings": "Website Settings",
+  "storeName": "Store Name",
+  "enterStoreName": "Enter store name",
+  "currency": "Currency",
+  "saveSettings": "Save Settings",
+  "logout": "Logout",
+  "logoutDescription": "Logout from the admin account.",
+  "logoutButton": "Logout",
+  "logoutFailed": "Logout failed",
+  "fillAllFields": "Please fill in all fields",
+  "invalidEmail": "Please enter a valid email address",
+  "storeNameRequired": "Please enter store name",
+  "currencyRequired": "Please select currency",
+  "profileUpdatedSuccessfully": "Profile updated successfully",
+  "settingsUpdatedSuccessfully": "Settings updated successfully",
+  "somethingWentWrong": "Something went wrong"
+},
+
+"adminEditProduct": {
+  "title": "Edit Product",
+  "subtitle": "Update product information",
+  "productName": "Product Name",
+  "price": "Price",
+  "category": "Category",
+  "description": "Description",
+  "imageUrl": "Product Image URL",
+  "cancel": "Cancel",
+  "saveChanges": "Save Changes",
+  "nameRequired": "Product name is required",
+  "priceRequired": "Price is required",
+  "categoryRequired": "Category is required",
+  "descriptionRequired": "Description is required",
+  "imageRequired": "Product image URL is required",
+  "priceGreaterThanZero": "Price must be greater than 0",
+  "updateFailed": "Failed to update product",
+  "updateSuccess": "Product updated successfully",
+  "somethingWentWrong": "Something went wrong. Please try again."
+},
+
+
+"adminProducts": {
+  "title": "Products",
+  "description": "Manage your store products",
+  "addProduct": "Add Product",
+  "search": "Search products...",
+  "allCategories": "All Categories",
+  "showing": "Showing",
+  "products": "products",
+  "product": "Product",
+  "category": "Category",
+  "price": "Price",
+  "stock": "Stock",
+  "actions": "Actions",
+  "editProduct": "Edit Product",
+  "noProductsFound": "No products found"
+},
+
+"adminHeader": {
+  "title": "Admin Dashboard",
+  "welcome": "Welcome back,",
+  "administrator": "Administrator"
+},
+
+"orderDetails": {
+  "title": "Order Details",
+  "orderNumber": "Order",
+  "backToOrders": "Back to Orders",
+  "orderNotFound": "Order Not Found",
+  "orderNotFoundDescription": "The order you are looking for does not exist or may have been removed.",
+  "customerInformation": "Customer Information",
+  "name": "Name",
+  "email": "Email",
+  "phone": "Phone",
+  "country": "Country",
+  "city": "City",
+  "address": "Address",
+  "orderInformation": "Order Information",
+  "orderId": "Order ID",
+  "paymentMethod": "Payment Method",
+  "paymentStatus": "Payment Status",
+  "orderStatus": "Order Status",
+  "total": "Total",
+  "orderDate": "Order Date",
+  "products": "Products",
+  "product": "Product",
+  "quantity": "Quantity",
+  "unitPrice": "Unit Price",
+  "noProducts": "No products found in this order."
+},
+
 "countries": {
   "afghanistan": "Afghanistan",
   "albania": "Albania",
@@ -943,6 +1075,50 @@
     "southSinai": "South Sinai"
   }
 },
+
+
+"adminDashboard": {
+  "title": "Dashboard",
+  "overview": "Overview of your store",
+  "totalSales": "Total Sales",
+  "totalOrders": "Total Orders",
+  "totalProducts": "Total Products",
+  "totalUsers": "Total Users",
+  "salesOverview": "Sales Overview",
+  "last7Days": "Last 7 Days",
+  "last30Days": "Last 30 Days",
+  "last6Months": "Last 6 Months",
+  "recentOrders": "Recent Orders",
+  "noRecentOrders": "No Recent Orders",
+  "noOrdersDescription": "There are no orders to display yet."
+},
+
+
+"adminAddProduct": {
+  "title": "Add Product",
+  "subtitle": "Create a new product",
+  "productName": "Product Name",
+  "price": "Price",
+  "category": "Category",
+  "description": "Description",
+  "imageUrl": "Product Image URL",
+  "enterProductName": "Enter product name",
+  "enterPrice": "Enter price",
+  "enterDescription": "Enter product description",
+  "enterImageUrl": "Enter image URL",
+  "cancel": "Cancel",
+  "addProduct": "Add Product",
+  "titleRequired": "Product title is required",
+  "priceRequired": "Product price is required",
+  "categoryRequired": "Please select a category",
+  "descriptionRequired": "Product description is required",
+  "imageRequired": "Product image is required",
+  "addFailed": "Failed to add product",
+  "addSuccess": "Product added successfully",
+  "somethingWentWrong": "Something went wrong"
+},
+
+
 "addedToWishlist": "Added to wishlist",
 
 

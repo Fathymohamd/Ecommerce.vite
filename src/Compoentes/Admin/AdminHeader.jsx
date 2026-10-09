@@ -1,30 +1,36 @@
+
 import React from "react";
-import {useSelector} from 'react-redux'
+import { useSelector } from "react-redux";
 import { FaBell } from "react-icons/fa6";
+import { useTranslation } from "react-i18next";
 
 function AdminHeader() {
-const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state) => state.auth.user);
+  const { t } = useTranslation();
+
   return (
     <header className="admin-header">
       <div>
-        <h2>Admin Dashboard</h2>
-        <p>Welcome back, {user?.name} 👋</p>
+        <h2>{t("adminHeader.title")}</h2>
+        <p>
+          {t("adminHeader.welcome")} {user?.name} 👋
+        </p>
       </div>
 
       <div className="admin-header-right">
-     {/*    <button className="admin-notification-btn">
+        {/* <button className="admin-notification-btn">
           <FaBell />
           <span>{user?.length || 2}</span>
         </button> */}
 
         <div className="admin-profile">
           <div className="admin-avatar">
-           {user?.name[0]} 
+            {user?.name?.[0]}
           </div>
 
           <div>
             <strong>{user?.name}</strong>
-            <small>Administrator</small>
+            <small>{t("adminHeader.administrator")}</small>
           </div>
         </div>
       </div>

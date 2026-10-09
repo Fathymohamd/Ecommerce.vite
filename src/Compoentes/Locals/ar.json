@@ -524,6 +524,15 @@
   "subscribe": "اشترك"
 },
 "orders": {
+    "title": "الطلبات",
+  "description": "إدارة طلبات العملاء",
+  "noOrders": "لا توجد منتجات في هذا الطلب.",
+  "customer": "العميل",
+  "date": "التاريخ",
+  "payment": "الدفع",
+  "status": "الحالة",
+  "action": "الإجراء",
+  "viewDetails": "عرض التفاصيل",
   "loadingOrders": "جاري تحميل الطلبات...",
   "somethingWentWrong": "حدث خطأ ما",
   "myOrders": "طلباتي",
@@ -838,6 +847,126 @@
     "sharqia": "الشرقية",
     "dakahlia": "الدقهلية"
   }
+},
+"adminSidebar": {
+  "logo": "إدارة متجري",
+  "dashboard": "لوحة التحكم",
+  "products": "المنتجات",
+  "addProduct": "إضافة منتج",
+  "orders": "الطلبات",
+  "users": "المستخدمون",
+  "settings": "الإعدادات",
+  "logout": "تسجيل الخروج"
+},
+
+"adminUsers": {
+  "title": "المستخدمون",
+  "description": "إدارة مستخدمي الموقع",
+  "name": "الاسم",
+  "email": "البريد الإلكتروني",
+  "role": "الصلاحية",
+  "joinedDate": "تاريخ الانضمام",
+  "actions": "الإجراءات",
+  "delete": "حذف",
+  "noUsers": "لا يوجد مستخدمون"
+},
+
+"adminSettings": {
+  "title": "الإعدادات",
+  "description": "إدارة حسابك وإعدادات الموقع",
+  "adminProfile": "الملف الشخصي للمسؤول",
+  "name": "الاسم",
+  "email": "البريد الإلكتروني",
+  "enterName": "أدخل اسمك",
+  "enterEmail": "أدخل بريدك الإلكتروني",
+  "saveProfile": "حفظ الملف الشخصي",
+  "websiteSettings": "إعدادات الموقع",
+  "storeName": "اسم المتجر",
+  "enterStoreName": "أدخل اسم المتجر",
+  "currency": "العملة",
+  "saveSettings": "حفظ الإعدادات",
+  "logout": "تسجيل الخروج",
+  "logoutDescription": "تسجيل الخروج من حساب المسؤول.",
+  "logoutButton": "تسجيل الخروج",
+  "logoutFailed": "فشل تسجيل الخروج",
+  "fillAllFields": "يرجى ملء جميع الحقول",
+  "invalidEmail": "يرجى إدخال بريد إلكتروني صحيح",
+  "storeNameRequired": "يرجى إدخال اسم المتجر",
+  "currencyRequired": "يرجى اختيار العملة",
+  "profileUpdatedSuccessfully": "تم تحديث الملف الشخصي بنجاح",
+  "settingsUpdatedSuccessfully": "تم تحديث الإعدادات بنجاح",
+  "somethingWentWrong": "حدث خطأ ما"
+},
+
+"adminHeader": {
+  "title": "لوحة تحكم المسؤول",
+  "welcome": "مرحبًا بعودتك،",
+  "administrator": "مسؤول النظام"
+},
+
+"adminEditProduct": {
+  "title": "تعديل المنتج",
+  "subtitle": "تحديث معلومات المنتج",
+  "productName": "اسم المنتج",
+  "price": "السعر",
+  "category": "الفئة",
+  "description": "الوصف",
+  "imageUrl": "رابط صورة المنتج",
+  "cancel": "إلغاء",
+  "saveChanges": "حفظ التغييرات",
+  "nameRequired": "اسم المنتج مطلوب",
+  "priceRequired": "السعر مطلوب",
+  "categoryRequired": "الفئة مطلوبة",
+  "descriptionRequired": "الوصف مطلوب",
+  "imageRequired": "رابط صورة المنتج مطلوب",
+  "priceGreaterThanZero": "يجب أن يكون السعر أكبر من صفر",
+  "updateFailed": "فشل تحديث المنتج",
+  "updateSuccess": "تم تحديث المنتج بنجاح",
+  "somethingWentWrong": "حدث خطأ ما. حاول مرة أخرى."
+},
+
+"orderDetails": {
+  "title": "تفاصيل الطلب",
+  "orderNumber": "الطلب",
+  "backToOrders": "العودة إلى الطلبات",
+  "orderNotFound": "الطلب غير موجود",
+  "orderNotFoundDescription": "الطلب الذي تبحث عنه غير موجود أو ربما تمت إزالته.",
+  "customerInformation": "معلومات العميل",
+  "name": "الاسم",
+  "email": "البريد الإلكتروني",
+  "phone": "الهاتف",
+  "country": "الدولة",
+  "city": "المدينة",
+  "address": "العنوان",
+  "orderInformation": "معلومات الطلب",
+  "orderId": "رقم الطلب",
+  "paymentMethod": "طريقة الدفع",
+  "paymentStatus": "حالة الدفع",
+  "orderStatus": "حالة الطلب",
+  "total": "الإجمالي",
+  "orderDate": "تاريخ الطلب",
+  "products": "المنتجات",
+  "product": "منتج",
+  "quantity": "الكمية",
+  "unitPrice": "سعر الوحدة",
+  "noProducts": "لا توجد منتجات في هذا الطلب."
+},
+
+"adminProducts": {
+  "title": "المنتجات",
+  "description": "إدارة منتجات متجرك",
+  "addProduct": "إضافة منتج",
+  "search": "ابحث عن المنتجات...",
+  "allCategories": "كل الفئات",
+  "showing": "عرض",
+  "products": "منتجات",
+  "product": "المنتج",
+  "category": "الفئة",
+  "price": "السعر",
+  "stock": "المخزون",
+  "actions": "الإجراءات",
+  "editProduct": "تعديل المنتج",
+  "noProductsFound": "لم يتم العثور على منتجات"
 },
 
 "countries": {
@@ -2321,7 +2450,46 @@
   }
 },
 
+"adminDashboard": {
+  "title": "لوحة التحكم",
+  "overview": "نظرة عامة على متجرك",
+  "totalSales": "إجمالي المبيعات",
+  "totalOrders": "إجمالي الطلبات",
+  "totalProducts": "إجمالي المنتجات",
+  "totalUsers": "إجمالي المستخدمين",
+  "salesOverview": "نظرة عامة على المبيعات",
+  "last7Days": "آخر 7 أيام",
+  "last30Days": "آخر 30 يومًا",
+  "last6Months": "آخر 6 أشهر",
+  "recentOrders": "أحدث الطلبات",
+  "noRecentOrders": "لا توجد طلبات حديثة",
+  "noOrdersDescription": "لا توجد طلبات لعرضها حتى الآن."
+},
 
+
+"adminAddProduct": {
+  "title": "إضافة منتج",
+  "subtitle": "إنشاء منتج جديد",
+  "productName": "اسم المنتج",
+  "price": "السعر",
+  "category": "الفئة",
+  "description": "الوصف",
+  "imageUrl": "رابط صورة المنتج",
+  "enterProductName": "أدخل اسم المنتج",
+  "enterPrice": "أدخل السعر",
+  "enterDescription": "أدخل وصف المنتج",
+  "enterImageUrl": "أدخل رابط الصورة",
+  "cancel": "إلغاء",
+  "addProduct": "إضافة منتج",
+  "titleRequired": "اسم المنتج مطلوب",
+  "priceRequired": "سعر المنتج مطلوب",
+  "categoryRequired": "يرجى اختيار فئة",
+  "descriptionRequired": "وصف المنتج مطلوب",
+  "imageRequired": "صورة المنتج مطلوبة",
+  "addFailed": "فشلت إضافة المنتج",
+  "addSuccess": "تمت إضافة المنتج بنجاح",
+  "somethingWentWrong": "حدث خطأ ما"
+},
 
 "fakestoreapi" : {
   "1": {

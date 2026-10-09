@@ -1,15 +1,15 @@
 
 import React, { useEffect, useState } from "react";
-
 import { Link } from "react-router-dom";
-import {FaSpinner } from "react-icons/fa";
+import { FaSpinner } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useParams, useNavigate } from "react-router-dom";
 import { getOrderById } from "../../Redux/oderproduct";
+
 function AdminOrderDetails() {
   const { id } = useParams();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -23,175 +23,170 @@ function AdminOrderDetails() {
     }
   }, [id, dispatch]);
 
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <FaSpinner className="loader-icon" />
+      </div>
+    );
+  }
 
- if(loading){
-  return <div className="loading-container">
-  <FaSpinner className="loader-icon" />
-</div>
- }
+  if (error) {
+    return <p>{error}</p>;
+  }
 
-
-if (error) {
-  return <p>{error}</p>;
-}
-
-if (!order) {
-  return (
-    <div className="order-not-found">
-      <div className="order-not-found-icon">📦</div>
-
-      <h2>Order Not Found</h2>
-
-      <p>
-        The order you are looking for does not exist or may have been
-        removed.
-      </p>
-
-      <button onClick={() => navigate("/admin/orders")}>
-        Back to Orders
-      </button>
-    </div>
-  );
-}
+  if (!order) {
+    return (
+      <div className="order-not-found">
+        <div className="order-not-found-icon">📦</div>
+        <h2>{t("orderDetails.orderNotFound")}</h2>
+        <p>{t("orderDetails.orderNotFoundDescription")}</p>
+        <button onClick={() => navigate("/admin/orders")}>
+          {t("orderDetails.backToOrders")}
+        </button>
+      </div>
+    );
+  }
 
   return (
-  <div>
-  {/* Page Title */}
-  <div className="admin-page-title">
     <div>
-      <h1>Order Details</h1>
-      <p>Order #{order._id}</p>
-    </div>
+      {/* Page Title */}
+      <div className="admin-page-title">
+        <div>
+          <h1>{t("orderDetails.title")}</h1>
+          <p>{t("orderDetails.orderNumber")} #{order._id}</p>
+        </div>
 
-    <button
-      className="admin-cancel-btn"
-      onClick={() => navigate("/admin/orders")}
-    >
-      Back to Orders
-    </button>
-  </div>
-
-  {/* Customer & Order Information */}
-  <div className="admin-order-details-grid">
-
-    {/* Customer Information */}
-    <div className="admin-dashboard-card">
-      <h2>Customer Information</h2>
-
-      <div className="admin-details-list">
-        <p>
-          <strong>Name:</strong>{" "}
-          {order.firstName} {order.lastName}
-        </p>
-
-        <p>
-          <strong>Email:</strong> {order.email}
-        </p>
-
-        <p>
-          <strong>Phone:</strong> {order.phone}
-        </p>
-
-        <p>
-          <strong>Country:</strong> {order.country}
-        </p>
-
-        <p>
-          <strong>City:</strong> {order.city}
-        </p>
-
-        <p>
-          <strong>Address:</strong> {order.address}
-        </p>
-      </div>
-    </div>
-
-    {/* Order Information */}
-    <div className="admin-dashboard-card">
-      <h2>Order Information</h2>
-
-      <div className="admin-details-list">
-        <p>
-          <strong>Order ID:</strong> #{order._id}
-        </p>
-
-        <p>
-          <strong>Payment Method:</strong>{" "}
-          {order.paymentMethod}
-        </p>
-
-        <p>
-          <strong>Payment Status:</strong>{" "}
-          {order.paymentStatus}
-        </p>
-
-        <p>
-          <strong>Order Status:</strong>{" "}
-          {order.status}
-        </p>
-
-        <p>
-          <strong>Total:</strong>{" "}
-          {order.finalPrice?.toFixed(2)} EGP
-        </p>
-
-        <p>
-          <strong>Order Date:</strong>{" "}
-          {new Date(order.createdAt).toLocaleString()}
-        </p>
-      </div>
-    </div>
-  </div>
-
-  {/* Products */}
-  <div className="admin-dashboard-card admin-order-products">
-    <h2>Products</h2>
-
-    {order.products?.length > 0 ? (
-      order.products.map((product, index) => (
-        <div
-          className="admin-order-product"
-          key={product._id || index}
+        <button
+          className="admin-cancel-btn"
+          onClick={() => navigate("/admin/orders")}
         >
-          <div>
-            <strong>
-              {product.title || product.name || "Product"}
-            </strong>
+          {t("orderDetails.backToOrders")}
+        </button>
+      </div>
 
+      {/* Customer & Order Information */}
+      <div className="admin-order-details-grid">
+        {/* Customer Information */}
+        <div className="admin-dashboard-card">
+          <h2>{t("orderDetails.customerInformation")}</h2>
+
+          <div className="admin-details-list">
             <p>
-              Quantity: {product.quantity || 1}
+              <strong>{t("orderDetails.name")}:</strong>{" "}
+              {order.firstName} {order.lastName}
             </p>
 
-            {product.price && (
-              <p>
-                Unit Price: {product.price} EGP
-              </p>
-            )}
+            <p>
+              <strong>{t("orderDetails.email")}:</strong> {order.email}
+            </p>
+
+            <p>
+              <strong>{t("orderDetails.phone")}:</strong> {order.phone}
+            </p>
+
+            <p>
+              <strong>{t("orderDetails.country")}:</strong> {order.country}
+            </p>
+
+            <p>
+              <strong>{t("orderDetails.city")}:</strong> {order.city}
+            </p>
+
+            <p>
+              <strong>{t("orderDetails.address")}:</strong> {order.address}
+            </p>
           </div>
-
-          <strong>
-            {product.price
-              ? (product.price * (product.quantity || 1)).toFixed(2)
-              : "0.00"}{" "}
-            EGP
-          </strong>
         </div>
-      ))
-    ) : (
-      <p>No products found in this order.</p>
-    )}
 
-    {/* Order Total */}
-    <div className="admin-order-total">
-      <span>Total</span>
+        {/* Order Information */}
+        <div className="admin-dashboard-card">
+          <h2>{t("orderDetails.orderInformation")}</h2>
 
-      <strong>
-        {order.finalPrice?.toFixed(2)} EGP
-      </strong>
+          <div className="admin-details-list">
+            <p>
+              <strong>{t("orderDetails.orderId")}:</strong> #{order._id}
+            </p>
+
+            <p>
+              <strong>{t("orderDetails.paymentMethod")}:</strong>{" "}
+              {order.paymentMethod}
+            </p>
+
+            <p>
+              <strong>{t("orderDetails.paymentStatus")}:</strong>{" "}
+              {order.paymentStatus}
+            </p>
+
+            <p>
+              <strong>{t("orderDetails.orderStatus")}:</strong>{" "}
+              {order.status}
+            </p>
+
+            <p>
+              <strong>{t("orderDetails.total")}:</strong>{" "}
+              {order.finalPrice?.toFixed(2)} EGP
+            </p>
+
+            <p>
+              <strong>{t("orderDetails.orderDate")}:</strong>{" "}
+              {new Date(order.createdAt).toLocaleString()}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Products */}
+      <div className="admin-dashboard-card admin-order-products">
+        <h2>{t("orderDetails.products")}</h2>
+
+        {order.products?.length > 0 ? (
+          order.products.map((product, index) => (
+            <div
+              className="admin-order-product"
+              key={product._id || index}
+            >
+              <div>
+                <strong>
+                  {product.title ||
+                    product.name ||
+                    t("orderDetails.product")}
+                </strong>
+
+                <p>
+                  {t("orderDetails.quantity")}: {product.quantity || 1}
+                </p>
+
+                {product.price && (
+                  <p>
+                    {t("orderDetails.unitPrice")}: {product.price} EGP
+                  </p>
+                )}
+              </div>
+
+              <strong>
+                {product.price
+                  ? (
+                      product.price * (product.quantity || 1)
+                    ).toFixed(2)
+                  : "0.00"}{" "}
+                EGP
+              </strong>
+            </div>
+          ))
+        ) : (
+          <p>{t("orderDetails.noProducts")}</p>
+        )}
+
+        {/* Order Total */}
+        <div className="admin-order-total">
+          <span>{t("orderDetails.total")}</span>
+          <strong>{order.finalPrice?.toFixed(2)} EGP</strong>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
   );
 }
 
 export default AdminOrderDetails;
+

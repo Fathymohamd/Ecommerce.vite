@@ -1,10 +1,13 @@
+
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function AdminEditProduct() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [error, setError] = useState("");
 
@@ -21,7 +24,6 @@ function AdminEditProduct() {
       ...formData,
       [e.target.name]: e.target.value,
     });
-
     setError("");
   };
 
@@ -29,32 +31,32 @@ function AdminEditProduct() {
     e.preventDefault();
 
     if (!formData.title.trim()) {
-      setError("Product name is required");
+      setError(t("adminEditProduct.nameRequired"));
       return;
     }
 
     if (!formData.price) {
-      setError("Price is required");
+      setError(t("adminEditProduct.priceRequired"));
       return;
     }
 
     if (!formData.category) {
-      setError("Category is required");
+      setError(t("adminEditProduct.categoryRequired"));
       return;
     }
 
     if (!formData.description.trim()) {
-      setError("Description is required");
+      setError(t("adminEditProduct.descriptionRequired"));
       return;
     }
 
     if (!formData.images.trim()) {
-      setError("Product image URL is required");
+      setError(t("adminEditProduct.imageRequired"));
       return;
     }
 
     if (Number(formData.price) <= 0) {
-      setError("Price must be greater than 0");
+      setError(t("adminEditProduct.priceGreaterThanZero"));
       return;
     }
 
@@ -80,16 +82,17 @@ function AdminEditProduct() {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.message || "Failed to update product");
+        setError(
+          data.message || t("adminEditProduct.updateFailed")
+        );
         return;
       }
 
-      toast.success("Product updated successfully");
-
+      toast.success(t("adminEditProduct.updateSuccess"));
       navigate("/admin/products");
     } catch (error) {
       console.error("Update product error:", error);
-      setError("Something went wrong. Please try again.");
+      setError(t("adminEditProduct.somethingWentWrong"));
     }
   };
 
@@ -102,16 +105,15 @@ function AdminEditProduct() {
       )}
 
       <div className="admin-page-title">
-        <h1>Edit Product</h1>
-        <p>Update product information</p>
+        <h1>{t("adminEditProduct.title")}</h1>
+        <p>{t("adminEditProduct.subtitle")}</p>
       </div>
 
       <div className="admin-form-card">
         <form onSubmit={handleSubmit}>
           <div className="admin-form-grid">
             <div className="admin-form-group">
-              <label>Product Name</label>
-
+              <label>{t("adminEditProduct.productName")}</label>
               <input
                 type="text"
                 name="title"
@@ -121,8 +123,7 @@ function AdminEditProduct() {
             </div>
 
             <div className="admin-form-group">
-              <label>Price</label>
-
+              <label>{t("adminEditProduct.price")}</label>
               <input
                 type="number"
                 name="price"
@@ -132,44 +133,42 @@ function AdminEditProduct() {
             </div>
 
             <div className="admin-form-group">
-              <label>Category</label>
-
+              <label>{t("adminEditProduct.category")}</label>
               <select
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
               >
-                <option value="beauty">Beauty</option>
-                <option value="fragrances">Fragrances</option>
-                <option value="furniture">Furniture</option>
-                <option value="groceries">Groceries</option>
-                <option value="home-decoration">Home Decoration</option>
-                <option value="kitchen-accessories">Kitchen Accessories</option>
-                <option value="laptops">Laptops</option>
-                <option value="mens-shirts">Men's Shirts</option>
-                <option value="mens-shoes">Men's Shoes</option>
-                <option value="mens-watches">Men's Watches</option>
-                <option value="mobile-accessories">Mobile Accessories</option>
-                <option value="motorcycle">Motorcycle</option>
-                <option value="skin-care">Skin Care</option>
-                <option value="smartphones">Smartphones</option>
-                <option value="sports-accessories">Sports Accessories</option>
-                <option value="sunglasses">Sunglasses</option>
-                <option value="tablets">Tablets</option>
-                <option value="tops">Tops</option>
-                <option value="vehicle">Vehicle</option>
-                <option value="womens-bags">Women's Bags</option>
-                <option value="womens-dresses">Women's Dresses</option>
-                <option value="womens-jewellery">Women's Jewellery</option>
-                <option value="womens-shoes">Women's Shoes</option>
-                <option value="womens-watches">Women's Watches</option>
+                <option value="beauty">{t("categories.beauty")}</option>
+                <option value="fragrances">{t("categories.fragrances")}</option>
+                <option value="furniture">{t("categories.furniture")}</option>
+                <option value="groceries">{t("categories.groceries")}</option>
+                <option value="home-decoration">{t("categories.homeDecoration")}</option>
+                <option value="kitchen-accessories">{t("categories.kitchenAccessories")}</option>
+                <option value="laptops">{t("categories.laptops")}</option>
+                <option value="mens-shirts">{t("categories.mensShirts")}</option>
+                <option value="mens-shoes">{t("categories.mensShoes")}</option>
+                <option value="mens-watches">{t("categories.mensWatches")}</option>
+                <option value="mobile-accessories">{t("categories.mobileAccessories")}</option>
+                <option value="motorcycle">{t("categories.motorcycle")}</option>
+                <option value="skin-care">{t("categories.skinCare")}</option>
+                <option value="smartphones">{t("categories.smartphones")}</option>
+                <option value="sports-accessories">{t("categories.sportsAccessories")}</option>
+                <option value="sunglasses">{t("categories.sunglasses")}</option>
+                <option value="tablets">{t("categories.tablets")}</option>
+                <option value="tops">{t("categories.tops")}</option>
+                <option value="vehicle">{t("categories.vehicle")}</option>
+                <option value="womens-bags">{t("categories.womensBags")}</option>
+                <option value="womens-dresses">{t("categories.womensDresses")}</option>
+                <option value="womens-jewellery">{t("categories.womensJewellery")}</option>
+                <option value="womens-shoes">{t("categories.womensShoes")}</option>
+                <option value="womens-watches">{t("categories.womensWatches")}</option>
               </select>
             </div>
           </div>
 
           <div className="admin-form-group">
-            <label>Description</label>
-
+            <label>{t("adminEditProduct.description")}</label>
             <textarea
               name="description"
               value={formData.description}
@@ -179,8 +178,7 @@ function AdminEditProduct() {
           </div>
 
           <div className="admin-form-group">
-            <label>Product Image URL</label>
-
+            <label>{t("adminEditProduct.imageUrl")}</label>
             <input
               type="text"
               name="images"
@@ -195,14 +193,14 @@ function AdminEditProduct() {
               className="admin-cancel-btn"
               onClick={() => navigate("/admin/products")}
             >
-              Cancel
+              {t("adminEditProduct.cancel")}
             </button>
 
             <button
               type="submit"
               className="admin-primary-btn"
             >
-              Save Changes
+              {t("adminEditProduct.saveChanges")}
             </button>
           </div>
         </form>
@@ -212,3 +210,4 @@ function AdminEditProduct() {
 }
 
 export default AdminEditProduct;
+

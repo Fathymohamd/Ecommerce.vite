@@ -1,22 +1,24 @@
+
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import {useDispatch} from 'react-redux'
-import {fetchAllProducts} from "../../Redux/createSlice"
+import { useDispatch } from "react-redux";
+import { fetchAllProducts } from "../../Redux/createSlice";
+import { useTranslation } from "react-i18next";
+
 function AdminAddProduct() {
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
 
-  const dispatch = useDispatch()
+  const [error, setError] = useState("");
 
-  const [error , setError] = useState("")
   const [formData, setFormData] = useState({
     title: "",
     price: "",
     category: "",
     description: "",
     images: "",
-
   });
 
   const handleChange = (e) => {
@@ -26,97 +28,92 @@ function AdminAddProduct() {
     });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  if (!formData.title.trim()) {
-    toast.error("Product title is required");
-    return;
-  }
-
-  if (!formData.price.trim()) {
-    toast.error("Product description is required");
-    return;
-  }
-
-  if (!formData.category.trim()) {
-    toast.error("Please select a category");
-    return;
-  }
-
-  if (!formData.description.trim()) {
-    toast.error("Product price is required");
-    return;
-  }
-
-
-  if (!formData.images.trim()) {
-    toast.error("Product image is required");
-    return;
-  }
-
-  try {
-    const response = await fetch(
-
-      "https://ecommerce-vite-two.vercel.app/api/AdminAddProduct",
-
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: formData.title.trim(),
-          description: formData.description.trim(),
-          category: formData.category,
-          price: Number(formData.price),
-          images: [formData.images.trim()],
-        }),
-      }
-    );
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      toast.error(data.message || "Failed to add product");
+    if (!formData.title.trim()) {
+      toast.error(t("adminAddProduct.titleRequired"));
       return;
     }
 
-    toast.success("Product added successfully");
+    if (!formData.price.trim()) {
+      toast.error(t("adminAddProduct.priceRequired"));
+      return;
+    }
 
-    dispatch(fetchAllProducts());
-    navigate("/admin/products");
+    if (!formData.category.trim()) {
+      toast.error(t("adminAddProduct.categoryRequired"));
+      return;
+    }
 
-  } catch (error) {
-    console.error(error);
-    toast.error("Something went wrong");
-  }
-};
+    if (!formData.description.trim()) {
+      toast.error(t("adminAddProduct.descriptionRequired"));
+      return;
+    }
+
+    if (!formData.images.trim()) {
+      toast.error(t("adminAddProduct.imageRequired"));
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        "https://ecommerce-vite-two.vercel.app/api/AdminAddProduct",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: formData.title.trim(),
+            description: formData.description.trim(),
+            category: formData.category,
+            price: Number(formData.price),
+            images: [formData.images.trim()],
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        toast.error(
+          data.message || t("adminAddProduct.addFailed")
+        );
+        return;
+      }
+
+      toast.success(t("adminAddProduct.addSuccess"));
+      dispatch(fetchAllProducts());
+      navigate("/admin/products");
+    } catch (error) {
+      console.error(error);
+      toast.error(t("adminAddProduct.somethingWentWrong"));
+    }
+  };
 
   return (
     <div>
       <div className="admin-page-title">
-        <h1>Add Product</h1>
-        <p>Create a new product</p>
+        <h1>{t("adminAddProduct.title")}</h1>
+        <p>{t("adminAddProduct.subtitle")}</p>
       </div>
-        {error && (
-              <div className="error-message">
-                {error}
-              </div>
-            )}
+
+      {error && (
+        <div className="error-message">
+          {error}
+        </div>
+      )}
+
       <div className="admin-form-card">
         <form onSubmit={handleSubmit}>
-
           <div className="admin-form-grid">
-
-           
             <div className="admin-form-group">
-              <label>Product Name</label>
-
+              <label>{t("adminAddProduct.productName")}</label>
               <input
                 type="text"
                 name="title"
-                placeholder="Enter product name"
+                placeholder={t("adminAddProduct.enterProductName")}
                 value={formData.title}
                 onChange={handleChange}
               />
@@ -124,12 +121,11 @@ const handleSubmit = async (e) => {
 
             {/* Price */}
             <div className="admin-form-group">
-              <label>Price</label>
-
+              <label>{t("adminAddProduct.price")}</label>
               <input
                 type="number"
                 name="price"
-                placeholder="Enter price"
+                placeholder={t("adminAddProduct.enterPrice")}
                 value={formData.price}
                 onChange={handleChange}
               />
@@ -137,74 +133,46 @@ const handleSubmit = async (e) => {
 
             {/* Category */}
             <div className="admin-form-group">
-              <label>Category</label>
-
-   <select
-  name="category"
-  value={formData.category}
-  onChange={handleChange}
->
-  <option value="beauty">Beauty</option>
-
-  <option value="fragrances">Fragrances</option>
-
-  <option value="furniture">Furniture</option>
-
-  <option value="groceries">Groceries</option>
-
-  <option value="home-decoration">Home Decoration</option>
-
-  <option value="kitchen-accessories">Kitchen Accessories</option>
-
-  <option value="laptops">Laptops</option>
-
-  <option value="mens-shirts">Men's Shirts</option>
-
-  <option value="mens-shoes">Men's Shoes</option>
-
-  <option value="mens-watches">Men's Watches</option>
-
-  <option value="mobile-accessories">Mobile Accessories</option>
-
-  <option value="motorcycle">Motorcycle</option>
-
-  <option value="skin-care">Skin Care</option>
-
-  <option value="smartphones">Smartphones</option>
-
-  <option value="sports-accessories">Sports Accessories</option>
-
-  <option value="sunglasses">Sunglasses</option>
-
-  <option value="tablets">Tablets</option>
-
-  <option value="tops">Tops</option>
-
-  <option value="vehicle">Vehicle</option>
-
-  <option value="womens-bags">Women's Bags</option>
-
-  <option value="womens-dresses">Women's Dresses</option>
-
-  <option value="womens-jewellery">Women's Jewellery</option>
-
-  <option value="womens-shoes">Women's Shoes</option>
-
-  <option value="womens-watches">Women's Watches</option>
-</select>
+              <label>{t("adminAddProduct.category")}</label>
+              <select
+                name="category"
+                value={formData.category}
+                onChange={handleChange}
+              >
+                <option value="beauty">{t("categories.beauty")}</option>
+                <option value="fragrances">{t("categories.fragrances")}</option>
+                <option value="furniture">{t("categories.furniture")}</option>
+                <option value="groceries">{t("categories.groceries")}</option>
+                <option value="home-decoration">{t("categories.homeDecoration")}</option>
+                <option value="kitchen-accessories">{t("categories.kitchenAccessories")}</option>
+                <option value="laptops">{t("categories.laptops")}</option>
+                <option value="mens-shirts">{t("categories.mensShirts")}</option>
+                <option value="mens-shoes">{t("categories.mensShoes")}</option>
+                <option value="mens-watches">{t("categories.mensWatches")}</option>
+                <option value="mobile-accessories">{t("categories.mobileAccessories")}</option>
+                <option value="motorcycle">{t("categories.motorcycle")}</option>
+                <option value="skin-care">{t("categories.skinCare")}</option>
+                <option value="smartphones">{t("categories.smartphones")}</option>
+                <option value="sports-accessories">{t("categories.sportsAccessories")}</option>
+                <option value="sunglasses">{t("categories.sunglasses")}</option>
+                <option value="tablets">{t("categories.tablets")}</option>
+                <option value="tops">{t("categories.tops")}</option>
+                <option value="vehicle">{t("categories.vehicle")}</option>
+                <option value="womens-bags">{t("categories.womensBags")}</option>
+                <option value="womens-dresses">{t("categories.womensDresses")}</option>
+                <option value="womens-jewellery">{t("categories.womensJewellery")}</option>
+                <option value="womens-shoes">{t("categories.womensShoes")}</option>
+                <option value="womens-watches">{t("categories.womensWatches")}</option>
+              </select>
             </div>
-
-
-
           </div>
 
           {/* Description */}
           <div className="admin-form-group">
-            <label>Description</label>
-
+            <label>{t("adminAddProduct.description")}</label>
             <textarea
               name="description"
-              placeholder="Enter product description"
+              placeholder={t("adminAddProduct.enterDescription")}
               value={formData.description}
               onChange={handleChange}
               rows="5"
@@ -213,12 +181,11 @@ const handleSubmit = async (e) => {
 
           {/* Image */}
           <div className="admin-form-group">
-            <label>Product Image URL</label>
-
+            <label>{t("adminAddProduct.imageUrl")}</label>
             <input
               type="text"
               name="images"
-              placeholder="Enter image URL"
+              placeholder={t("adminAddProduct.enterImageUrl")}
               value={formData.images}
               onChange={handleChange}
             />
@@ -226,24 +193,21 @@ const handleSubmit = async (e) => {
 
           {/* Buttons */}
           <div className="admin-form-buttons">
-
             <button
               type="button"
               className="admin-cancel-btn"
               onClick={() => navigate("/admin/products")}
             >
-              Cancel
+              {t("adminAddProduct.cancel")}
             </button>
 
             <button
               type="submit"
               className="admin-primary-btn"
             >
-              Add Product
+              {t("adminAddProduct.addProduct")}
             </button>
-
           </div>
-
         </form>
       </div>
     </div>

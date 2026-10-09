@@ -1,6 +1,63 @@
 * {
   box-sizing: border-box;
 }
+/* Arabic table direction */
+[dir="rtl"] .admin-table-container {
+  direction: rtl;
+}
+
+[dir="rtl"] .admin-table {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .admin-table th,
+[dir="rtl"] .admin-table td {
+  text-align: right;
+}
+
+[dir="rtl"] .admin-table-actions {
+  justify-content: flex-start;
+}
+
+/* English table direction */
+[dir="ltr"] .admin-table-container {
+  direction: ltr;
+}
+
+[dir="ltr"] .admin-table {
+  direction: ltr;
+  text-align: left;
+}
+
+[dir="ltr"] .admin-table th,
+[dir="ltr"] .admin-table td {
+  text-align: left;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 14px 16px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.admin-table-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-empty-message {
+  text-align: center !important;
+  padding: 25px !important;
+}
 
 html,
 body,
@@ -27,7 +84,7 @@ body {
 
 .admin-sidebar {
   width: 280px;
-  height: 90vh;
+  height: 100vh;
   background: #131921;
   color: white;
   padding: 20px 15px;
@@ -1294,6 +1351,8 @@ body {
   overflow: hidden;
 }
 
+
+
 .admin-card-header {
   display: flex;
   justify-content: space-between;
@@ -1837,4 +1896,310 @@ body {
     height: 70px;
     font-size: 32px;
   }
+}
+
+
+
+
+/* =====================================
+   ADMIN THEME FIX - LIGHT & DARK MODE
+   ضعه في آخر ملف CSS
+===================================== */
+
+/* Light mode colors */
+.admin-layout.light-mode {
+  --admin-bg: #f3f3f3;
+  --admin-card-bg: #ffffff;
+  --admin-text: #131921;
+  --admin-secondary-text: #6b7280;
+  --admin-border: #e5e7eb;
+  --admin-input-bg: #ffffff;
+  --admin-hover: #f9fafb;
+  --admin-table-header: #f7f8f8;
+  --admin-sidebar-bg: #131921;
+  --admin-sidebar-text: #dddddd;
+}
+
+/* Dark mode colors */
+.admin-layout.dark-mode {
+  --admin-bg: #111827;
+  --admin-card-bg: #1f2937;
+  --admin-text: #f9fafb;
+  --admin-secondary-text: #9ca3af;
+  --admin-border: #374151;
+  --admin-input-bg: #111827;
+  --admin-hover: #273449;
+  --admin-table-header: #283548;
+  --admin-sidebar-bg: #0b1120;
+  --admin-sidebar-text: #d1d5db;
+}
+
+/* Main layout */
+.admin-layout.light-mode,
+.admin-layout.dark-mode {
+  background-color: var(--admin-bg);
+  color: var(--admin-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Main content */
+.admin-layout.light-mode .admin-main,
+.admin-layout.dark-mode .admin-main,
+.admin-layout.light-mode .admin-content,
+.admin-layout.dark-mode .admin-content {
+  background-color: var(--admin-bg);
+  color: var(--admin-text);
+}
+
+/* Header */
+.admin-layout.light-mode .admin-header,
+.admin-layout.dark-mode .admin-header {
+  background-color: var(--admin-card-bg);
+  color: var(--admin-text);
+  border-color: var(--admin-border);
+}
+
+.admin-layout.light-mode .admin-header h2,
+.admin-layout.dark-mode .admin-header h2,
+.admin-layout.light-mode .admin-profile strong,
+.admin-layout.dark-mode .admin-profile strong,
+.admin-layout.light-mode .admin-page-title h1,
+.admin-layout.dark-mode .admin-page-title h1,
+.admin-layout.light-mode .admin-product-title h1,
+.admin-layout.dark-mode .admin-product-title h1,
+.admin-layout.light-mode .admin-card-header h2,
+.admin-layout.dark-mode .admin-card-header h2,
+.admin-layout.light-mode .admin-form-card h2,
+.admin-layout.dark-mode .admin-form-card h2 {
+  color: var(--admin-text);
+}
+
+.admin-layout.light-mode .admin-header p,
+.admin-layout.dark-mode .admin-header p,
+.admin-layout.light-mode .admin-profile small,
+.admin-layout.dark-mode .admin-profile small,
+.admin-layout.light-mode .admin-page-title p,
+.admin-layout.dark-mode .admin-page-title p,
+.admin-layout.light-mode .admin-product-title p,
+.admin-layout.dark-mode .admin-product-title p,
+.admin-layout.light-mode .admin-stat-card p,
+.admin-layout.dark-mode .admin-stat-card p {
+  color: var(--admin-secondary-text);
+}
+
+/* Cards */
+.admin-layout.light-mode .admin-dashboard-card,
+.admin-layout.dark-mode .admin-dashboard-card,
+.admin-layout.light-mode .admin-stat-card,
+.admin-layout.dark-mode .admin-stat-card,
+.admin-layout.light-mode .admin-products-card,
+.admin-layout.dark-mode .admin-products-card,
+.admin-layout.light-mode .admin-form-card,
+.admin-layout.dark-mode .admin-form-card,
+.admin-layout.light-mode .admin-logout-section,
+.admin-layout.dark-mode .admin-logout-section,
+.admin-layout.light-mode .admin-table-container,
+.admin-layout.dark-mode .admin-table-container,
+.admin-layout.light-mode .admin-no-orders,
+.admin-layout.dark-mode .admin-no-orders,
+.admin-layout.light-mode .no-products-message,
+.admin-layout.dark-mode .no-products-message {
+  background-color: var(--admin-card-bg);
+  color: var(--admin-text);
+  border-color: var(--admin-border);
+}
+
+/* Stat cards and product information */
+.admin-layout.light-mode .admin-stat-card h2,
+.admin-layout.dark-mode .admin-stat-card h2,
+.admin-layout.light-mode .admin-product-price,
+.admin-layout.dark-mode .admin-product-price,
+.admin-layout.light-mode .admin-products-count strong,
+.admin-layout.dark-mode .admin-products-count strong {
+  color: var(--admin-text);
+}
+
+.admin-layout.light-mode .admin-products-count,
+.admin-layout.dark-mode .admin-products-count {
+  color: var(--admin-secondary-text);
+  border-color: var(--admin-border);
+}
+
+/* Product toolbar */
+.admin-layout.light-mode .admin-products-toolbar,
+.admin-layout.dark-mode .admin-products-toolbar {
+  border-color: var(--admin-border);
+}
+
+/* Inputs, search, selects and textareas */
+.admin-layout.light-mode .admin-form-group input,
+.admin-layout.dark-mode .admin-form-group input,
+.admin-layout.light-mode .admin-form-group select,
+.admin-layout.dark-mode .admin-form-group select,
+.admin-layout.light-mode .admin-form-group textarea,
+.admin-layout.dark-mode .admin-form-group textarea,
+.admin-layout.light-mode .admin-products-search,
+.admin-layout.dark-mode .admin-products-search,
+.admin-layout.light-mode .admin-products-filter,
+.admin-layout.dark-mode .admin-products-filter,
+.admin-layout.light-mode .admin-card-header select,
+.admin-layout.dark-mode .admin-card-header select {
+  background-color: var(--admin-input-bg);
+  color: var(--admin-text);
+  border-color: var(--admin-border);
+}
+
+.admin-layout.light-mode .admin-form-group label,
+.admin-layout.dark-mode .admin-form-group label {
+  color: var(--admin-text);
+}
+
+.admin-layout.light-mode .admin-products-search input,
+.admin-layout.dark-mode .admin-products-search input {
+  background-color: transparent;
+  color: var(--admin-text);
+}
+
+.admin-layout.light-mode .admin-products-search input::placeholder,
+.admin-layout.dark-mode .admin-products-search input::placeholder,
+.admin-layout.light-mode .admin-form-group input::placeholder,
+.admin-layout.dark-mode .admin-form-group input::placeholder,
+.admin-layout.light-mode .admin-form-group textarea::placeholder,
+.admin-layout.dark-mode .admin-form-group textarea::placeholder {
+  color: var(--admin-secondary-text);
+}
+
+.admin-layout.light-mode .admin-form-group select option,
+.admin-layout.dark-mode .admin-form-group select option,
+.admin-layout.light-mode .admin-products-filter option,
+.admin-layout.dark-mode .admin-products-filter option {
+  background-color: var(--admin-card-bg);
+  color: var(--admin-text);
+}
+
+/* Tables */
+.admin-layout.light-mode .admin-table thead,
+.admin-layout.dark-mode .admin-table thead {
+  background-color: var(--admin-table-header);
+}
+
+.admin-layout.light-mode .admin-table th,
+.admin-layout.dark-mode .admin-table th,
+.admin-layout.light-mode .admin-table td,
+.admin-layout.dark-mode .admin-table td {
+  color: var(--admin-text);
+  border-color: var(--admin-border);
+}
+
+.admin-layout.light-mode .admin-table tbody tr:hover,
+.admin-layout.dark-mode .admin-table tbody tr:hover {
+  background-color: var(--admin-hover);
+}
+
+/* Product image and category */
+.admin-layout.light-mode .admin-product-image,
+.admin-layout.dark-mode .admin-product-image {
+  background-color: var(--admin-hover);
+  color: var(--admin-text);
+}
+
+.admin-layout.light-mode .admin-category-badge,
+.admin-layout.dark-mode .admin-category-badge {
+  background-color: var(--admin-hover);
+  color: var(--admin-text);
+}
+
+/* Empty states */
+.admin-layout.light-mode .admin-no-orders h3,
+.admin-layout.dark-mode .admin-no-orders h3,
+.admin-layout.light-mode .order-not-found h2,
+.admin-layout.dark-mode .order-not-found h2 {
+  color: var(--admin-text);
+}
+
+.admin-layout.light-mode .admin-no-orders p,
+.admin-layout.dark-mode .admin-no-orders p,
+.admin-layout.light-mode .order-not-found p,
+.admin-layout.dark-mode .order-not-found p,
+.admin-layout.light-mode .admin-recent-order p,
+.admin-layout.dark-mode .admin-recent-order p,
+.admin-layout.light-mode .admin-order-product p,
+.admin-layout.dark-mode .admin-order-product p {
+  color: var(--admin-secondary-text);
+}
+
+.admin-layout.light-mode .order-not-found,
+.admin-layout.dark-mode .order-not-found {
+  background-color: var(--admin-bg);
+  color: var(--admin-text);
+}
+
+.admin-layout.light-mode .order-not-found-icon,
+.admin-layout.dark-mode .order-not-found-icon {
+  background-color: var(--admin-card-bg);
+  color: var(--admin-text);
+}
+
+/* Order details */
+.admin-layout.light-mode .admin-details-list p,
+.admin-layout.dark-mode .admin-details-list p,
+.admin-layout.light-mode .admin-order-product,
+.admin-layout.dark-mode .admin-order-product,
+.admin-layout.light-mode .admin-recent-order,
+.admin-layout.dark-mode .admin-recent-order {
+  border-color: var(--admin-border);
+}
+
+/* Sidebar */
+.admin-layout.light-mode .admin-sidebar,
+.admin-layout.dark-mode .admin-sidebar {
+  background-color: var(--admin-sidebar-bg);
+  color: var(--admin-sidebar-text);
+}
+
+.admin-layout.light-mode .admin-link,
+.admin-layout.dark-mode .admin-link,
+.admin-layout.light-mode .admin-logout,
+.admin-layout.dark-mode .admin-logout {
+  color: var(--admin-sidebar-text);
+}
+
+.admin-layout.light-mode .admin-link:hover,
+.admin-layout.dark-mode .admin-link:hover {
+  background-color: var(--admin-hover);
+}
+
+.admin-layout.light-mode .admin-link.admin-active,
+.admin-layout.dark-mode .admin-link.admin-active {
+  background-color: #ff9900;
+  color: #131921;
+}
+
+/* Cancel button */
+.admin-layout.light-mode .admin-cancel-btn,
+.admin-layout.dark-mode .admin-cancel-btn {
+  background-color: var(--admin-card-bg);
+  color: var(--admin-text);
+  border-color: var(--admin-border);
+}
+
+.admin-layout.light-mode .admin-cancel-btn:hover,
+.admin-layout.dark-mode .admin-cancel-btn:hover {
+  background-color: var(--admin-hover);
+}
+
+/* Smooth transitions */
+.admin-layout .admin-header,
+.admin-layout .admin-sidebar,
+.admin-layout .admin-dashboard-card,
+.admin-layout .admin-stat-card,
+.admin-layout .admin-products-card,
+.admin-layout .admin-form-card,
+.admin-layout .admin-table-container,
+.admin-layout .admin-no-orders,
+.admin-layout .admin-logout-section {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }

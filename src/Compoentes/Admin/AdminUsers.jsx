@@ -1,11 +1,13 @@
+
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsers, deleteUser } from "../../Redux/getUsers";
+import { useTranslation } from "react-i18next";
 
 function AdminUsers() {
   const users = useSelector((state) => state.gitUser.users);
-
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getUsers());
@@ -14,8 +16,8 @@ function AdminUsers() {
   return (
     <div>
       <div className="admin-page-title">
-        <h1>Users</h1>
-        <p>Manage website users</p>
+        <h1>{t("adminUsers.title")}</h1>
+        <p>{t("adminUsers.description")}</p>
       </div>
 
       <div className="admin-dashboard-card">
@@ -23,16 +25,16 @@ function AdminUsers() {
           <table className="admin-table">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th>Joined Date</th>
-                <th>Actions</th>
+                <th>{t("adminUsers.name")}</th>
+                <th>{t("adminUsers.email")}</th>
+                <th>{t("adminUsers.role")}</th>
+                <th>{t("adminUsers.joinedDate")}</th>
+                <th>{t("adminUsers.actions")}</th>
               </tr>
             </thead>
 
             <tbody>
-              {users.map((user) => (
+              {users?.map((user) => (
                 <tr key={user._id}>
                   <td>
                     <strong>{user.name}</strong>
@@ -47,29 +49,32 @@ function AdminUsers() {
                   </td>
 
                   <td>
-                    {new Date(user.createdAt).toLocaleDateString()}
+                    {user.createdAt
+                      ? new Date(user.createdAt).toLocaleDateString()
+                      : "—"}
                   </td>
 
                   <td>
                     <div className="admin-table-actions">
-                    {/*   <button className="admin-edit-btn">
-                        Edit
-                      </button> */}
-
                       <button
+                        type="button"
                         className="admin-delete-btn"
-                        onClick={() => {
-                        
-
-                          dispatch(deleteUser(user._id));
-                        }}
+                        onClick={() => dispatch(deleteUser(user._id))}
                       >
-                        Delete
+                        {t("adminUsers.delete")}
                       </button>
                     </div>
                   </td>
                 </tr>
               ))}
+
+              {(!users || users.length === 0) && (
+                <tr>
+                  <td colSpan="5" className="admin-empty-message">
+                    {t("adminUsers.noUsers")}
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
