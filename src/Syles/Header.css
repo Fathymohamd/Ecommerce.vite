@@ -882,17 +882,7 @@
     display: none;
   }
 
-.nav-links-container {
-  width: 100%;
-  max-width: 1600px;
-  margin: auto;
-  padding: 11px 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 25px;
-}
+
 .nav-links,
 .nav-links-container,
 .all-menu {
@@ -901,7 +891,7 @@
 }
 
 .admin-sidebar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
@@ -978,7 +968,7 @@
 }
 
 .admin-sidebar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
@@ -1025,8 +1015,9 @@
 }
 
 .admin-sidebar {
-  position: fixed;
-  top: 0;
+  position: absolute;
+  top: 12rem;
+  height: 90vh;
   left: 0;
   bottom: 0;
   z-index: 9999;
