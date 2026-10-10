@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaCartShopping, FaHeart   , FaSpinner} from "react-icons/fa6";
 import { useDispatch  , useSelector} from "react-redux";
 import {getCart , addToCart} from "../../Redux/cartSlice"
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import {getCartwishlist    , addToCartwishlist} from "../../Redux/wishlistSlice"
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -14,10 +14,13 @@ const Deals = () => {
   const user = useSelector((state) => state.auth.user);
   const navigate = useNavigate();
 const { t } = useTranslation();
+
 useEffect(()=>{
   dispatch(getCart())
   dispatch(getCartwishlist())
 } , [dispatch])
+
+
   useEffect(() => {
     const getDeals = async () => {
       try {

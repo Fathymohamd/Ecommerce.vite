@@ -20,7 +20,7 @@ import {
   romovewishlistdelet,
 } from "../../Redux/wishlistSlice";
 
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 
 import { useTranslation } from "react-i18next";
 
@@ -71,7 +71,10 @@ const Wishlist = () => {
     }
 
     const result = await dispatch(
-      addToCart(item.product)
+          addToCart({
+        productId: item._id,
+        productModel: "externalproducts",
+      })
     );
 
     if (addToCart.fulfilled.match(result)) {

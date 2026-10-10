@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useTranslation } from "react-i18next";
 
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 
 
 import { clearUserCart } from "../Redux/wishlistSlice";
@@ -111,67 +111,67 @@ if (
   !formData.city.trim() ||
   !formData.address.trim()
 ) {
-  setError(t("checkout.fillAllFields"));
+  toast.error(t("checkout.fillAllFields"));
   return;
 }
 
 if (!formData.firstName.trim()) {
-  setError(t("checkout.firstNameRequired"));
+  toast.error(t("checkout.firstNameRequired"));
   return;
 }
 
 if (!formData.lastName.trim()) {
-  setError(t("checkout.lastNameRequired"));
+  toast.error(t("checkout.lastNameRequired"));
   return;
 }
 
 if (!formData.email.trim()) {
-  setError(t("checkout.emailRequired"));
+  toast.error(t("checkout.emailRequired"));
   return;
 }
 
 if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-  setError(t("checkout.invalidEmail"));
+  toast.error(t("checkout.invalidEmail"));
   return;
 }
 
 if (!formData.phone.trim()) {
-  setError(t("checkout.phoneRequired"));
+  toast.error(t("checkout.phoneRequired"));
   return;
 }
 
 if (!/^01[0125][0-9]{8}$/.test(formData.phone)) {
-  setError(t("checkout.invalidPhone"));
+  toast.error(t("checkout.invalidPhone"));
   return;
 }
 
 if (!formData.country.trim()) {
-  setError(t("checkout.countryRequired"));
+  toast.error(t("checkout.countryRequired"));
   return;
 }
 
 if (!formData.governorate.trim()) {
-  setError(t("checkout.governorateRequired"));
+  toast.error(t("checkout.governorateRequired"));
   return;
 }
 
 if (!formData.city.trim()) {
-  setError(t("checkout.cityRequired"));
+  toast.error(t("checkout.cityRequired"));
   return;
 }
 
 if (!formData.address.trim()) {
-  setError(t("checkout.addressRequired"));
+  toast.error(t("checkout.addressRequired"));
   return;
 }
 
 if (!paymentMethod) {
-  setError(t("checkout.choosePaymentMethod"));
+  toast.error(t("checkout.choosePaymentMethod"));
   return;
 }
 
 if (!cartData || cartData.length === 0) {
-  setError(t("checkout.cartEmpty"));
+  toast.error(t("checkout.cartEmpty"));
   return;
 }
     setLoading(true);
@@ -200,10 +200,8 @@ if (!cartData || cartData.length === 0) {
 
    const data = await res.json();
 
-console.log("🔥 ORDER RESPONSE:", data);
-
     if (res.status === 401) {
-      setError(t("checkout.loginBeforeOrder"));
+        toast.error(t("checkout.loginBeforeOrder"));
 
       setTimeout(() => {
         navigate("/login");
@@ -214,13 +212,13 @@ console.log("🔥 ORDER RESPONSE:", data);
 
  
     if (!res.ok) {
-      setError(data.message || t("checkout.somethingWentWrong"));
+      toast.error(data.message || t("checkout.somethingWentWrong"));
       return;
     }
 
  
     if (!data.client_secret) {
-      setError(t("checkout.somethingWentWrong"));
+      toast.error(t("checkout.somethingWentWrong"));
       return;
     }
 
@@ -228,7 +226,7 @@ console.log("🔥 ORDER RESPONSE:", data);
 
     if (!publicKey) {
       
-      setError(t("checkout.somethingWentWrong"));
+        toast.error(t("checkout.somethingWentWrong"));
       return;
     }
 
@@ -240,7 +238,7 @@ await dispatch(clearUserCart())
     window.location.href = url;
   } catch (err) {
 
-    setError(t("checkout.somethingWentWrong"));
+      toast.error(t("checkout.somethingWentWrong"));
   } finally {
     setLoading(false);
   }

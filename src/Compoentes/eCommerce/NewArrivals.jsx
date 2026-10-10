@@ -21,7 +21,7 @@ import {
 
 import { fetchAllProducts } from "../../Redux/createSlice";
 
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";;
 
 import { useTranslation } from "react-i18next";
 

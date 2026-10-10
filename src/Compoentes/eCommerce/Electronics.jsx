@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaCartShopping, FaHeart, FaStar  , FaSpinner} from "react-icons/fa6";
 import { useParams , useNavigate, Link } from "react-router-dom"
 import { useDispatch  , useSelector} from "react-redux";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import {getCart , addToCart} from "../../Redux/cartSlice"
 import {getCartwishlist    , addToCartwishlist} from "../../Redux/wishlistSlice"
 import {fetchAllProducts } from "../../Redux/createSlice"

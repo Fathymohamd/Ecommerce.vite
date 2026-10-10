@@ -16,7 +16,7 @@ import { useTranslation } from "react-i18next";
 
 import { useState } from "react";
 
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 
 function Products() {
 

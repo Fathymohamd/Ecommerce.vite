@@ -17,7 +17,7 @@ import { Notifications } from "../../Redux/Notifications";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 
 import { useTranslation } from "react-i18next";
 
@@ -102,22 +102,22 @@ const errorPassword = useSelector((state) => state.settings.errorPassword);
   const handleSubmit = async (e) => {
     e.preventDefault();
 if (!formData.name.trim() && !formData.email.trim()) {
-  setErrors(t("profile.fillAllFields"));
+  toast.error(t("profile.fillAllFields"));
   return;
 }
 
 if (!formData.name.trim()) {
-  setErrors(t("profile.nameRequired"));
+  toast.error(t("profile.nameRequired"));
   return;
 }
 
 if (!formData.email.trim()) {
-  setErrors(t("profile.emailRequired"));
+  toast.error(t("profile.emailRequired"));
   return;
 }
 
 if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-  setErrors(t("profile.invalidEmail"));
+  toast.error(t("profile.invalidEmail"));
   return;
 }
     const resultAction = await dispatch(
@@ -161,17 +161,17 @@ if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
     !passwordData.newPassword.trim() &&
     !passwordData.confirmPassword.trim()
   ) {
-    setError(t("changePassword.fillAllFields"));
+    toast.error(t("changePassword.fillAllFields"));
     return;
   }
 
   if (!passwordData.password.trim()) {
-    setError(t("changePassword.passwordRequired"));
+    toast.error(t("changePassword.passwordRequired"));
     return;
   }
 
   if (!passwordData.newPassword.trim()) {
-    setError(t("changePassword.newPasswordRequired"));
+    toast.error(t("changePassword.newPasswordRequired"));
     return;
   }
 
@@ -180,17 +180,17 @@ if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       passwordData.newPassword
     )
   ) {
-    setError(t("changePassword.strongPassword"));
+    toast.error(t("changePassword.strongPassword"));
     return;
   }
 
   if (!passwordData.confirmPassword.trim()) {
-    setError(t("changePassword.confirmPasswordRequired"));
+    toast.error(t("changePassword.confirmPasswordRequired"));
     return;
   }
 
   if (passwordData.newPassword !== passwordData.confirmPassword) {
-    setError(t("changePassword.passwordsDoNotMatch"));
+    toast.error(t("changePassword.passwordsDoNotMatch"));
     return;
   }
 
@@ -201,7 +201,7 @@ if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
         confirmPassword: passwordData.confirmPassword,
       })
     );
-console.log("CHANGE PASSWORD RESULT:", resultAction);
+
     if (changePassword.fulfilled.match(resultAction)) {
       toast.success(t("settings.passwordChangedSuccessfully"));
          setError("")

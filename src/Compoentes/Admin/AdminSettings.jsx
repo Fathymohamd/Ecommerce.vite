@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "../../Redux/settingsRedux";
 import { updateSettings } from "../../Redux/settingsStoreName";
 import { useTranslation } from "react-i18next";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 
 function AdminSettings() {
   const dispatch = useDispatch();
@@ -86,7 +86,7 @@ function AdminSettings() {
     setErrors("");
 
     if (!formData.name.trim() || !formData.email.trim()) {
-      setErrors(t("adminSettings.fillAllFields"));
+      toast.error(t("adminSettings.fillAllFields"));
       return;
     }
 
@@ -94,7 +94,7 @@ function AdminSettings() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(email)) {
-      setErrors(t("adminSettings.invalidEmail"));
+      toast.error(t("adminSettings.invalidEmail"));
       return;
     }
 
@@ -132,12 +132,12 @@ function AdminSettings() {
     setSuccessMessage("");
 
     if (!settingsData.setting.trim()) {
-      setSuccessMessage(t("adminSettings.storeNameRequired"));
+      toast.error(t("adminSettings.storeNameRequired"));
       return;
     }
 
     if (!settingsData.currency) {
-      setSuccessMessage(t("adminSettings.currencyRequired"));
+      toast.error(t("adminSettings.currencyRequired"));
       return;
     }
 
@@ -155,8 +155,8 @@ function AdminSettings() {
 
       toast.success(t("adminSettings.settingsUpdatedSuccessfully"));
     } catch (error) {
-      console.log(error);
-      setSuccessMessage(
+    
+      toast.error(
         typeof error === "string"
           ? error
           : t("adminSettings.somethingWentWrong")

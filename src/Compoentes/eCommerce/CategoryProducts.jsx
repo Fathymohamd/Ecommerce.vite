@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams , useNavigate, Link } from "react-router-dom";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { fetchProductsByCategory } from "../../Redux/createSlice";
 import {fetchAllProducts} from "../../Redux/createSlice"

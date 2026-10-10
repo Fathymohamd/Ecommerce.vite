@@ -12,13 +12,12 @@ import { useNavigate } from "react-router-dom";
 import Tilt from "react-parallax-tilt";
 import {getCart , addToCart} from "../../Redux/cartSlice"
 import {getCartwishlist    , addToCartwishlist} from "../../Redux/wishlistSlice"
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 function BestSellers() {
 const { t } = useTranslation();
 const fakestoreap = useSelector((state)=> state.counter.fakestoreap)
-  console.log("PRODUCT:", fakestoreap);
-  console.log("IMAGE:", fakestoreap.images);
+
 const user = useSelector((state) => state.auth.user);
 const dispatch = useDispatch()
 useEffect(()=>{

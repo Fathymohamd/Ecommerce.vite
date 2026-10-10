@@ -9,7 +9,7 @@ import {
   getCartwishlist,
   addToCartwishlist,
 } from "../../Redux/wishlistSlice";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import Tilt from "react-parallax-tilt";
 

@@ -9,7 +9,7 @@ import {
 import { useDispatch } from "react-redux";
 import { setUser } from "../../Redux/authSlice";
 import { useTranslation } from "react-i18next";
-
+import { toast } from "react-toastify";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -42,27 +42,27 @@ const Login = () => {
     setSuccess("");
 
 if (!formData.email.trim() && !formData.password.trim()) {
-  setError(t("login.fillAllFields"));
+  toast.error(t("login.fillAllFields"));
   return;
 }
 
 if (!formData.email.trim()) {
-  setError(t("login.emailRequired"));
+  toast.error(t("login.emailRequired"));
   return;
 } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-  setError(t("login.invalidEmail"));
+  toast.error(t("login.invalidEmail"));
   return;
 }
 
 if (!formData.password.trim()) {
-  setError(t("login.passwordRequired"));
+  toast.error(t("login.passwordRequired"));
   return;
 } else if (
   !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
     formData.password
   )
 ) {
-  setError(t("login.strongPassword"));
+  toast.error(t("login.strongPassword"));
   return;
 }
 
@@ -85,9 +85,7 @@ if (!formData.password.trim()) {
       );
 
       const data = await response.json();
-console.log("LOGIN RESPONSE:", data);
-console.log("USER:", data.user);
-console.log("ROLE:", data.user?.role);
+
       if (!response.ok) {
         setError(
           data.message || t("login.invalidCredentials")
@@ -101,11 +99,8 @@ console.log("ROLE:", data.user?.role);
       });
 
    
+toast.success(t("login.Successful"));
 
-setSuccess(t("login.Successful"));
-
-console.log("USER:", data.user);
-console.log("ROLE:", data.user?.role);
 
 dispatch(setUser(data.user));
 
@@ -117,7 +112,7 @@ if (data.user?.role === "admin") {
 
     } catch (error) {
       console.error(error);
-      setError(t("login.serverError"));
+      toast.error(t("login.serverError"));
     } finally {
       setLoading(false);
     }

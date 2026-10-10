@@ -10,7 +10,7 @@ import { fetchAllProducts, addToCart } from "../../Redux/createSlice"
 
 import { useTranslation } from "react-i18next"
 
-import toast from "react-hot-toast"
+import { toast } from "react-toastify";
 import {
   FaSpa,
   FaSprayCanSparkles,

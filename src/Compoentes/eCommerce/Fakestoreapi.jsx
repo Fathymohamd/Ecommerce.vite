@@ -6,7 +6,7 @@ import { useSelector , useDispatch } from 'react-redux';
 import {  fetchFakeStoreid   , fetchFakeStore  } from "../../Redux/createSlice";
 import { addToCart } from "../../Redux/cartSlice";
 import { useTranslation } from "react-i18next";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 import Tilt from "react-parallax-tilt";
 
 const Fakestoreapi = () => {

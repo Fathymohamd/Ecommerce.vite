@@ -11,7 +11,7 @@ import {
 } from "react-icons/fa6";
 
 import { useTranslation } from "react-i18next";
-
+import { toast } from "react-toastify";
 const Register = () => {
   const navigate = useNavigate();
 
@@ -55,42 +55,42 @@ if (
   !formData.password.trim() &&
   !formData.confirmPassword.trim()
 ) {
-  setError(t("register.fillAllFields"));
+  toast.error(t("register.fillAllFields"));
   return;
 }
 
 if (!formData.name.trim()) {
-  setError(t("register.nameRequired"));
+  toast.error(t("register.nameRequired"));
   return;
 }
 
 if (!formData.email.trim()) {
-  setError(t("register.emailRequired"));
+  toast.error(t("register.emailRequired"));
   return;
 } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-  setError(t("register.invalidEmail"));
+  toast.error(t("register.invalidEmail"));
   return;
 }
 
 if (!formData.password.trim()) {
-  setError(t("register.passwordRequired"));
+  toast.error(t("register.passwordRequired"));
   return;
 } else if (
   !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
     formData.password
   )
 ) {
-  setError(t("register.strongPassword"));
+  toast.error(t("register.strongPassword"));
   return;
 }
 
 if (!formData.confirmPassword.trim()) {
-  setError(t("register.confirmPasswordRequired"));
+  toast.error(t("register.confirmPasswordRequired"));
   return;
 }
 
 if (formData.password !== formData.confirmPassword) {
-  setError(t("register.passwordsDoNotMatch"));
+  toast.error(t("register.passwordsDoNotMatch"));
   return;
 }
 
@@ -115,7 +115,7 @@ if (formData.password !== formData.confirmPassword) {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.message);
+        toast.error(data.message);
         return;
       } else {
         setFormData({
@@ -125,7 +125,7 @@ if (formData.password !== formData.confirmPassword) {
           confirmPassword: "",
         });
 
-        setSuccess("Account created successfully!");
+        toast.success("Account created successfully!");
 
         setTimeout(() => {
           navigate("/login");
@@ -133,7 +133,7 @@ if (formData.password !== formData.confirmPassword) {
       }
     } catch (error) {
       console.error(error);
-      setError("Unable to connect to server");
+      toast.error("Unable to connect to server");
     } finally {
       setLoading(false);
     }

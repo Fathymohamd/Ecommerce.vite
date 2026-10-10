@@ -7,7 +7,7 @@ import {
 } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import {
   createContact,
@@ -57,7 +57,7 @@ const handleSubmit = async (e) => {
 
 
 if (!formData.email.trim() && !formData.email.trim() && !formData.message.trim()) {
-  setError(t("login.fillAllFields"));
+  toast.error(t("login.fillAllFields"));
   return;
 }
 
@@ -65,12 +65,12 @@ if (!formData.email.trim()) {
   setError(t("login.emailRequired"));
   return;
 } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-  setError(t("login.invalidEmail"));
+  toast.error(t("login.invalidEmail"));
   return;
 }
 
 if (!formData.message.trim()) {
-  setError(t("login.messageRequired"));
+  toast.error(t("login.messageRequired"));
   return false;
 }
 

@@ -6,13 +6,15 @@ import  '../App.css'
 import "../src/Compoentes/i18n/i18n"
 import  { store } from "./Redux/Store"
 import { Provider } from "react-redux"
-import { Toaster } from "react-hot-toast";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 createRoot(document.getElementById('root')).render(
   <StrictMode>
   <Provider store={store}>
       <BrowserRouter>
         <App />
-     <Toaster />
+          <ToastContainer position="top-right" autoClose={3000} />
    </BrowserRouter>
   </Provider>
   </StrictMode>

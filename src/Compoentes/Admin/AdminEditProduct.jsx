@@ -1,9 +1,8 @@
 
-import React, { useState } from "react";
-import toast from "react-hot-toast";
+import React, { useState } from "react";;
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-
+import { toast } from "react-toastify";
 function AdminEditProduct() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -31,32 +30,32 @@ function AdminEditProduct() {
     e.preventDefault();
 
     if (!formData.title.trim()) {
-      setError(t("adminEditProduct.nameRequired"));
+      toast.error(t("adminEditProduct.nameRequired"));
       return;
     }
 
     if (!formData.price) {
-      setError(t("adminEditProduct.priceRequired"));
+      toast.error(t("adminEditProduct.priceRequired"));
       return;
     }
 
     if (!formData.category) {
-      setError(t("adminEditProduct.categoryRequired"));
+      toast.error(t("adminEditProduct.categoryRequired"));
       return;
     }
 
     if (!formData.description.trim()) {
-      setError(t("adminEditProduct.descriptionRequired"));
+      toast.error(t("adminEditProduct.descriptionRequired"));
       return;
     }
 
     if (!formData.images.trim()) {
-      setError(t("adminEditProduct.imageRequired"));
+      toast.error(t("adminEditProduct.imageRequired"));
       return;
     }
 
     if (Number(formData.price) <= 0) {
-      setError(t("adminEditProduct.priceGreaterThanZero"));
+      toast.error(t("adminEditProduct.priceGreaterThanZero"));
       return;
     }
 

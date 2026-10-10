@@ -15,7 +15,7 @@ import { FiPackage } from "react-icons/fi";
 
 import { useTranslation } from "react-i18next";
 
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 
 import {
   getCart,
@@ -174,8 +174,8 @@ function Cart() {
                 const quantity = item.quantity || 1;
 
                 const productLink = item.product?.images?.length
-                  ? `/products/${item.product.id}`
-                  : `/Fakestoreapi/${item.product.id}`;
+                  ? `/products/${item.product?.id}`
+                  : `/Fakestoreapi/${item.product?.id}`;
 
                 return (
                   <article

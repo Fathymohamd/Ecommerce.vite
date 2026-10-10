@@ -14,7 +14,7 @@ import {getCart , addToCart} from "../../Redux/cartSlice"
 import {getCartwishlist    , addToCartwishlist} from "../../Redux/wishlistSlice"
 
 import {fetchAllProducts} from "../../Redux/createSlice"
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 function FeaturedProducts() {
   const loading = useSelector((state) => state.counter.Loading);

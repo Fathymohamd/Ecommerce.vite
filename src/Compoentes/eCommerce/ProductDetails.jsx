@@ -20,7 +20,7 @@ import {
   addToCartwishlist,
 } from "../../Redux/wishlistSlice";
 
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 
 import { useTranslation } from "react-i18next";
 

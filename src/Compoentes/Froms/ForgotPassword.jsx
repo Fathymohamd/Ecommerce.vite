@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {useState} from 'react'
-
+import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
 function ForgotPassword() {
@@ -14,10 +14,10 @@ function ForgotPassword() {
 
   const handLeSubmit = async(e)=>{
 if (!email.trim()) {
-  setError(t("register.emailRequired"));
+  toast.error(t("register.emailRequired"));
   return;
 } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-  setError(t("register.invalidEmail"));
+  toast.error(t("register.invalidEmail"));
   return;
 }
    try {
@@ -38,16 +38,13 @@ if (!email.trim()) {
 
     if (!res.ok) {
 
-      setError(data.message);
+      toast.error(data.message);
 
        return
 
     }else {
-
-      setError(data.message);
-
+      toast.error(data.message);
       setEmail("")
-
     }
 
    }catch(error){
